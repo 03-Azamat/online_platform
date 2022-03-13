@@ -1,0 +1,29 @@
+#courses{
+
+  .courses--block{
+    background: url("./../../image/coursesImage.png") no-repeat center/cover;
+    min-height: 50vh;
+
+    &--title{
+      color: white;
+      font-size: 48px;
+      text-align: center;
+      padding-top: 200px;
+    }
+  }
+
+
+  .courses--box{
+
+    padding-top: 55px;
+    padding-bottom: 100px;
+
+    &--block{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+  }
+
+}

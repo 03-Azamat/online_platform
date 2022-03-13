@@ -1,0 +1,91 @@
+.reg{
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  transition: 0.4s;
+
+  &--code{
+    display: inline-block;
+    opacity: 1;
+    width: 250px;
+    height: 280px;
+    background: white;
+    border-radius: 5px;
+    & div {
+      color:red;
+      font-size: 12px;
+      width: 200px;
+      padding:  0 0 0 25px;
+    }
+    &--btnx{
+      //padding: 0 0 0 215px;
+      margin:5px   0  0  219px ;
+      color: #01487E;
+    }
+    & h2 {
+      display: flex;
+      justify-content: center;
+      font-family: Poppins,sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 27px;
+      /* identical to box height */
+      color: #000000;
+      padding: 1px 0 0 0;
+
+    }
+    & p {
+      font-family: Poppins,sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 14px;
+      line-height: 21px;
+      color: #000000;
+      padding: 10px 20px 10px 20px;
+    }
+    & input {
+      width: 200px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin: 1px 0 1px 23px;
+      padding: 5px;
+
+    }
+    & span{
+        //display: none;
+      display: block;
+      color:black;
+      font-size: 12px;
+      padding: 0 0 0 30px;
+
+    }
+
+    &input:active ~ span {
+        display: block;
+
+    }
+
+    //&input:invalid ~  span{
+    //  display: block;
+    //  //display: none;
+    //}
+    & button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 175px;
+      height: 30px;
+      color: white;
+      background: #01487E;
+      border-radius: 5px;
+      margin: 15px 0 1px 38px;
+    }
+
+  }
+}

@@ -1,0 +1,58 @@
+.header{
+  background: #01487E;
+  padding: 20px 0;
+  position: absolute;
+  width: 100%;
+  &--content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &--items a{
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 27px;
+      color: #FFFFFF;
+      text-decoration: none;
+      margin: 0 20px;
+    }
+    &--auth{
+      & a button{
+        margin: 0 10px;
+      }
+      &--btn1{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 27px;
+        color: #FFFFFF;
+        background: none;
+        border: 2px solid #FFFFFF;
+        padding: 10px 20px;
+        border-radius: 9px;
+        cursor: pointer;
+        transition: 0.2s;
+        &:hover{
+          background: #FFFFFF;
+          color: #01487E;
+        }
+      }
+      &--btn2{
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 27px;
+        color: #01487E;
+        cursor: pointer;
+        background: white;
+        border: 2px solid #FFFFFF;
+        padding: 10px 20px;
+        border-radius: 9px;
+        transition: 0.2s;
+        &:hover{
+          background: none;
+          color: #FFFFFF;
+        }
+      }
+    }
+  }
+}

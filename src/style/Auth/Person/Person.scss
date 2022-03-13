@@ -1,0 +1,40 @@
+#person{
+  width: 100%;
+  height: 1300px;
+  background: #E5E5E5;
+}
+.person{
+
+  & h1{
+    font-family: Poppins,sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    color: #01487E;
+    line-height: 45px;
+    text-align: center;
+    padding: 100px 0 0 0;
+  }
+  & h3{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 0 0;
+    font-family: Poppins,sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    color: #000000;
+  }
+  &--text {
+    display: flex;
+    //flex-direction: column;
+    border-radius: 15px;
+    justify-content: space-between;
+
+    & textarea{
+      border-radius: 15px;
+    }
+  }
+
+}

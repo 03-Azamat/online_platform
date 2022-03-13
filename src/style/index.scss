@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/////////Tailwind///////
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+///////////////////////
+
+@import "Header/header";
+@import "Footer/footer";
+@import "about/about";
+@import "Auth/Register/Register";
+@import "courses/courses";
+@import "Auth/Register/RegisterCopy";
+@import "Auth/Register/FormInput";
+@import "Auth/Register/registerCode";
+@import "Auth/Register/SignIn";
+@import "Auth/Person/Person";
+@import "Auth/Person/hookform";
+@import "coursesDetails/coursesDetails";
+@import "./../style/Header/header";
+@import "./../style/home/home";
+@import "./../style/about/about";
+@import "./../style/courses/courses";
+@import "./../style/coursesDetails/coursesDetails";
+@import "./../style/register/RegisterCopy";
+@import "./../style/register/FormInput";
+@import "./../style/register/registerCode";
+@import "./../style/accordion/accordion";
+@import "./../style/card/coursesCard";
+@import "./../style/Footer/footer";
+
+
+
+//*---------media----------*
+@import "./../media/media-style";
+//*---------media----------*
+
+
+
+
+
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Poppins', sans-serif;
+}
+
+.container{
+  width: 80%;
+  margin: auto;
+}
