@@ -10,7 +10,6 @@ const CoursesDetails = () => {
     const dispatch = useDispatch()
     console.log(cour, "cour")
     console.log(id)
-
     useEffect(() => {
         dispatch(getCoursesDetails(id))
     }, [])

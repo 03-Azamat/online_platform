@@ -45,33 +45,33 @@ const BurgerMenu = () => {
                         }}>
 
                             <NavLink to={"/"} >
-                                <a className="text-white text-2xl p-3"
+                                <p className="text-white text-2xl p-3"
                                    onClick={() => setNavOpen(false)}
-                                >Главная</a>
+                                >Главная</p>
                             </NavLink>
 
                             <NavLink to={"/courses"}>
-                                <a className="text-white text-2xl p-3"
+                                <p className="text-white text-2xl p-3"
                                    onClick={() => setNavOpen(false)}
-                                >Курсы</a>
+                                >Курсы</p>
                             </NavLink>
 
                             <NavLink to={"/certificate"}>
-                                <a className="text-white text-2xl p-3"
+                                <p className="text-white text-2xl p-3"
                                    onClick={() => setNavOpen(false)}
-                                >Проверка сертификатов</a>
+                                >Проверка сертификатов</p>
                             </NavLink>
 
                             <NavLink to={"/about"}>
-                                <a className="text-white text-2xl p-3"
+                                <p className="text-white text-2xl p-3"
                                    onClick={() => setNavOpen(false)}
-                                >О нас</a>
+                                >О нас</p>
                             </NavLink>
 
                             <NavLink to={"/contact"}>
-                                <a className="text-white text-2xl p-3"
+                                <p className="text-white text-2xl p-3"
                                    onClick={() => setNavOpen(false)}
-                                >Контакты</a>
+                                >Контакты</p>
                             </NavLink>
                         </div>
                     </div>
