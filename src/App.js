@@ -1,4 +1,3 @@
-import './style/App.scss';
 import Header from "./conponents/header/Header";
 import Footer from "./conponents/footer/Footer";
 import {Routes,Route} from "react-router-dom";
@@ -8,7 +7,7 @@ import RegisterCopy from "./conponents/Auth/Register/RegisterCopy";
 import Courses from "./conponents/courses/courses";
 import RegisterCode from "./conponents/Auth/Register/RegisterCode";
 import Person from "./conponents/Auth/Person/Person";
-import HookForm from "./conponents/Auth/Person/HookForm";
+import './style/App.scss';
 // import Register from "./conponents/register/Register";
 // import RegisterCopy from "./conponents/register/RegisterCopy";
 import CoursesDetails from "./conponents/CoursesDetails/coursesDetails";
