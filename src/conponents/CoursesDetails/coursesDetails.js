@@ -2,41 +2,18 @@ import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getCoursesDetails} from "../../redux/action/corsesAction";
-import Accordion from "../accordion/accordion";
 import Cour from "./../../image/cour_logo.svg"
 
 const CoursesDetails = () => {
     const {id} = useParams()
-    const {coursesDetails : cour} = useSelector(s => s)
+    const {coursesDetails: cour} = useSelector(s => s)
     const dispatch = useDispatch()
     console.log(cour, "cour")
     console.log(id)
 
-    const data = [
-        {   text:"Модуль 1",
-            title:"Создание консольного калькулятора",
-            content:"Создание консольного калькулятора",
-            desc:"Создание консольного калькулятора",
-            about:"Создание консольного калькулятора",
-        },
-        {   text:"Модуль 2",
-            title:"Создание консольного калькулятора",
-            content:"Создание консольного калькулятора",
-            desc:"Создание консольного калькулятора",
-            about:"Создание консольного калькулятора",
-        },
-        {   text:"Модуль 3",
-            title:"Создание консольного калькулятора",
-            content:"Создание консольного калькулятора",
-            desc:"Создание консольного калькулятора",
-            about:"Создание консольного калькулятора",
-        }
-    ]
-
     useEffect(() => {
         dispatch(getCoursesDetails(id))
     }, [])
-
 
     return (
         <section id="cour">
@@ -70,22 +47,22 @@ const CoursesDetails = () => {
                     </div>
 
                     <div className="cour--box__middle">
-                      <h1 className="cour--box__middle__title">О курсе</h1>
+                        <h1 className="cour--box__middle__title">О курсе</h1>
 
-                      <div className="cour--box__middle__desc">
-                          <p>
-                              {cour.overview_ru}
-                          </p>
-                      </div>
-                  </div>
+                        <div className="cour--box__middle__desc">
+                            <p>
+                                {cour.overview_ru}
+                            </p>
+                        </div>
+                    </div>
 
                     <div className="cour--box--accordion">
                         <h1 className="cour--box--accordion--title">
                             Программа курса
                         </h1>
-                            <div className="cour--box--accordion--block">
+                        <div className="cour--box--accordion--block">
 
-                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

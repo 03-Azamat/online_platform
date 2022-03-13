@@ -1,6 +1,5 @@
 import React  from 'react';
 import logo from '../../image/image 4 (Traced) (1).svg'
-import {useState} from "react";
 // import Register from "../register/Register";
 // import RegisterCopy from "../register/RegisterCopy";
 import BurgerMenu from "./../../conponents/BurgerMenu/BurgerMenu";
@@ -12,13 +11,10 @@ import {NavLink} from "react-router-dom";
 // import RegisterCopy from "../Auth/Register/RegisterCopy";
 // import FormInput from "../Auth/Register/FormInput";
 // import RegisterCode from "../Auth/Register/RegisterCode";
-import HookForm from "../Auth/Person/HookForm";
 
 const Header = () => {
     // const navigate = useNavigate()
     //  const [activeRegisterCopy,setActiveRegisterCopy] = useState(false)
-
-
     return (
         <header>
             <div className="header">

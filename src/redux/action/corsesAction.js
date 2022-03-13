@@ -1,5 +1,5 @@
 import axios from "axios";
-import {GET_ACCORDION_COURSES, GET_COURSES, GET_SINGLE_COURSES} from "../types/actionTypes";
+import {GET_COURSES, GET_SINGLE_COURSES} from "../types/actionTypes";
 
 export const getCourses = () =>{
     return(dispatch) =>{
