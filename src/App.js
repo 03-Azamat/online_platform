@@ -1,17 +1,17 @@
-import Header from "./conponents/header/Header";
-import Footer from "./conponents/footer/Footer";
+import Header from "./components/header/Header";
+import Footer from "./components/footer/Footer";
 import {Routes,Route} from "react-router-dom";
-import About from "./conponents/about/about";
-import Register from "./conponents/Auth/Register/Register";
-import RegisterCopy from "./conponents/Auth/Register/RegisterCopy";
-import Courses from "./conponents/courses/courses";
-import RegisterCode from "./conponents/Auth/Register/RegisterCode";
-import Person from "./conponents/Auth/Person/Person";
+import About from "./components/about/about";
+import Register from "./components/Auth/Register/Register";
+import RegisterCopy from "./components/Auth/Register/RegisterCopy";
+import Courses from "./components/courses/courses";
+import RegisterCode from "./components/Auth/Register/RegisterCode";
+import Person from "./components/Auth/Person/Person";
 import './style/App.scss';
-// import Register from "./conponents/register/Register";
-// import RegisterCopy from "./conponents/register/RegisterCopy";
-import CoursesDetails from "./conponents/CoursesDetails/coursesDetails";
-import Home from "./conponents/home/home";
+// import Register from "./components/register/Register";
+// import RegisterCopy from "./components/register/RegisterCopy";
+import CoursesDetails from "./components/CoursesDetails/coursesDetails";
+import Home from "./components/home/home";
 
 
 

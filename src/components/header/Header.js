@@ -2,7 +2,7 @@ import React  from 'react';
 import logo from '../../image/image 4 (Traced) (1).svg'
 // import Register from "../register/Register";
 // import RegisterCopy from "../register/RegisterCopy";
-import BurgerMenu from "./../../conponents/BurgerMenu/BurgerMenu";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import {NavLink} from "react-router-dom";
 // import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 // import { faXmark} from "@fortawesome/free-solid-svg-icons";
