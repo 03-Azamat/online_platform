@@ -1,37 +1,24 @@
 .accordion{
+  width: 100%;
   background-color: #ffffff;
   border-radius: 10px;
-  padding: 15px;
+  padding: 10px;
   margin-bottom: 15px;
 
-  &__text{
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 21px;
-    /* identical to box height */
-
-    text-transform: capitalize;
-
-    color: #757575;
-
-  }
 
   &__title{
-    font-style: normal;
+    padding: 1rem 0.5rem;
     font-weight: normal;
     font-size: 16px;
     line-height: 24px;
     /* identical to box height */
-
+    cursor: pointer;
 
     color: #000000;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-
   &__icon{
     transition: 0.3s ease-in-out;
   }
@@ -39,38 +26,16 @@
     transform: rotate(180deg);
   }
 
-
   &__content{
-    padding: 0 0.5rem;
-    max-height: 0;
+    padding-left: 50px;
+    background: white;
     overflow: hidden;
-    transition: 0.9s ease-in-out;
-    background-color: #FFFFFF;
-
-    line-height: 10px;
-
-    &--text{
-      padding-left: 55px;
-      &--title{
-
-        font-style: normal;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 30px;
-        /* identical to box height */
-
-
-        color: #000000;
-      }
-    }
+    transition: max-height 0.6s ease-in-out;
+    max-height: 0;
   }
-
   &.active &__content{
-    padding: 0.5rem;
-    transition: 0.9s ease-in-out;
-    min-height: 7em;
+    max-height: 20em;
   }
-
 
 
 }

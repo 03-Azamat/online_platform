@@ -1,0 +1,226 @@
+@media (max-width: 1280px){
+#home{
+
+  .home--block{
+
+    &--box{
+
+      &--title{
+        color: white;
+        padding-bottom: 20px;
+        font-size: 42px;
+        text-align: center;
+        padding-top: 200px;
+      }
+
+      &--desc{
+        width: 50%;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 132%;
+        padding-bottom: 34px;
+        /* or 32px */
+
+        color: #FFFFFF;
+      }
+    }
+  }
+}
+
+
+};
+
+@media (max-width: 640px){
+  #home{
+
+    .home--block{
+
+      &--box{
+
+        &--title{
+          color: white;
+          padding-bottom: 20px;
+          font-size: 38px;
+          text-align: center;
+          padding-top: 200px;
+        }
+
+        &--desc{
+          width: 50%;
+          text-align: center;
+          font-family: 'Poppins', sans-serif;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 17px;
+          line-height: 132%;
+          padding-bottom: 34px;
+          /* or 32px */
+
+          color: #FFFFFF;
+        }
+      }
+    }
+  }
+};
+
+@media (max-width: 570px){
+  #home{
+
+    .home--block{
+
+      &--box{
+
+        &--title{
+          color: white;
+          padding-bottom: 20px;
+          font-size: 36px;
+          text-align: center;
+          padding-top: 200px;
+        }
+
+        &--desc{
+          width: 65%;
+          text-align: center;
+          font-family: 'Poppins', sans-serif;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 17px;
+          line-height: 132%;
+          padding-bottom: 34px;
+          /* or 32px */
+
+          color: #FFFFFF;
+        }
+
+        &--btn{
+          font-size: 20px;
+          padding: 10px 60px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 438px){
+  #home{
+
+    .home--block{
+
+      &--box{
+
+        &--title{
+          color: white;
+          padding-bottom: 20px;
+          font-size: 34px;
+          text-align: center;
+          padding-top: 200px;
+        }
+
+        &--desc{
+          width: 70%;
+          text-align: center;
+          font-family: 'Poppins', sans-serif;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 17px;
+          line-height: 132%;
+          padding-bottom: 34px;
+          /* or 32px */
+
+          color: #FFFFFF;
+        }
+
+        &--btn{
+          font-size: 20px;
+          padding: 10px 60px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 407px){
+  #home{
+
+    .home--block{
+
+      &--box{
+
+        &--title{
+          color: white;
+          padding-bottom: 20px;
+          font-size: 30px;
+          text-align: center;
+          padding-top: 200px;
+        }
+
+        &--desc{
+          width: 85%;
+          text-align: center;
+          font-family: 'Poppins', sans-serif;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 17px;
+          line-height: 132%;
+          padding-bottom: 34px;
+          /* or 32px */
+
+          color: #FFFFFF;
+        }
+
+        &--btn{
+          font-size: 20px;
+          padding: 10px 60px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 390px){
+  #home{
+
+    .home--block{
+
+      &--box{
+
+        &--title{
+          font-style: normal;
+          font-weight: 600;
+          font-size: 24px;
+          line-height: 132%;
+          padding-top: 200px;
+
+          text-align: center;
+
+          color: #FFFFFF;
+
+        }
+
+        &--desc{
+          width: 100%;
+          text-align: center;
+          font-family: 'Poppins', sans-serif;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 132%;
+          /* or 21px */
+
+          padding-bottom: 34px;
+          /* or 32px */
+          color: #FFFFFF;
+        }
+
+        &--btn{
+          font-size: 20px;
+          padding: 10px 60px;
+        }
+      }
+    }
+  }
+}
+

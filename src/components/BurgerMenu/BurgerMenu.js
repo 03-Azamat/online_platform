@@ -24,7 +24,6 @@ const BurgerMenu = () => {
                         >
                             <svg
                                 className="h-8 w-8 text-gray-600"
-                                viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
                                 strokeWidth="2"
@@ -36,7 +35,6 @@ const BurgerMenu = () => {
                             </svg>
                         </div>
 
-
                         <div style={{
                             display: "flex",
                             alignItems: "center",
@@ -44,34 +42,36 @@ const BurgerMenu = () => {
                             flexDirection: "column"
                         }}>
 
-                            <NavLink to={"/"} >
-                                <p className="text-white text-2xl p-3"
-                                   onClick={() => setNavOpen(false)}
-                                >Главная</p>
+                            <NavLink to={"/"}
+                                     className="text-white text-2xl p-3"
+                                     onClick={() => setNavOpen(false)}>
+                                Главная
                             </NavLink>
 
-                            <NavLink to={"/courses"}>
-                                <p className="text-white text-2xl p-3"
-                                   onClick={() => setNavOpen(false)}
-                                >Курсы</p>
+                            <NavLink to={"/courses"}
+                                     className="text-white text-2xl p-3"
+                                     onClick={() => setNavOpen(false)}>
+                                Курсы
                             </NavLink>
 
-                            <NavLink to={"/certificate"}>
-                                <p className="text-white text-2xl p-3"
-                                   onClick={() => setNavOpen(false)}
-                                >Проверка сертификатов</p>
+                            <NavLink to={"/certificate"}
+                                     className="text-white text-2xl p-3"
+                                     onClick={() => setNavOpen(false)}>
+                                Проверка сертификатов
                             </NavLink>
 
-                            <NavLink to={"/about"}>
-                                <p className="text-white text-2xl p-3"
-                                   onClick={() => setNavOpen(false)}
-                                >О нас</p>
+                            <NavLink to={"/about"}
+                                     className="text-white text-2xl p-3"
+                                     onClick={() => setNavOpen(false)}
+                            >
+                                О нас
                             </NavLink>
 
-                            <NavLink to={"/contact"}>
-                                <p className="text-white text-2xl p-3"
-                                   onClick={() => setNavOpen(false)}
-                                >Контакты</p>
+                            <NavLink to={"/contact"}
+                                     className="text-white text-2xl p-3"
+                                     onClick={() => setNavOpen(false)}
+                            >
+                                Контакты
                             </NavLink>
                         </div>
                     </div>
@@ -87,14 +87,8 @@ const BurgerMenu = () => {
         position: absolute;
         width: 100%;
         height: 90vh;
-        top: 0;
-        left: 0;
-        background: #00E3AD;
+        background: #01487E;
         z-index: 10;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
       }
     `}</style>
         </div>

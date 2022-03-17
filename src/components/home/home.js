@@ -15,7 +15,6 @@ const Home = () => {
         dispatch(getCourses())
     })
 
-
     return (
         <div>
             <section id="home">
@@ -27,7 +26,10 @@ const Home = () => {
                                 Образование — это умение правильно
                                 действовать в любых житейских ситуациях.
                             </p>
-                            <button className="home--block--box--btn">Курсы</button>
+                            <NavLink to={"/courses"}>
+                                <button className="home--block--box--btn">Курсы</button>
+                            </NavLink>
+
                         </div>
 
                     </div>

@@ -3,10 +3,13 @@ import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getCoursesDetails} from "../../redux/action/corsesAction";
 import Cour from "./../../image/cour_logo.svg"
+import Accordion from "../accordion/accordion";
+import {add , format } from "date-fns"
 
 const CoursesDetails = () => {
     const {id} = useParams()
     const {coursesDetails: cour} = useSelector(s => s)
+    console.log(cour)
     const dispatch = useDispatch()
     console.log(cour, "cour")
     console.log(id)
@@ -14,11 +17,17 @@ const CoursesDetails = () => {
         dispatch(getCoursesDetails(id))
     }, [])
 
+    //////date//////
+    const date = new Date()
+    const calendarDateFormat = 'dd/MM/yy'
+    const currentDate = format(date, calendarDateFormat)
+    const in7DaysCalendarDate = format( add(date , {days:7}) , calendarDateFormat)
+
+
     return (
         <section id="cour">
 
             <div className="container">
-
                 <div className="cour--box">
                     <span className="cour--box--logo">
                         <img src={Cour} alt=""/>
@@ -26,22 +35,26 @@ const CoursesDetails = () => {
                     </span>
                     <div className="cour--box--head ">
                         <div className="cour--box--head--titles">
-                            <h1 className="cour--box--head--titles--title">{cour.title_ru}</h1>
-                            <p className="cour--box--head--titles--desc">“Образование — это умение правильно
+                            <h1 className="cour--box--head--titles--title">{cour.title}</h1>
+                            <p className="cour--box--head--titles--desc">
+                                “Образование — это умение правильно
                                 действовать в любых житейских ситуациях.“
                             </p>
                             <button className="cour--box--head--titles--btn">Оставить заявку</button>
                         </div>
 
                         <div className="cour--box--head--dates">
+
                             <div className="cour--box--head--dates--start">
                                 <p className="cour--box--head--dates--start--title"> Дата начала курса</p>
-                                <p className="cour--box--head--dates--start--desc">{cour.schedule_ru}</p>
+                                <p className="cour--box--head--dates--start--desc">{currentDate}</p>
                             </div>
+
                             <div className="cour--box--head--dates--end">
                                 <p className="cour--box--head--dates--end--title"> Дата завершения курса</p>
-                                <p className="cour--box--head--dates--end--desc">{cour.schedule_ru}</p>
+                                <p className="cour--box--head--dates--end--desc">{in7DaysCalendarDate}</p>
                             </div>
+
                         </div>
                     </div>
 
@@ -49,9 +62,7 @@ const CoursesDetails = () => {
                         <h1 className="cour--box__middle__title">О курсе</h1>
 
                         <div className="cour--box__middle__desc">
-                            <p>
-                                {cour.overview_ru}
-                            </p>
+                            <p dangerouslySetInnerHTML={{__html:cour.text}}/>
                         </div>
                     </div>
 
@@ -61,6 +72,23 @@ const CoursesDetails = () => {
                         </h1>
                         <div className="cour--box--accordion--block">
 
+                            <Accordion title={cour.title}
+                                       descOne={cour.title}
+                                       descTwo={cour.title}
+                                       descTree={cour.title}
+                            />
+
+                            <Accordion title={cour.title}
+                                       descOne={cour.text}
+                                       descTwo={cour.text}
+                                       descTree={cour.text}
+                            />
+
+                            <Accordion title={cour.title}
+                                       descOne={cour.text}
+                                       descTwo={cour.text}
+                                       descTree={cour.text}
+                            />
                         </div>
                     </div>
                 </div>

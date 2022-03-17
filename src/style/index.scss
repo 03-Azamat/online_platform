@@ -22,6 +22,7 @@
 @import "./../style/about/about";
 @import "./../style/courses/courses";
 @import "./../style/coursesDetails/coursesDetails";
+@import "./../style/coursesLesson/coursesLesson";
 @import "./../style/register/RegisterCopy";
 @import "./../style/register/FormInput";
 @import "./../style/register/registerCode";
@@ -29,28 +30,21 @@
 @import "./../style/card/coursesCard";
 @import "./../style/Footer/footer";
 
-
-
 //*---------media----------*
 @import "./../media/media-style";
 //*---------media----------*
 
-
-
-
-
-
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-body{
+body {
   font-family: 'Poppins', sans-serif;
 }
 
-.container{
+.container {
   width: 80%;
   margin: auto;
 }

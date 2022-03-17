@@ -47,8 +47,8 @@ const Header = () => {
                         </div>
                         <BurgerMenu/>
                     </div>
-
                 </div>
+
             </div>
             {/*<HookForm active={activeRegisterCopy}  setActive={setActiveRegisterCopy}  />*/}
         </header>

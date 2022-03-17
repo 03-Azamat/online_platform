@@ -12,6 +12,7 @@ import './style/App.scss';
 // import RegisterCopy from "./components/register/RegisterCopy";
 import CoursesDetails from "./components/CoursesDetails/coursesDetails";
 import Home from "./components/home/home";
+import CoursesLesson from "./components/coursesLesson/coursesLesson";
 
 
 
@@ -25,15 +26,14 @@ function App() {
           <Routes>
               <Route path={"/"} element={<Home/>}/>
               <Route path={"/about"} element={<About/>}/>
-
               {/*<Route path={"/register"} element={<RegisterCopy/>}/>*/}
               <Route path={"/register"} element={<RegisterCopy/>}/>
               <Route path={"/courses"} element={<Courses/>}/>
               <Route path={"/person"} element={<Person/>}/>
               <Route path={"/register-code"} element={<RegisterCode/>}/>
               <Route path={"/register-check"} element={<Register/>}/>
-              <Route path={"/courses/coursesDetails/:id"} element={<CoursesDetails/>}/>
-
+              <Route path={"/coursesDetails/:id"} element={<CoursesDetails/>}/>
+              <Route path={"coursesDetails/coursesLesson/:lessonId"} element={<CoursesLesson/>}/>
               <Route path={"/about"} element={<About/>}/>
               {/*<Route path={"/contact"} element={<Contact/>}/>*/}
           </Routes>
