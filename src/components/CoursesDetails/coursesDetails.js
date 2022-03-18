@@ -43,6 +43,7 @@ const CoursesDetails = () => {
                             <button className="cour--box--head--titles--btn">Оставить заявку</button>
                         </div>
 
+
                         <div className="cour--box--head--dates">
 
                             <div className="cour--box--head--dates--start">
@@ -72,10 +73,10 @@ const CoursesDetails = () => {
                         </h1>
                         <div className="cour--box--accordion--block">
 
-                            <Accordion title={cour.title}
-                                       descOne={cour.title}
-                                       descTwo={cour.title}
-                                       descTree={cour.title}
+                            <Accordion title={"aza"}
+                                       descOne={"JBGCCDFVGBHNJMNFDCRFVTGYHNJM"}
+                                       descTwo={"JBGCCDFVGBHNJMNFDCRFVTGYHNJM"}
+                                       descTree={"JBGCCDFVGBHNJMNFDCRFVTGYHNJM"}
                             />
 
                             <Accordion title={cour.title}
