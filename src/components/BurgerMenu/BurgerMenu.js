@@ -5,16 +5,16 @@ const BurgerMenu = () => {
     const [NavOpen, setNavOpen] = useState(false);
 
     return (
-        <div>
+        <div className="flex items-center justify-between border-b border-gray-400 py-8">
             <nav>
-                <section className="MOBILE-MENU flex lg:hidden absolute">
+                <section className="MOBILE-MENU flex lg:hidden">
                     <div
                         className="HAMBURGER-ICON space-y-2"
                         onClick={() => setNavOpen((prev) => !prev)}
                     >
-                        <span className="block h-0.5 w-8 animate-pulse bg-white"/>
-                        <span className="block h-0.5 w-8 animate-pulse bg-white"/>
-                        <span className="block h-0.5 w-8 animate-pulse bg-white"/>
+                        <span className="block h-0.5 w-8 animate-pulse bg-gray-200"></span>
+                        <span className="block h-0.5 w-8 animate-pulse bg-gray-200"></span>
+                        <span className="block h-0.5 w-8 animate-pulse bg-gray-200"></span>
                     </div>
 
                     <div className={NavOpen ? "showMenuNav" : "hideMenuNav"}>
@@ -23,60 +23,40 @@ const BurgerMenu = () => {
                             onClick={() => setNavOpen(false)}
                         >
                             <svg
-                                className="h-8 w-8 text-gray-600"
+                                className="h-8 w-8 text-gray-200"
+                                viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
                                 strokeWidth="2"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
                             >
-                                <line x1="18" y1="6" x2="6" y2="18"/>
-                                <line x1="6" y1="6" x2="18" y2="18"/>
+                                <line x1="18" y1="6" x2="6" y2="18" />
+                                <line x1="6" y1="6" x2="18" y2="18" />
                             </svg>
                         </div>
+                        <ul className="flex flex-col items-center justify-between min-h-[50vh]">
+                            <li className="border-b border-gray-400 my-8 uppercase text-white">
+                                <NavLink to="/hero">Главная</NavLink>
+                            </li>
 
-                        <div style={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            flexDirection: "column"
-                        }}>
+                            <li className="border-b border-gray-400 my-8 uppercase text-white">
+                                <NavLink to="/courses">Курсы</NavLink>
+                            </li>
 
-                            <NavLink to={"/"}
-                                     className="text-white text-2xl p-3"
-                                     onClick={() => setNavOpen(false)}>
-                                Главная
-                            </NavLink>
 
-                            <NavLink to={"/courses"}
-                                     className="text-white text-2xl p-3"
-                                     onClick={() => setNavOpen(false)}>
-                                Курсы
-                            </NavLink>
 
-                            <NavLink to={"/certificate"}
-                                     className="text-white text-2xl p-3"
-                                     onClick={() => setNavOpen(false)}>
-                                Проверка сертификатов
-                            </NavLink>
+                            <li className="border-b border-gray-400 my-8 uppercase text-white">
+                                <NavLink to="/about">О нас</NavLink>
+                            </li>
 
-                            <NavLink to={"/about"}
-                                     className="text-white text-2xl p-3"
-                                     onClick={() => setNavOpen(false)}
-                            >
-                                О нас
-                            </NavLink>
 
-                            <NavLink to={"/contact"}
-                                     className="text-white text-2xl p-3"
-                                     onClick={() => setNavOpen(false)}
-                            >
-                                Контакты
-                            </NavLink>
-                        </div>
+                            <li className="border-b border-gray-400 my-8 uppercase text-white">
+                                <NavLink to="/contact">Контакт</NavLink>
+                            </li>
+                        </ul>
                     </div>
                 </section>
-
             </nav>
             <style>{`
       .hideMenuNav {
@@ -86,9 +66,15 @@ const BurgerMenu = () => {
         display: block;
         position: absolute;
         width: 100%;
-        height: 90vh;
+        height: 70vh;
+        top: 0;
+        left: 0;
         background: #01487E;
         z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
       }
     `}</style>
         </div>

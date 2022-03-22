@@ -8,7 +8,7 @@ import CoursesCardPaid from "../card/coursesCardPaid";
 
 const Courses = () => {
     const coursesTwo = useSelector(state => state.courses)
-    console.log(coursesTwo, "courses")
+    console.log(coursesTwo, "coursesTwo")
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getCourses())

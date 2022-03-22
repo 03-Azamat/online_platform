@@ -35,7 +35,7 @@ const About = () => {
 
                                 {
                                     about.map(el=> (
-                                        <p className="about2--block--arch--box--desc">{el.title}</p>
+                                        <p className="about2--block--arch--box--desc" dangerouslySetInnerHTML={{__html:el.text}}/>
                                     ))
                                 }
 

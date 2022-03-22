@@ -1,11 +1,12 @@
-@media (max-width: 437px) {
+@media (max-width: 464px) {
   .coursesCard{
     width: 325px;
     height: 331px;
     margin-bottom: 50px;
 
     &--box{
-      margin-top: 58.5%;
+
+      margin-top: 192px;
       padding: 10px;
 
 
@@ -15,15 +16,61 @@
       }
 
       &--price{
-        margin-left: 64%;
+        margin-left: 194px;
       }
     }
 
 
   }
 }
+@media (max-width: 430px) {
+  .coursesCard{
+    width: 325px;
+    height: 331px;
+    margin-bottom: 50px;
+
+    &--box{
+      margin-top: 192px;
+      padding: 10px;
 
 
+
+      &--title{
+
+      }
+
+      &--price{
+        margin-left: 192px;
+      }
+    }
+
+
+  }
+}
+@media (max-width: 390px) {
+  .coursesCard{
+    width: 310px;
+    height: 316px;
+    margin-bottom: 50px;
+
+    &--box{
+      margin-top: 177px;
+      padding: 10px;
+
+
+
+      &--title{
+
+      }
+
+      &--price{
+        margin-left: 179px;
+      }
+    }
+
+
+  }
+}
 @media (max-width: 370px) {
   .coursesCard{
     width: 310px;
@@ -31,8 +78,9 @@
     margin-bottom: 50px;
 
     &--box{
-      margin-top: 57%;
-      padding: 10px;
+      padding: 10px 0 0 5px;
+      margin-top: 190px;
+
 
 
 
@@ -41,14 +89,16 @@
       }
 
       &--price{
-        margin-left: 62%;
+        margin-left: 161px;
+        margin-top: -10px;
+        width: 105px;
+        height: 35px;
       }
     }
 
 
   }
 }
-
 @media (max-width: 345px) {
   .coursesCard{
     width: 255px;
@@ -56,7 +106,7 @@
     margin-bottom: 64px;
 
     &--box{
-      margin-top: 64%;
+      margin-top: 169px;
       padding: 10px 5px 0 5px;
 
 
@@ -86,7 +136,7 @@
         background: #01487E;
         border-radius: 10px 0 10px;
         border-color: transparent;
-        margin-left: 59.7%;
+        margin-left: 145px;
         font-weight: 500;
         font-size: 16px;
         line-height: 27px;
@@ -104,7 +154,7 @@
     margin-bottom: 64px;
 
     &--box{
-      margin-top: 64%;
+      margin-top: 150px;
       padding: 0 5px 0 5px;
 
 
@@ -134,7 +184,7 @@
         background: #01487E;
         border-radius: 10px 0 10px;
         border-color: transparent;
-        margin-left: 59.7%;
+        margin-left: 130px;
         font-weight: 500;
         font-size: 14px;
         line-height: 27px;
