@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getCoursesDetails} from "../../redux/action/corsesAction";
-import Cour from "./../../image/cour_logo.svg"
+import Cour from "../../image/cour_logo.svg"
 import Accordion from "../accordion/accordion";
 import {add , format } from "date-fns"
 
@@ -73,23 +73,12 @@ const CoursesDetails = () => {
                         </h1>
                         <div className="cour--box--accordion--block">
 
-                            <Accordion title={"aza"}
-                                       descOne={"JBGCCDFVGBHNJMNFDCRFVTGYHNJM"}
-                                       descTwo={"JBGCCDFVGBHNJMNFDCRFVTGYHNJM"}
-                                       descTree={"JBGCCDFVGBHNJMNFDCRFVTGYHNJM"}
-                            />
-
                             <Accordion title={cour.title}
                                        descOne={cour.text}
                                        descTwo={cour.text}
                                        descTree={cour.text}
                             />
-
-                            <Accordion title={cour.title}
-                                       descOne={cour.text}
-                                       descTwo={cour.text}
-                                       descTree={cour.text}
-                            />
+                            
                         </div>
                     </div>
                 </div>

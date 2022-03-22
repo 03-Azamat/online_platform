@@ -3,32 +3,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-///////////////////////
-
-@import "Header/header";
-@import "Footer/footer";
-@import "about/about";
+/////////////////////
 @import "Auth/Register/Register";
-@import "courses/courses";
 @import "Auth/Register/RegisterCopy";
 @import "Auth/Register/FormInput";
 @import "Auth/Register/registerCode";
 @import "Auth/Register/SignIn";
 @import "Auth/Person/Person";
 @import "Auth/Person/hookform";
-@import "coursesDetails/coursesDetails";
+
+//////////////////////MAIN COURSES///////////////////////
+@import "./../style/courses/courses";
+@import "./../style/accordion/accordion";
+
+//////////////////////COURSES FREE///////////////////////
+@import "./../style/courses/coursesDetails";
+@import "./../style/courses/coursesLesson";
+@import "./../style/card/coursesCard";
+
+////////////////////////COURSES PAID/////////////////////
+@import "./../style/coursesPaid/coursesDetailsPaid";
+@import "./../style/card/coursesCardPaid";
+
+////////////////////////COMPONENTS///////////////////////
 @import "./../style/Header/header";
 @import "./../style/home/home";
 @import "./../style/about/about";
-@import "./../style/courses/courses";
-@import "./../style/coursesDetails/coursesDetails";
-@import "./../style/coursesLesson/coursesLesson";
+@import "./../style/Footer/footer";
+
+///////////////////////REGISTER//////////////////////////
 @import "./../style/register/RegisterCopy";
 @import "./../style/register/FormInput";
 @import "./../style/register/registerCode";
-@import "./../style/accordion/accordion";
-@import "./../style/card/coursesCard";
-@import "./../style/Footer/footer";
+
 
 //*---------media----------*
 @import "./../media/media-style";

@@ -153,7 +153,28 @@
 
     }
 
+    &--end{
 
+    }
+
+    &--btn{
+      width: 200px;
+      height: 46px;
+      left: 135px;
+      top: 1500px;
+
+      background: #01487E;
+      border-radius: 5px;
+
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 27px;
+      /* identical to box height */
+
+
+      color: #FFFFFF;
+    }
   }
 
 }

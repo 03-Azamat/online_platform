@@ -1,4 +1,4 @@
 export const GET_COURSES = "GET_COURSES"
 export const GET_SINGLE_COURSES = "GET_SINGLE_COURSES"
-
+export const GET_ABOUT = "GET_ABOUT"
 

@@ -19,7 +19,7 @@ const Accordion = props => {
             </div>
             <ol>
                 <li>
-                    <NavLink to={`/coursesDetails/coursesLesson/${props.id}`}>
+                    <NavLink to={`/coursesDetailsPaid/coursesLesson/${props.id}`}>
                         <p className="accordion__content" dangerouslySetInnerHTML={{__html: props.descOne}} />
                         <p className="accordion__content" dangerouslySetInnerHTML={{__html: props.descTwo}} />
                         <p className="accordion__content" dangerouslySetInnerHTML={{__html: props.descTree}} />

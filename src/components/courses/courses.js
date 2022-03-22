@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCourses} from "../../redux/action/corsesAction";
 import CoursesCard from "../card/coursesCard";
 import Loader from "../../loader/loader";
+import CoursesCardPaid from "../card/coursesCardPaid";
 
 
 const Courses = () => {

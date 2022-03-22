@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import Cour from "../../image/cour_logo.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {getCoursesDetails} from "../../redux/action/corsesAction";
-import {useParams} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 import styled from "styled-components";
-import {Tab, TabPanel, Tabs} from "./Tab";
+import {Tab, TabPanel, Tabs} from "../coursesLesson/Tab";
 
 const CoursesLesson = () => {
     const {params} = useParams()
@@ -51,6 +51,7 @@ const CoursesLesson = () => {
 
                     <div className="lesson--box--middle">
                         <h1 className="lesson--box--middle__title">Материалы</h1>
+
                         <div>
                             <TabsContainer>
                                 <Tabs selectedTab={activeTab} onChange={handleChage}>
@@ -65,7 +66,14 @@ const CoursesLesson = () => {
                                 <TabPanel value={activeTab} selectedIndex={3}>TAb 3</TabPanel>
                             </TabPanelContainer>
                         </div>
+
                     </div>
+                    <div className="lesson--box--end">
+
+                    </div>
+                    <NavLink to="/coursesDetailsPaid/:id">
+                        <button className="lesson--box--btn">Назад</button>
+                    </NavLink>
                 </div>
             </div>
         </section>
