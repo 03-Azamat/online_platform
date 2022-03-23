@@ -1,23 +1,31 @@
 import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getCoursesDetails} from "../../redux/action/corsesAction";
+import {getCoursesDetails, getCoursesLesson} from "../../redux/action/corsesAction";
 import Cour from "../../image/cour_logo.svg"
 import Accordion from "../accordion/accordion";
 import {add , format } from "date-fns"
 
 const CoursesDetails = () => {
     const {id} = useParams()
+
     const {coursesDetails: cour} = useSelector(s => s)
-    console.log(cour)
+    const lesson = useSelector(state => state.lessonDetails)
+
     const dispatch = useDispatch()
-    console.log(cour, "cour")
+
+    console.log(cour, "courses")
     console.log(id)
+    console.log(lesson, "les")
+
+
     useEffect(() => {
         dispatch(getCoursesDetails(id))
+        dispatch(getCoursesLesson(id))
     }, [])
 
-    //////date//////
+
+    //////date-fns//////
     const date = new Date()
     const calendarDateFormat = 'dd/MM/yy'
     const currentDate = format(date, calendarDateFormat)
@@ -71,15 +79,12 @@ const CoursesDetails = () => {
                         <h1 className="cour--box--accordion--title">
                             Программа курса
                         </h1>
-                        <div className="cour--box--accordion--block">
 
-                            <Accordion title={cour.title}
-                                       descOne={cour.text}
-                                       descTwo={cour.text}
-                                       descTree={cour.text}
-                            />
-                            
+                        <div className="cour--box--accordion--block">
+                            <Accordion el={cour}/>
+
                         </div>
+
                     </div>
                 </div>
             </div>

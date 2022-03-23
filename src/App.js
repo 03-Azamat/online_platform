@@ -36,7 +36,7 @@ function App() {
               <Route path={"/register-check"} element={<Register/>}/>
               <Route path={"/coursesDetails/:id"} element={<CoursesDetails/>}/>
               {/*<Route path={"/coursesDetailsPaid/:id"} element={<CoursesDetailsPaid/>}/>*/}
-              <Route path={"coursesDetailsPaid/coursesLesson/:lessonId"} element={<CoursesLesson/>}/>
+              <Route path={"/coursesDetails/coursesLesson/:lessonId"} element={<CoursesLesson/>}/>
               <Route path={"/about"} element={<About/>}/>
               {/*<Route path={"/contact"} element={<Contact/>}/>*/}
           </Routes>

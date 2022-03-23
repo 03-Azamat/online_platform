@@ -9,11 +9,11 @@ import './style/index.scss';
 
 ReactDOM.render(
     <BrowserRouter>
-        <React.StrictMode>
+
             <Provider store={store}>
                 <App />
             </Provider>
-        </React.StrictMode>
+
     </BrowserRouter>,
     document.getElementById('root')
 );
