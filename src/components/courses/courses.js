@@ -17,7 +17,7 @@ const Courses = () => {
     return (
         coursesTwo.length === 0 ? <Loader/> :
         <section id="courses">
-            <div className='courses--block'>
+            <div className='courses--block'>0
                 <div className="container">
                     <h1 className="courses--block--title">Курсы</h1>
                 </div>

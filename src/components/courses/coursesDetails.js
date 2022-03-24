@@ -38,6 +38,7 @@ const CoursesDetails = () => {
                         <img src={Cour} alt=""/>
                         <p>Курс</p>
                     </span>
+
                     <div className="cour--box--head ">
                         <div className="cour--box--head--titles">
                             <h1 className="cour--box--head--titles--title">{elem.title}</h1>
@@ -78,7 +79,7 @@ const CoursesDetails = () => {
                         </h1>
 
                         <div className="cour--box--accordion--block">
-                            <Accordion el={elem}/>
+                            {/*<Accordion el={elem}/>*/}
                         </div>
 
                     </div>
