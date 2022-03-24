@@ -9,15 +9,12 @@ import {add , format } from "date-fns"
 const CoursesDetails = () => {
     const {id} = useParams()
 
-    const {coursesDetails: cour} = useSelector(s => s)
-    const lesson = useSelector(state => state.lessonDetails)
+    const {coursesDetails: elem} = useSelector(s => s)
 
     const dispatch = useDispatch()
 
-    console.log(cour, "courses")
+    console.log(elem, "courses")
     console.log(id)
-    console.log(lesson, "les")
-
 
     useEffect(() => {
         dispatch(getCoursesDetails(id))
@@ -43,7 +40,7 @@ const CoursesDetails = () => {
                     </span>
                     <div className="cour--box--head ">
                         <div className="cour--box--head--titles">
-                            <h1 className="cour--box--head--titles--title">{cour.title}</h1>
+                            <h1 className="cour--box--head--titles--title">{elem.title}</h1>
                             <p className="cour--box--head--titles--desc">
                                 “Образование — это умение правильно
                                 действовать в любых житейских ситуациях.“
@@ -71,7 +68,7 @@ const CoursesDetails = () => {
                         <h1 className="cour--box__middle__title">О курсе</h1>
 
                         <div className="cour--box__middle__desc">
-                            <p dangerouslySetInnerHTML={{__html:cour.text}}/>
+                            <p dangerouslySetInnerHTML={{__html:elem.text}}/>
                         </div>
                     </div>
 
@@ -81,8 +78,7 @@ const CoursesDetails = () => {
                         </h1>
 
                         <div className="cour--box--accordion--block">
-                            <Accordion el={cour}/>
-
+                            <Accordion el={elem}/>
                         </div>
 
                     </div>

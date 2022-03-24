@@ -31,10 +31,11 @@ function App() {
               {/*<Route path={"/register"} element={<RegisterCopy/>}/>*/}
               <Route path={"/register"} element={<RegisterCopy/>}/>
               <Route path={"/courses"} element={<Courses/>}/>
+              <Route path={"/coursesDetails/:id"} element={<CoursesDetails/>}/>
               <Route path={"/person"} element={<Person/>}/>
               <Route path={"/register-code"} element={<RegisterCode/>}/>
               <Route path={"/register-check"} element={<Register/>}/>
-              <Route path={"/coursesDetails/:id"} element={<CoursesDetails/>}/>
+
               {/*<Route path={"/coursesDetailsPaid/:id"} element={<CoursesDetailsPaid/>}/>*/}
               <Route path={"/coursesDetails/coursesLesson/:lessonId"} element={<CoursesLesson/>}/>
               <Route path={"/about"} element={<About/>}/>

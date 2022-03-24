@@ -4,14 +4,14 @@ import {faAngleDown} from "@fortawesome/free-solid-svg-icons";
 import {NavLink} from "react-router-dom";
 
 
-const Accordion = ({cour}) => {
+const Accordion = ({elem}) => {
     const [active,setActive] = useState(false)
 
 
     return (
         <div className={`accordion ${active ? 'active' : ''}`}>
             <div className="accordion__title" onClick={()=> setActive(!active)} >
-                <p>{cour.name_work}</p>
+                <p>{elem.title}</p>
                 <div className="accordion__icon">
                     <FontAwesomeIcon icon={faAngleDown} />
                 </div>
@@ -19,8 +19,8 @@ const Accordion = ({cour}) => {
 
             <ol>
                 <li>
-                    <NavLink to={`/coursesDetails/coursesLesson/${cour.id}`}>
-                        <p className="accordion__content" dangerouslySetInnerHTML={{__html: cour.name_topic}} />
+                    <NavLink to={`/coursesDetails/coursesLesson/${elem.lessonId}`}>
+                        <p className="accordion__content" dangerouslySetInnerHTML={{__html: elem.text}} />
                     </NavLink>
                 </li>
             </ol>
