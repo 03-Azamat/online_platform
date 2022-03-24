@@ -27,7 +27,7 @@ const CoursesLesson = () => {
                     </span>
                     <div className="lesson--box--head " >
                         <div className="lesson--box--head--titles">
-                            <h1 className="lesson--box--head--titles--title">{elem.title}</h1>
+                            <h1 className="lesson--box--head--titles--title">aaza</h1>
                             <p className="lesson--box--head--titles--desc">
                                 “Образование — это умение правильно
                                 действовать в любых житейских ситуациях.“
@@ -45,7 +45,9 @@ const CoursesLesson = () => {
                                         {/*    <div>*/}
                                         {/*        {el.url}*/}
                                         {/*    </div>*/}
-                                        {/*))}*/}
+                                        {/*))*/}
+
+                                        {/*}*/}
                                     </div>
                     </div>
                     <div className="lesson--box--end">

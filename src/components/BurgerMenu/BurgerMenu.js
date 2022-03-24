@@ -12,9 +12,9 @@ const BurgerMenu = () => {
                         className="HAMBURGER-ICON space-y-2"
                         onClick={() => setNavOpen((prev) => !prev)}
                     >
-                        <span className="block h-0.5 w-8 animate-pulse bg-gray-200"></span>
-                        <span className="block h-0.5 w-8 animate-pulse bg-gray-200"></span>
-                        <span className="block h-0.5 w-8 animate-pulse bg-gray-200"></span>
+                        <span className="block h-0.5 w-8 animate-pulse bg-gray-200"/>
+                        <span className="block h-0.5 w-8 animate-pulse bg-gray-200"/>
+                        <span className="block h-0.5 w-8 animate-pulse bg-gray-200"/>
                     </div>
 
                     <div className={NavOpen ? "showMenuNav" : "hideMenuNav"}>
