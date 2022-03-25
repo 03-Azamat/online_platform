@@ -8,7 +8,7 @@ import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import {toast, ToastContainer,} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import Cookies from "js-cookie";
+
 import {data} from "autoprefixer";
 import {number} from "yup";
 import {injectStyle} from "react-toastify/dist/inject-style";

@@ -4,7 +4,7 @@ import Footer from "./components/footer/Footer";
 import {Routes,Route} from "react-router-dom";
 import About from "./components/about/about";
 import Register from "./components/Auth/Register/Register";
-import RegisterCopy from "./components/Auth/Register/RegisterCopy";
+
 import Courses from "./components/courses/courses";
 import CoursesDetails from "./components/courses/coursesDetails";
 import CoursesLesson from "./components/courses/coursesLesson";
@@ -29,7 +29,7 @@ function App() {
               <Route path={"/"} element={<Home/>}/>
               <Route path={"/about"} element={<About/>}/>
               {/*<Route path={"/register"} element={<RegisterCopy/>}/>*/}
-              <Route path={"/register"} element={<RegisterCopy/>}/>
+
               <Route path={"/courses"} element={<Courses/>}/>
               <Route path={"/coursesDetails/:id"} element={<CoursesDetails/>}/>
               <Route path={"/person"} element={<Person/>}/>

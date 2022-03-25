@@ -5,12 +5,15 @@
 @tailwind utilities;
 /////////////////////
 @import "Auth/Register/Register";
-@import "Auth/Register/RegisterCopy";
 @import "Auth/Register/FormInput";
 @import "Auth/Register/registerCode";
 @import "Auth/Register/SignIn";
 @import "Auth/Person/Person";
 @import "Auth/Person/hookform";
+@import "Auth/Updated/UpdatePositon";
+@import "Auth/Updated/UpdateOrganization";
+@import "Auth/Updated/UpdatePassword";
+@import "Auth/Updated/UpdateEmail";
 
 //////////////////////MAIN COURSES///////////////////////
 @import "./../style/courses/courses";
