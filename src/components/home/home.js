@@ -29,16 +29,14 @@ const Home = () => {
                             <NavLink to={"/courses"}>
                                 <button className="home--block--box--btn">Курсы</button>
                             </NavLink>
-
+                            <NavLink to={"/MainMenu"}>
+                                <button className="home--block--box--btn md-5">Курсы</button>
+                            </NavLink>
                         </div>
-
                     </div>
                 </div>
-
                 <div className="home--box">
-
                     <div className="container">
-
                         <div className="home--box--block">
                             {
                                 home.map(el => (

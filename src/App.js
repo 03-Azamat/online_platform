@@ -13,11 +13,17 @@ import './style/App.scss';
 import CoursesDetails from "./components/CoursesDetails/coursesDetails";
 import Home from "./components/home/home";
 import CoursesLesson from "./components/coursesLesson/coursesLesson";
+import React, {useState} from "react";
+import Quiz from "./components/Test/function/Quiz";
+import MainMenu from "./components/Test/function/MainMenu";
+import {QuizContext} from "./data/Contexts";
+import EndScreen from "./components/Test/function/EndScreen";
 
 
 
 function App() {
-
+    const [score, setScore] = useState(0)
+    const [gameState, setGameState] = useState("menu")
   return (
       <>
           <Header/>
@@ -36,12 +42,20 @@ function App() {
               <Route path={"coursesDetails/coursesLesson/:lessonId"} element={<CoursesLesson/>}/>
               <Route path={"/about"} element={<About/>}/>
               {/*<Route path={"/contact"} element={<Contact/>}/>*/}
+              <Route path={"/menu"} element={<MainMenu/>}/>
+              <Route path={"/home"} element={<Home/>}/>
           </Routes>
-          {/*<RegisterCopy/>*/}
-          {/*<RegisterCode/>*/}
-          {/*<Person/>*/}
+     <div>
+         <QuizContext.Provider value={{ gameState,
+             setGameState,
+             score,
+             setScore}}>
+             {gameState === "menu" && <MainMenu/>}
+             {gameState === "quiz" && <Quiz/>}
+             {gameState === "endScreen" && <EndScreen/>}
+         </QuizContext.Provider>
+     </div>
           <Footer/>
-
       </>
   );
 }
