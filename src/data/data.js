@@ -4,11 +4,7 @@ const state =[
         mark:"Бизнес аналитик",
         question:"Ответы (один вариант)",
         answer:"optionD",
-        prompt:"Lorem ipsum dolor sit amet fchgyvjbk,",
-        optionA:"Lorem ipsum dolor sit amet," ,
-        optionC:"Lorem ipsum dolor sit amet," ,
-        optionB:"Lorem ipsum dolor sit amet," ,
-        optionD:"Lorem ipsum  amet," ,
+
     },
     {
         id:2,

@@ -12,8 +12,6 @@ const MainMenu = () => {
         <div className="Menu">
            <div className="buttons-1">
 
-
-
                <button className="btn" onClick={() => {
                  setGameState("quiz");
                }}>Start Quiz</button>

@@ -14,3 +14,4 @@ export const getCoursesDetails = (id) =>{
             .then(({data})=> dispatch({type:GET_SINGLE_COURSES, payload:data}))
     }
 }
+

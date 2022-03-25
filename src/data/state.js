@@ -1,6 +1,6 @@
  const data = [
     {
-        answer:"D",
+        answer:"A",
         prompt:"Lorem ipsum dolor sit amet лооооооооо,",
         optionA:"Lorem ipsum dolor sit amet," ,
         optionC:"Lorem ipsum dolor sit amet," ,
@@ -16,7 +16,7 @@
         optionD:"Lorem  amet," ,
     },
     {
-        answer:"A",
+        answer:"B",
         prompt:"Lorem ipsum dolor sit amet мияваьлодысотргяри,",
         optionA:"Lorem ipsum dolor sit amet," ,
         optionC:"Lorem  amet," ,
@@ -24,7 +24,7 @@
         optionD:"Lorem ipsum dolor sit amet," ,
     },
     {
-        answer:"B",
+        answer:"D",
         prompt:"Lorem ipsum dolor sit amet жпмврсыоилдторио ,",
         optionA:"Lorem ipsum dolor sit amet," ,
         optionC:"Lorem ipsum d sit amet," ,

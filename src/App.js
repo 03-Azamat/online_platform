@@ -44,6 +44,7 @@ function App() {
               {/*<Route path={"/contact"} element={<Contact/>}/>*/}
               <Route path={"/menu"} element={<MainMenu/>}/>
               <Route path={"/home"} element={<Home/>}/>
+
           </Routes>
      <div>
          <QuizContext.Provider value={{ gameState,
