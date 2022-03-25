@@ -1,22 +1,22 @@
-.coursesCard--box--block--content{
+.coursesCard{
   width: 370px;
   height: 376px;
-  margin-bottom: 30px;
+
 
   background: rgba(255, 255, 255, 0.5);
   box-shadow: 5px 5px 25px rgba(100, 100, 100, 0.15);
   border-radius: 10px;
+  margin: 15px 10px;
 
-
-  &--cnp{
-    margin-top: 44.5%;
+  &--box{
+    margin-top:235px;;
     padding: 11px;
 
     &--title{
       font-weight: 600;
       font-size: 18px;
       line-height: 36px;
-      padding: 10px;
+
 
 
 

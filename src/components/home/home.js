@@ -28,7 +28,7 @@ const Home = () => {
                             </p>
                             <NavLink to={"/courses"}>
                                 <button className="home--block--box--btn">Курсы</button>
-                            </NavLink>
+                            </NavLink>x
                             <NavLink to={"/MainMenu"}>
                                 <button className="home--block--box--btn md-5">Курсы</button>
                             </NavLink>

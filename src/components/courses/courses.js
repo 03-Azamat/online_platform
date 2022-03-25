@@ -3,11 +3,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCourses} from "../../redux/action/corsesAction";
 import CoursesCard from "../card/coursesCard";
 import Loader from "../../loader/loader";
+import CoursesCardPaid from "../card/coursesCardPaid";
 
 
 const Courses = () => {
     const coursesTwo = useSelector(state => state.courses)
-    console.log(coursesTwo, "courses")
+    console.log(coursesTwo, "coursesTwo")
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getCourses())
@@ -16,7 +17,7 @@ const Courses = () => {
     return (
         coursesTwo.length === 0 ? <Loader/> :
         <section id="courses">
-            <div className='courses--block'>
+            <div className='courses--block'>0
                 <div className="container">
                     <h1 className="courses--block--title">Курсы</h1>
                 </div>

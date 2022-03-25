@@ -1,0 +1,18 @@
+@media ( max-width: 390px) {
+  .accordion{
+
+    &__icon{
+      transition: 0.3s ease-in-out;
+    }
+
+
+    &__content{
+      padding-left: 25px;
+    }
+    &.active &__content{
+      max-height: 20em;
+    }
+
+
+  }
+}

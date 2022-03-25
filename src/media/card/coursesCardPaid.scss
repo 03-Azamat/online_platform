@@ -1,0 +1,146 @@
+@media (max-width: 437px) {
+  .coursesCardPaid{
+    width: 325px;
+    height: 331px;
+    margin-bottom: 50px;
+
+    &--box{
+      margin-top: 58.5%;
+      padding: 10px;
+
+      &--title{
+
+      }
+
+      &--price{
+        margin-left: 64%;
+      }
+    }
+
+
+  }
+}
+
+
+@media (max-width: 370px) {
+  .coursesCardPaid{
+    width: 310px;
+    height: 316px;
+    margin-bottom: 50px;
+
+    &--box{
+      margin-top: 57%;
+      padding: 10px;
+
+
+
+      &--title{
+
+      }
+
+      &--price{
+        margin-left: 62%;
+      }
+    }
+
+
+  }
+}
+
+@media (max-width: 345px) {
+  .coursesCardPaid{
+    width: 255px;
+    height: 280px;
+    margin-bottom: 64px;
+
+    &--box{
+      margin-top: 64%;
+      padding: 10px 5px 0 5px;
+
+
+
+      &--title{
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 27px;
+
+        color: #01487E;
+      }
+
+      &--date{
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+        /* identical to box height */
+
+
+        color: #494949;
+      }
+
+      &--price{
+        width: 105px;
+        height: 35px;
+        background: #01487E;
+        border-radius: 10px 0 10px;
+        border-color: transparent;
+        margin-left: 59.7%;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 27px;
+        color: #FFFFFF;
+      }
+    }
+
+
+  }
+}
+@media (max-width: 300px) {
+  .coursesCardPaid{
+    width: 230px;
+    height: 250px;
+    margin-bottom: 64px;
+
+    &--box{
+      margin-top: 64%;
+      padding: 0 5px 0 5px;
+
+
+
+      &--title{
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 27px;
+
+        color: #01487E;
+      }
+
+      &--date{
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 21px;
+        /* identical to box height */
+
+
+        color: #494949;
+      }
+
+      &--price{
+        width: 94px;
+        height: 30px;
+        background: #01487E;
+        border-radius: 10px 0 10px;
+        border-color: transparent;
+        margin-left: 59.7%;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 27px;
+        color: #FFFFFF;
+      }
+    }
+
+
+  }
+}
+

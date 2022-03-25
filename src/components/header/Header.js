@@ -1,9 +1,12 @@
 import React  from 'react';
 import logo from '../../image/image 4 (Traced) (1).svg'
+import {useState} from "react";
 // import Register from "../register/Register";
 // import RegisterCopy from "../register/RegisterCopy";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import {NavLink} from "react-router-dom";
+import HookForm from "../Auth/Person/HookForm";
+import SignIn from "../Auth/Register/SignIn";
 // import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 // import { faXmark} from "@fortawesome/free-solid-svg-icons";
 //
@@ -13,8 +16,8 @@ import {NavLink} from "react-router-dom";
 // import RegisterCode from "../Auth/Register/RegisterCode";
 
 const Header = () => {
-    // const navigate = useNavigate()
-    //  const [activeRegisterCopy,setActiveRegisterCopy] = useState(false)
+    const [activeForm,setActiveForm] = useState(false)
+    const [signActive, setSignActive] = useState(false)
     return (
         <header>
             <div className="header">
@@ -36,21 +39,23 @@ const Header = () => {
                             <NavLink to={"contact"}>Контакты</NavLink>
                         </div>
                         <div className="header--content--auth">
+                            <button onClick={() => setActiveForm(true)} className="header--content--auth--btn1">Регистрация</button>
+                            <button onClick = {() => setSignActive(true)} className="header--content--auth--btn2 mx-4">Вход</button>
+                            {/*    <NavLink to='/register'>*/}
+                            {/*        /!*<button onClick={() => setActiveRegisterCopy(true)} className="header--content--auth--btn1">Регистрация</button>*!/*/}
+                            {/*    </NavLink>*/}
 
-                                <NavLink to='/register'>
-                                    {/*<button onClick={() => setActiveRegisterCopy(true)} className="header--content--auth--btn1">Регистрация</button>*/}
-                                </NavLink>
-
-                            <NavLink to='/person'>
-                                <button className="header--content--auth--btn2">Вход</button>
-                            </NavLink>
+                            {/*<NavLink to='/person'>*/}
+                            {/*    <button className="header--content--auth--btn2">Вход</button>*/}
+                            {/*</NavLink>*/}
                         </div>
                         <BurgerMenu/>
                     </div>
                 </div>
 
             </div>
-            {/*<HookForm active={activeRegisterCopy}  setActive={setActiveRegisterCopy}  />*/}
+            <HookForm active={activeForm}  setActive={setActiveForm}  />
+            <SignIn active={signActive}  setActive={setSignActive}  />
         </header>
 
     );

@@ -1,23 +1,28 @@
 import React, {useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getCoursesDetails} from "../../redux/action/corsesAction";
-import Cour from "./../../image/cour_logo.svg"
+import {getCoursesDetails, getCoursesLesson} from "../../redux/action/corsesAction";
+import Cour from "../../image/cour_logo.svg"
 import Accordion from "../accordion/accordion";
 import {add , format } from "date-fns"
 
 const CoursesDetails = () => {
     const {id} = useParams()
-    const {coursesDetails: cour} = useSelector(s => s)
-    console.log(cour)
+
+    const {coursesDetails: elem} = useSelector(s => s)
+
     const dispatch = useDispatch()
-    console.log(cour, "cour")
+
+    console.log(elem, "courses")
     console.log(id)
+
     useEffect(() => {
         dispatch(getCoursesDetails(id))
+        dispatch(getCoursesLesson(id))
     }, [])
 
-    //////date//////
+
+    //////date-fns//////
     const date = new Date()
     const calendarDateFormat = 'dd/MM/yy'
     const currentDate = format(date, calendarDateFormat)
@@ -33,15 +38,17 @@ const CoursesDetails = () => {
                         <img src={Cour} alt=""/>
                         <p>Курс</p>
                     </span>
+
                     <div className="cour--box--head ">
                         <div className="cour--box--head--titles">
-                            <h1 className="cour--box--head--titles--title">{cour.title}</h1>
+                            <h1 className="cour--box--head--titles--title">{elem.title}</h1>
                             <p className="cour--box--head--titles--desc">
                                 “Образование — это умение правильно
                                 действовать в любых житейских ситуациях.“
                             </p>
                             <button className="cour--box--head--titles--btn">Оставить заявку</button>
                         </div>
+
 
                         <div className="cour--box--head--dates">
 
@@ -62,7 +69,7 @@ const CoursesDetails = () => {
                         <h1 className="cour--box__middle__title">О курсе</h1>
 
                         <div className="cour--box__middle__desc">
-                            <p dangerouslySetInnerHTML={{__html:cour.text}}/>
+                            <p dangerouslySetInnerHTML={{__html:elem.text}}/>
                         </div>
                     </div>
 
@@ -70,26 +77,11 @@ const CoursesDetails = () => {
                         <h1 className="cour--box--accordion--title">
                             Программа курса
                         </h1>
+
                         <div className="cour--box--accordion--block">
-
-                            <Accordion title={cour.title}
-                                       descOne={cour.title}
-                                       descTwo={cour.title}
-                                       descTree={cour.title}
-                            />
-
-                            <Accordion title={cour.title}
-                                       descOne={cour.text}
-                                       descTwo={cour.text}
-                                       descTree={cour.text}
-                            />
-
-                            <Accordion title={cour.title}
-                                       descOne={cour.text}
-                                       descTwo={cour.text}
-                                       descTree={cour.text}
-                            />
+                            {/*<Accordion el={elem}/>*/}
                         </div>
+
                     </div>
                 </div>
             </div>

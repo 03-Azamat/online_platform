@@ -1,46 +1,51 @@
 .forms{
-
-  background: rgba(0,0,0,0.3);
-
-  //transform: scale(0);
-
-  //height: 100vh;
-  display: none;
-  //align-items: center;
-  //justify-content: center;
-  //transform: scale(0);
+  flex-wrap: wrap;
+  background: rgba(0,0,0,0.5);
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  transition: 0.5s;
   opacity:0 ;
-
   pointer-events: none;
-  //transition: 0.3s;
-}
-.forms.active{
-  //transform: scale(1);
-  display: block;
-  opacity: 1;
-  pointer-events: all;
-  //height: 100vh;
 
 
-}
+  &.active{
+    flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.5s;
+    height: 100vh;
 
-.forms{
-
+  }
   &--inputs{
+    flex-wrap: wrap;
+
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: scale(0);
+    transition: 0.5s all;
     //position: fixed;
 
+    &.active{
+      transition: 0.5s;
+      transform: scale(1);
+    }
 
     &--hook{
       width: 300px;
-      //position: fixed;
+      height: 425px;
+      //position: relative;
       display: flex;
       flex-direction: column;
       top:0;
-      height: 520px;
+
       //background: rgba(178,185,178,0.99);
       background: white ;
       border-radius: 5px;
@@ -58,7 +63,7 @@
         color: red;
         font-size: 12px;
         width: 200px;
-        padding:  0 0 0 55px;
+        padding:  0 0 0 40px;
       }
       & h2{
         color:black;
@@ -70,15 +75,16 @@
         position: relative;
         width: 230px;
         height: 20px;
-        margin:12px 0 0 35px;
+        margin:13px 0 0 35px;
         padding: 15px;
 
       }
       & button {
-        margin: 10px 0 0 35px;
+        margin: 10px 0 25px 35px;
         width: 230px;
         height: 35px;
         color: white;
+
         background: #01487E;
         border-radius: 5px;
         cursor: pointer;
