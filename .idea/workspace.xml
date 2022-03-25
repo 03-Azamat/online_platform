@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="75a7743f-69c3-4d45-b5c0-a1287db0e590" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Test/function/EndScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Test/function/EndScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Test/function/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Test/function/MainMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Test/function/Quiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Test/function/Quiz.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/data.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/state.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/action/corsesAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/action/corsesAction.js" afterDir="false" />
-    </list>
+    <list default="true" id="75a7743f-69c3-4d45-b5c0-a1287db0e590" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,7 +56,7 @@
       <workItem from="1647862110603" duration="4546000" />
       <workItem from="1647947891979" duration="6165000" />
       <workItem from="1648037761139" duration="10430000" />
-      <workItem from="1648083317508" duration="2981000" />
+      <workItem from="1648083317508" duration="3338000" />
     </task>
     <servers />
   </component>
