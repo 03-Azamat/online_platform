@@ -3,6 +3,8 @@ import * as Yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form";
 import axios from "axios";
+import 'react-toastify/dist/ReactToastify.css';
+import {toast, ToastContainer,} from "react-toastify";
 
 const UpdateEmail = ({emailModal,setEmailModal}) => {
     const validationSchema = Yup.object().shape({
@@ -13,11 +15,23 @@ const UpdateEmail = ({emailModal,setEmailModal}) => {
     const formOptions = { resolver: yupResolver(validationSchema) };
     const { register,handleSubmit,handleChange,value,  formState: { errors,} } = useForm(formOptions);
     const onSubmit = data => {
+        axios.post('https://djangorestapp.herokuapp.com/users/reset_email/', data)
+            .then(response => {
+                toast.success("updated")
+            }).catch((error) => {
+             toast.error(error)
+        })
         console.log(data)
     };
     return (
         <div  className={ emailModal ? "modal active   " : "modal"}>
+            <ToastContainer
+                position={'top-right'}
+                autoClose={10000}
+                hideProgressBar={false}
+            />
             <div  className={ emailModal ? "modal--email active  " : "modal--email"}>
+
                 <p className='modal--email--title' >Изменение email</p>
                 <label>Введите e-mail *</label>
                 <form className='modal--email--form'  onSubmit={handleSubmit(onSubmit)}>
