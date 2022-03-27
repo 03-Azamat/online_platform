@@ -14,6 +14,7 @@ import Person from "./components/Auth/Person/Person";
 // import RegisterCopy from "./components/register/RegisterCopy";
 import Home from "./components/home/home";
 import CoursesDetailsPaid from "./components/coursesPaid/coursesDetailsPaid";
+import SignIn from "./components/Auth/Register/SignIn";
 
 
 
@@ -34,7 +35,9 @@ function App() {
               <Route path={"/coursesDetails/:id"} element={<CoursesDetails/>}/>
               <Route path={"/person"} element={<Person/>}/>
               <Route path={"/register-code"} element={<RegisterCode/>}/>
-              <Route path={"/register-check"} element={<Register/>}/>
+              <Route path={"//account/activate"} element={<Register/>}/>
+              <Route path={"//account/activate"} element={<Register/>}/>
+              <Route path={"/login"} element={<SignIn/>}/>
 
               {/*<Route path={"/coursesDetailsPaid/:id"} element={<CoursesDetailsPaid/>}/>*/}
               <Route path={"/coursesDetails/coursesLesson/:lessonId"} element={<CoursesLesson/>}/>

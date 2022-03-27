@@ -25,11 +25,16 @@ const SignIn = ({active,setActive}) => {
 
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
-    const { register, handleSubmit,setError, formState: { errors,  isDirty, isValid , } } = useForm(formOptions);
+    const { register, handleSubmit,
+
+
+
+
+
+        formState: { errors, } } = useForm(formOptions);
     const onSubmit = data => {
         axios.post("https://djangorestapp.herokuapp.com/jwt/create/", data)
             .then(response => {
-                toast.success("Salam " +data.user.name)
                 console.log(response)
             }).catch((error) => {
             console.log(error)

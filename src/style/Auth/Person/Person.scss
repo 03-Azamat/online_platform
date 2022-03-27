@@ -1,5 +1,4 @@
 #person{
-  flex-wrap: wrap;
   padding: 100px 0 0 0;
   width: 100%;
   background: #E5E5E5;
@@ -16,7 +15,6 @@
 }
 
 .btn{
-  flex-wrap: wrap;
   background: #FFFFFF;
   border-radius: 5px;
   display: flex;
@@ -51,19 +49,43 @@
     &--btns{
       display: flex;
       flex-direction: column;
-      margin: 30px 0 -30px 0;
-      &--tabRoute{
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      align-items: center;
+      justify-content: space-around;
+
+
+     & input[type="file"] {
+        display: none;
+      }
+
+      &--input{
+          border: 1px solid #ccc;
+          display: inline-block;
+          padding: 10px 15px;
+          cursor: pointer;
+        text-align: center;
+
         width: 220px;
-        height: 42px;
-        margin:  0 0 20px 40px;
+        color:white;
+        font-size: 16px;
+        background: #01487E;
+        border-radius: 5px;
+        outline: none;
+        margin: 15px 0 12px 0;
+
+      }
+
+
+      &--tabRoute{
+        text-align: center;
+        width: 220px;
         color:white;
         font-size: 16px;
         background: #01487E;
         border-radius: 5px;
         cursor: pointer;
+        margin: 10px;
+        padding:  10px 15px;
+
 
         &.active{
           background: #6A6A6A;
@@ -82,36 +104,35 @@
   justify-content: space-around;
 }
 .person{
-  flex-wrap: wrap;
   width: 70%;
   & h3 {
     font-size: 25px;
 
   }
-  &--photo{
-    display: flex;
-    justify-content: start;
-    margin: 90px 10px 0 10px;
-
-    & h2{
-      font-size: 12px;
-      color: #474747;
-    }
-   & span {
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
-     width: 196px;
-     height: 138px;
-     font-size: 25px;
-     color: #474747;
-     background: rgba(178,185,178,0.99);
-     //background: #6A6A6A;
-     border-radius: 10px;
-   }
-
-  }
+  //&--photo{
+  //  display: flex;
+  //  justify-content: start;
+  //  margin: 90px 10px 0 10px;
+  //
+  //  & h2{
+  //    font-size: 12px;
+  //    color: #474747;
+  //  }
+  // & span {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   align-items: center;
+  //   width: 196px;
+  //   height: 138px;
+  //   font-size: 25px;
+  //   color: #474747;
+  //   background: rgba(178,185,178,0.99);
+  //   //background: #6A6A6A;
+  //   border-radius: 10px;
+  // }
+  //
+  //}
   &--content {
     display: flex;
     justify-content: space-between;

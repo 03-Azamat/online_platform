@@ -4,7 +4,7 @@ import {useState} from "react";
 // import Register from "../register/Register";
 // import RegisterCopy from "../register/RegisterCopy";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import HookForm from "../Auth/Person/HookForm";
 import SignIn from "../Auth/Register/SignIn";
 // import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -18,6 +18,7 @@ import SignIn from "../Auth/Register/SignIn";
 const Header = () => {
     const [activeForm,setActiveForm] = useState(false)
     const [signActive, setSignActive] = useState(false)
+    const navigate = useNavigate()
     return (
         <header>
             <div className="header">
@@ -39,12 +40,14 @@ const Header = () => {
                             <NavLink to={"contact"}>Контакты</NavLink>
                         </div>
                         <div className="header--content--auth">
-                            <button onClick={() => setActiveForm(true)} className="header--content--auth--btn1">Регистрация</button>
-                            <button onClick = {() => setSignActive(true)} className="header--content--auth--btn2 mx-4">Вход</button>
+                            <button onClick={() => setActiveForm(true) } className="header--content--auth--btn1">Регистрация</button>
+                               <button onClick = {() =>
+                                   setSignActive(true)
+                               }
+                                className="header--content--auth--btn2 mx-4">Вход</button>
                             {/*    <NavLink to='/register'>*/}
                             {/*        /!*<button onClick={() => setActiveRegisterCopy(true)} className="header--content--auth--btn1">Регистрация</button>*!/*/}
                             {/*    </NavLink>*/}
-
                             {/*<NavLink to='/person'>*/}
                             {/*    <button className="header--content--auth--btn2">Вход</button>*/}
                             {/*</NavLink>*/}

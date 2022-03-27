@@ -8,15 +8,14 @@ const Register = ( {active,setActive}) => {
     const navigate = useNavigate()
     return (
          <div className='register'  onClick={() => {
-             navigate("/")
+             navigate("/login")
          }}>
              <form className='register--check'>
                  <FontAwesomeIcon className='register--check--icon' icon={faCheck}/>
                  <h2>Спасибо за заявку!</h2>
                  <p>Наш специалист свяжется с Вами</p>
                  <button onClick={() =>
-
-                     navigate("/")} >Закрыть</button>
+                     navigate("/login")} >Закрыть</button>
              </form>
 
          </div>
