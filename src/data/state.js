@@ -31,5 +31,13 @@
         optionB:"Lorem ipsum dolor sit amet," ,
         optionD:"Lom ipsum dolor sit amet," ,
     },
+     {
+         answer:"D",
+         prompt:"Lorem ipsum dolor sit amet жпмврсыоилдторио ,",
+         optionA:"Lorem ipsum dolor sit amet," ,
+         optionC:"Lorem ipsum d sit amet," ,
+         optionB:"Lorem ipsum dolor sit amet," ,
+         optionD:"Lom ipsum dolor sit amet," ,
+     },
 ]
  export default data;

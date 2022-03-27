@@ -1,31 +1,26 @@
-import React, {useState, useContext, useRef} from "react";
+import React, {useState, useContext, useRef, useEffect} from "react";
 import {QuizContext} from "../../../data/Contexts";
 import state from '../../../data/data'
 import data from '../../../data/state'
 import '../../../style/Quiz/Quiz.scss'
 import {useSelector} from "react-redux";
 const Quiz = () => {
-
+    const testElem = useSelector(state => state.test)
     const {score, setScore, setGameState} = useContext(QuizContext)
     const [currQuestion, setCurrQuestion] = useState(0)
     const [optionChosen, setOptionChosen] = useState("")
     const intervalRef = useRef(null)
 
-
-
-
-
-
-    const [timer, setTimer] = useState('00:00:00');
+    const [timer, setTimer] = useState('00:00:00')
     function  getTimeRemaining(endtime){
         const total = Date.parse(endtime) - Date.parse(new Date());
-        const  seconds = Math.floor((total/1000) % 60);
+        const seconds = Math.floor((total/1000) % 60);
         const minutes = Math.floor((total/1000/60) % 60);
         const hours = Math.floor((total/1000*60*60)%24);
-        const days = Math.floor((total/1000*60*60*24));
+        const days = Math.floor(total/(1000*60*60*24));
         return{
             total, days, seconds, minutes, hours,
-        }
+        };
     }
     function startTimer (deadline){
         let{total, days, seconds, minutes, hours,} = getTimeRemaining(deadline);
@@ -35,23 +30,37 @@ const Quiz = () => {
                 (minutes > 9 ? minutes: '0'+minutes)+ ':'+
                 (seconds > 9 ? seconds : '0'+seconds)
             )
+        }else {
+            clearInterval(intervalRef.current)
         }
     }
 
 
+    function clearTimer (endtime){
+        setTimer('00:00:10');
+        if(intervalRef.current)clearInterval(intervalRef.current);
+        const id = setInterval(() => {
+            startTimer(endtime);
+        },1000)
+        intervalRef.current = id;
+    }
 
+    function getDeadlineTime(){
+        let deadline = new Date();
+        deadline.setSeconds(deadline.getSeconds()+10)
+        return deadline;
+    }
 
+    useEffect(() => {
+        clearTimer(getDeadlineTime());
+        return () => {if (intervalRef.current) clearInterval(intervalRef.current)}
+    },[])
 
-
-
-
-
-
-
-
-
-
-
+    function onClickResetBtn () {
+        if (intervalRef.current) clearInterval(intervalRef.current);
+        clearTimer(getDeadlineTime());
+    }
+//////////////////////////////////////////////////////////////////////
 
     const nextQuestion = () => {
         if(data[currQuestion].answer === optionChosen){
@@ -66,15 +75,22 @@ const Quiz = () => {
         setGameState("endScreen")
     }
     return (
-            <div className="test">
-                <div className="container">
+        <div className="test">
+            <div className="container">
                     <div className="test-rectangle">
                         <div className="test-rectangle-1"/>
+                        <h1 className="test-colum">
+                            {timer}
+                        </h1>
+                        <div>
+
+                        </div>
                         {
                             state.map(el => (
-                                <div key={el.id}>
+                                <div>
                                     <p className="test-text">{el.mark}</p>
                                 </div>
+
                             ))
                         }
                         {
@@ -110,10 +126,10 @@ const Quiz = () => {
                         ) : (
                             <button onClick={nextQuestion} className="test-but-1">Следуший</button>
                         )}
+                        <button onClick={onClickResetBtn} className="test-but-1">Result</button>,
                     </div>
-                </div>
-
             </div>
+        </div>
     );
 };
 

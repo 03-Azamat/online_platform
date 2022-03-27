@@ -29,32 +29,21 @@ function App() {
   return (
       <>
           <Header/>
-          {/*<HookForm/>*/}
-
           <Routes>
               <Route path={"/"} element={<Home/>}/>
               <Route path={"/about"} element={<About/>}/>
-              {/*<Route path={"/register"} element={<RegisterCopy/>}/>*/}
-
               <Route path={"/courses"} element={<Courses/>}/>
               <Route path={"/coursesDetails/:id"} element={<CoursesDetails/>}/>
               <Route path={"/person"} element={<Person/>}/>
               <Route path={"/register-code"} element={<RegisterCode/>}/>
               <Route path={"/register-check"} element={<Register/>}/>
-
-              {/*<Route path={"/coursesDetailsPaid/:id"} element={<CoursesDetailsPaid/>}/>*/}
               <Route path={"/coursesDetails/coursesLesson/:lessonId"} element={<CoursesLesson/>}/>
               <Route path={"/about"} element={<About/>}/>
-              {/*<Route path={"/contact"} element={<Contact/>}/>*/}
               <Route path={"/menu"} element={<MainMenu/>}/>
               <Route path={"/home"} element={<Home/>}/>
-
           </Routes>
      <div>
-         <QuizContext.Provider value={{ gameState,
-             setGameState,
-             score,
-             setScore}}>0
+         <QuizContext.Provider value={{ gameState, setGameState, score, setScore}}>
              {gameState === "menu" && <MainMenu/>}
              {gameState === "quiz" && <Quiz/>}
              {gameState === "endScreen" && <EndScreen/>}

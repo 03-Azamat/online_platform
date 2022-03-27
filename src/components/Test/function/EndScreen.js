@@ -21,7 +21,7 @@ const EndScreen = () => {
 
                <NavLink to={"/Home"}>
                    {
-                       score >= 10 ? <NavLink to={"/"}>
+                       score >= 10 ? <NavLink to={"/Home"}>
                            <button className="buuttons" onClick={restartQuiz}>
                                Вы не прошли тест
                            </button>
