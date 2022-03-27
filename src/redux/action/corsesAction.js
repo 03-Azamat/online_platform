@@ -26,8 +26,8 @@ export const getLesson = (id) =>{
 
 export const getAbout = () =>{
     return (dispatch) =>{
-        axios(`https://djangorestapp.herokuapp.com/about-createlist/`)
-            .then(({data})=> dispatch({type:GET_ABOUT , payload:data}))
+        axios('https://djangorestapp.herokuapp.com/about-createlist/')
+           .then(({data})=> dispatch({type:GET_ABOUT , payload:data}))
     }
 }
 

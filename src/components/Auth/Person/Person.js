@@ -80,7 +80,9 @@ const Person = () => {
                                 <div className="flex flex-col">
                                     <label>ФИО</label>
                                     <button className='person--content--start--name'>
-                                        <p>{}</p>
+                                        <p>
+
+                                        </p>
                                     </button>
                                 </div>
                                 <div className="flex flex-col">

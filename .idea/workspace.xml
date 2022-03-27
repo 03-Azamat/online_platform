@@ -6,22 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="649f1301-31a4-4de0-abff-e8eacccef4c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Person/Person.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Person/Person.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Test/function/EndScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Test/function/EndScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Test/function/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Test/function/MainMenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Test/function/Quiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Test/function/Quiz.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/accordion/accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accordion/accordion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Person/HookForm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Person/MyCourses.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Person/Person.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Person/PersonDetails.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Register/Register.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Register/RegisterCode.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Register/SignIn.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Updated/Saved.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Updated/UpdateEmail.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Updated/UpdateOrganization.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Updated/UpdatePassword.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Updated/UpdatePosition.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/courses/coursesDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/coursesDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/courses/coursesLesson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/coursesLesson.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sleh/sleh.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sleh/sleh.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/media/media-style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/media/media-style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/action/corsesAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/action/corsesAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducer/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducer/reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store/store.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/types/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types/actionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/style/Auth/Person/Person.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/Auth/Person/Person.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +81,8 @@
       <workItem from="1648037761139" duration="10430000" />
       <workItem from="1648083317508" duration="6169000" />
       <workItem from="1648280588060" duration="18529000" />
-      <workItem from="1648361585323" duration="6797000" />
+      <workItem from="1648361585323" duration="11556000" />
+      <workItem from="1648378787181" duration="6413000" />
     </task>
     <servers />
   </component>

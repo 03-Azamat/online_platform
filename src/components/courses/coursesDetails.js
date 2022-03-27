@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCoursesDetails} from "../../redux/action/corsesAction";
 import Cour from "../../image/cour_logo.svg"
 import {add , format } from "date-fns"
+import Accordion from "../accordion/accordion";
 
 const CoursesDetails = () => {
     const {id} = useParams()
@@ -35,6 +36,8 @@ const CoursesDetails = () => {
                         <img src={Cour} alt=""/>
                         <p>Курс</p>
                     </span>
+
+
 
                         <div className="cour--box--head ">
                             <div className="cour--box--head--titles">
@@ -76,9 +79,8 @@ const CoursesDetails = () => {
                             </h1>
 
                             <div className="cour--box--accordion--block">
-                                {/*<Accordion/>*/}
-                            </div>
 
+                            </div>
                         </div>
                     </div>
 
