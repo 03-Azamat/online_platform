@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Cour from "../../image/cour_logo.svg";
 import {useDispatch, useSelector} from "react-redux";
-import { getCoursesLesson} from "../../redux/action/corsesAction";
+import {getLesson} from "../../redux/action/corsesAction";
 import {NavLink, useParams} from "react-router-dom";
 
 const CoursesLesson = () => {
@@ -12,11 +12,11 @@ const CoursesLesson = () => {
     const dispatch = useDispatch()
     console.log(lesson, "lesson")
     console.log(elem)
+    const [active, setActive] = useState(null)
 
     useEffect(() => {
-        dispatch(getCoursesLesson(lessonId))
+        dispatch(getLesson(lessonId))
     }, [])
-
     return (
         <section id="lesson">
             <div className="container">
@@ -25,7 +25,7 @@ const CoursesLesson = () => {
                         <img src={Cour} alt=""/>
                         <p>Курс</p>
                     </span>
-                    <div className="lesson--box--head " >
+                    <div className="lesson--box--head ">
                         <div className="lesson--box--head--titles">
                             <h1 className="lesson--box--head--titles--title">aaza</h1>
                             <p className="lesson--box--head--titles--desc">
@@ -36,19 +36,31 @@ const CoursesLesson = () => {
                     </div>
 
 
-
                     <div className="lesson--box--middle">
                         <h1 className="lesson--box--middle__title">Материалы</h1>
+                        <div>
+                            {
+                                lesson?.topics?.videos?.map(el => (
                                     <div>
-                                        {/*{*/}
-                                        {/*    lesson.topics.videos.map(el => (*/}
-                                        {/*    <div>*/}
-                                        {/*        {el.url}*/}
-                                        {/*    </div>*/}
-                                        {/*))*/}
+                                        <div>
+                                            <h1>{el.topik}retyuio</h1>
+                                                <iframe width="1280" height="720"
+                                                        src={el.url}
+                                                        title="YouTube video player" frameBorder="0"
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                        allowFullScreen/>
+                                                </div>
 
-                                        {/*}*/}
+                                            <div>
+
+                                        </div>
+
                                     </div>
+
+                                ))
+
+                            }
+                        </div>
                     </div>
                     <div className="lesson--box--end">
 

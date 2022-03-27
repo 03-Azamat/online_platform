@@ -5,7 +5,7 @@ import data from '../../../data/state'
 import '../../../style/Quiz/Quiz.scss'
 import {useSelector} from "react-redux";
 const Quiz = () => {
-
+    const testElem = useSelector(state => state.test)
     const {score, setScore, setGameState} = useContext(QuizContext)
     const [currQuestion, setCurrQuestion] = useState(0)
     const [optionChosen, setOptionChosen] = useState("")
@@ -27,6 +27,7 @@ const Quiz = () => {
             total, days, seconds, minutes, hours,
         }
     }
+
     function startTimer (deadline){
         let{total, days, seconds, minutes, hours,} = getTimeRemaining(deadline);
         if (total>=0){
@@ -38,29 +39,14 @@ const Quiz = () => {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     const nextQuestion = () => {
-        if(data[currQuestion].answer === optionChosen){
+        if(testElem[currQuestion].answer === optionChosen){
             setScore (score + 1);
         }
         setCurrQuestion(currQuestion + 1)
     };
     const finishQuiz = () => {
-        if(data[currQuestion].answer === optionChosen){
+        if(testElem[currQuestion].answer === optionChosen){
             setScore (score - 1);
         }
         setGameState("endScreen")
@@ -70,40 +56,41 @@ const Quiz = () => {
                 <div className="container">
                     <div className="test-rectangle">
                         <div className="test-rectangle-1"/>
+                        {/*{*/}
+                        {/*    state.map(el => (*/}
+                        {/*        <div key={el.id}>*/}
+                        {/*            <p className="test-text">{el.mark}</p>*/}
+                        {/*        </div>*/}
+                        {/*    ))*/}
+                        {/*}*/}
                         {
-                            state.map(el => (
-                                <div key={el.id}>
-                                    <p className="test-text">{el.mark}</p>
-                                </div>
-                            ))
-                        }
-                        {
-                            state.slice(0,1).map(el => (
+                            testElem.slice(0, 1).map(el => (
                                 <div>
                                     <div key={el.id}>
-                                        <h1 className="numb-1">{el.numb}</h1>
-                                        <h1 className="numb-1">{el.answer}</h1>
-                                        <h1 className="numb">{el.question}</h1>
-                                     <div className="promo">
-                                         <h1 className="replica">
-                                             {
-                                                 data[currQuestion].prompt
-                                             }
-                                         </h1>
-                                     </div>
-                                           <div className="options">
-                                               <button onClick={ () => setOptionChosen("A")} className="button mx-1">{data[currQuestion].optionA}</button>
-                                               <button onClick={ () => setOptionChosen("B")} className="button">{data[currQuestion].optionD}</button>
-                                               <button onClick={ () => setOptionChosen("C")} className="button mx-1">{data[currQuestion].optionB}</button>
-                                               <button onClick={ () => setOptionChosen("D")} className="button ">{data[currQuestion].optionC}</button>
-                                           </div>
+                                        {/*<h1 className="numb-1">{el.numb}</h1>*/}
+                                        {/*<h1 className="numb-1">{el.answer}</h1>*/}
+                                        {/*<h1 className="numb">{el.question}</h1>*/}
+                                        <p>{el.title}</p>
+                                        {
+                                            el.flag.map(el => (
+                                                <div>
+                                                    {/*<div>*/}
+                                                    {/*    <h1 className="mini">{el.mini}</h1>*/}
+                                                    {/*    <input className="input" name="browser" value="firefox"*/}
+                                                    {/*           type="radio"/>*/}
+                                                    {/*</div>*/}
+                                                    {/*<p className="name my-5">{el.name}</p>*/}
+                                                    <button>{el.boo}</button>
+                                                </div>
+                                            ))
+                                        }
                                     </div>
                                 </div>
                             ))
                         }
                     </div>
                     <div className="buttons">
-                        { currQuestion === data.length - 1 ?(
+                        { currQuestion === testElem.length - 1 ?(
                             <button onClick={finishQuiz}>
                                 Перейти на результаты
                             </button>

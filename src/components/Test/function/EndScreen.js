@@ -4,9 +4,9 @@ import data from '../../../data/state'
 import '../../../style/EndScreeen/EndScreen.scss'
 import {NavLink} from "react-router-dom";
 import { Line, Circle } from 'rc-progress'
+import {useSelector} from "react-redux";
 const EndScreen = () => {
     const {score, setScore, setGameState} = useContext(QuizContext)
-
     const restartQuiz = () => {
         setScore(0)
         setGameState("menu")
