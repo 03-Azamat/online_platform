@@ -5,21 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="649f1301-31a4-4de0-abff-e8eacccef4c3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/coursesVideoLesson/coursesVideoLesson.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/style/ReactPlayer.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Person/HookForm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Person/MyCourses.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Person/Person.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Person/PersonDetails.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Register/Register.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Register/RegisterCode.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Register/SignIn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Updated/Saved.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Updated/UpdateEmail.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Updated/UpdateOrganization.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Updated/UpdatePassword.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Auth/Updated/UpdatePosition.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/accordion/accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accordion/accordion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/courses/courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/courses.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/courses/coursesDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/coursesDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/courses/coursesLesson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/coursesLesson.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/coursesLesson/Tab.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/coursesLesson/TabNav.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/action/corsesAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/action/corsesAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducer/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducer/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/types/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types/actionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/accordion/accordion.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/accordion/accordion.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/src/reportWebVitals.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/src/setupTests.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +102,16 @@
       <workItem from="1648083317508" duration="6169000" />
       <workItem from="1648280588060" duration="18529000" />
       <workItem from="1648361585323" duration="11556000" />
-      <workItem from="1648378787181" duration="6413000" />
+      <workItem from="1648378787181" duration="7759000" />
+      <workItem from="1648451407181" duration="4763000" />
+      <workItem from="1648458218356" duration="10919000" />
+      <workItem from="1648535288521" duration="5391000" />
+      <workItem from="1648542181568" duration="775000" />
+      <workItem from="1648542984552" duration="366000" />
+      <workItem from="1648543463403" duration="816000" />
+      <workItem from="1648544389698" duration="1495000" />
+      <workItem from="1648546011448" duration="91000" />
+      <workItem from="1648546206166" duration="4526000" />
     </task>
     <servers />
   </component>

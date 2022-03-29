@@ -23,7 +23,6 @@ const Header = () => {
             <div className="header">
                 <div className="container">
                     <div className="header--content ">
-
                         <div className="header--content--logo">
                             <NavLink to={"/"}>
                                 <img src={logo} alt=""/>
