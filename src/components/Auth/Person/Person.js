@@ -14,6 +14,8 @@ import axios from "axios";
 import {faArrowRightLong} from "@fortawesome/free-solid-svg-icons/faArrowRightLong";
 import {toast} from "react-toastify";
 import {useParams} from "react-router-dom";
+import * as PropTypes from "prop-types";
+import PhoneNumber from "../Updated/PhoneNumber";
 
 const Person = () => {
     const {id} = useParams()
@@ -23,12 +25,14 @@ const Person = () => {
     const [orModal, setOrModal] = useState(false)
     const [emailModal, setEmailModal] = useState(false)
     const [passwordModal, setPasswordModal] = useState(false)
+    const [phoneModal, setPhoneModal] = useState(false)
     useEffect(() => {
         // axios(`http://localhost:8000/api/v1/users/`)
         axios(`https://djangorestapp.herokuapp.com/users/`)
             .then(({data}) => {
-                localStorage.setItem("user", JSON.stringify(data.user))
-                console.log(data)
+                localStorage.setItem("user", JSON.stringify(data.token ))
+                // localStorage.setItem("token", JSON.stringify(response.data.access))
+                // console.log(data)
                 setPersons(data)
             } ).catch((error) => {
             console.log(error.response.data)
@@ -98,6 +102,7 @@ const Person = () => {
                                     <label>Номер телефона</label>
                                     <button className='person--content--end--ul11'><p>+996 555 55 55 55</p>
                                         < FontAwesomeIcon
+                                            onClick={() => setPhoneModal(true)}
                                             icon={faPen} style={{color: "#01487E"}}/></button>
                                 </div>
                                 <div>
@@ -151,6 +156,7 @@ const Person = () => {
                         <UpdateEmail emailModal={emailModal} setEmailModal={setEmailModal}/>
                         <UpdateEmail emailModal={emailModal} setEmailModal={setEmailModal}/>
                         <UpdatePassword passwordModal={passwordModal} setPasswordModal={setPasswordModal}/>
+                        <PhoneNumber phoneModal={phoneModal} setPhoneModal={setPhoneModal}/>
 
                     </div>
 

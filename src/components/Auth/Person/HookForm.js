@@ -37,15 +37,9 @@ export default function HookForm({active, setActive}) {
     const onSubmit = data => {
         axios.post("https://djangorestapp.herokuapp.com/users/", data)
             .then(response => {
-                const tost = toast.success("Вам отправлено ссылка в электронные почте")
-                {
-                    tost ? (
-                        setActive(true)
-                    ) : (
-                        setActive(false)
-                    )
-                }
-                localStorage.setItem("user", JSON.stringify(data.user))
+                toast.success(`Вам отправлено ссылка в электронные почте `)
+                setActive(false)
+                // localStorage.setItem("user", JSON.stringify(data.user))
                 console.log(response ,"response")
             }).catch((error) => {
                 if (error.response.data.password){
@@ -62,40 +56,43 @@ export default function HookForm({active, setActive}) {
 
 
     return (
-        <section className={ active ? "forms active  " : "forms"}>
+        <>
             <ToastContainer
                 autoClose={10000}
                 hideProgressBar={false}
             />
-            <div className={ active ? "forms--inputs active  " : "forms--inputs"}  >
+            <section className={ active ? "forms active  " : "forms"}>
 
-                <form onSubmit={handleSubmit(onSubmit)}  className='forms--inputs--hook' >
-                    <FontAwesomeIcon className='forms--inputs--hook--btnx' icon={faXmark}
-                                     style={{fontSize:'25px'}}
-                                     onClick={() => {
-                                         setActive(false)
-                                         // navigate("/")
-                                     }}
-                    />
-                    <h2>Регистрация</h2>
-                    <input  type="text" placeholder="ФИО"  {...register("name")} className={`form-control ${errors.password ? 'is-invalid' : ''}`}/>
-                    <div className="invalid-feedback">{errors.name?.message}</div>
-                    <input  type="tel" placeholder="+996 555 555 555" {...register("phone_number")} className={`form-control ${errors.password ? 'is-invalid' : ''}`}/>
-                    <div className="invalid-feedback">{errors.phone_number?.message}</div>
-                    <input  type="email" placeholder="Email" {...register("email", {required: true, pattern: /^\S+@\S+$/i})}/>
-                    <div className="invalid-feedback">{errors.email?.message}</div>
-                    <input  name="password"  placeholder="Пароль"  type="password" {...register('password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
-                    <div className="invalid-feedback">{errors.password?.message}</div>
-                    <input name="confirmPassword" type="password" placeholder="Подвердить пароль" {...register('confirmPassword')} className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`} />
-                    <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
-                    <button
-                        type="submit"
-                    > Зарегистрироваться
-                    </button>
-                </form>
-            </div>
+                <div className={ active ? "forms--inputs active  " : "forms--inputs"}  >
 
-        </section>
+                    <form onSubmit={handleSubmit(onSubmit)}  className='forms--inputs--hook' >
+                        <FontAwesomeIcon className='forms--inputs--hook--btnx' icon={faXmark}
+                                         style={{fontSize:'25px'}}
+                                         onClick={() => {
+                                             setActive(false)
+                                             // navigate("/")
+                                         }}
+                        />
+                        <h2>Регистрация</h2>
+                        <input  type="text" placeholder="ФИО"  {...register("name")} className={`form-control ${errors.password ? 'is-invalid' : ''}`}/>
+                        <div className="invalid-feedback">{errors.name?.message}</div>
+                        <input  type="tel" placeholder="+996 555 555 555" {...register("phone_number")} className={`form-control ${errors.password ? 'is-invalid' : ''}`}/>
+                        <div className="invalid-feedback">{errors.phone_number?.message}</div>
+                        <input  type="email" placeholder="Email" {...register("email", {required: true, pattern: /^\S+@\S+$/i})}/>
+                        <div className="invalid-feedback">{errors.email?.message}</div>
+                        <input  name="password"  placeholder="Пароль"  type="password" {...register('password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
+                        <div className="invalid-feedback">{errors.password?.message}</div>
+                        <input name="confirmPassword" type="password" placeholder="Подвердить пароль" {...register('confirmPassword')} className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`} />
+                        <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
+                        <button
+                            type="submit"
+                        > Зарегистрироваться
+                        </button>
+                    </form>
+                </div>
+
+            </section>
+        </>
     );
 }
 

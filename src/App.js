@@ -15,7 +15,7 @@ import Person from "./components/Auth/Person/Person";
 import Home from "./components/home/home";
 import CoursesDetailsPaid from "./components/coursesPaid/coursesDetailsPaid";
 import SignIn from "./components/Auth/Register/SignIn";
-
+import Activate from "./components/account/activate";
 
 
 
@@ -23,6 +23,7 @@ function App() {
 
   return (
       <>
+
           <Header/>
           {/*<HookForm/>*/}
 
@@ -35,8 +36,9 @@ function App() {
               <Route path={"/coursesDetails/:id"} element={<CoursesDetails/>}/>
               <Route path={"/person"} element={<Person/>}/>
               <Route path={"/register-code"} element={<RegisterCode/>}/>
-              <Route path={"//account/activate"} element={<Register/>}/>
-              <Route path={"//account/activate"} element={<Register/>}/>
+              <Route path={"//account/activate"} element={<Activate/>}/>
+
+              {/*<Route path={"//account/activate"} element={<Register/>}/>*/}
               <Route path={"/login"} element={<SignIn/>}/>
 
               {/*<Route path={"/coursesDetailsPaid/:id"} element={<CoursesDetailsPaid/>}/>*/}
@@ -48,6 +50,7 @@ function App() {
           {/*<RegisterCode/>*/}
           {/*<Person/>*/}
           <Footer/>
+
 
       </>
   );

@@ -4,16 +4,10 @@ import {useState} from "react";
 // import Register from "../register/Register";
 // import RegisterCopy from "../register/RegisterCopy";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
-import {NavLink, useNavigate} from "react-router-dom";
+import {Link, NavLink, useNavigate} from "react-router-dom";
 import HookForm from "../Auth/Person/HookForm";
 import SignIn from "../Auth/Register/SignIn";
-// import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-// import { faXmark} from "@fortawesome/free-solid-svg-icons";
-//
-// import Register from "../Auth/Register/Register";
-// import RegisterCopy from "../Auth/Register/RegisterCopy";
-// import FormInput from "../Auth/Register/FormInput";
-// import RegisterCode from "../Auth/Register/RegisterCode";
+
 
 const Header = () => {
     const [activeForm,setActiveForm] = useState(false)
@@ -37,14 +31,21 @@ const Header = () => {
                             <NavLink to={"/certificate"}>Проверка сертификатов</NavLink>
                             <NavLink to={"/person"}>person</NavLink>
                             <NavLink to={"/about"}>О нас</NavLink>
-                            <NavLink to={"contact"}>Контакты</NavLink>
+                            <NavLink to={"/contact"}>Контакты</NavLink>
+
                         </div>
                         <div className="header--content--auth">
                             <button onClick={() => setActiveForm(true) } className="header--content--auth--btn1">Регистрация</button>
-                               <button onClick = {() =>
-                                   setSignActive(true)
-                               }
-                                className="header--content--auth--btn2 mx-4">Вход</button>
+
+
+                                       <button onClick = {() =>{
+                                           setSignActive(true)
+                                           // navigate("/login")
+                                       }
+                                       }
+                                               className="header--content--auth--btn2 mx-4">Вход</button>
+
+
                             {/*    <NavLink to='/register'>*/}
                             {/*        /!*<button onClick={() => setActiveRegisterCopy(true)} className="header--content--auth--btn1">Регистрация</button>*!/*/}
                             {/*    </NavLink>*/}

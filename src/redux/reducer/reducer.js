@@ -8,14 +8,14 @@ const initialState = {
 }
 
 export const reducer = (state = initialState, action) => {
-    console.log("payload:", action.payload)
+    // console.log("payload:", action.payload)
     switch (action.type) {
         case GET_SINGLE_COURSES:
             console.log(action.payload, "coursesDetails")
             return {...state, coursesDetails: action.payload}
 
         case GET_COURSES:
-            console.log(action.payload, "COURSES")
+            // console.log(action.payload, "COURSES")
             return {...state, courses: action.payload}
 
         case GET_COURSES_LESSON:
