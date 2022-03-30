@@ -1,19 +1,16 @@
 import React, {useContext, useState} from 'react';
 import {QuizContext} from "../../../data/Contexts";
 import '../../../style/Main-Menu/MainMenu.scss'
-import Quiz from "./Quiz";
-import EndScreen from "./EndScreen";
-
 const MainMenu = () => {
-     const {gameState, setGameState} = useContext(QuizContext)
+    const {gameStated, setGameState} = useContext(QuizContext)
 
     return (
         <div className="Menu">
-           <div className="buttons-1">
-               <button className="btn-12" onClick={() => {
-                 setGameState("quiz");
-               }}>Start Quiz</button>
-           </div>
+            <div className="buttons-1">
+                <button className="btn-12" onClick={() => {
+                    setGameState("quiz");
+                }}>Start Quiz</button>
+            </div>
         </div>
     );
 };

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="75a7743f-69c3-4d45-b5c0-a1287db0e590" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/src/components/Test/MainTest.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -13,6 +17,26 @@
       <change beforePath="$PROJECT_DIR$/src/data/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/state.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/style/Main-Menu/MainMenu.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/Main-Menu/MainMenu.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/style/Quiz/Quiz.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/Quiz/Quiz.scss" afterDir="false" />
+=======
+    <list default="true" id="649f1301-31a4-4de0-abff-e8eacccef4c3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Auth/Person/Person.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Auth/Person/Person.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Test/function/EndScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Test/function/EndScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Test/function/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Test/function/MainMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Test/function/Quiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Test/function/Quiz.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/accordion/accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accordion/accordion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/courses/coursesDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/coursesDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/courses/coursesLesson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/coursesLesson.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sleh/sleh.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sleh/sleh.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/media/media-style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/media/media-style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/action/corsesAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/action/corsesAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducer/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducer/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/types/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types/actionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/Auth/Person/Person.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/Auth/Person/Person.scss" afterDir="false" />
+>>>>>>> e76409f41f605429036191eaad1b8317a79cfb8b
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +66,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="26ZWyVwx4XqG2Ctf6gFUjfHxtZk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -53,6 +80,7 @@
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -65,7 +93,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="75a7743f-69c3-4d45-b5c0-a1287db0e590" name="Changes" comment="" />
+      <changelist id="649f1301-31a4-4de0-abff-e8eacccef4c3" name="Changes" comment="" />
       <created>1647631844056</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -76,6 +104,7 @@
       <workItem from="1647862110603" duration="4546000" />
       <workItem from="1647947891979" duration="6165000" />
       <workItem from="1648037761139" duration="10430000" />
+<<<<<<< HEAD
       <workItem from="1648083317508" duration="11779000" />
       <workItem from="1648282205359" duration="3847000" />
       <workItem from="1648287662788" duration="1786000" />
@@ -83,6 +112,11 @@
       <workItem from="1648300742295" duration="115000" />
       <workItem from="1648380061743" duration="301000" />
       <workItem from="1648381002699" duration="397000" />
+=======
+      <workItem from="1648083317508" duration="6169000" />
+      <workItem from="1648280588060" duration="18529000" />
+      <workItem from="1648361585323" duration="6797000" />
+>>>>>>> e76409f41f605429036191eaad1b8317a79cfb8b
     </task>
     <servers />
   </component>

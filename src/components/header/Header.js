@@ -19,11 +19,15 @@ import MainTest from "../Test/MainTest";
 // import RegisterCopy from "../Auth/Register/RegisterCopy";
 // import FormInput from "../Auth/Register/FormInput";
 // import RegisterCode from "../Auth/Register/RegisterCode";
+// import {Quiz} from "../Test/function/Quiz";
+// import EndScreen from "../Test/function/EndScreen";
 
 const Header = () => {
     const [activeForm,setActiveForm] = useState(false)
     const [signActive, setSignActive] = useState(false)
     const [testActive, setTestActive] = useState(false)
+    // const [score, setScore] = useState(0)
+    // const [gameState, setGameState] = useState("menu")
 
     return (
         <header>
@@ -38,15 +42,12 @@ const Header = () => {
 
                         </div>
                         <div className="header--content--items">
-                            <NavzLink to={"/"}>Главная</NavzLink>
+                            <NavLink to={"/"}>Главная</NavLink>
                             <NavLink to={"/courses"}>Курсы</NavLink>
                             <NavLink to={"/certificate"}>Проверка сертификатов</NavLink>
                             <NavLink to={"/person"}>person</NavLink>
                             <NavLink to={"/about"}>О нас</NavLink>
                             <NavLink to={"contact"}>Контакты</NavLink>
-                            <NavLink to={"/MainMenu"}>
-                                <button className="home--block--box--btn md-5" onClick={() => <MainTest/>}>Курсы</button>
-                            </NavLink>
                         </div>
                         <div className="header--content--auth">
                             <button onClick={() => setActiveForm(true)} className="header--content--auth--btn1">Регистрация</button>
@@ -61,7 +62,17 @@ const Header = () => {
                         </div>
                         <BurgerMenu/>
                     </div>
-
+                    {/*<div>*/}
+                    {/*    <QuizContext.Provider value={{*/}
+                    {/*        gameState,*/}
+                    {/*        setGameState,*/}
+                    {/*        score,*/}
+                    {/*        setScore}}>*/}
+                    {/*        {gameState === "menu" && <MainMenu/>}*/}
+                    {/*        {gameState === "quiz" && <Quiz/>}*/}
+                    {/*        {gameState === "endScreen" && <EndScreen/>}*/}
+                    {/*    </QuizContext.Provider>*/}
+                    {/*</div>*/}
                 </div>
             </div>
             <HookForm active={activeForm}  setActive={setActiveForm}  />

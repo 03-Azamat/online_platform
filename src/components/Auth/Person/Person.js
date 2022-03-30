@@ -24,18 +24,22 @@ const Person = () => {
     const [emailModal, setEmailModal] = useState(false)
     const [passwordModal, setPasswordModal] = useState(false)
     useEffect(() => {
-        axios(`https://djangorestapp.herokuapp.com/users/`)
-        // axios(`http://localhost:8000/api/v1/users/`)
+        axios(`https://djangorestapp.herokuapp.com/users/`, {
+            headers: {
+                authorization :"Bearer" + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ4MzcwNTE4LCJqdGkiOiI2ZGY3M2JjYmM1OGQ0Yjk0ODQ3MWM2ZTE1Y2Y4OTZkOSIsInVzZXJfaWQiOjF9.QM8c2rfQyXAsR3hgyY6DXMBTI51IdmrGQM5E7TgerL0"
+            }
+        })
+            // axios(`http://localhost:8000/api/v1/users/`)
             .then(({data}) => {
                 localStorage.setItem("user", JSON.stringify(data.user))
                 console.log(data)
                 setPersons(data)
-            } ).catch((error) => {
-                // toast.error(error.response.data.email[0])
+            }).catch((error) => {
+            // toast.error(error.response.data.email[0])
             console.log(error.response.data)
         })
         // console.log(persons)
-    },[])
+    }, [])
 
     return (
         <section id='person'>
@@ -43,112 +47,129 @@ const Person = () => {
                 <h1>Личный кабинет</h1>
 
                 <div className="contentBtn">
-                    <div className='btn '>
+
+                    <div className='btn'>
                         <FontAwesomeIcon icon={faUser} className='btn--user'/>
                         <h2>Ороскул уулу Эрмат</h2>
                         {/*<h2>{persons[0].name}</h2>*/}
                         <div className="btn--btns">
                             {/*<div className='btn--btns--tabRoute'> Выбрать фото</div>*/}
-                            <input type="file" className='btn--btns--tabRoute' />
+                            <input type="file" className='btn--btns--tabRoute'/>
+
                             <div className={`btn--btns--tabRoute ${index === 0 ? 'active' : null}`}
                                  onClick={() =>
                                      setIndex(0)
-                                 }
-                            >Персональные данные
+                                 }>Персональные данные
                             </div>
+
                             <div className={`btn--btns--tabRoute ${index === 1 ? 'active' : null}`}
                                  onClick={() =>
                                      setIndex(1)
-                                 }
-                            >Мои курсы
+                                 }>Мои курсы
                             </div>
                             <div className='btn--btns--tabRoute'>Выйти</div>
                         </div>
                     </div>
-                    <div className="person  " hidden={index !== 0}>
-                        <h3>Персональные данные</h3>
+
+                    <div className="person" hidden={index !== 0}>
+                        <h3 className="text-center">Персональные данные</h3>
                         <div className='person--content'>
-                            <div className='person--content--center mx-5'>
-                                <div>
+
+                            <div className='person--content--start'>
+
+                                <div className="flex flex-col">
                                     <label>ФИО</label>
-                                    <button className='person--content--center--ul1'><p> </p>
-                                        < FontAwesomeIcon icon={faPen} style={{color: "#01487E"}}/></button>
+                                    <button className='person--content--start--name'>
+                                        <p>{}</p>
+                                    </button>
                                 </div>
-                                <div>
+                                <div className="flex flex-col">
+                                    <label>Номер телефона</label>
+                                    <button className='person--content--start--number'>
+                                        <p>+996 555 55 55 55</p>
+                                        < FontAwesomeIcon
+                                            icon={faPen} style={{color: "#01487E"}}/>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <div className="person--content--center">
+                                <div className="flex flex-col">
                                     <label>Должность</label>
-                                    <button className='person--content--center--ul2'>
+                                    <button className='person--content--center--position'>
                                         <p>
                                             {/*{persons[0].age} {persons[0].name} {persons[0].name} {persons[0].name} {persons[0].car} {persons[0].createdAt}*/}
                                         </p>
                                         < FontAwesomeIcon icon={faPen} style={{color: "#01487E"}}
                                                           onClick={() => setPoModal(true)}
-                                        /></button>
-                                </div>
 
-                                <div>
-                                    <label>Email</label>
-                                    <button className='person--content--center--ul3'><p>{persons.data}</p>
-                                        < FontAwesomeIcon
-                                            icon={faPen} style={{color: "#01487E"}}
-                                            onClick={() => setEmailModal(true)}/>
+                                        />
                                     </button>
                                 </div>
 
-                            </div>
-                            <div className='person--content--end'>
-                                <div>
-                                    <label>Номер телефона</label>
-                                    <button className='person--content--end--ul11'><p>+996 555 55 55 55</p>
-                                        < FontAwesomeIcon
-                                            icon={faPen} style={{color: "#01487E"}}/></button>
-                                </div>
-
-                                <div>
+                                <div className="flex flex-col">
                                     <label>Организация</label>
-                                    <button className='person--content--end--ul12'><p/>
+                                    <button className='person--content--center--organization'><p/>
                                         < FontAwesomeIcon
                                             icon={faPen} style={{color: "#01487E"}}
                                             onClick={() => setOrModal(true)}/>
                                     </button>
                                 </div>
 
-                                <div className='person--content--end--pass'>
+                            </div>
+
+                            <div className='person--content--end'>
+                                <div className="flex flex-col">
+                                    <label>Email</label>
+                                    <button className='person--content--end--email'><p>{persons.data}</p>
+                                        < FontAwesomeIcon
+                                            icon={faPen} style={{color: "#01487E"}}
+                                            onClick={() => setEmailModal(true)}/>
+                                    </button>
+                                </div>
+
+                                <div className="flex flex-col">
                                     <label>Пароль</label>
-                                    <i><FontAwesomeIcon icon={faKey}/></i>
-                                    <input type="password" name='password' placeholder='password'
-                                           style={{padding: "0 0 0 30px"}}/>
-                                    <span><FontAwesomeIcon icon={faPen}
-                                                           onClick={() => setPasswordModal(true)}
-                                                           style={{
-                                                               position: 'absolute',
-                                                               color: '#01487E',
-                                                               margin: "-38px 0 10px 330px"
-                                                           }}/></span>
-                                    <span><FontAwesomeIcon icon={faEye} style={{
-                                        position: 'absolute',
-                                        color: '#01487E',
-                                        margin: "-38px 0 10px 320px",
-                                        display: "none"
-                                    }}/></span>
-                                    <span><FontAwesomeIcon icon={faEyeSlash} style={{
-                                        position: 'absolute',
-                                        color: '#01487E',
-                                        margin: "-38px 0 10px 300px"
-                                    }}/></span>
+
+                                    <div className="flex flex-col">
+                                        <input className='person--content--end--password'
+                                               type="password" name='password' placeholder='password'
+                                               style={{padding: "0 0 0 30px"}}/>
+                                        <div className="person--content--end--password--icons">
+                                            <FontAwesomeIcon icon={faKey}/>
+
+                                            <span className="flex w-2/12 justify-between ml-auto">
+                                                <FontAwesomeIcon icon={faEyeSlash} style={{
+                                                    color: '#01487E',
+                                                }}/>
+
+                                            <FontAwesomeIcon icon={faPen} onClick={() => setPasswordModal(true)}
+                                                             style={{
+                                                                 color: '#01487E',
+                                                             }}/>
+                                        </span>
+                                        </div>
+
+
+                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
-                        <div className='person--photo' style={{padding: "100px 0 60px 0"}}>
-                            <div className='person--photo--pas1' style={{margin: "0 45px 0 0"}}>
-                                <h2>Фотография паспорта</h2>
-                                <span><FontAwesomeIcon icon={faImage}/> <text>Выбрать файл</text></span>
-                            </div>
-                            <div className='person--photo--pas2'>
-                                <h2>Фотография с паспортом в руках</h2>
-                                <span><FontAwesomeIcon icon={faImage}/> <text>Выбрать файл</text></span>
 
-                            </div>
-                        </div>
+                        {/*<div className='person--photo' style={{padding: "100px 0 60px 0"}}>*/}
+                        {/*    <div className='person--photo--pas1' style={{margin: "0 45px 0 0"}}>*/}
+                        {/*        <h2>Фотография паспорта</h2>*/}
+                        {/*        <span><FontAwesomeIcon icon={faImage}/> <text>Выбрать файл</text></span>*/}
+                        {/*    </div>*/}
+                        {/*    <div className='person--photo--pas2'>*/}
+                        {/*        <h2>Фотография с паспортом в руках</h2>*/}
+                        {/*        <span><FontAwesomeIcon icon={faImage}/> <text>Выбрать файл</text></span>*/}
+
+                        {/*    </div>*/}
+                        {/*</div>*/}
                         <UpdatePosition poModal={poModal} setPoModal={setPoModal}/>
                         <UpdateOrganization orModal={orModal} setOrModal={setOrModal}/>
                         <UpdateEmail emailModal={emailModal} setEmailModal={setEmailModal}/>
@@ -163,13 +184,13 @@ const Person = () => {
                             <p className='my-courses--p1'>Пройден:</p>
                             <div className='my-courses--bank'><p className='my-courses--bank--p'>Банковский аналитик</p>
                                 <FontAwesomeIcon className='my-courses--bank--icon' icon={faArrowRightLong}
-                                                 // style={{width:'38px', color:'#01487E'}}
+                                    // style={{width:'38px', color:'#01487E'}}
                                                  onClick={() => {
                                                      // navigate("/")
                                                  }}
                                 /></div>
                         </div>
-                        <div ><p className='my-courses--p2'>На рассмотренииу администратора:</p>
+                        <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
                             <div className='my-courses--business'>
                                 <p className='my-courses--business--p'>Бизнес аналитик</p>
                                 <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}
@@ -179,11 +200,11 @@ const Person = () => {
                                 />
                             </div>
                         </div>
-                        <div  >
+                        <div>
                             <p className='my-courses--pp'>Активен:</p>
-                            <div className = 'my-courses--active'>
-                                <p className = 'my-courses--active--pp'>Бизнес аналитик</p>
-                                <FontAwesomeIcon className =  'my-courses--active--icon' icon={faArrowRightLong}/>
+                            <div className='my-courses--active'>
+                                <p className='my-courses--active--pp'>Бизнес аналитик</p>
+                                <FontAwesomeIcon className='my-courses--active--icon' icon={faArrowRightLong}/>
                             </div>
                         </div>
                     </div>

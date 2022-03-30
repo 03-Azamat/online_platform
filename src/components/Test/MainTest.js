@@ -1,23 +1,28 @@
-// import React, {useState} from 'react';
-// import {QuizContext} from "../../data/Contexts";
-// import Quiz from "./function/Quiz";
-// import EndScreen from "./function/EndScreen";
-// import MainMenu from "./function/MainMenu";
-//
-// const MainTest = () => {
-//     const [score, setScore] = useState(0)
-//     const [gameState, setGameState] = useState("menu")
-//     return (
-//         <div>
-//             <div className="Appp">
-//                 <QuizContext.Provider value={{ gameState, setGameState, score, setScore}}>
-//                     {gameState === "menu" && <MainMenu/>}
-//                     {gameState === "quiz" && <Quiz/>}
-//                     {gameState === "endScreen" && <EndScreen/>}
-//                 </QuizContext.Provider>
-//             </div>
-//         </div>
-//     );
-// };
-//
-// export default MainTest;
+import React, {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {getCoursesDetails} from "../../redux/action/corsesAction";
+import {useParams} from "react-router-dom";
+
+const MainTest = () => {
+    const id = useParams()
+    const {coursesDetails: test} = useSelector(s => s)
+    const dispatch = useDispatch()
+
+    useEffect((id)=>{
+        dispatch(getCoursesDetails(id))
+    },[])
+
+    return (
+        <div>
+            <div className="test">
+                {
+                    test.map(el=>(
+                        <p dangerouslySetInnerHTML={{__html:el.title}}/>
+                    ))
+                }
+            </div>
+        </div>
+    );
+};
+
+export default MainTest;
