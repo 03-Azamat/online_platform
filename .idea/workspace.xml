@@ -5,41 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="649f1301-31a4-4de0-abff-e8eacccef4c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/coursesVideoLesson/coursesVideoLesson.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/style/ReactPlayer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/accordion/accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accordion/accordion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/courses/courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/courses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/courses/coursesDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/coursesDetails.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/courses/coursesLesson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/coursesLesson.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/coursesLesson/Tab.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/coursesLesson/TabNav.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/coursesPaid/coursesDetailsPaid.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/coursesVideoLesson/coursesVideoLesson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/coursesVideoLesson/coursesVideoLesson.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sleh/sleh.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sleh/sleh.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/media/auth/person.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/media/auth/person.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/media/media-style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/media/media-style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/action/corsesAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/action/corsesAction.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/reducer/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducer/reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/types/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types/actionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/style/accordion/accordion.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/accordion/accordion.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/ReactPlayer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/coursesVideoLesson/ReactPlayer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/coursesPaid/coursesDetailsPaid.scss" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/style/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/public/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/public/logo512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/public/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/public/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/src/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/src/App.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/src/reportWebVitals.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tabs/src/setupTests.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +63,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\online_platform\src\style\coursesVideoLesson" />
       <recent name="$PROJECT_DIR$/src/style/Main-Menu" />
     </key>
   </component>
@@ -111,7 +93,15 @@
       <workItem from="1648543463403" duration="816000" />
       <workItem from="1648544389698" duration="1495000" />
       <workItem from="1648546011448" duration="91000" />
-      <workItem from="1648546206166" duration="4526000" />
+      <workItem from="1648546206166" duration="5161000" />
+      <workItem from="1648572908111" duration="2063000" />
+      <workItem from="1648585607565" duration="3000" />
+      <workItem from="1648585733359" duration="26000" />
+      <workItem from="1648605654977" duration="6219000" />
+      <workItem from="1648615336326" duration="15959000" />
+      <workItem from="1648638353868" duration="6762000" />
+      <workItem from="1648646850573" duration="131000" />
+      <workItem from="1648717649940" duration="10310000" />
     </task>
     <servers />
   </component>

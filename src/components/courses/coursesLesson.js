@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Cour from "../../image/cour_logo.svg";
 import {useDispatch, useSelector} from "react-redux";
 import {NavLink, useParams} from "react-router-dom";
@@ -13,7 +13,6 @@ const CoursesLesson = () => {
     const dispatch = useDispatch()
     console.log(elem , "lessonVideos")
     console.log(lessonId)
-
 
     useEffect(() => {
         dispatch(getCoursesDetails(lessonId))
@@ -45,12 +44,12 @@ const CoursesLesson = () => {
                                     {
                                         elem?.coursechoice?.map(el => (
                                             <div>
-                                                <CoursesVideoLesson el={el}/>
                                                 <div>
-                                                    <p dangerouslySetInnerHTML={{__html:el.choicetopic?.topics?.name_topick}}/>
+                                                    <CoursesVideoLesson el={el}/>
+                                                </div>
+                                                <div>
                                                     <p dangerouslySetInnerHTML={{__html:el.choicetopic?.topics?.name_work}}/>
                                                 </div>
-
                                             </div>
 
                                         ))

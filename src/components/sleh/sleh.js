@@ -1,9 +1,19 @@
-import React from 'react';
-import {useSelector} from "react-redux";
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {getTest} from "../../redux/action/corsesAction";
+import {useParams} from "react-router-dom";
 
 
 const Sleh = () => {
+    const id = useParams()
     const testElem = useSelector(state => state.test)
+    const dispatch = useDispatch()
+    console.log(id, "idTest")
+    console.log(testElem, "testElem")
+
+    useEffect(()=>{
+        dispatch(getTest(id))
+    })
 
     return (
         <div className="test">
@@ -16,19 +26,15 @@ const Sleh = () => {
                         <p>1/20</p>
                     </div>
                     {
-                        testElem.slice(0, 1).map(el => (
+                        testElem?.choicetest?.map(el=>(
                             <div>
-                                <div key={el.id}>
-                                    <p>{el.title}</p>
-                                    {
-                                        el.flag.map(el => (
-                                            <div>
-                                                <p>{el.text}</p>
-                                                <button>{el.boo}</button>
-                                            </div>
-                                        ))
-                                    }
-                                </div>
+                                {
+                                    el?.quation?.flags?.map(el=>(
+                                        <p>
+                                            {el.text}
+                                        </p>
+                                    ))
+                                }
                             </div>
                         ))
                     }

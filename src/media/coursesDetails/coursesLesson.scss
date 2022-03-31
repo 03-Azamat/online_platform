@@ -1,0 +1,242 @@
+@media (max-width: 390px) {
+  #lesson{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background: #F6F5F5;
+
+
+    .lesson--box{
+
+      &--logo{
+        padding-top: 44px;
+        padding-bottom: 21px;
+        width: 70px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &--head{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding-bottom: 50px;
+
+        &--titles{
+          width: 50%;
+
+          &--title{
+
+            font-weight: 700;
+            font-size: 24px;
+
+          }
+          &--desc{
+            width: 320px;
+
+            font-weight: 200;
+            font-size: 14px;
+
+          }
+
+          &--btn{
+            width: 148px;
+            height: 40px;
+            left: 30px;
+            top: 1473px;
+
+            background: #01487E;
+            border-radius: 5px;
+          }
+        }
+
+        &--dates{
+          margin-bottom: 55px;
+
+          &--start{
+            width: 175px;
+            height: 87px;
+            &--title{
+              width: 175px;
+              height: 31px;
+              left: 30px;
+              top: 295px;
+
+              background: #01487E;
+              border-radius: 5px 5px 0 0;
+
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 21px;
+              /* identical to box height */
+
+
+              color: #FFFFFF;
+            }
+
+            &--desc{
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 24px;
+
+              color: #404141;
+            }
+
+          }
+          &--end{
+            width: 175px;
+            height: 87px;
+
+            &--title{
+              width: 175px;
+              height: 31px;
+              left: 30px;
+              top: 295px;
+
+              background: #01487E;
+              border-radius: 5px 5px 0 0;
+
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 21px;
+              /* identical to box height */
+
+
+              color: #FFFFFF;
+            }
+
+            &--desc{
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 24px;
+
+              color: #404141;
+            }
+
+          }
+        }
+
+
+      }
+
+      &__middle{
+        padding-bottom: 43px;
+        &__title{
+          font-style: normal;
+          font-weight: 900;
+          font-size: 24px;
+          line-height: 36px;
+          /* identical to box height */
+
+
+          color: #01487E;
+
+
+        }
+
+        &__desc{
+          font-style: normal;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 184%;
+
+          color: #000000;
+        }
+
+
+      }
+
+
+
+    }
+  }
+}
+
+@media (max-width: 356px) {
+  #lesson{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background: #F6F5F5;
+
+
+    .lesson--box{
+
+      &--logo{
+        padding-top: 44px;
+        padding-bottom: 21px;
+        width: 70px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &--head{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding-bottom: 50px;
+
+        &--titles{
+          width: 50%;
+
+          &--title{
+
+            font-weight: 700;
+            font-size: 24px;
+
+          }
+          &--desc{
+            width: 256px;
+            font-weight: 200;
+            font-size: 14px;
+          }
+        }
+      }
+
+
+    }
+  }
+}
+
+@media (max-width: 324px) {
+  #lesson{
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background: #F6F5F5;
+
+
+    .lesson--box{
+
+      &--logo{
+        padding-top: 44px;
+        padding-bottom: 21px;
+        width: 70px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &--head{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding-bottom: 50px;
+
+        &--titles{
+          width: 50%;
+
+          &--title{
+
+            font-weight: 700;
+            font-size: 24px;
+
+          }
+          &--desc{
+            width: 200px;
+            font-weight: 200;
+            font-size: 14px;
+          }
+        }
+      }
+
+
+    }
+  }
+}

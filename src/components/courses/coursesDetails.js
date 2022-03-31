@@ -50,7 +50,6 @@ const CoursesDetails = () => {
                     </span>
 
 
-
                         <div className="cour--box--head ">
                             <div className="cour--box--head--titles">
                                 <h1 className="cour--box--head--titles--title">{course.title}</h1>
@@ -91,13 +90,13 @@ const CoursesDetails = () => {
                             </h1>
 
                             <div className="cour--box--accordion--block">
-
-                                {
-                                    course?.coursechoice?.map(el=>(
-                                        <Accordion el={el} />
-                                    ))
-                                }
-
+                                <div>
+                                    {
+                                        course?.coursechoice?.map(el=>(
+                                            <Accordion el={el} />
+                                        ))
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
