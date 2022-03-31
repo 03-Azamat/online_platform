@@ -6,7 +6,7 @@ const CoursesVideoLesson = ({el}) => {
     return (
         <div className='player-wrapper'>
             <div className="react-player-video">
-                <h1 className="pb-5 font-medium text-xl">{video.title}</h1>
+                <h1 className="pb-5 font-medium text-xl sm:text-sm font-light md: text-md font-base lg: text-base font-medium">{video.title}</h1>
                 <ReactPlayer
                     width="100%"
                     url={video.url}
@@ -18,10 +18,10 @@ const CoursesVideoLesson = ({el}) => {
                         <div className="react-player" onClick={() => setVideo(item)}>
                             <ReactPlayer
                                 url={item.url}
-                                width="140px"
-                                height="80px"
+                                width="250px"
+                                height="100px"
                             />
-                            <p className="text-base ml-3">{item.title}</p>
+                            <p className="text-base ml-3 md: text-sm ">{item.title}</p>
                         </div>
                     ))
                 }
