@@ -28,6 +28,12 @@ const Home = () => {
                             </p>
                             <NavLink to={"/courses"}>
                                 <button className="home--block--box--btn">Курсы</button>
+<<<<<<< HEAD
+=======
+                            </NavLink>x
+                            <NavLink to={"/sleh"}>
+                                <button className="home--block--box--btn md-5">Тест</button>
+>>>>>>> 5a386e82574e26e287275ad13a8a81227bff7535
                             </NavLink>
                             {/*<NavLink to={"/MainMenu"}>*/}
                             {/*    <button className="home--block--box--btn md-5">Курсы</button>*/}

@@ -52,7 +52,6 @@ const CoursesDetails = () => {
                     </span>
 
 
-
                         <div className="cour--box--head ">
                             <div className="cour--box--head--titles">
                                 <h1 className="cour--box--head--titles--title">{course.title}</h1>
@@ -93,6 +92,7 @@ const CoursesDetails = () => {
                             </h1>
 
                             <div className="cour--box--accordion--block">
+<<<<<<< HEAD
                                 {/*<Accordion/>*/}
                             </div>
                             <NavLink to={"/MainMenu"}>
@@ -105,6 +105,16 @@ const CoursesDetails = () => {
                                         <Accordion el={el} />
                                     ))
                                 }
+=======
+                                <div>
+                                    {
+                                        course?.coursechoice?.map(el=>(
+                                            <Accordion el={el} />
+                                        ))
+                                    }
+                                </div>
+                            </div>
+>>>>>>> 5a386e82574e26e287275ad13a8a81227bff7535
                         </div>
                     </div>
 

@@ -19,9 +19,8 @@
       <change beforePath="$PROJECT_DIR$/src/style/Quiz/Quiz.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/Quiz/Quiz.scss" afterDir="false" />
 =======
     <list default="true" id="649f1301-31a4-4de0-abff-e8eacccef4c3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/coursesVideoLesson/coursesVideoLesson.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/style/ReactPlayer.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/accordion/accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accordion/accordion.js" afterDir="false" />
@@ -59,6 +58,11 @@
       <change beforePath="$PROJECT_DIR$/tabs/src/reportWebVitals.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tabs/src/setupTests.js" beforeDir="false" />
 >>>>>>> 589e6650c705db1340d3f4abc158a1ce84ba1fa6
+=======
+      <change beforePath="$PROJECT_DIR$/src/components/coursesVideoLesson/coursesVideoLesson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/coursesVideoLesson/coursesVideoLesson.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/media/coursesLessonVideo/coursesVideoLesson.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/media/coursesLessonVideo/coursesVideoLesson.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/coursesVideoLesson/ReactPlayer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/coursesVideoLesson/ReactPlayer.scss" afterDir="false" />
+>>>>>>> 5a386e82574e26e287275ad13a8a81227bff7535
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,6 +113,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\online_platform\src\style\coursesVideoLesson" />
       <recent name="$PROJECT_DIR$/src/style/Main-Menu" />
     </key>
   </component>
@@ -151,8 +156,20 @@
       <workItem from="1648543463403" duration="816000" />
       <workItem from="1648544389698" duration="1495000" />
       <workItem from="1648546011448" duration="91000" />
+<<<<<<< HEAD
       <workItem from="1648546206166" duration="4526000" />
 >>>>>>> 589e6650c705db1340d3f4abc158a1ce84ba1fa6
+=======
+      <workItem from="1648546206166" duration="5161000" />
+      <workItem from="1648572908111" duration="2063000" />
+      <workItem from="1648585607565" duration="3000" />
+      <workItem from="1648585733359" duration="26000" />
+      <workItem from="1648605654977" duration="6219000" />
+      <workItem from="1648615336326" duration="15959000" />
+      <workItem from="1648638353868" duration="6762000" />
+      <workItem from="1648646850573" duration="131000" />
+      <workItem from="1648717649940" duration="13331000" />
+>>>>>>> 5a386e82574e26e287275ad13a8a81227bff7535
     </task>
     <servers />
   </component>
