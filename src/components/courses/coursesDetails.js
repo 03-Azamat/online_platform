@@ -6,14 +6,28 @@ import Cour from "../../image/cour_logo.svg"
 import {add , format } from "date-fns"
 import MainTest from "../Test/MainTest";
 
+import Accordion from "../accordion/accordion";
+import Loader from "../../loader/loader";
+
+
 const CoursesDetails = () => {
+    // const [ isBought , setIsBought ] = useState(false)
+    // const [fagData , setFaqData] = useSelector({})
+
     const {id} = useParams()
-    const {coursesDetails : cour} = useSelector(s => s)
+    console.log(id, "iddd")
+    const {coursesDetails : course} = useSelector(s => s)
+    // if(cour?.free) {
+    //     setIsBought(false);
+    //     dispatch(cour?.free)
+    // }else{
+    //     setIsBought(true);
+    //     dispatch(cour?.bought)
+    // }
 
     const dispatch = useDispatch()
-    console.log(cour, "courses")
+    console.log(course, "courses")
     console.log(id)
-
 
     useEffect(() => {
         dispatch(getCoursesDetails(id))
@@ -30,16 +44,18 @@ const CoursesDetails = () => {
         <section id="cour">
 
             <div className="container">
-                {cour ? (
-                    <div key={cour.id} className="cour--box">
+                {course ? (
+                    <div key={course.id} className="cour--box">
                     <span className="cour--box--logo">
                         <img src={Cour} alt=""/>
                         <p>Курс</p>
                     </span>
 
+
+
                         <div className="cour--box--head ">
                             <div className="cour--box--head--titles">
-                                <h1 className="cour--box--head--titles--title">{cour.title}:AZA</h1>
+                                <h1 className="cour--box--head--titles--title">{course.title}</h1>
                                 <p className="cour--box--head--titles--desc">
                                     “Образование — это умение правильно
                                     действовать в любых житейских ситуациях.“
@@ -67,7 +83,7 @@ const CoursesDetails = () => {
                             <h1 className="cour--box__middle__title">О курсе</h1>
 
                             <div className="cour--box__middle__desc">
-                                <p dangerouslySetInnerHTML={{__html:cour.text}}/>
+                                <p dangerouslySetInnerHTML={{__html:course.text}}/>
                             </div>
                         </div>
 
@@ -82,10 +98,17 @@ const CoursesDetails = () => {
                             <NavLink to={"/MainMenu"}>
                                 <button className="home--block--box--btn md-5" onClick={() => <MainTest/>}>Курсы</button>
                             </NavLink>
+
+
+                                {
+                                    course?.coursechoice?.map(el=>(
+                                        <Accordion el={el} />
+                                    ))
+                                }
                         </div>
                     </div>
 
-                ): <h1>loading</h1>}
+                ): <Loader/>}
             </div>
 
         </section>

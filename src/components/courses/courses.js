@@ -1,13 +1,14 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {getCourses} from "../../redux/action/corsesAction";
 import CoursesCard from "../card/coursesCard";
 import Loader from "../../loader/loader";
-import CoursesCardPaid from "../card/coursesCardPaid";
 
 
 const Courses = () => {
+
     const coursesTwo = useSelector(state => state.courses)
+
     console.log(coursesTwo, "coursesTwo")
     const dispatch = useDispatch()
     useEffect(() => {

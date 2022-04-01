@@ -143,7 +143,6 @@ const Quiz = () => {
                     ) : (
                         <button onClick={nextQuestion} className="test-but-1">Следуший</button>
                     )}
-                    <button onClick={onClickResetBtn} className="test-but-2">Result</button>
                 </div>
             </div>
         </div>
