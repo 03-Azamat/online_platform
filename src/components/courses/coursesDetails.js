@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import React, {useEffect} from 'react';
+import {NavLink, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getCoursesDetails} from "../../redux/action/corsesAction";
 import Cour from "../../image/cour_logo.svg"
@@ -99,9 +99,27 @@ const CoursesDetails = () => {
                                 </div>
                             </div>
                         </div>
+
+                        <div className="cour--box--test">
+                            <h1 className="cour--box--test--title">Внимание! </h1>
+                            <p className="cour--box--test--desc">
+                                После изучения материалов курса Вы должны будете пройти тестирование.
+                                На прохождение теста Вам будет предоставлена одна попытка!
+                            </p>
+
+                            <NavLink to={`/sleh/${course.testId}`}>
+                                <div>
+                                    <button className="cour--box--test--btn">Тест</button>
+                                </div>
+                            </NavLink>
+                        </div>
+
+
                     </div>
 
                 ): <Loader/>}
+
+
             </div>
 
         </section>

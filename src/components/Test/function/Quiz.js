@@ -11,9 +11,7 @@ const Quiz = () => {
     const [optionChosen, setOptionChosen] = useState("")
     const intervalRef = useRef(null)
 
-
-
-
+    console.log(testElem , "test")
 
 
     const [timer, setTimer] = useState('00:00:00');
