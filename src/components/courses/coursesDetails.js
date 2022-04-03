@@ -111,10 +111,6 @@ const CoursesDetails = () => {
                                 </div>
                             </div>
 
-                        </div>
-<<<<<<< HEAD
-=======
-
                         <div className="cour--box--test">
                             <h1 className="cour--box--test--title">Внимание! </h1>
                             <p className="cour--box--test--desc">
@@ -128,13 +124,9 @@ const CoursesDetails = () => {
                                 </div>
                             </NavLink>
                         </div>
-
-
                     </div>
->>>>>>> c69057764d9937b8b3cee232c69eb0514162fbc4
 
                 ): <Loader/>}
-
 
             </div>
 

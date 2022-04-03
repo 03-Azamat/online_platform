@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
-<<<<<<< HEAD
 import {getTest} from "../../redux/action/corsesAction";
 
 
-const Sleh = () => {
+const Sleh= () => {
     const testElem = useSelector(state => state.test)
     const dispatch = useDispatch()
     const {id} = useParams()
@@ -15,16 +14,12 @@ const Sleh = () => {
         dispatch(getTest(id))
     },[])
     console.log(id, "idTest")
-=======
-import SlehDetails from "./slehDetails";
-
 
 const Sleh = () => {
     const testId = useParams()
     const testElem = useSelector(state => state.test)
     const dispatch = useDispatch()
     console.log(testId, "idTest")
->>>>>>> c69057764d9937b8b3cee232c69eb0514162fbc4
     console.log(testElem, "testElem")
 
     useEffect(()=>{
@@ -59,7 +54,6 @@ const Sleh = () => {
                     {/*        </div>*/}
                     {/*    ))*/}
                     {/*}*/}
-=======
                     {
                         testElem.map(el=>(
                             <div>
@@ -87,6 +81,6 @@ const Sleh = () => {
             </div>
         </div>
     );
-};
+}
 
 export default Sleh;
