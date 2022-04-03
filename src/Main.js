@@ -31,7 +31,7 @@ function Main() {
                 <Route path={"/coursesDetails/coursesLesson/:lessonId"} element={<CoursesLesson/>}/>
                 <Route path={"/about"} element={<About/>}/>
                 {/*<Route path={"/contact"} element={<Contact/>}/>*/}
-                <Route path={"/sleh"} element={<Sleh/>}/>
+                <Route path={"/sleh/:testId"} element={<Sleh/>}/>
                 <Route path={"/home"} element={<Home/>}/>
 
             </Routes>

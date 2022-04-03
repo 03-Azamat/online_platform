@@ -21,6 +21,7 @@
     <list default="true" id="649f1301-31a4-4de0-abff-e8eacccef4c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/accordion/accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accordion/accordion.js" afterDir="false" />
@@ -59,10 +60,29 @@
       <change beforePath="$PROJECT_DIR$/tabs/src/setupTests.js" beforeDir="false" />
 >>>>>>> 589e6650c705db1340d3f4abc158a1ce84ba1fa6
 =======
+=======
+      <change beforePath="$PROJECT_DIR$/src/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Test/function/Quiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Test/function/Quiz.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/card/coursesCardPaid.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/courses/courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/courses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/courses/coursesDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/coursesDetails.js" afterDir="false" />
+>>>>>>> c69057764d9937b8b3cee232c69eb0514162fbc4
       <change beforePath="$PROJECT_DIR$/src/components/coursesVideoLesson/coursesVideoLesson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/coursesVideoLesson/coursesVideoLesson.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/media/coursesLessonVideo/coursesVideoLesson.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/media/coursesLessonVideo/coursesVideoLesson.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sleh/sleh.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sleh/sleh.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sleh/slehDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sleh/slehDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/media/coursesDetails/coursesDetails.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/media/coursesDetails/coursesDetails.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/media/coursesPaid/coursesDetailsPaid.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/action/corsesAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/action/corsesAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducer/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducer/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/types/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types/actionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/courses/coursesDetails.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/courses/coursesDetails.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/style/coursesVideoLesson/ReactPlayer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/coursesVideoLesson/ReactPlayer.scss" afterDir="false" />
+<<<<<<< HEAD
 >>>>>>> 5a386e82574e26e287275ad13a8a81227bff7535
+=======
+      <change beforePath="$PROJECT_DIR$/src/style/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/index.scss" afterDir="false" />
+>>>>>>> c69057764d9937b8b3cee232c69eb0514162fbc4
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,8 +188,20 @@
       <workItem from="1648615336326" duration="15959000" />
       <workItem from="1648638353868" duration="6762000" />
       <workItem from="1648646850573" duration="131000" />
+<<<<<<< HEAD
       <workItem from="1648717649940" duration="13331000" />
 >>>>>>> 5a386e82574e26e287275ad13a8a81227bff7535
+=======
+      <workItem from="1648717649940" duration="15754000" />
+      <workItem from="1648792923905" duration="98000" />
+      <workItem from="1648801918493" duration="6632000" />
+      <workItem from="1648811206540" duration="1569000" />
+      <workItem from="1648817834727" duration="1781000" />
+      <workItem from="1648878388706" duration="40000" />
+      <workItem from="1648879337973" duration="832000" />
+      <workItem from="1648886678273" duration="3765000" />
+      <workItem from="1648891681846" duration="3341000" />
+>>>>>>> c69057764d9937b8b3cee232c69eb0514162fbc4
     </task>
     <servers />
   </component>

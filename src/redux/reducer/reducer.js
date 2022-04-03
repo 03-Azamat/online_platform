@@ -1,10 +1,17 @@
-import {GET_ABOUT, GET_COURSES, GET_COURSES_TEST, GET_SINGLE_COURSES} from "../types/actionTypes";
+import {
+    GET_ABOUT,
+    GET_COURSES,
+    GET_COURSES_TEST,
+    GET_COURSES_TEST_DETAILS,
+    GET_SINGLE_COURSES
+} from "../types/actionTypes";
 
 const initialState = {
     courses: [],
     coursesDetails: {},
     aboutReducer:[],
-    test:[]
+    test:[],
+    questionDetails:{}
 }
 
 export const reducer = (state = initialState, action) => {
@@ -25,6 +32,10 @@ export const reducer = (state = initialState, action) => {
         case GET_COURSES_TEST:
             console.log(action.payload ,"TEST")
             return {...state, test: action.payload}
+
+        case GET_COURSES_TEST_DETAILS:
+            console.log(action.payload , "question")
+            return {...state, questionDetails: action.payload}
 
         default :
             return state

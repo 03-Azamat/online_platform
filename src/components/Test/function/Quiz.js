@@ -14,7 +14,14 @@ const Quiz = () => {
     const [optionChosen, setOptionChosen] = useState("")
     const intervalRef = useRef(null)
 
+<<<<<<< HEAD
     const [timer, setTimer] = useState('00:00:00')
+=======
+    console.log(testElem , "test")
+
+
+    const [timer, setTimer] = useState('00:00:00');
+>>>>>>> c69057764d9937b8b3cee232c69eb0514162fbc4
     function  getTimeRemaining(endtime){
         const total = Date.parse(endtime) - Date.parse(new Date());
         const seconds = Math.floor((total/1000) % 60);

@@ -112,8 +112,30 @@ const CoursesDetails = () => {
                             </div>
 
                         </div>
+<<<<<<< HEAD
+=======
+
+                        <div className="cour--box--test">
+                            <h1 className="cour--box--test--title">Внимание! </h1>
+                            <p className="cour--box--test--desc">
+                                После изучения материалов курса Вы должны будете пройти тестирование.
+                                На прохождение теста Вам будет предоставлена одна попытка!
+                            </p>
+
+                            <NavLink to={`/sleh/${course.testId}`}>
+                                <div>
+                                    <button className="cour--box--test--btn">Тест</button>
+                                </div>
+                            </NavLink>
+                        </div>
+
+
+                    </div>
+>>>>>>> c69057764d9937b8b3cee232c69eb0514162fbc4
 
                 ): <Loader/>}
+
+
             </div>
 
         </section>
