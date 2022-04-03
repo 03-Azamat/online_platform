@@ -40,7 +40,7 @@ const Quiz = () => {
 
 
     function clearTimer (insaider){
-        setTimer('00:00:20');
+        setTimer('00:01:50');
         if(intervalRef.current)clearInterval(intervalRef.current);
         const id = setInterval(() => {
             startTimer(insaider);
@@ -50,7 +50,7 @@ const Quiz = () => {
 
     function getDeadlineTime(){
         let deadline = new Date();
-        deadline.setSeconds(deadline.getSeconds()+20)
+        deadline.setSeconds(deadline.getSeconds()+109  )
         return deadline;
     }
 
@@ -80,9 +80,9 @@ const Quiz = () => {
         setCurrQuestion(currQuestion + 1)
     };
     const finishQuiz = () => {
-        // if(data[currQuestion].answer === optionChosen){
-        //     setScore(score - 0);
-        // }
+        if(data[currQuestion].answer === optionChosen){
+            setScore(score - 0);
+        }
         setGameState("endScreen")
     }
     return (

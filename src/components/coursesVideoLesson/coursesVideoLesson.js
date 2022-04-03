@@ -1,28 +1,5 @@
-<<<<<<< HEAD
-// import React from 'react';
-// import ReactPlayer from 'react-player/youtube'
-// const CoursesVideoLesson = ({el}) => {
-//
-//     return (
-//         <div className='player-wrapper'>
-//             {
-//                 el.choicetopic?.topics?.videos?.map(el=>(
-//                     <ReactPlayer
-//                         className='react-player'
-//                         url={el.choicetopic?.topics?.videos?.url}
-//                         width='100%'
-//                         height='100%'
-//                     />
-//                 ))
-//             }
-//         </div>
-//     )
-// };
-
-// export default CoursesVideoLesson;
-=======
 import React, {useState} from 'react';
-import ReactPlayer from 'react-player/youtube'
+import ReactPlayer from 'react-youtube'
 const CoursesVideoLesson = ({el}) => {
     const [video , setVideo] = useState({})
     console.log(el.choicetopic?.topics?.videos)
@@ -55,4 +32,3 @@ const CoursesVideoLesson = ({el}) => {
 };
 
 export default CoursesVideoLesson;
->>>>>>> 5a386e82574e26e287275ad13a8a81227bff7535
