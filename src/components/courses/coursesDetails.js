@@ -26,6 +26,7 @@ const CoursesDetails = () => {
     const dispatch = useDispatch()
     console.log(course, "courses")
     console.log(id)
+    console.log(course?.id)
 
     useEffect(() => {
         dispatch(getCoursesDetails(id))
@@ -51,6 +52,7 @@ const CoursesDetails = () => {
 
 
                         <div className="cour--box--head ">
+
                             <div className="cour--box--head--titles">
                                 <h1 className="cour--box--head--titles--title">{course.title}</h1>
                                 <p className="cour--box--head--titles--desc">
@@ -59,7 +61,6 @@ const CoursesDetails = () => {
                                 </p>
                                 <button className="cour--box--head--titles--btn">Оставить заявку</button>
                             </div>
-
 
                             <div className="cour--box--head--dates">
 
@@ -107,7 +108,7 @@ const CoursesDetails = () => {
                                 На прохождение теста Вам будет предоставлена одна попытка!
                             </p>
 
-                            <NavLink to={`/sleh/${course.testId}`}>
+                            <NavLink to={`/sleh/${course?.id}`}>
                                 <div>
                                     <button className="cour--box--test--btn">Тест</button>
                                 </div>

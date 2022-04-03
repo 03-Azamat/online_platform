@@ -29,7 +29,10 @@ export const getAbout = () =>{
 export const getTest = (id) =>{
     return(dispatch) =>{
         axios(`https://djangorestapp.herokuapp.com/question-list/${id}/`)
-            .then(({data})=>dispatch({type:GET_COURSES_TEST, payload:data}))
+            .then(({data})=>{
+                console.log(data)
+                dispatch({type:GET_COURSES_TEST, payload:data})
+            })
         //     .catch((error) => {
         //     console.log(error)
         // })
@@ -38,7 +41,7 @@ export const getTest = (id) =>{
 
 export const getTestDetails = (id) =>{
     return(dispatch) =>{
-        axios(`https://djangorestapp.herokuapp.com/question-detaild/${id}/`)
+        axios(`https://djangorestapp.herokuapp.com/question-detailid/${id}/`)
             .then(({data})=>dispatch({type:GET_COURSES_TEST, payload:data}))
     }
 }
