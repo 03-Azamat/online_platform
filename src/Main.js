@@ -16,10 +16,6 @@ import Sleh from "./components/sleh/sleh";
 
 function Main() {
 
-    const [score, setScore] = useState(0)
-    const [gameState, setGameState] = useState("menu")
-    const [mistakes, setMistakes] = useState(0)
-
     return (
         <>
             <Header/>
@@ -37,13 +33,7 @@ function Main() {
                 {/*<Route path={"/contact"} element={<Contact/>}/>*/}
                 <Route path={"/sleh/:testId"} element={<Sleh/>}/>
                 <Route path={"/home"} element={<Home/>}/>
-                <div className="Appp">
-                    <QuizContext.Provider value={{ gameState, setGameState, score, setScore, mistakes, setMistakes}}>
-                        {gameState === "menu" && <MainMenu/>}
-                        {gameState === "quiz" && <Quiz/>}
-                        {gameState === "endScreen" && <EndScreen/>}
-                    </QuizContext.Provider>
-                </div>
+
             </Routes>
 
             <Footer/>
