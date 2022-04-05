@@ -1,5 +1,8 @@
 import React, {useState} from 'react';
-import ReactPlayer from 'react-youtube'
+import ReactPlayer from "react-player";
+
+
+
 const CoursesVideoLesson = ({el}) => {
     const [video , setVideo] = useState({})
 
@@ -17,14 +20,18 @@ const CoursesVideoLesson = ({el}) => {
                 {
                     el.choicetopic?.topics?.videos?.map(item=>(
                         <div className="react-player" onClick={() => setVideo(item)}>
-                                <span className="react-lesson-video">
                                     <ReactPlayer
                                         url={item.url}
-                                        width="250px"
-                                        height="100px"
+                                        width="20vw"
+                                        height="15vh"
                                     />
+<<<<<<< HEAD
                                 </span>
                             <p className="text-base ml-3 md: text-sm ">{item.title}</p>
+=======
+
+                            <p className="text-base ml-3 md: text-sm">{item.title}</p>
+>>>>>>> df3898523bc9e4c6301abb515c2376db3b1d7a9d
                         </div>
                     ))
                 }

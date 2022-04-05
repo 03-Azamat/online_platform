@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {NavLink, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getCoursesDetails} from "../../redux/action/corsesAction";
@@ -11,23 +11,24 @@ import Loader from "../../loader/loader";
 
 
 const CoursesDetails = () => {
-    // const [ isBought , setIsBought ] = useState(false)
-    // const [fagData , setFaqData] = useSelector({})
+    const [ isBought , setIsBought ] = useState(false)
+    const [fagData , setFaqData] = useSelector({})
 
     const {id} = useParams()
     console.log(id, "iddd")
     const {coursesDetails : course} = useSelector(s => s)
-    // if(cour?.free) {
-    //     setIsBought(false);
-    //     dispatch(cour?.free)
-    // }else{
-    //     setIsBought(true);
-    //     dispatch(cour?.bought)
-    // }
+    if(course?.free) {
+        setIsBought(false);
+        dispatch(course?.free)
+    }else{
+        setIsBought(true);
+        dispatch(course?.bought)
+    }
 
     const dispatch = useDispatch()
     console.log(course, "courses")
     console.log(id)
+    console.log(course?.id)
 
     useEffect(() => {
         dispatch(getCoursesDetails(id))
@@ -51,6 +52,7 @@ const CoursesDetails = () => {
                         <p>Курс</p>
                     </span>
                         <div className="cour--box--head ">
+
                             <div className="cour--box--head--titles">
                                 <h1 className="cour--box--head--titles--title">{course.title}</h1>
                                 <p className="cour--box--head--titles--desc">
@@ -59,7 +61,6 @@ const CoursesDetails = () => {
                                 </p>
                                 <button className="cour--box--head--titles--btn">Оставить заявку</button>
                             </div>
-
 
                             <div className="cour--box--head--dates">
 
@@ -90,25 +91,12 @@ const CoursesDetails = () => {
                             </h1>
 
                             <div className="cour--box--accordion--block">
-                                {/*<Accordion/>*/}
                             </div>
-                            <NavLink to={"/MainMenu"}>
-                                <button className="home--block--box--btn md-5" onClick={() => <MainTest/>}>Курсы</button>
-                            </NavLink>
-
-
                                 {
                                     course?.coursechoice?.map(el=>(
                                         <Accordion el={el} />
                                     ))
                                 }
-                                <div>
-                                    {
-                                        course?.coursechoice?.map(el=>(
-                                            <Accordion el={el} />
-                                        ))
-                                    }
-                                </div>
                             </div>
 
                         <div className="cour--box--test">
@@ -118,11 +106,13 @@ const CoursesDetails = () => {
                                 На прохождение теста Вам будет предоставлена одна попытка!
                             </p>
 
-                            <NavLink to={`/sleh/${course.testId}`}>
+                            <NavLink to={`/question/${course.id}`}>
                                 <div>
                                     <button className="cour--box--test--btn">Тест</button>
                                 </div>
                             </NavLink>
+
+
                         </div>
                     </div>
 

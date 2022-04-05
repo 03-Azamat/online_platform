@@ -10,7 +10,7 @@ const initialState = {
     courses: [],
     coursesDetails: {},
     aboutReducer:[],
-    test:[],
+    question:[],
     questionDetails:{}
 }
 
@@ -31,7 +31,7 @@ export const reducer = (state = initialState, action) => {
 
         case GET_COURSES_TEST:
             console.log(action.payload ,"TEST")
-            return {...state, test: action.payload}
+            return {...state, question: action.payload}
 
         case GET_COURSES_TEST_DETAILS:
             console.log(action.payload , "question")

@@ -1,30 +1,13 @@
 import './style/App.scss';
-import Header from "./components/header/Header";
-import Footer from "./components/footer/Footer";
-import {Routes,Route} from "react-router-dom";
-import About from "./components/about/about";
-import Register from "./components/Auth/Register/Register";
-
-import Courses from "./components/courses/courses";
-import CoursesDetails from "./components/courses/coursesDetails";
-import CoursesLesson from "./components/courses/coursesLesson";
-import RegisterCode from "./components/Auth/Register/RegisterCode";
-import Person from "./components/Auth/Person/Person";
-import Home from "./components/home/home";
-import React, {useState} from "react";
-import Quiz from "./components/Test/function/Quiz";
-import MainMenu from "./components/Test/function/MainMenu";
-import EndScreen from "./components/Test/function/EndScreen";
-import {QuizContext} from "./data/Contexts";
-import Sleh from "./components/sleh/sleh";
+import React from "react";
+import Main from "./Main";
 
 
 function App() {
-    const [score, setScore] = useState(0)
-    const [gameState, setGameState] = useState("menu")
-    const [mistakes, setMistakes] = useState(0)
+
     return (
         <>
+<<<<<<< HEAD
             <Header/>
             <Routes>
                 <Route path={"/"} element={<Home/>}/>
@@ -51,6 +34,9 @@ function App() {
             </Routes>
 
             <Footer/>
+=======
+            <Main/>
+>>>>>>> df3898523bc9e4c6301abb515c2376db3b1d7a9d
         </>
     );
 }

@@ -29,16 +29,17 @@ export const getAbout = () =>{
 export const getTest = (id) =>{
     return(dispatch) =>{
         axios(`https://djangorestapp.herokuapp.com/question-list/${id}/`)
-            .then(({data})=>dispatch({type:GET_COURSES_TEST, payload:data}))
-        //     .catch((error) => {
-        //     console.log(error)
-        // })
+            .then(({data})=>{
+                console.log(data)
+                dispatch({type:GET_COURSES_TEST, payload:data})
+            })
     }
 }
 
 export const getTestDetails = (id) =>{
     return(dispatch) =>{
-        axios(`https://djangorestapp.herokuapp.com/question-detaild/${id}/`)
-            .then(({data})=>dispatch({type:GET_COURSES_TEST, payload:data}))
+        axios(`https://djangorestapp.herokuapp.com/question-detailid/${id}/`)
+            .then(({data})=>
+                dispatch({type:GET_COURSES_TEST, payload:data}))
     }
 }

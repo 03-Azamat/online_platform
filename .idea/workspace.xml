@@ -62,6 +62,8 @@
 =======
 =======
       <change beforePath="$PROJECT_DIR$/src/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.js" afterDir="false" />
+<<<<<<< HEAD
+=======
       <change beforePath="$PROJECT_DIR$/src/components/Test/function/Quiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Test/function/Quiz.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/card/coursesCardPaid.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/courses/courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/courses.js" afterDir="false" />
@@ -83,6 +85,7 @@
 =======
       <change beforePath="$PROJECT_DIR$/src/style/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/index.scss" afterDir="false" />
 >>>>>>> c69057764d9937b8b3cee232c69eb0514162fbc4
+>>>>>>> daecaffba40f946e06f12b2c09453c22d9b0f6ce
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,7 +204,14 @@
       <workItem from="1648879337973" duration="832000" />
       <workItem from="1648886678273" duration="3765000" />
       <workItem from="1648891681846" duration="3341000" />
+<<<<<<< HEAD
+      <workItem from="1648895577660" duration="853000" />
+      <workItem from="1648903713855" duration="1044000" />
+      <workItem from="1648966779159" duration="12172000" />
+      <workItem from="1648981742815" duration="2533000" />
+=======
 >>>>>>> c69057764d9937b8b3cee232c69eb0514162fbc4
+>>>>>>> daecaffba40f946e06f12b2c09453c22d9b0f6ce
     </task>
     <servers />
   </component>

@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
-/////////Tailwind///////
+/////////Tailwind/////////////////////////////////////
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/////////////////////
+///////////////////////////////////////////////////////
 @import "Auth/Register/Register";
 @import "Auth/Register/FormInput";
 @import "Auth/Register/registerCode";
@@ -15,25 +15,29 @@
 @import "Auth/Updated/UpdatePassword";
 @import "Auth/Updated/UpdateEmail";
 
-//////////////////////MAIN COURSES///////////////////////
+//////////////////////MAIN COURSES//////////////////////
 @import "./../style/courses/courses";
 @import "./../style/accordion/accordion";
 
-//////////////////////COURSES FREE///////////////////////
+//////////////////////COURSES FREE//////////////////////
 @import "./../style/courses/coursesDetails";
 @import "./../style/courses/coursesLesson";
 @import "./../style/card/coursesCard";
 
-////////// LESSON VIDEO /////////////////////////////////
+////////// LESSON VIDEO ////////////////////////////////
 @import "./../style/coursesVideoLesson/ReactPlayer";
 
-////////////////////////COMPONENTS///////////////////////
+///////////// LESSON TEST //////////////////////////////
+@import "./../style/question/question";
+
+
+////////////////////////COMPONENTS//////////////////////
 @import "./../style/Header/header";
 @import "./../style/home/home";
 @import "./../style/about/about";
 @import "./../style/Footer/footer";
 
-///////////////////////REGISTER//////////////////////////
+///////////////////////REGISTER/////////////////////////
 @import "./../style/register/RegisterCopy";
 @import "./../style/register/FormInput";
 @import "./../style/register/registerCode";

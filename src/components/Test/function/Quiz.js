@@ -5,11 +5,29 @@ import data from '../../../data/state'
 import '../../../style/Quiz/Quiz.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
+<<<<<<< HEAD
 import {getTest} from "../../../redux/action/corsesAction";
+=======
+import {getCoursesDetails, getTest} from "../../../redux/action/corsesAction";
+>>>>>>> df3898523bc9e4c6301abb515c2376db3b1d7a9d
 
 
 
 const Quiz = () => {
+<<<<<<< HEAD
+=======
+    // const {idTest} = useSelector()
+    //
+    // const elem = useSelector(state => state.question)
+    // const dispatch = useDispatch()
+    //
+    // console.log(idTest, "idTest")
+    // console.log(elem, "testElem")
+    //
+    // useEffect(() => {
+    //     dispatch(getTest(idTest))
+    // }, [])
+>>>>>>> df3898523bc9e4c6301abb515c2376db3b1d7a9d
     const {score, setScore, setGameState,setMistakes,mistakes} = useContext(QuizContext)
     const [currQuestion, setCurrQuestion] = useState(0)
     const [optionChosen, setOptionChosen] = useState("")
@@ -20,9 +38,13 @@ const Quiz = () => {
     console.log(testId, "idTest")
     console.log(testElem, "testElem")
 
+<<<<<<< HEAD
     useEffect(()=>{
         dispatch(getTest(testId))
     },[])
+=======
+
+>>>>>>> df3898523bc9e4c6301abb515c2376db3b1d7a9d
 
 
     const [timer, setTimer] = useState('00:00:00');
@@ -105,6 +127,7 @@ const Quiz = () => {
                     <h1 className="test-colum">
                         {timer}
                     </h1>
+<<<<<<< HEAD
                     <div key={testElem.testId}>
                         <div className/>
                         {testElem.map(el => (
@@ -121,6 +144,41 @@ const Quiz = () => {
                                         </div>
                                     ))
                                 }
+=======
+                    <div>
+
+                    </div>
+                    {
+                        data.slice(0,1).map(el => (
+                            <div>
+                                <p>{el.title}</p>
+                                <div key={el.id}>
+                                    <h1 className="numb-1">{el.numb}</h1>
+                                    <h1 className="numb-1">{el.answer}</h1>
+                                    <h1 className="numb">{el.question}</h1>
+                                    <div className="promo">
+                                        <h1 className="replica">
+                                            {
+                                                data[currQuestion].prompt
+                                            }
+                                        </h1>
+                                    </div>
+                                    <div className="options">
+                                        <button type="button" onClick={ () => setOptionChosen("A")}
+                                                className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">
+                                            {data[currQuestion].optionA}</button>
+                                        <button type="button" onClick={ () => setOptionChosen("B")}
+                                                className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">
+                                            {data[currQuestion].optionD}</button>
+                                        <button type="button" onClick={ () => setOptionChosen("C")}
+                                                className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">
+                                            {data[currQuestion].optionB}</button>
+                                        <button type="button" onClick={ () => setOptionChosen("D")}
+                                                className="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">
+                                            {data[currQuestion].optionC}</button>
+                                    </div>
+                                </div>
+>>>>>>> df3898523bc9e4c6301abb515c2376db3b1d7a9d
                             </div>
                         ))}
                         }
