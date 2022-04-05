@@ -15,6 +15,8 @@ import {QuizContext} from "./data/Contexts";
 import Quiz from "./components/Test/function/Quiz";
 import EndScreen from "./components/Test/function/EndScreen";
 import Question from "./components/question/question";
+import Login from "./components/Auth/Person/Login";
+import EmailActive from "./components/Auth/emailActive/EmailActive";
 
 
 
@@ -30,7 +32,6 @@ function Main() {
                 <Route path={"/about"} element={<About/>}/>
                 <Route path={"/courses"} element={<Courses/>}/>
                 <Route path={"/coursesDetails/:id"} element={<CoursesDetails/>}/>
-                <Route path={"/person"} element={<Person/>}/>
                 <Route path={"/register-code"} element={<RegisterCode/>}/>
                 <Route path={"/register-check"} element={<Register/>}/>
                 <Route path={"/question/:testId"} element={<Question/>}/>
@@ -38,6 +39,9 @@ function Main() {
                 <Route path={"/about"} element={<About/>}/>
                 <Route path={"/home"} element={<Home/>}/>
                 <Route path={"/quiz/:idTest"} element={<Quiz/>}/>
+                <Route path={"/person"} element={<Person/>}/>
+                <Route path={"/*"} element={<EmailActive/>}/>
+                <Route path={"/login"} element={<Login/>}/>
 
             </Routes>
 

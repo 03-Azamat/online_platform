@@ -8,7 +8,6 @@ import {useParams} from "react-router-dom";
 import {getCoursesDetails, getTest} from "../../../redux/action/corsesAction";
 
 
-
 const Quiz = () => {
     // const {idTest} = useSelector()
     //

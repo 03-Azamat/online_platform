@@ -22,7 +22,7 @@ export const reducer = (state = initialState, action) => {
             return {...state, coursesDetails: action.payload}
 
         case GET_COURSES:
-            console.log(action.payload,"COURSES")
+            // console.log(action.payload,"COURSES")
             return {...state, courses: action.payload}
 
         case GET_ABOUT:

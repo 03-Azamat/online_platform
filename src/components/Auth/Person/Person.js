@@ -3,9 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPen} from "@fortawesome/free-solid-svg-icons";
 import {faUser} from "@fortawesome/free-solid-svg-icons/faUser";
 import {faKey} from "@fortawesome/free-solid-svg-icons/faKey";
-import {faEye} from "@fortawesome/free-solid-svg-icons/faEye";
 import {faEyeSlash} from "@fortawesome/free-solid-svg-icons/faEyeSlash";
-import {faImage} from "@fortawesome/free-solid-svg-icons/faImage";
 import UpdatePosition from "../Updated/UpdatePosition";
 import UpdateOrganization from "../Updated/UpdateOrganization";
 import UpdateEmail from "../Updated/UpdateEmail";
@@ -13,7 +11,9 @@ import UpdatePassword from "../Updated/UpdatePassword";
 import axios from "axios";
 import {faArrowRightLong} from "@fortawesome/free-solid-svg-icons/faArrowRightLong";
 import {toast} from "react-toastify";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+import {logout} from "../Register/helpers";
+import {publicApi} from "../HTTP/publicApi";
 
 const Person = () => {
     const {id} = useParams()
@@ -23,23 +23,36 @@ const Person = () => {
     const [orModal, setOrModal] = useState(false)
     const [emailModal, setEmailModal] = useState(false)
     const [passwordModal, setPasswordModal] = useState(false)
+    const navigate = useNavigate()
+    const access = JSON.parse(localStorage.getItem("access"));
+    const refresh = JSON.parse(localStorage.getItem("refresh"));
     useEffect(() => {
-        axios(`https://djangorestapp.herokuapp.com/users/`, {
+        const  user = publicApi.get("users/me/", {
             headers: {
-                authorization :"Bearer" + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ4MzcwNTE4LCJqdGkiOiI2ZGY3M2JjYmM1OGQ0Yjk0ODQ3MWM2ZTE1Y2Y4OTZkOSIsInVzZXJfaWQiOjF9.QM8c2rfQyXAsR3hgyY6DXMBTI51IdmrGQM5E7TgerL0"
+                "Authorization": `Bearer ${access}`
             }
         })
-            // axios(`http://localhost:8000/api/v1/users/`)
-            .then(({data}) => {
-                localStorage.setItem("user", JSON.stringify(data.user))
-                console.log(data)
-                setPersons(data)
-            }).catch((error) => {
-            // toast.error(error.response.data.email[0])
-            console.log(error.response.data)
-        })
-        // console.log(persons)
+            .then(({data}) => setPersons(data))
+
     }, [])
+    console.log("persons",persons)
+    // useEffect(() => {
+    //     axios(`https://djangorestapp.herokuapp.com/users/me`, {
+    //         headers: {
+    //             authorization :`Bearer${access}`
+    //         }
+    //     })
+    //         // axios(`http://localhost:8000/api/v1/users/`)
+    //         .then(({data}) => {
+    //             localStorage.setItem("user", JSON.stringify(data.user))
+    //             console.log(data)
+    //             setPersons(data)
+    //         }).catch((error) => {
+    //         // toast.error(error.response.data.email[0])
+    //         console.log(error.response.data)
+    //     })
+    //     console.log("persons",persons)
+    // }, [])
 
     return (
         <section id='person'>
@@ -50,7 +63,7 @@ const Person = () => {
 
                     <div className='btn'>
                         <FontAwesomeIcon icon={faUser} className='btn--user'/>
-                        <h2>Ороскул уулу Эрмат</h2>
+                        <h2>{persons.name}</h2>
                         {/*<h2>{persons[0].name}</h2>*/}
                         <div className="btn--btns">
                             {/*<div className='btn--btns--tabRoute'> Выбрать фото</div>*/}
@@ -67,7 +80,14 @@ const Person = () => {
                                      setIndex(1)
                                  }>Мои курсы
                             </div>
-                            <div className='btn--btns--tabRoute'>Выйти</div>
+                            <div
+                                onClick={() => {
+                                    logout()
+                                    navigate('/')
+                                }
+                                }
+                                className='btn--btns--tabRoute'
+                            >Выйти</div>
                         </div>
                     </div>
 
@@ -79,16 +99,15 @@ const Person = () => {
 
                                 <div className="flex flex-col">
                                     <label>ФИО</label>
-                                    <button className='person--content--start--name'>
-                                        <p>
-
-                                        </p>
+                                    <button
+                                        className='person--content--start--name  flex items-center justify-start'>
+                                        <p className='p-3'> {persons.name}</p>
                                     </button>
                                 </div>
                                 <div className="flex flex-col">
                                     <label>Номер телефона</label>
                                     <button className='person--content--start--number'>
-                                        <p>+996 555 55 55 55</p>
+                                        <p>{persons.phone_number}</p>
                                         < FontAwesomeIcon
                                             icon={faPen} style={{color: "#01487E"}}/>
                                     </button>
@@ -112,7 +131,8 @@ const Person = () => {
 
                                 <div className="flex flex-col">
                                     <label>Организация</label>
-                                    <button className='person--content--center--organization'><p/>
+                                    <button className='person--content--center--organization'>
+                                        <p></p>
                                         < FontAwesomeIcon
                                             icon={faPen} style={{color: "#01487E"}}
                                             onClick={() => setOrModal(true)}/>
@@ -124,7 +144,8 @@ const Person = () => {
                             <div className='person--content--end'>
                                 <div className="flex flex-col">
                                     <label>Email</label>
-                                    <button className='person--content--end--email'><p>{persons.data}</p>
+                                    <button className='person--content--end--email'>
+                                        <p className='flex items-center justify-start '>{persons.email}</p>
                                         < FontAwesomeIcon
                                             icon={faPen} style={{color: "#01487E"}}
                                             onClick={() => setEmailModal(true)}/>
@@ -160,18 +181,6 @@ const Person = () => {
                                 </div>
                             </div>
                         </div>
-
-                        {/*<div className='person--photo' style={{padding: "100px 0 60px 0"}}>*/}
-                        {/*    <div className='person--photo--pas1' style={{margin: "0 45px 0 0"}}>*/}
-                        {/*        <h2>Фотография паспорта</h2>*/}
-                        {/*        <span><FontAwesomeIcon icon={faImage}/> <text>Выбрать файл</text></span>*/}
-                        {/*    </div>*/}
-                        {/*    <div className='person--photo--pas2'>*/}
-                        {/*        <h2>Фотография с паспортом в руках</h2>*/}
-                        {/*        <span><FontAwesomeIcon icon={faImage}/> <text>Выбрать файл</text></span>*/}
-
-                        {/*    </div>*/}
-                        {/*</div>*/}
                         <UpdatePosition poModal={poModal} setPoModal={setPoModal}/>
                         <UpdateOrganization orModal={orModal} setOrModal={setOrModal}/>
                         <UpdateEmail emailModal={emailModal} setEmailModal={setEmailModal}/>
