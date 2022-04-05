@@ -99,18 +99,18 @@ const Person = () => {
 
                                 <div className="flex flex-col">
                                     <label>ФИО</label>
-                                    <button
+                                    <div
                                         className='person--content--start--name '>
                                         <p className='p-3'> {persons.name}</p>
-                                    </button>
+                                    </div>
                                 </div>
                                 <div className="flex flex-col">
                                     <label>Номер телефона</label>
-                                    <button className='person--content--start--number'>
+                                    <div className='person--content--start--number'>
                                         <p>{persons.phone_number}</p>
                                         < FontAwesomeIcon
                                             icon={faPen} style={{color: "#01487E"}}/>
-                                    </button>
+                                    </div>
                                 </div>
 
                             </div>
@@ -118,23 +118,23 @@ const Person = () => {
                             <div className="person--content--center">
                                 <div className="flex flex-col">
                                     <label>Должность</label>
-                                    <button className='person--content--center--position'>
+                                    <div className='person--content--center--position'>
                                         <p></p>
                                         < FontAwesomeIcon icon={faPen} style={{color: "#01487E"}}
                                                           onClick={() => setPoModal(true)}
 
                                         />
-                                    </button>
+                                    </div>
                                 </div>
 
                                 <div className="flex flex-col">
                                     <label>Организация</label>
-                                    <button className='person--content--center--organization'>
+                                    <div className='person--content--center--organization'>
                                         <p></p>
                                         < FontAwesomeIcon
                                             icon={faPen} style={{color: "#01487E"}}
                                             onClick={() => setOrModal(true)}/>
-                                    </button>
+                                    </div>
                                 </div>
 
                             </div>
@@ -142,12 +142,12 @@ const Person = () => {
                             <div className='person--content--end'>
                                 <div className="flex flex-col">
                                     <label>Email</label>
-                                    <button className='person--content--end--email'>
+                                    <div className='person--content--end--email'>
                                         <p className='flex items-center justify-start '>{persons.email}</p>
                                         < FontAwesomeIcon
                                             icon={faPen} style={{color: "#01487E"}}
                                             onClick={() => setEmailModal(true)}/>
-                                    </button>
+                                    </div>
                                 </div>
 
                                 <div className="flex flex-col">
