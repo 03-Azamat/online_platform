@@ -3,26 +3,16 @@ import {useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {getTest} from "../../redux/action/corsesAction";
 
-
-const Sleh= () => {
-    const testElem = useSelector(state => state.test)
-    const dispatch = useDispatch()
-    const {id} = useParams()
-    console.log(id, "ID")
-    console.log(testElem,"testElem")
-    useEffect(()=>{
-        dispatch(getTest(id))
-    },[])
-    console.log(id, "idTest")
-
 const Sleh = () => {
-    const testId = useParams()
+    const {testId} = useParams()
+    console.log(useParams())
     const testElem = useSelector(state => state.test)
     const dispatch = useDispatch()
     console.log(testId, "idTest")
     console.log(testElem, "testElem")
 
     useEffect(()=>{
+        console.log(1)
         dispatch(getTest(testId))
     },[])
 
@@ -36,41 +26,22 @@ const Sleh = () => {
                         <p className="test-text">Бизнес аналитик</p>
                         <p>1/20</p>
                     </div>
-
-                    {/*{*/}
-                    {/*    testElem.map(el => (*/}
-                    {/*        <div>*/}
-                    {/*            <div key={el.id}>*/}
-                    {/*                <p>{el.title}</p>*/}
-                    {/*                {*/}
-                    {/*                    el.flag.map(el => (*/}
-                    {/*                        <div>*/}
-                    {/*                            <p>{el.text}</p>*/}
-                    {/*                            <button>{el.boo}</button>*/}
-                    {/*                        </div>*/}
-                    {/*                    ))*/}
-                    {/*                }*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*    ))*/}
-                    {/*}*/}
-                    {
-                        testElem.map(el=>(
-                            <div>
-                                <p>
-                                    {el.title}
-                                </p>
-                                {
-                                    el.flag?.map(el=>(
-                                        <div key={el.testId}>
-                                            <p>
-                                                {el.title}
-                                            </p>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                        ))
+                    {testElem.map(el => (
+                        <div>
+                            <p>
+                                {el.title}
+                            </p>
+                            {
+                                el.flag?.map(el => (
+                                    <div key={el.testId}>
+                                        <p>
+                                            {el.title}
+                                        </p>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    ))}
                     }
 
                 </div>

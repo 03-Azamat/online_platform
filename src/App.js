@@ -37,7 +37,6 @@ function App() {
                 <Route path={"/coursesDetails/coursesLesson/:lessonId"} element={<CoursesLesson/>}/>
                 <Route path={"/about"} element={<About/>}/>
                 <Route path={"/menu"} element={<MainMenu/>}/>
-                <Route path={"/menu"} element={<MainMenu/>}/>
                 <Route path={"/MainMenu"} element={
                     <div className="Appp">
                         <QuizContext.Provider value={{ gameState, setGameState, score, setScore, mistakes, setMistakes}}>
@@ -45,6 +44,7 @@ function App() {
                             {gameState === "quiz" && <Quiz/>}
                             {gameState === "endScreen" && <EndScreen/>}
                         </QuizContext.Provider>
+
                     </div>
                 }/>
                 <Route path={"/home"} element={<Home/>}/>

@@ -24,10 +24,6 @@ const CoursesVideoLesson = ({el}) => {
                                         height="100px"
                                     />
                                 </span>
-
-
-
-
                             <p className="text-base ml-3 md: text-sm ">{item.title}</p>
                         </div>
                     ))
