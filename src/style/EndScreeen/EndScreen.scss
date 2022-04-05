@@ -5,15 +5,46 @@
   background: #8F8F8F;
   padding: 15% 15%;
   .three {
-    width: 591px;
-    height: 405px;
+    width: 594px;
+    height: 426px;
     background: #ffffff;
-    border-radius: 10px;
+    border-radius: 40px;
     .text{
    text-align: center;
+      margin-bottom: 4vh;
     }
     .lipton{
+      display: flex;
+      margin: 17px 35px;
+    }
+    .lipton-1{
+      display: flex;
+      margin: 0 35px;
+    }
+    .liptonn{
+      margin: 10px 90px;
+      margin-bottom: 5vh;
+    }
+    .liptonn-1{
+      margin: 10px 90px;
+    }
+    .LIPTON{
       text-align: center;
+      width: 62px;
+      height: 40px;
+      background: #46C93A;
+      border-radius: 5px;
+      padding-top: 8px;
+    }
+    .LIPTON-1{
+      text-align: center;
+      margin-bottom: 4vh;
+      width: 62px;
+      height: 40px;
+      background: #FF0000;
+      border-radius: 5px;
+      padding-top: 8px;
+      margin-left: 106px;
     }
     button {
       padding: 15px 25px;
@@ -29,8 +60,8 @@
       box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
       transition: all 250ms;
       overflow: hidden;
-      margin-left: 177px;
-      margin-top: 266px;
+      margin-left: 190px;
+      margin-top: 48px;
     }
 
     button::before {

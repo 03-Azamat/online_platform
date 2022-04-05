@@ -7,6 +7,11 @@ import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import {NavLink} from "react-router-dom";
 import HookForm from "../Auth/Person/HookForm";
 import SignIn from "../Auth/Register/SignIn";
+import {QuizContext} from "../../data/Contexts";
+import MainMenu from "../Test/function/MainMenu";
+import Quiz from "../Test/function/Quiz";
+import EndScreen from "../Test/function/EndScreen";
+import MainTest from "../Test/MainTest";
 // import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 // import { faXmark} from "@fortawesome/free-solid-svg-icons";
 //
@@ -14,10 +19,16 @@ import SignIn from "../Auth/Register/SignIn";
 // import RegisterCopy from "../Auth/Register/RegisterCopy";
 // import FormInput from "../Auth/Register/FormInput";
 // import RegisterCode from "../Auth/Register/RegisterCode";
+// import {Quiz} from "../Test/function/Quiz";
+// import EndScreen from "../Test/function/EndScreen";
 
 const Header = () => {
     const [activeForm,setActiveForm] = useState(false)
     const [signActive, setSignActive] = useState(false)
+    const [testActive, setTestActive] = useState(false)
+    // const [score, setScore] = useState(0)
+    // const [gameState, setGameState] = useState("menu")
+
     return (
         <header>
             <div className="header">
@@ -50,8 +61,18 @@ const Header = () => {
                         </div>
                         <BurgerMenu/>
                     </div>
+                    {/*<div>*/}
+                    {/*    <QuizContext.Provider value={{*/}
+                    {/*        gameState,*/}
+                    {/*        setGameState,*/}
+                    {/*        score,*/}
+                    {/*        setScore}}>*/}
+                    {/*        {gameState === "menu" && <MainMenu/>}*/}
+                    {/*        {gameState === "quiz" && <Quiz/>}*/}
+                    {/*        {gameState === "endScreen" && <EndScreen/>}*/}
+                    {/*    </QuizContext.Provider>*/}
+                    {/*</div>*/}
                 </div>
-
             </div>
             <HookForm active={activeForm}  setActive={setActiveForm}  />
             <SignIn active={signActive}  setActive={setSignActive}  />

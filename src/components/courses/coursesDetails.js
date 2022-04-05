@@ -1,27 +1,29 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {NavLink, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getCoursesDetails} from "../../redux/action/corsesAction";
 import Cour from "../../image/cour_logo.svg"
 import {add , format } from "date-fns"
+import MainTest from "../Test/MainTest";
+
 import Accordion from "../accordion/accordion";
 import Loader from "../../loader/loader";
 
 
 const CoursesDetails = () => {
-    // const [ isBought , setIsBought ] = useState(false)
-    // const [fagData , setFaqData] = useSelector({})
+    const [ isBought , setIsBought ] = useState(false)
+    const [fagData , setFaqData] = useSelector({})
 
     const {id} = useParams()
     console.log(id, "iddd")
     const {coursesDetails : course} = useSelector(s => s)
-    // if(cour?.free) {
-    //     setIsBought(false);
-    //     dispatch(cour?.free)
-    // }else{
-    //     setIsBought(true);
-    //     dispatch(cour?.bought)
-    // }
+    if(course?.free) {
+        setIsBought(false);
+        dispatch(course?.free)
+    }else{
+        setIsBought(true);
+        dispatch(course?.bought)
+    }
 
     const dispatch = useDispatch()
     console.log(course, "courses")
@@ -49,8 +51,6 @@ const CoursesDetails = () => {
                         <img src={Cour} alt=""/>
                         <p>Курс</p>
                     </span>
-
-
                         <div className="cour--box--head ">
 
                             <div className="cour--box--head--titles">
@@ -91,15 +91,13 @@ const CoursesDetails = () => {
                             </h1>
 
                             <div className="cour--box--accordion--block">
-                                <div>
-                                    {
-                                        course?.coursechoice?.map(el=>(
-                                            <Accordion el={el} />
-                                        ))
-                                    }
-                                </div>
                             </div>
-                        </div>
+                                {
+                                    course?.coursechoice?.map(el=>(
+                                        <Accordion el={el} />
+                                    ))
+                                }
+                            </div>
 
                         <div className="cour--box--test">
                             <h1 className="cour--box--test--title">Внимание! </h1>
@@ -108,18 +106,17 @@ const CoursesDetails = () => {
                                 На прохождение теста Вам будет предоставлена одна попытка!
                             </p>
 
-                            <NavLink to={`/sleh/${course?.id}`}>
+                            <NavLink to={`/question/${course.id}`}>
                                 <div>
                                     <button className="cour--box--test--btn">Тест</button>
                                 </div>
                             </NavLink>
+
+
                         </div>
-
-
                     </div>
 
                 ): <Loader/>}
-
 
             </div>
 

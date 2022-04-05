@@ -4,33 +4,50 @@ import data from '../../../data/state'
 import '../../../style/EndScreeen/EndScreen.scss'
 import {NavLink} from "react-router-dom";
 import { Line, Circle } from 'rc-progress'
-import {useSelector} from "react-redux";
+import axios from "axios";
 const EndScreen = () => {
-    const {score, setScore, setGameState} = useContext(QuizContext)
+    const {score, setScore, setGameState, mistakes} = useContext(QuizContext)
+
     const restartQuiz = () => {
         setScore(0)
         setGameState("menu")
+        axios.post("https://djangorestapp.herokuapp.com/test-update/", score,mistakes)
     }
 
     return (
         <div className="EndScreen">
-           <div className="three">
-               <h1 className="text">Тест завершён</h1>
-               <h1 className="lipton"> Из провилных ответов:<Line percent="10" strokeWidth="4" strokeColor="#D3D3D3"/>{score} </h1>
-               <h1 className="lipton"> Из непровилных ответов:<Line percent="10" strokeWidth="4" strokeColor="#D3D3D3" />{data.length}</h1>
+            <div className="three">
+                <h1 className="text">Тест завершён</h1>
+                {
+                    score >= 10 ? <p className="text"> Вы успешно прошли тест!</p>
+                        :
+                        <p className="text">
+                            Извините, вы провалили тест
+                    </p>
+                }
+                <div className="lipton">
+                    <h1 className="liptonn">Правильные ответы :</h1>
+                    <h2 className="LIPTON">{score}</h2>
+                </div>
+                  <div className="lipton-1">
+                      <h1 className="liptonn-1"> Ошибки :</h1>
+                      <h2 className="LIPTON-1">{mistakes}</h2>
+                  </div>
 
-               <NavLink to={"/Home"}>
-                   {
-                       score >= 10 ? <NavLink to={"/"}>
-                           <button className="buuttons" onClick={restartQuiz}>
-                               Вы не прошли тест
-                           </button>
-                       </NavLink>: <button className="buuttons" onClick={restartQuiz}>
-                           Вы не прошли тест
-                       </button>
-                   }
-               </NavLink>
-           </div>
+                <NavLink to={"/person"}>
+                    {
+                        score >= 10 ? <NavLink to={"/person"}>
+                            <button className="buuttons" onClick={restartQuiz}>
+                                Завершить тест
+                            </button>
+                        </NavLink>
+                            :
+                            <button className="buuttons" onClick={restartQuiz}>
+                                Завершить тест
+                            </button>
+                    }
+                </NavLink>
+            </div>
         </div>
     );
 };
