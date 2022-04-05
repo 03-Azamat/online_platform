@@ -97,9 +97,11 @@
           display: flex;
           justify-content: space-between;
           &--name{
+            display: flex;
+            align-items: center;
+            justify-content: start;
             width: 357px;
             height: 53px;
-
             border: 1px solid #6A6A6A;
             box-sizing: border-box;
             border-radius: 5px;
@@ -112,7 +114,6 @@
             padding: 10px;
             width: 357px;
             height: 53px;
-
             border: 1px solid #6A6A6A;
             box-sizing: border-box;
             border-radius: 5px;
@@ -127,9 +128,8 @@
             height: 132px;
             padding: 10px;
             display: flex;
-            justify-content: end;
+            justify-content: space-between;
             text-align: start;
-
             border: 1px solid #6A6A6A;
             box-sizing: border-box;
             border-radius: 5px;
@@ -140,9 +140,8 @@
             height: 132px;
             padding: 10px;
             display: flex;
-            justify-content: end;
+            justify-content: space-between;
             text-align: start;
-
             border: 1px solid #6A6A6A;
             box-sizing: border-box;
             border-radius: 5px;
@@ -156,10 +155,9 @@
             width: 357px;
             height: 53px;
             display: flex;
-            justify-content: end;
-            text-align: start;
+            justify-content: space-between;
+            align-items: center;
             padding: 10px;
-
             border: 1px solid #6A6A6A;
             box-sizing: border-box;
             border-radius: 5px;

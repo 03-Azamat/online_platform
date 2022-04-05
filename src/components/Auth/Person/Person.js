@@ -100,7 +100,7 @@ const Person = () => {
                                 <div className="flex flex-col">
                                     <label>ФИО</label>
                                     <button
-                                        className='person--content--start--name  flex items-center justify-start'>
+                                        className='person--content--start--name '>
                                         <p className='p-3'> {persons.name}</p>
                                     </button>
                                 </div>
@@ -119,9 +119,7 @@ const Person = () => {
                                 <div className="flex flex-col">
                                     <label>Должность</label>
                                     <button className='person--content--center--position'>
-                                        <p>
-                                            {/*{persons[0].age} {persons[0].name} {persons[0].name} {persons[0].name} {persons[0].car} {persons[0].createdAt}*/}
-                                        </p>
+                                        <p></p>
                                         < FontAwesomeIcon icon={faPen} style={{color: "#01487E"}}
                                                           onClick={() => setPoModal(true)}
 
@@ -153,31 +151,13 @@ const Person = () => {
                                 </div>
 
                                 <div className="flex flex-col">
-                                    <label>Пароль</label>
-
-                                    <div className="flex flex-col">
-                                        <input className='person--content--end--password'
-                                               type="password" name='password' placeholder='password'
-                                               style={{padding: "0 0 0 30px"}}/>
                                         <div className="person--content--end--password--icons">
-                                            <FontAwesomeIcon icon={faKey}/>
-
-                                            <span className="flex w-2/12 justify-between ml-auto">
-                                                <FontAwesomeIcon icon={faEyeSlash} style={{
-                                                    color: '#01487E',
-                                                }}/>
-
-                                            <FontAwesomeIcon icon={faPen} onClick={() => setPasswordModal(true)}
-                                                             style={{
-                                                                 color: '#01487E',
-                                                             }}/>
-                                        </span>
+                                            <label>Пароль</label>
+                                            <button onClick={() => setPasswordModal(true)}
+                                            >
+                                                Изменить пароль
+                                            </button>
                                         </div>
-
-
-                                    </div>
-
-
                                 </div>
                             </div>
                         </div>
