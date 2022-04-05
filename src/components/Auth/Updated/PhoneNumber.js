@@ -4,6 +4,8 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
 
 const PhoneNumber = ({phoneModal,setPhoneModal}) => {
     const validationSchema = Yup.object().shape({
@@ -25,20 +27,29 @@ const PhoneNumber = ({phoneModal,setPhoneModal}) => {
                 className={ phoneModal ? "phone--content active  " : "phone--content"}
                 onSubmit={handleSubmit(onSubmit)}
             >
-                    <h1>Изменение номера
-                        телефона</h1>
-                    <FontAwesomeIcon className='phone--content--x' icon={faXmark}
-                                     style={{fontSize:'25px'}}
-                                     onClick={() => {
-                                         setPhoneModal(false)
-                                         // navigate("/")
-                                     }}
+                   <div className='phone--content--hed'>
+                       <p className='phone--content--hed--title'>Изменение номера
+                           телефона</p>
+                       <FontAwesomeIcon className='phone--content--hed--x' icon={faXmark}
+                                        style={{fontSize:'25px'}}
+                                        onClick={() => {
+                                            setPhoneModal(false)
+                                            // navigate("/")
+                                        }}
+                       />
+                   </div>
+
+                    <label className='phone--content--text'>Укажите новый номер*</label>
+                <div className='phone--content--phone'>
+                    <PhoneInput
+                        inputStyle={{width:"210px",borderRadius: "5px", display:'flex',
+                            justifyContent:"center",
+                        }}
                     />
-                    <label className='modal--password--form--s-password'>Укажите новый номер*</label>
-                    <div>
-                        <input   type="tel" {...register('code')} className={`form-control ${errors.code ? 'is-invalid' : ''}`} />
-                        <input  placeholder="(___)____ "  type="tel" {...register('phone_number')} className={`form-control ${errors.phone_number ? 'is-invalid' : ''}`} />
-                    </div>
+                </div>
+
+
+
                     <div className="modal--password--form--error invalid-feedback">{errors.phone_number?.message}</div>
 
 

@@ -9,8 +9,9 @@ import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {authenticate, isAuth} from "./helpers";
+import {publicApi} from "../HTTP/publicApi";
 
-const SignIn = ({active,setActive}) => {
+const SignIn = ({signActive,setSignActive}) => {
     const navigate =  useNavigate()
     const validationSchema = Yup.object().shape({
         email:Yup.string()
@@ -23,43 +24,35 @@ const SignIn = ({active,setActive}) => {
     const { register, handleSubmit,
         formState: { errors, } } = useForm(formOptions);
     const onSubmit = data => {
-        axios.post("https://djangorestapp.herokuapp.com/jwt/create", data)
+        const login = publicApi.post("/jwt/create", data)
             .then(response => {
                 toast.success("Salam  " +data.email)
                 authenticate(response)
-                isAuth()  &&  navigate("/")
-                console.log(response)
-                setActive(false)
+                  navigate("/person")
+                setSignActive(false)
             }).catch((error) => {
                 toast.error(error.response.data.detail)
-            console.log("error sen",error)
-                // console.log(data)
         })
     };
 
 
     return (
        <>
-           <ToastContainer
-               autoClose={10000}
-               hideProgressBar={false}
-           />
+           <ToastContainer/>
            <div
-               // className='signin'
-               className={ active ? "signin active  " : "signin"}
+               className={ signActive ? "signin active  " : "signin"}
            >
 
                <form
                    onSubmit={handleSubmit(onSubmit)}
-                   // className='signin--forms'
-                   className={ active ? "signin--forms active  " : "signin--forms"}
+                   className={ signActive ? "signin--forms active  " : "signin--forms"}
                >
                    <FontAwesomeIcon
                        className='signin--forms--btn' icon={faXmark}
                        style={{fontSize:'25px'}}
                        onClick={() => {
-                           setActive(false)
-                           // navigate("/")
+                           setSignActive(false)
+                           navigate("/person")
                        }
                        }
                    />

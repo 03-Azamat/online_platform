@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import {data} from "autoprefixer";
 import {number} from "yup";
 import {injectStyle} from "react-toastify/dist/inject-style";
+import {publicApi} from "../HTTP/publicApi";
 
 export default function HookForm({active, setActive}) {
     const navigate =useNavigate()
@@ -35,7 +36,7 @@ export default function HookForm({active, setActive}) {
     const { register,handleSubmit, formState: { errors,} } = useForm(formOptions);
 
     const onSubmit = data => {
-        axios.post("https://djangorestapp.herokuapp.com/users/", data)
+        const submit = publicApi.post("/users/", data)
             .then(response => {
                 toast.success(`Вам отправлено ссылка в электронные почте `)
                 setActive(false)
@@ -57,10 +58,7 @@ export default function HookForm({active, setActive}) {
 
     return (
         <>
-            <ToastContainer
-                autoClose={10000}
-                hideProgressBar={false}
-            />
+            <ToastContainer/>
             <section className={ active ? "forms active  " : "forms"}>
 
                 <div className={ active ? "forms--inputs active  " : "forms--inputs"}  >
@@ -103,4 +101,20 @@ export default function HookForm({active, setActive}) {
 //     })
 
 
-
+// axios.post("https://djangorestapp.herokuapp.com/users/", data)
+//     .then(response => {
+//         toast.success(`Вам отправлено ссылка в электронные почте `)
+//         setActive(false)
+//         // localStorage.setItem("user", JSON.stringify(data.user))
+//         console.log(response ,"response")
+//     }).catch((error) => {
+//     if (error.response.data.password){
+//         toast.error(error.response.data.password[0])
+//     } else if (error.response.data.phone_number && error.response.data.email ){
+//         toast.error(error.response.data.phone_number[0] ) &&  toast.error(error.response.data.email[0])
+//     } else if (error.response.data.phone_number){
+//         toast.error(error.response.data.phone_number[0] )
+//     } else if (error.response.data.email){
+//         toast.error(error.response.data.email[0])
+//     }
+// })

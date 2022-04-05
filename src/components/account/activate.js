@@ -10,7 +10,7 @@ const Activate = () => {
     const getToken = async () => {
         const getItem = axios.get("https://djangorestapp.herokuapp.com/jwt/create")
     }
-    axios.get(``)
+
     return (
         <div className='register'
              onClick={() => {

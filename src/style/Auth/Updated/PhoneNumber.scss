@@ -32,10 +32,35 @@
     border-radius: 5px;
     transform: scale(0);
     transition: 0.5s all;
-
     &.active{
       transition: 0.5s;
       transform: scale(1);
     }
+   &--hed{
+     display: flex;
+     justify-content: space-around;
+     padding-top: 15px;
+     &--title{
+       width: 189px;
+       height: 54px;
+       font-size: 18px;
+       line-height: 27px;
+       color: #01487E;
+     }
+     &--x{
+       display: flex;
+       justify-content: end;
+       color: #01487E;
+     }
+   }
+    &--text{
+      color: #6A6A6A;
+      font-size: 14px;
+      margin: 50px 0 0 30px;
+    }
+    &--phone{
+      margin:10px 0 0 50px
+    }
+
   }
 }
