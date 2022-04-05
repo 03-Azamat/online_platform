@@ -38,7 +38,6 @@ function Main() {
                 <Route path={"/about"} element={<About/>}/>
                 <Route path={"/home"} element={<Home/>}/>
                 <Route path={"/quiz/:idTest"} element={<Quiz/>}/>
-
             </Routes>
 
             <Footer/>
