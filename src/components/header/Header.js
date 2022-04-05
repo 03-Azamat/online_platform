@@ -7,6 +7,7 @@ import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import {Link, NavLink, useNavigate} from "react-router-dom";
 import HookForm from "../Auth/Person/HookForm";
 import SignIn from "../Auth/Register/SignIn";
+<<<<<<< HEAD
 import EmailActive from "../Auth/emailActive/EmailActive";
 import {isAuth} from "../Auth/Register/helpers";
 import axios from "axios";
@@ -14,10 +15,27 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser} from "@fortawesome/free-solid-svg-icons/faUser";
 import {publicApi} from "../Auth/HTTP/publicApi";
 
+=======
+import {QuizContext} from "../../data/Contexts";
+import MainMenu from "../Test/function/MainMenu";
+import Quiz from "../Test/function/Quiz";
+import EndScreen from "../Test/function/EndScreen";
+import MainTest from "../Test/MainTest";
+// import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+// import { faXmark} from "@fortawesome/free-solid-svg-icons";
+//
+// import Register from "../Auth/Register/Register";
+// import RegisterCopy from "../Auth/Register/RegisterCopy";
+// import FormInput from "../Auth/Register/FormInput";
+// import RegisterCode from "../Auth/Register/RegisterCode";
+// import {Quiz} from "../Test/function/Quiz";
+// import EndScreen from "../Test/function/EndScreen";
+>>>>>>> a411ed00da3073da8d2afb2d321b24216ea69465
 
 const Header = () => {
     const [activeForm, setActiveForm] = useState(false)
     const [signActive, setSignActive] = useState(false)
+<<<<<<< HEAD
     const [persons, setPersons] = useState({})
     const navigate = useNavigate();
     const link = window.location.href.split("/").pop();
@@ -31,12 +49,17 @@ const Header = () => {
             .then(({data}) => setPersons(data))
 
     }, [])
+=======
+    const [testActive, setTestActive] = useState(false)
+    // const [score, setScore] = useState(0)
+    // const [gameState, setGameState] = useState("menu")
+
+>>>>>>> a411ed00da3073da8d2afb2d321b24216ea69465
     return (
         <header>
             <div className="header">
                 <div className="container">
                     <div className="header--content ">
-
                         <div className="header--content--logo">
                             <NavLink to={"/"}>
                                 <img src={logo} alt=""/>
@@ -107,8 +130,18 @@ const Header = () => {
                         </div>
                         <BurgerMenu/>
                     </div>
+                    {/*<div>*/}
+                    {/*    <QuizContext.Provider value={{*/}
+                    {/*        gameState,*/}
+                    {/*        setGameState,*/}
+                    {/*        score,*/}
+                    {/*        setScore}}>*/}
+                    {/*        {gameState === "menu" && <MainMenu/>}*/}
+                    {/*        {gameState === "quiz" && <Quiz/>}*/}
+                    {/*        {gameState === "endScreen" && <EndScreen/>}*/}
+                    {/*    </QuizContext.Provider>*/}
+                    {/*</div>*/}
                 </div>
-
             </div>
             <HookForm active={activeForm} setActive={setActiveForm}/>
             <SignIn signActive={signActive} setSignActive={setSignActive}/>

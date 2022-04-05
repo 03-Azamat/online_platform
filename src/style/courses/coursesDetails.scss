@@ -164,12 +164,15 @@
     }
 
     &--accordion{
+      margin-bottom: 50px;
+
 
       &--title{
         font-style: normal;
         font-weight: 900;
         font-size: 36px;
         line-height: 54px;
+
         /* identical to box height */
 
         color: #01487E;
@@ -181,6 +184,40 @@
       }
     }
 
+    &--test{
+      &--title{
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 27px;
+        margin-bottom: 5px;
+
+
+        color: #01487E;
+      }
+
+      &--desc{
+        width: 70%;
+        margin-bottom: 30px;
+      }
+      &--btn{
+        width: 236px;
+        height: 40px;
+        border-color: transparent;
+        margin-bottom: 60px;
+
+        background: #01487E;
+        border-radius: 5px;
+
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        /* identical to box height */
+
+
+        color: #FFFFFF;
+      }
+    }
 
   }
 }

@@ -32,6 +32,7 @@ const Person = () => {
     const access = JSON.parse(localStorage.getItem("access"));
     const refresh = JSON.parse(localStorage.getItem("refresh"));
     useEffect(() => {
+<<<<<<< HEAD
         const user = publicApi.get("/users/me/", {
             headers: {
                 "Authorization": `Bearer ${access}`
@@ -88,11 +89,30 @@ const Person = () => {
     //     console.log(data)
     // }
 
+=======
+        axios(`https://djangorestapp.herokuapp.com/users/`, {
+            headers: {
+                authorization :"Bearer" + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjQ4MzcwNTE4LCJqdGkiOiI2ZGY3M2JjYmM1OGQ0Yjk0ODQ3MWM2ZTE1Y2Y4OTZkOSIsInVzZXJfaWQiOjF9.QM8c2rfQyXAsR3hgyY6DXMBTI51IdmrGQM5E7TgerL0"
+            }
+        })
+            // axios(`http://localhost:8000/api/v1/users/`)
+            .then(({data}) => {
+                localStorage.setItem("user", JSON.stringify(data.user))
+                console.log(data)
+                setPersons(data)
+            }).catch((error) => {
+            // toast.error(error.response.data.email[0])
+            console.log(error.response.data)
+        })
+        // console.log(persons)
+    }, [])
+>>>>>>> a411ed00da3073da8d2afb2d321b24216ea69465
 
     return (
         <section id='person'>
             <div className='container'>
                 <h1>Личный кабинет</h1>
+<<<<<<< HEAD
                 <div className="contentBtn ">
                     <div className='btn '>
                         <div className='btn--user'>
@@ -137,21 +157,73 @@ const Person = () => {
 
                     <div className="person  " hidden={index !== 0}>
                         <h3>Персональные данные</h3>
+=======
+
+                <div className="contentBtn">
+
+                    <div className='btn'>
+                        <FontAwesomeIcon icon={faUser} className='btn--user'/>
+                        <h2>Ороскул уулу Эрмат</h2>
+                        {/*<h2>{persons[0].name}</h2>*/}
+                        <div className="btn--btns">
+                            {/*<div className='btn--btns--tabRoute'> Выбрать фото</div>*/}
+                            <input type="file" className='btn--btns--tabRoute'/>
+
+                            <div className={`btn--btns--tabRoute ${index === 0 ? 'active' : null}`}
+                                 onClick={() =>
+                                     setIndex(0)
+                                 }>Персональные данные
+                            </div>
+
+                            <div className={`btn--btns--tabRoute ${index === 1 ? 'active' : null}`}
+                                 onClick={() =>
+                                     setIndex(1)
+                                 }>Мои курсы
+                            </div>
+                            <div className='btn--btns--tabRoute'>Выйти</div>
+                        </div>
+                    </div>
+
+                    <div className="person" hidden={index !== 0}>
+                        <h3 className="text-center">Персональные данные</h3>
+>>>>>>> a411ed00da3073da8d2afb2d321b24216ea69465
                         <div className='person--content'>
-                            <div className='person--content--center mx-5'>
-                                <div>
+
+                            <div className='person--content--start'>
+
+                                <div className="flex flex-col">
                                     <label>ФИО</label>
+<<<<<<< HEAD
                                     <button className='person--content--center--ul1'><p>{persons.name} </p>
+=======
+                                    <button className='person--content--start--name'>
+                                        <p>
+
+                                        </p>
+>>>>>>> a411ed00da3073da8d2afb2d321b24216ea69465
                                     </button>
                                 </div>
-                                <div>
+                                <div className="flex flex-col">
+                                    <label>Номер телефона</label>
+                                    <button className='person--content--start--number'>
+                                        <p>+996 555 55 55 55</p>
+                                        < FontAwesomeIcon
+                                            icon={faPen} style={{color: "#01487E"}}/>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <div className="person--content--center">
+                                <div className="flex flex-col">
                                     <label>Должность</label>
-                                    <button className='person--content--center--ul2'>
+                                    <button className='person--content--center--position'>
                                         <p>
                                             {/*{persons[0].age} {persons[0].name} {persons[0].name} {persons[0].name} {persons[0].car} {persons[0].createdAt}*/}
                                         </p>
                                         < FontAwesomeIcon icon={faPen} style={{color: "#01487E"}}
                                                           onClick={() => setPoModal(true)}
+<<<<<<< HEAD
                                         /></button>
                                 </div>
                                 <div>
@@ -172,16 +244,37 @@ const Person = () => {
                                             icon={faPen} style={{color: "#01487E"}}/></button>
                                 </div>
                                 <div>
+=======
+
+                                        />
+                                    </button>
+                                </div>
+
+                                <div className="flex flex-col">
+>>>>>>> a411ed00da3073da8d2afb2d321b24216ea69465
                                     <label>Организация</label>
-                                    <button className='person--content--end--ul12'><p/>
+                                    <button className='person--content--center--organization'><p/>
                                         < FontAwesomeIcon
                                             icon={faPen} style={{color: "#01487E"}}
                                             onClick={() => setOrModal(true)}/>
                                     </button>
                                 </div>
 
-                                <div className='person--content--end--pass'>
+                            </div>
+
+                            <div className='person--content--end'>
+                                <div className="flex flex-col">
+                                    <label>Email</label>
+                                    <button className='person--content--end--email'><p>{persons.data}</p>
+                                        < FontAwesomeIcon
+                                            icon={faPen} style={{color: "#01487E"}}
+                                            onClick={() => setEmailModal(true)}/>
+                                    </button>
+                                </div>
+
+                                <div className="flex flex-col">
                                     <label>Пароль</label>
+<<<<<<< HEAD
                                     <button onClick={() => setPasswordModal(true)}
                                     >
                                         Изменить пароль
@@ -189,6 +282,47 @@ const Person = () => {
                                 </div>
                             </div>
                         </div>
+=======
+
+                                    <div className="flex flex-col">
+                                        <input className='person--content--end--password'
+                                               type="password" name='password' placeholder='password'
+                                               style={{padding: "0 0 0 30px"}}/>
+                                        <div className="person--content--end--password--icons">
+                                            <FontAwesomeIcon icon={faKey}/>
+
+                                            <span className="flex w-2/12 justify-between ml-auto">
+                                                <FontAwesomeIcon icon={faEyeSlash} style={{
+                                                    color: '#01487E',
+                                                }}/>
+
+                                            <FontAwesomeIcon icon={faPen} onClick={() => setPasswordModal(true)}
+                                                             style={{
+                                                                 color: '#01487E',
+                                                             }}/>
+                                        </span>
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        {/*<div className='person--photo' style={{padding: "100px 0 60px 0"}}>*/}
+                        {/*    <div className='person--photo--pas1' style={{margin: "0 45px 0 0"}}>*/}
+                        {/*        <h2>Фотография паспорта</h2>*/}
+                        {/*        <span><FontAwesomeIcon icon={faImage}/> <text>Выбрать файл</text></span>*/}
+                        {/*    </div>*/}
+                        {/*    <div className='person--photo--pas2'>*/}
+                        {/*        <h2>Фотография с паспортом в руках</h2>*/}
+                        {/*        <span><FontAwesomeIcon icon={faImage}/> <text>Выбрать файл</text></span>*/}
+
+                        {/*    </div>*/}
+                        {/*</div>*/}
+>>>>>>> a411ed00da3073da8d2afb2d321b24216ea69465
                         <UpdatePosition poModal={poModal} setPoModal={setPoModal}/>
                         <UpdateOrganization orModal={orModal} setOrModal={setOrModal}/>
                         <UpdateEmail emailModal={emailModal} setEmailModal={setEmailModal}/>

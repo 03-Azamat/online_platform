@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="75a7743f-69c3-4d45-b5c0-a1287db0e590" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/Test/MainTest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Test/function/EndScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Test/function/EndScreen.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Test/function/MainMenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Test/function/MainMenu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Test/function/Quiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Test/function/Quiz.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/state.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/state.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/Main-Menu/MainMenu.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/Main-Menu/MainMenu.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/Quiz/Quiz.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/Quiz/Quiz.scss" afterDir="false" />
+=======
+    <list default="true" id="649f1301-31a4-4de0-abff-e8eacccef4c3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/accordion/accordion.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/accordion/accordion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/courses/courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/courses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/courses/coursesDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/coursesDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/courses/coursesLesson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/coursesLesson.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/coursesLesson/Tab.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/coursesLesson/TabNav.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/action/corsesAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/action/corsesAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducer/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducer/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/types/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types/actionTypes.js" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/src/style/Auth/Person/Person.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/Auth/Person/Person.scss" afterDir="false" />
+>>>>>>> e76409f41f605429036191eaad1b8317a79cfb8b
+=======
+      <change beforePath="$PROJECT_DIR$/src/style/accordion/accordion.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/accordion/accordion.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/src/reportWebVitals.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tabs/src/setupTests.js" beforeDir="false" />
+>>>>>>> 589e6650c705db1340d3f4abc158a1ce84ba1fa6
+=======
+=======
+      <change beforePath="$PROJECT_DIR$/src/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.js" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/src/components/Test/function/Quiz.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Test/function/Quiz.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/card/coursesCardPaid.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/courses/courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/courses.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/courses/coursesDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/courses/coursesDetails.js" afterDir="false" />
+>>>>>>> c69057764d9937b8b3cee232c69eb0514162fbc4
+      <change beforePath="$PROJECT_DIR$/src/components/coursesVideoLesson/coursesVideoLesson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/coursesVideoLesson/coursesVideoLesson.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/home/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/home/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sleh/sleh.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sleh/sleh.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sleh/slehDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sleh/slehDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/media/coursesDetails/coursesDetails.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/media/coursesDetails/coursesDetails.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/media/coursesPaid/coursesDetailsPaid.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/action/corsesAction.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/action/corsesAction.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducer/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/reducer/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/types/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/types/actionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/courses/coursesDetails.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/courses/coursesDetails.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/style/coursesVideoLesson/ReactPlayer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/coursesVideoLesson/ReactPlayer.scss" afterDir="false" />
+<<<<<<< HEAD
+>>>>>>> 5a386e82574e26e287275ad13a8a81227bff7535
+=======
+      <change beforePath="$PROJECT_DIR$/src/style/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/index.scss" afterDir="false" />
+>>>>>>> c69057764d9937b8b3cee232c69eb0514162fbc4
+>>>>>>> daecaffba40f946e06f12b2c09453c22d9b0f6ce
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="SCSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="26ZWyVwx4XqG2Ctf6gFUjfHxtZk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projects\online_platform\src\style\coursesVideoLesson" />
+      <recent name="$PROJECT_DIR$/src/style/Main-Menu" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="649f1301-31a4-4de0-abff-e8eacccef4c3" name="Changes" comment="" />
+      <created>1647631844056</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1647631844056</updated>
+      <workItem from="1647631846429" duration="3747000" />
+      <workItem from="1647689373395" duration="12783000" />
+      <workItem from="1647723836423" duration="21574000" />
+      <workItem from="1647862110603" duration="4546000" />
+      <workItem from="1647947891979" duration="6165000" />
+      <workItem from="1648037761139" duration="10430000" />
+<<<<<<< HEAD
+      <workItem from="1648083317508" duration="11779000" />
+      <workItem from="1648282205359" duration="3847000" />
+      <workItem from="1648287662788" duration="1786000" />
+      <workItem from="1648299156018" duration="689000" />
+      <workItem from="1648300742295" duration="115000" />
+      <workItem from="1648380061743" duration="301000" />
+      <workItem from="1648381002699" duration="397000" />
+=======
+      <workItem from="1648083317508" duration="6169000" />
+      <workItem from="1648280588060" duration="18529000" />
+<<<<<<< HEAD
+      <workItem from="1648361585323" duration="6797000" />
+>>>>>>> e76409f41f605429036191eaad1b8317a79cfb8b
+=======
+      <workItem from="1648361585323" duration="11556000" />
+      <workItem from="1648378787181" duration="7759000" />
+      <workItem from="1648451407181" duration="4763000" />
+      <workItem from="1648458218356" duration="10919000" />
+      <workItem from="1648535288521" duration="5391000" />
+      <workItem from="1648542181568" duration="775000" />
+      <workItem from="1648542984552" duration="366000" />
+      <workItem from="1648543463403" duration="816000" />
+      <workItem from="1648544389698" duration="1495000" />
+      <workItem from="1648546011448" duration="91000" />
+<<<<<<< HEAD
+      <workItem from="1648546206166" duration="4526000" />
+>>>>>>> 589e6650c705db1340d3f4abc158a1ce84ba1fa6
+=======
+      <workItem from="1648546206166" duration="5161000" />
+      <workItem from="1648572908111" duration="2063000" />
+      <workItem from="1648585607565" duration="3000" />
+      <workItem from="1648585733359" duration="26000" />
+      <workItem from="1648605654977" duration="6219000" />
+      <workItem from="1648615336326" duration="15959000" />
+      <workItem from="1648638353868" duration="6762000" />
+      <workItem from="1648646850573" duration="131000" />
+<<<<<<< HEAD
+      <workItem from="1648717649940" duration="13331000" />
+>>>>>>> 5a386e82574e26e287275ad13a8a81227bff7535
+=======
+      <workItem from="1648717649940" duration="15754000" />
+      <workItem from="1648792923905" duration="98000" />
+      <workItem from="1648801918493" duration="6632000" />
+      <workItem from="1648811206540" duration="1569000" />
+      <workItem from="1648817834727" duration="1781000" />
+      <workItem from="1648878388706" duration="40000" />
+      <workItem from="1648879337973" duration="832000" />
+      <workItem from="1648886678273" duration="3765000" />
+      <workItem from="1648891681846" duration="3341000" />
+<<<<<<< HEAD
+      <workItem from="1648895577660" duration="853000" />
+      <workItem from="1648903713855" duration="1044000" />
+      <workItem from="1648966779159" duration="12172000" />
+      <workItem from="1648981742815" duration="2533000" />
+=======
+>>>>>>> c69057764d9937b8b3cee232c69eb0514162fbc4
+>>>>>>> daecaffba40f946e06f12b2c09453c22d9b0f6ce
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
