@@ -1,86 +1,36 @@
-@media (max-width: 464px) {
-  .coursesCard{
+@media (max-width: 437px) {
+  .coursesCardPaid{
     width: 325px;
     height: 331px;
     margin-bottom: 50px;
 
     &--box{
-
-      margin-top: 192px;
+      margin-top: 58.5%;
       padding: 10px;
-
-
 
       &--title{
 
       }
 
       &--price{
-        margin-left: 194px;
+        margin-left: 64%;
       }
     }
 
 
   }
 }
-@media (max-width: 430px) {
-  .coursesCard{
-    width: 325px;
-    height: 331px;
-    margin-bottom: 50px;
-
-    &--box{
-      margin-top: 192px;
-      padding: 10px;
 
 
-
-      &--title{
-
-      }
-
-      &--price{
-        margin-left: 192px;
-      }
-    }
-
-
-  }
-}
-@media (max-width: 390px) {
-  .coursesCard{
-    width: 310px;
-    height: 316px;
-    margin-bottom: 50px;
-
-    &--box{
-      margin-top: 177px;
-      padding: 10px;
-
-
-
-      &--title{
-
-      }
-
-      &--price{
-        margin-left: 179px;
-      }
-    }
-
-
-  }
-}
 @media (max-width: 370px) {
-  .coursesCard{
+  .coursesCardPaid{
     width: 310px;
     height: 316px;
     margin-bottom: 50px;
 
     &--box{
-      padding: 10px 0 0 5px;
-      margin-top: 190px;
-
+      margin-top: 57%;
+      padding: 10px;
 
 
 
@@ -89,24 +39,22 @@
       }
 
       &--price{
-        margin-left: 161px;
-        margin-top: -10px;
-        width: 105px;
-        height: 35px;
+        margin-left: 62%;
       }
     }
 
 
   }
 }
+
 @media (max-width: 345px) {
-  .coursesCard{
+  .coursesCardPaid{
     width: 255px;
     height: 280px;
     margin-bottom: 64px;
 
     &--box{
-      margin-top: 169px;
+      margin-top: 64%;
       padding: 10px 5px 0 5px;
 
 
@@ -136,7 +84,7 @@
         background: #01487E;
         border-radius: 10px 0 10px;
         border-color: transparent;
-        margin-left: 145px;
+        margin-left: 59.7%;
         font-weight: 500;
         font-size: 16px;
         line-height: 27px;
@@ -148,13 +96,13 @@
   }
 }
 @media (max-width: 300px) {
-  .coursesCard{
+  .coursesCardPaid{
     width: 230px;
     height: 250px;
     margin-bottom: 64px;
 
     &--box{
-      margin-top: 150px;
+      margin-top: 64%;
       padding: 0 5px 0 5px;
 
 
@@ -184,7 +132,7 @@
         background: #01487E;
         border-radius: 10px 0 10px;
         border-color: transparent;
-        margin-left: 130px;
+        margin-left: 59.7%;
         font-weight: 500;
         font-size: 14px;
         line-height: 27px;

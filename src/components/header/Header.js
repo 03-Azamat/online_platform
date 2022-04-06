@@ -8,10 +8,10 @@ import HookForm from "../Auth/Person/HookForm";
 import SignIn from "../Auth/Register/SignIn";
 import {isAuth} from "../Auth/Register/helpers";
 import {publicApi} from "../Auth/HTTP/publicApi";
-import {faUser} from "@fortawesome/free-solid-svg-icons";const Header = () => {
-    const [activeForm, setActiveForm] = useState(false)
-    const [signActive, setSignActive] = useState(false)
-    const [persons , setPersons] = useState({})
+import {faUser} from "@fortawesome/free-solid-svg-icons";
+
+const Header = () => {
+    const [persons, setPersons] = useState({})
     const navigate = useNavigate();
     const link = window.location.href.split("/").pop();
     const access = JSON.parse(localStorage.getItem("access"));
@@ -24,6 +24,9 @@ import {faUser} from "@fortawesome/free-solid-svg-icons";const Header = () => {
             .then(({data}) => setPersons(data))
 
     }, [])
+    const [activeForm,setActiveForm] = useState(false)
+    const [signActive, setSignActive] = useState(false)
+    const [testActive, setTestActive] = useState(false)
     return (
         <header>
             <div className="header">
@@ -39,12 +42,9 @@ import {faUser} from "@fortawesome/free-solid-svg-icons";const Header = () => {
                             <NavLink to={"/"}>Главная</NavLink>
                             <NavLink to={"/courses"}>Курсы</NavLink>
                             <NavLink to={"/certificate"}>Проверка сертификатов</NavLink>
-                            <NavLink to={"/person"}>Person</NavLink>
+                            {/*<NavLink to={"/person"}>person</NavLink>*/}
                             <NavLink to={"/about"}>О нас</NavLink>
                             <NavLink to={"contact"}>Контакты</NavLink>
-                            <NavLink to={"/contact"}>Контакты</NavLink>
-                            {/*<h1 onClick={check}>erlan</h1>*/}
-
                         </div>
                         <div className="header--content--auth flex items-center ">
                             {
@@ -81,7 +81,9 @@ import {faUser} from "@fortawesome/free-solid-svg-icons";const Header = () => {
                                                 </NavLink>
                                             </>
                                     }
-                                    </> :
+
+                                    </>
+                                    :
                                     <>
                                         <button onClick={() => setActiveForm(true)}
                                                 className="header--content--auth--btn1">Регистрация

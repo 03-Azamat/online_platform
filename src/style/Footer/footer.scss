@@ -1,5 +1,6 @@
 #footer{
-  padding-top: 40px;
+  padding-bottom: 70px;
+  padding-top: 70px;
   background: #01487E;
 
   .footer--start{
@@ -17,8 +18,8 @@
 
       &--title{
         font-style: normal;
-        font-weight: 500;
-        font-size: 16px;
+        font-weight: 600;
+        font-size: 18px;
         line-height: 40px;
         /* identical to box height */
 
@@ -44,8 +45,8 @@
       padding-bottom: 50px;
     &--title{
       font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
+      font-weight: 600;
+      font-size: 18px;
       line-height: 40px;
       /* identical to box height */
 
@@ -57,7 +58,7 @@
       width: 67%;
       font-style: normal;
       font-weight: 300;
-      font-size: 13px;
+      font-size: 14px;
       line-height: 21px;
       margin-bottom: 20px;
 
@@ -79,8 +80,8 @@
 
     &--title{
       font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
+      font-weight: 600;
+      font-size: 18px;
       line-height: 40px;
       /* identical to box height */
 
@@ -91,10 +92,13 @@
     &--address{
 
       &--desc{
-        line-height: 32px;
         width: 80%;
-        font-weight: 300;
-        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 40px;
+        /* identical to box height */
+
 
         color: #FFFFFF;
       }

@@ -52,7 +52,6 @@ const SignIn = ({signActive,setSignActive}) => {
                        style={{fontSize:'25px'}}
                        onClick={() => {
                            setSignActive(false)
-                           navigate("/person")
                        }
                        }
                    />

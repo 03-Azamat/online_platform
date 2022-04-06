@@ -29,6 +29,9 @@ const Courses = () => {
                 <div className="container">
 
                   <div className="courses--box--block">
+
+
+
                       {
                           coursesTwo.map(el => (
                                <CoursesCard el={el} key={el.id}/>
