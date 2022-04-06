@@ -25,13 +25,8 @@ const CoursesVideoLesson = ({el}) => {
                                         width="20vw"
                                         height="15vh"
                                     />
-<<<<<<< HEAD
-                                </span>
                             <p className="text-base ml-3 md: text-sm ">{item.title}</p>
-=======
 
-                            <p className="text-base ml-3 md: text-sm">{item.title}</p>
->>>>>>> df3898523bc9e4c6301abb515c2376db3b1d7a9d
                         </div>
                     ))
                 }

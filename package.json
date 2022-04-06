@@ -22,12 +22,9 @@
     "react-combine-reducers": "^1.1.1",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.27.1",
-<<<<<<< HEAD
     "react-phone-input-2": "^2.15.0",
-=======
     "react-player": "^2.10.0",
     "react-playlist-player": "^1.2.6",
->>>>>>> a411ed00da3073da8d2afb2d321b24216ea69465
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",

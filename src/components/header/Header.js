@@ -3,63 +3,15 @@ import logo from '../../image/image 4 (Traced) (1).svg'
 import {useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
-<<<<<<< HEAD
 import {NavLink, useNavigate} from "react-router-dom";
 import HookForm from "../Auth/Person/HookForm";
 import SignIn from "../Auth/Register/SignIn";
 import {isAuth} from "../Auth/Register/helpers";
 import {publicApi} from "../Auth/HTTP/publicApi";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
-
-const Header = () => {
-    const [persons, setPersons] = useState({})
-    const navigate = useNavigate();
-    const link = window.location.href.split("/").pop();
-    const access = JSON.parse(localStorage.getItem("access"));
-    useEffect(() => {
-        const  user = publicApi.get("users/me/", {
-            headers: {
-                "Authorization": `Bearer ${access}`
-            }
-        })
-            .then(({data}) => setPersons(data))
-
-    }, [])
-    const [activeForm,setActiveForm] = useState(false)
-=======
-import {Link, NavLink, useNavigate} from "react-router-dom";
-import HookForm from "../Auth/Person/HookForm";
-import SignIn from "../Auth/Register/SignIn";
-<<<<<<< HEAD
-import EmailActive from "../Auth/emailActive/EmailActive";
-import {isAuth} from "../Auth/Register/helpers";
-import axios from "axios";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUser} from "@fortawesome/free-solid-svg-icons/faUser";
-import {publicApi} from "../Auth/HTTP/publicApi";
-
-=======
-import {QuizContext} from "../../data/Contexts";
-import MainMenu from "../Test/function/MainMenu";
-import Quiz from "../Test/function/Quiz";
-import EndScreen from "../Test/function/EndScreen";
-import MainTest from "../Test/MainTest";
-// import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-// import { faXmark} from "@fortawesome/free-solid-svg-icons";
-//
-// import Register from "../Auth/Register/Register";
-// import RegisterCopy from "../Auth/Register/RegisterCopy";
-// import FormInput from "../Auth/Register/FormInput";
-// import RegisterCode from "../Auth/Register/RegisterCode";
-// import {Quiz} from "../Test/function/Quiz";
-// import EndScreen from "../Test/function/EndScreen";
->>>>>>> a411ed00da3073da8d2afb2d321b24216ea69465
-
 const Header = () => {
     const [activeForm, setActiveForm] = useState(false)
->>>>>>> 0f746bd4c5402f4e3797c08f763e289f623df28e
     const [signActive, setSignActive] = useState(false)
-<<<<<<< HEAD
     const [persons, setPersons] = useState({})
     const navigate = useNavigate();
     const link = window.location.href.split("/").pop();
@@ -73,15 +25,6 @@ const Header = () => {
             .then(({data}) => setPersons(data))
 
     }, [])
-=======
-    const [testActive, setTestActive] = useState(false)
-<<<<<<< HEAD
-=======
-    // const [score, setScore] = useState(0)
-    // const [gameState, setGameState] = useState("menu")
-
->>>>>>> a411ed00da3073da8d2afb2d321b24216ea69465
->>>>>>> 0f746bd4c5402f4e3797c08f763e289f623df28e
     return (
         <header>
             <div className="header">
@@ -99,53 +42,13 @@ const Header = () => {
                             <NavLink to={"/certificate"}>Проверка сертификатов</NavLink>
                             {/*<NavLink to={"/person"}>person</NavLink>*/}
                             <NavLink to={"/about"}>О нас</NavLink>
-<<<<<<< HEAD
                             <NavLink to={"contact"}>Контакты</NavLink>
-=======
                             <NavLink to={"/contact"}>Контакты</NavLink>
                             {/*<h1 onClick={check}>erlan</h1>*/}
-
->>>>>>> 0f746bd4c5402f4e3797c08f763e289f623df28e
                         </div>
                         <div className="header--content--auth flex items-center ">
                             {
                                 isAuth() ?
-<<<<<<< HEAD
-                                    <>{
-                                        link === "person" ?
-                                            <button
-                                                className="header--content--auth--btn2 mx-4"
-                                                onClick={() => {
-                                                    navigate("/")
-                                                }}
-                                            >Выйти </button> :
-                                            <>
-                                                <NavLink to="/person">
-                                                    <div>
-                                                        <FontAwesomeIcon
-                                                            className="mx-2"
-                                                            icon={faUser}
-                                                            style={{color:"#01487E",
-                                                                fontStyle:"32px",
-                                                                padding:"5px",
-                                                                background:"white",
-                                                                borderRadius:"50%"}}
-                                                        />
-                                                    </div>
-                                                </NavLink>
-                                                <NavLink to="/person">
-                                                    <h1
-                                                        style={{color: "#FFFFFF",
-                                                            fontSize:"20px",
-                                                            cursor:"pointer"
-                                                        }}
-                                                    >{persons.name}</h1>
-                                                </NavLink>
-                                            </>
-                                    }
-
-                                    </>
-=======
                                    <>{
                                     link === "person" ?
                                         <button
@@ -180,7 +83,6 @@ const Header = () => {
                                    }
 
                                    </>
->>>>>>> 0f746bd4c5402f4e3797c08f763e289f623df28e
                                     :
                                     <>
                                         <button onClick={() => setActiveForm(true)}
@@ -200,13 +102,8 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
             <HookForm active={activeForm}  setActive={setActiveForm}  />
             <SignIn signActive={signActive}  setSignActive={setSignActive}  />
-=======
-            <HookForm active={activeForm} setActive={setActiveForm}/>
-            <SignIn signActive={signActive} setSignActive={setSignActive}/>
->>>>>>> 0f746bd4c5402f4e3797c08f763e289f623df28e
         </header>
 
     );
