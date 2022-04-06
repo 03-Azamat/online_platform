@@ -29,12 +29,6 @@ const Home = () => {
                             <NavLink to={"/courses"}>
                                 <button className="home--block--box--btn">Курсы</button>
                             </NavLink>
-                            {/*<NavLink to={"/sleh"}>*/}
-                            {/*    <button className="home--block--box--btn md-5">Тест</button>*/}
-                            {/*</NavLink>*/}
-                            {/*<NavLink to={"/MainMenu"}>*/}
-                            {/*    <button className="home--block--box--btn md-5">Курсы</button>*/}
-                            {/*</NavLink>*/}
                         </div>
                     </div>
                 </div>

@@ -256,6 +256,17 @@
           display: flex;
           flex-direction: column;
           margin: 30px 0 -30px 0;
+          justify-content: space-between;
+          &--name{
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            width: 357px;
+            height: 53px;
+            border: 1px solid #6A6A6A;
+            box-sizing: border-box;
+            border-radius: 5px;
+          }
 
           &--tabRoute {
             display: flex;
@@ -277,11 +288,12 @@
           }
 
           & button {
+            padding: 10px;
+            width: 357px;
+            height: 53px;
             border: 1px solid #6A6A6A;
             box-sizing: border-box;
             border-radius: 5px;
-            width: 357px;
-            height: 53px;
             background: #E5E5E5;
           }
 
@@ -338,6 +350,10 @@
               box-sizing: border-box;
               border-radius: 5px;
             }
+            text-align: start;
+            border: 1px solid #6A6A6A;
+            box-sizing: border-box;
+            border-radius: 5px;
           }
 
           &--center {
@@ -364,11 +380,9 @@
               display: flex;
               justify-content: end;
               text-align: start;
-
-              border: 1px solid #6A6A6A;
-              box-sizing: border-box;
-              border-radius: 5px;
-
+            border: 1px solid #6A6A6A;
+            box-sizing: border-box;
+            border-radius: 5px;
             }
           }
 
@@ -394,10 +408,21 @@
               height: 53px;
               background: transparent;
 
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #6A6A6A;
+            box-sizing: border-box;
+            border-radius: 5px;
+          }
 
-              border: 1px solid #6A6A6A;
-              box-sizing: border-box;
-              border-radius: 5px;
+          &--password{
+            width: 357px;
+            height: 53px;
+            background: transparent;
+            border: 1px solid #6A6A6A;
+            box-sizing: border-box;
+            border-radius: 5px;
+
 
               &--icons {
                 display: flex;

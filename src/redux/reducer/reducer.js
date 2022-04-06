@@ -15,13 +15,11 @@ const initialState = {
 }
 
 export const reducer = (state = initialState, action) => {
-    // console.log("payload:", action.payload)
     switch (action.type) {
         case GET_SINGLE_COURSES:
             return {...state, coursesDetails: action.payload}
 
         case GET_COURSES:
-
             return {...state, courses: action.payload}
 
         case GET_ABOUT:
