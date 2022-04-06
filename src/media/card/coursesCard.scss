@@ -73,7 +73,7 @@
 }
 @media (max-width: 370px) {
   .coursesCard{
-    width: 310px;
+    width: 290px;
     height: 316px;
     margin-bottom: 50px;
 
@@ -85,14 +85,19 @@
 
 
       &--title{
+        font-size: 17px;
+      }
 
+      &--date{
+        font-size: 15px;
       }
 
       &--price{
-        margin-left: 161px;
+        margin-left: 180px;
         margin-top: -10px;
         width: 105px;
         height: 35px;
+        font-size: 15px;
       }
     }
 
@@ -139,6 +144,54 @@
         margin-left: 145px;
         font-weight: 500;
         font-size: 16px;
+        line-height: 27px;
+        color: #FFFFFF;
+      }
+    }
+
+
+  }
+}
+@media (max-width: 310px) {
+  .coursesCard{
+    width: 235px;
+    height: 281px;
+    margin-bottom: 64px;
+
+    &--box{
+      margin-top: 169px;
+      padding: 10px 5px 0 5px;
+
+
+
+      &--title{
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 27px;
+
+        color: #01487E;
+      }
+
+      &--date{
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+        /* identical to box height */
+
+
+        color: #494949;
+      }
+
+      &--price{
+        width: 105px;
+        height: 35px;
+        background: #01487E;
+        border-radius: 10px 0 10px;
+        border-color: transparent;
+        margin-left: 124px;
+        font-weight: 500;
+        font-size: 13px;
         line-height: 27px;
         color: #FFFFFF;
       }

@@ -38,9 +38,7 @@ const Home = () => {
                             {
                                 home.map(el => (
                                     <NavLink to={"/courses"}>
-                                        <div>
                                             <CoursesCard el={el} key={el.id}/>
-                                        </div>
                                     </NavLink>
                                 ))
                             }

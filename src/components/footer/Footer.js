@@ -13,10 +13,10 @@ const Footer = () => {
                             <span className="footer--start--block">
                                 <h1 className="footer--start--block--title">Образовательная платорма</h1>
                                 <ul className="footer--start--block--items">
-                                    <li>Главная</li>
-                                    <li>Курсы</li>
-                                    <li>Проверка сертификатов</li>
-                                    <li>О нас</li>
+                                    <li className="text-sm font-light leading-9">Главная</li>
+                                    <li className="text-sm font-light leading-9">Курсы</li>
+                                    <li className="text-sm font-light leading-9">Проверка сертификатов</li>
+                                    <li className="text-sm font-light leading-9">О нас</li>
                                 </ul>
                             </span>
                         </div>

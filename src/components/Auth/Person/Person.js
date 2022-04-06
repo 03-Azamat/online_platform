@@ -2,15 +2,23 @@ import React, {useEffect, useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPen} from "@fortawesome/free-solid-svg-icons";
 import {faUser} from "@fortawesome/free-solid-svg-icons/faUser";
+import {faKey} from "@fortawesome/free-solid-svg-icons/faKey";
+import {faEye} from "@fortawesome/free-solid-svg-icons/faEye";
+import {faEyeSlash} from "@fortawesome/free-solid-svg-icons/faEyeSlash";
+import {faImage} from "@fortawesome/free-solid-svg-icons/faImage";
 import UpdatePosition from "../Updated/UpdatePosition";
 import UpdateOrganization from "../Updated/UpdateOrganization";
 import UpdateEmail from "../Updated/UpdateEmail";
 import UpdatePassword from "../Updated/UpdatePassword";
+import axios from "axios";
 import {faArrowRightLong} from "@fortawesome/free-solid-svg-icons/faArrowRightLong";
+import {toast} from "react-toastify";
 import {useNavigate, useParams} from "react-router-dom";
+import * as PropTypes from "prop-types";
 import PhoneNumber from "../Updated/PhoneNumber";
 import {publicApi} from "../HTTP/publicApi";
 import {logout} from "../Register/helpers";
+import transformThemeValue from "tailwindcss/lib/util/transformThemeValue";
 
 const Person = () => {
     const [index, setIndex] = useState(0)

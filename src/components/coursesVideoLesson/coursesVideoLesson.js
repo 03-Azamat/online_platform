@@ -21,12 +21,19 @@ const CoursesVideoLesson = ({el}) => {
                     el.choicetopic?.topics?.videos?.map(item=>(
                         <div className="react-player" onClick={() => setVideo(item)}>
                                     <ReactPlayer
+                                        className="react-player-video-lessons"
                                         url={item.url}
                                         width="20vw"
                                         height="15vh"
                                     />
                             <p className="text-base ml-3 md: text-sm ">{item.title}</p>
+                                        width="100%"
+                                        height="100%"
 
+                                    />
+                            <p className="text-base ml-3 md: text-sm ">
+                                {item.title}
+                            </p>
                         </div>
                     ))
                 }

@@ -4,31 +4,29 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCoursesDetails} from "../../redux/action/corsesAction";
 import Cour from "../../image/cour_logo.svg"
 import {add , format } from "date-fns"
-import MainTest from "../Test/MainTest";
 
 import Accordion from "../accordion/accordion";
 import Loader from "../../loader/loader";
 
 
 const CoursesDetails = () => {
-    const [ isBought , setIsBought ] = useState(false)
-    const [fagData , setFaqData] = useSelector({})
+    // const [ isBought , setIsBought ] = useState(false)
+    // const [fagData , setFaqData] = useSelector({})
 
     const {id} = useParams()
     console.log(id, "iddd")
     const {coursesDetails : course} = useSelector(s => s)
-    if(course?.free) {
-        setIsBought(false);
-        dispatch(course?.free)
-    }else{
-        setIsBought(true);
-        dispatch(course?.bought)
-    }
+    // if(course?.free) {
+    //     setIsBought(false);
+    //     dispatch(course?.free)
+    // }else{
+    //     setIsBought(true);
+    //     dispatch(course?.bought)
+    // }
 
     const dispatch = useDispatch()
-    console.log(course, "courses")
+    console.log(course?.id , "courses")
     console.log(id)
-    console.log(course?.id)
 
     useEffect(() => {
         dispatch(getCoursesDetails(id))
@@ -91,6 +89,7 @@ const CoursesDetails = () => {
                             </h1>
 
                             <div className="cour--box--accordion--block">
+
                             </div>
                                 {
                                     course?.coursechoice?.map(el=>(
