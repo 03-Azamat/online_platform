@@ -21,6 +21,7 @@ export const reducer = (state = initialState, action) => {
             return {...state, coursesDetails: action.payload}
 
         case GET_COURSES:
+
             return {...state, courses: action.payload}
 
         case GET_ABOUT:

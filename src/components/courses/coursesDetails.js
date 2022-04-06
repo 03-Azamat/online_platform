@@ -4,7 +4,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCoursesDetails} from "../../redux/action/corsesAction";
 import Cour from "../../image/cour_logo.svg"
 import {add , format } from "date-fns"
-import MainTest from "../Test/MainTest";
 
 import Accordion from "../accordion/accordion";
 import Loader from "../../loader/loader";

@@ -12,6 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import {data} from "autoprefixer";
 import {number} from "yup";
 import {injectStyle} from "react-toastify/dist/inject-style";
+import {publicApi} from "../HTTP/publicApi";
 
 export default function HookForm({active, setActive}) {
     const navigate =useNavigate()
@@ -33,12 +34,12 @@ export default function HookForm({active, setActive}) {
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
     const { register,handleSubmit, formState: { errors,} } = useForm(formOptions);
+
     const onSubmit = data => {
-
-        axios.post("https://djangorestapp.herokuapp.com/users/", data)
+        const submit = publicApi.post("/users/", data)
             .then(response => {
-                toast.success("Вам отправлено ссылка в электронные почте")
-
+                toast.success(`Вам отправлено ссылка в электронные почте `)
+                setActive(false)
                 // localStorage.setItem("user", JSON.stringify(data.user))
                 console.log(response ,"response")
             }).catch((error) => {
@@ -56,47 +57,39 @@ export default function HookForm({active, setActive}) {
 
 
     return (
-        <section className={ active ? "forms active  " : "forms"}>
-            <div className={ active ? "forms--inputs active  " : "forms--inputs"}  >
-                <ToastContainer
-                    autoClose={10000}
-                    hideProgressBar={false}
-                />
-                <form onSubmit={handleSubmit(onSubmit)}  className='forms--inputs--hook' >
-                    <FontAwesomeIcon className='forms--inputs--hook--btnx' icon={faXmark}
-                                     style={{fontSize:'25px'}}
-                                     onClick={() => {
-                                         setActive(false)
-                                         // navigate("/")
-                                     }}
-                    />
-                    <h2>Регистрация</h2>
-                    <input  type="text" placeholder="ФИО"  {...register("name")} className={`form-control ${errors.password ? 'is-invalid' : ''}`}/>
-                    <div className="invalid-feedback">{errors.name?.message}</div>
-                    <input  type="tel" placeholder="+996 555 555 555" {...register("phone_number")} className={`form-control ${errors.password ? 'is-invalid' : ''}`}/>
-                    <div className="invalid-feedback">{errors.phone_number?.message}</div>
-                    <input  type="email" placeholder="Email" {...register("email", {required: true, pattern: /^\S+@\S+$/i})}/>
-                    <div className="invalid-feedback">{errors.email?.message}</div>
-                    {/*<input type="text" placeholder="Должность" {...register("position", {required: true, maxLength: 100})} />*/}
-                    {/*<input  type="text" placeholder="Организация" {...register("organization", {required: true, maxLength: 100})} />*/}
-                    <input  name="password"  placeholder="Пароль"  type="password" {...register('password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
-                    <div className="invalid-feedback">{errors.password?.message}</div>
-                    <input name="confirmPassword" type="password" placeholder="Подвердить пароль" {...register('confirmPassword')} className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`} />
-                    <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
-                    <button type="submit"
-                    > Зарегистрироваться</button>
-                </form>
-            </div>
+        <>
+            <ToastContainer/>
+            <section className={ active ? "forms active  " : "forms"}>
 
-        </section>
+                <div className={ active ? "forms--inputs active  " : "forms--inputs"}  >
+
+                    <form onSubmit={handleSubmit(onSubmit)}  className='forms--inputs--hook' >
+                        <FontAwesomeIcon className='forms--inputs--hook--btnx' icon={faXmark}
+                                         style={{fontSize:'25px'}}
+                                         onClick={() => {
+                                             setActive(false)
+                                             // navigate("/")
+                                         }}
+                        />
+                        <h2>Регистрация</h2>
+                        <input  type="text" placeholder="ФИО"  {...register("name")} className={`form-control ${errors.password ? 'is-invalid' : ''}`}/>
+                        <div className="invalid-feedback">{errors.name?.message}</div>
+                        <input  type="tel" placeholder="+996 555 555 555" {...register("phone_number")} className={`form-control ${errors.password ? 'is-invalid' : ''}`}/>
+                        <div className="invalid-feedback">{errors.phone_number?.message}</div>
+                        <input  type="email" placeholder="Email" {...register("email", {required: true, pattern: /^\S+@\S+$/i})}/>
+                        <div className="invalid-feedback">{errors.email?.message}</div>
+                        <input  name="password"  placeholder="Пароль"  type="password" {...register('password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
+                        <div className="invalid-feedback">{errors.password?.message}</div>
+                        <input name="confirmPassword" type="password" placeholder="Подвердить пароль" {...register('confirmPassword')} className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`} />
+                        <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
+                        <button
+                            type="submit"
+                        > Зарегистрироваться
+                        </button>
+                    </form>
+                </div>
+
+            </section>
+        </>
     );
 }
-
-// const token = axios.post("https://djangorestapp.herokuapp.com/jwt/create/", data)
-//     .then(response => {
-//         console.log(response)
-//         console.log(Cookies.set("token",data.token))
-//     })
-
-
-
