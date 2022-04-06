@@ -34,9 +34,10 @@ function Main() {
                 <Route path={"/coursesDetails/:id"} element={<CoursesDetails/>}/>
                 <Route path={"/register-code"} element={<RegisterCode/>}/>
                 <Route path={"/register-check"} element={<Register/>}/>
-                <Route path={"/question/:testId"} element={<Question/>}/>
+                <oute path={"/question/:testId"} element={<Question/>}/>
                 <Route path={"/coursesDetails/coursesLesson/:lessonId"} element={<CoursesLesson/>}/>
                 <Route path={"/about"} element={<About/>}/>
+                
                 <Route path={"/person"} element={<Person/>}/>
                 <Route path={"/home"} element={<Home/>}/>
                 <Route path={"/quiz/:idTest"} element={<Quiz/>}/>
