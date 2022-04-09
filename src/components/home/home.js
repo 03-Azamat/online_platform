@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCourses} from "../../redux/action/corsesAction";
 import CoursesCard from "../card/coursesCard";
 import {NavLink} from "react-router-dom";
+import Loader from "../../loader/loader";
 
 const Home = () => {
 
@@ -16,8 +17,7 @@ const Home = () => {
     },[])
 
     return (
-        <div>
-            <section id="home">
+        home.length === 0 ? <Loader/> :<section id="home">
                 <div className='home--block'>
                     <div className="container">
                         <div className="home--block--box">
@@ -48,7 +48,6 @@ const Home = () => {
                 </div>
 
             </section>
-        </div>
     );
 };
 

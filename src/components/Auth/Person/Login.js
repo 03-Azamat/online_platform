@@ -26,7 +26,7 @@ const Login = ({signActive,setSignActive}) => {
     const onSubmit = data => {
         const login = publicApi.post("/jwt/create", data)
             .then(response => {
-                toast.success("Salam  " +data.email)
+                toast.success("Salam " + data.email)
                 authenticate(response)
                 navigate("/person")
             }).catch((error) => {

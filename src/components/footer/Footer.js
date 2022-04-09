@@ -28,17 +28,17 @@ const Footer = () => {
                                 нам: mail@ashimovbayastan@gmail.com
                             </p>
                             <span className="footer--middle--icons">
-                                <SocialMediaIconsReact icon="instagram" borderColor="#white" iconColor="#01487E"
-                                                       backgroundColor="white" url="https://instagram.com/" size="32"/>
-                                <SocialMediaIconsReact icon="facebook" borderColor="white" iconColor="#01487E"
-                                                       backgroundColor="white" url="https://facebook.com/" size="32"/>
-                                <SocialMediaIconsReact icon="instagram" borderColor="white" iconColor="#01487E"
-                                                       backgroundColor="white" url="https://telegram.com/" size="32"/>
-                                <SocialMediaIconsReact icon="whatsapp" borderColor="white" iconColor="#01487E"
-                                                       backgroundColor="white" url="https://whatsapp.com/" size="32"/>
-                                <SocialMediaIconsReact borderColor="#01487E" icon="twitter"
-                                                       iconColor="rgba(255,255,255,1)" backgroundColor="#01487E"
-                                                       url="https://twitter.com/" size="32"/>
+                                {/*<SocialMediaIconsReact icon="instagram" borderColor="#white" iconColor="#01487E"*/}
+                                {/*                       backgroundColor="white" url="https://instagram.com/" size="32"/>*/}
+                                {/*<SocialMediaIconsReact icon="facebook" borderColor="white" iconColor="#01487E"*/}
+                                {/*                       backgroundColor="white" url="https://facebook.com/" size="32"/>*/}
+                                {/*<SocialMediaIconsReact icon="instagram" borderColor="white" iconColor="#01487E"*/}
+                                {/*                       backgroundColor="white" url="https://telegram.com/" size="32"/>*/}
+                                {/*<SocialMediaIconsReact icon="whatsapp" borderColor="white" iconColor="#01487E"*/}
+                                {/*                       backgroundColor="white" url="https://whatsapp.com/" size="32"/>*/}
+                                {/*<SocialMediaIconsReact borderColor="#01487E" icon="twitter"*/}
+                                {/*                       iconColor="rgba(255,255,255,1)" backgroundColor="#01487E"*/}
+                                {/*                       url="https://twitter.com/" size="32"/>*/}
                         </span>
                         </div>
                         <div className="footer--end">

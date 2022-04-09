@@ -1,5 +1,5 @@
 import axios from "axios";
-import {GET_ABOUT, GET_COURSES, GET_COURSES_TEST, GET_SINGLE_COURSES} from "../types/actionTypes";
+import {GET_ABOUT, GET_ADMIN, GET_COURSES, GET_COURSES_TEST, GET_SINGLE_COURSES} from "../types/actionTypes";
 
 export const getCourses = () =>{
     return(dispatch) =>{
@@ -28,7 +28,7 @@ export const getAbout = () =>{
 
 export const getTest = (id) =>{
     return(dispatch) =>{
-        axios(`https://djangorestapp.herokuapp.com/question-list/${id}/`)
+        axios(`https://djangorestapp.herokuapp.com/test-list/${id}/`)
             .then(({data})=>{
                 console.log(data)
                 dispatch({type:GET_COURSES_TEST, payload:data})
@@ -36,10 +36,23 @@ export const getTest = (id) =>{
     }
 }
 
+
+
 export const getTestDetails = (id) =>{
     return(dispatch) =>{
         axios(`https://djangorestapp.herokuapp.com/question-detailid/${id}/`)
-            .then(({data})=>
-                dispatch({type:GET_COURSES_TEST, payload:data}))
+            .then(({data})=> {
+                dispatch({type: GET_COURSES_TEST, payload: data})
+                console.log(data, "accard")
+            })
+    }
+}
+
+export const getAdmin = (id) =>{
+    return(dispatch) =>{
+        axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-Detail/${id}/`)
+            .then(({data})=> {
+                dispatch({type:GET_ADMIN, payload:data})
+            })
     }
 }

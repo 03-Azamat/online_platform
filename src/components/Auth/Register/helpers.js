@@ -1,4 +1,6 @@
 import cookies from "js-cookie";
+import {useEffect} from "react";
+import axios from "axios";
 
 export const authenticate = (response) => {
     cookies.set("access", response.data.access, {expiresIn: "3d"})
@@ -21,3 +23,4 @@ export const logout = () => {
     cookies.remove("access")
     localStorage.removeItem("access")
 }
+

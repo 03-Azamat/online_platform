@@ -9,19 +9,7 @@ import SignIn from "../Auth/Register/SignIn";
 import {isAuth} from "../Auth/Register/helpers";
 import {publicApi} from "../Auth/HTTP/publicApi";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
-import {QuizContext} from "../../data/Contexts";
-import MainMenu from "../Test/function/MainMenu";
-import Quiz from "../Test/function/Quiz";
-import EndScreen from "../Test/function/EndScreen";
-import MainTest from "../Test/MainTest";
-// import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-// import { faXmark} from "@fortawesome/free-solid-svg-icons";
-// import Register from "../Auth/Register/Register";
-// import RegisterCopy from "../Auth/Register/RegisterCopy";
-// import FormInput from "../Auth/Register/FormInput";
-// import RegisterCode from "../Auth/Register/RegisterCode";
-// import {Quiz} from "../Test/function/Quiz";
-// import EndScreen from "../Test/function/EndScreen";
+
 
 const Header = () => {
     const [activeForm, setActiveForm] = useState(false)
@@ -39,10 +27,6 @@ const Header = () => {
             .then(({data}) => setPersons(data))
 
     }, [])
-    const [testActive, setTestActive] = useState(false)
-    // const [score, setScore] = useState(0)
-    // const [gameState, setGameState] = useState("menu")
-
 
     return (
         <header>
@@ -53,17 +37,15 @@ const Header = () => {
                             <NavLink to={"/"}>
                                 <img src={logo} alt=""/>
                             </NavLink>
-
                         </div>
                         <div className="header--content--items">
                             <NavLink to={"/"}>Главная</NavLink>
                             <NavLink to={"/courses"}>Курсы</NavLink>
                             <NavLink to={"/certificate"}>Проверка сертификатов</NavLink>
-                            <NavLink to={"/person"}>Person</NavLink>
+                            {/*<NavLink to={"/person"}>Person</NavLink>*/}
                             <NavLink to={"/about"}>О нас</NavLink>
                             <NavLink to={"contact"}>Контакты</NavLink>
                             <NavLink to={"/contact"}>Контакты</NavLink>
-
                         </div>
                         <div className="header--content--auth flex items-center ">
                             {
@@ -113,7 +95,6 @@ const Header = () => {
                                         </button>
                                     </>
                             }
-
                         </div>
                         <BurgerMenu/>
                     </div>

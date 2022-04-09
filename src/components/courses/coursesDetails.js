@@ -1,30 +1,29 @@
 import React, {useEffect, useState} from 'react';
 import {NavLink, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getCoursesDetails} from "../../redux/action/corsesAction";
+import {getAdmin, getCoursesDetails} from "../../redux/action/corsesAction";
 import Cour from "../../image/cour_logo.svg"
 import {add , format } from "date-fns"
-
 import Accordion from "../accordion/accordion";
 import Loader from "../../loader/loader";
+import {isAuth} from "../Auth/Register/helpers";
 
 
 const CoursesDetails = () => {
-    // const [ isBought , setIsBought ] = useState(false)
-    // const [fagData , setFaqData] = useSelector({})
-
+    const [ isBought , setIsBought ] = useState(false)
     const {id} = useParams()
+
+    const dispatch = useDispatch()
     console.log(id, "iddd")
     const {coursesDetails : course} = useSelector(s => s)
     // if(course?.free) {
     //     setIsBought(false);
-    //     dispatch(course?.free)
+    //     dispatch(getAdmin(course?.free))
     // }else{
     //     setIsBought(true);
-    //     dispatch(course?.bought)
+    //     dispatch(getAdmin(course?.bought))
     // }
 
-    const dispatch = useDispatch()
     console.log(course?.id , "courses")
     console.log(id)
 
@@ -40,11 +39,11 @@ const CoursesDetails = () => {
     const in7DaysCalendarDate = format( add(date , {days:7}) , calendarDateFormat)
 
     return (
-        <section id="cour">
+        <section id="cour"  key={course?.id}>
 
             <div className="container">
                 {course ? (
-                    <div key={course.id} className="cour--box">
+                    <div className="cour--box">
                     <span className="cour--box--logo">
                         <img src={Cour} alt=""/>
                         <p>Курс</p>
@@ -57,7 +56,12 @@ const CoursesDetails = () => {
                                     “Образование — это умение правильно
                                     действовать в любых житейских ситуациях.“
                                 </p>
-                                <button className="cour--box--head--titles--btn">Оставить заявку</button>
+                                {
+                                    isAuth() ?
+                                        "" :
+                                        <button className="cour--box--head--titles--btn">Оставить заявку</button>
+
+                                }
                             </div>
 
                             <div className="cour--box--head--dates">
@@ -89,11 +93,10 @@ const CoursesDetails = () => {
                             </h1>
 
                             <div className="cour--box--accordion--block">
-
                             </div>
                                 {
                                     course?.coursechoice?.map(el=>(
-                                        <Accordion el={el} />
+                                        <Accordion el={el} key={el.id}/>
                                     ))
                                 }
                             </div>

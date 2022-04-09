@@ -1,5 +1,5 @@
 import {
-    GET_ABOUT,
+    GET_ABOUT, GET_ADMIN,
     GET_COURSES,
     GET_COURSES_TEST,
     GET_COURSES_TEST_DETAILS,
@@ -11,7 +11,8 @@ const initialState = {
     coursesDetails: {},
     aboutReducer:[],
     question:[],
-    questionDetails:{}
+    questionDetails:{},
+    admin: null
 }
 
 export const reducer = (state = initialState, action) => {
@@ -30,6 +31,10 @@ export const reducer = (state = initialState, action) => {
 
         case GET_COURSES_TEST_DETAILS:
             return {...state, questionDetails: action.payload}
+
+        case GET_ADMIN:
+            return {...state, admin :action.payload }
+
 
         default :
             return state

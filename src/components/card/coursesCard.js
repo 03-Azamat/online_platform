@@ -6,7 +6,7 @@ const CoursesCard = ({el}) => {
     const calendarDate = format(new Date(), "dd")
 
     return (
-            <div className="coursesCard">
+            <div className="coursesCard" key={el.id}>
                 <NavLink to={`/coursesDetails/${el.id}`}>
                     <img src={el.img} alt=""/>
                     <h1 className="coursesCard--box--block--content--title">img</h1>

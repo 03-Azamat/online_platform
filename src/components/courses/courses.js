@@ -7,16 +7,16 @@ import Loader from "../../loader/loader";
 
 const Courses = () => {
 
-    const coursesTwo = useSelector(state => state.courses)
+    const elem = useSelector(state => state.courses)
 
-    console.log(coursesTwo, "coursesTwo")
+    console.log(elem, "coursesTwo")
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getCourses())
     },[])
 
     return (
-        coursesTwo.length === 0 ? <Loader/> :
+        elem.length === 0 ? <Loader/> :
         <section id="courses">
             <div className='courses--block'>0
                 <div className="container">
@@ -30,8 +30,8 @@ const Courses = () => {
 
                   <div className="courses--box--block">
                       {
-                          coursesTwo.map(el => (
-                               <CoursesCard el={el} key={el.id}/>
+                          elem.map(el => (
+                               <CoursesCard key={el.id} el={el} />
                           ))
                       }
                   </div>

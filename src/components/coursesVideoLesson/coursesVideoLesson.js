@@ -8,7 +8,7 @@ const CoursesVideoLesson = ({el}) => {
 
     console.log(el.choicetopic?.topics?.videos)
     return (
-        <div className='player-wrapper'>
+        <div className='player-wrapper' key={el.id}>
             <div className="react-player-video">
                 <h1 className="pb-5 font-medium text-xl sm:text-sm font-light md: text-md font-base lg: text-base font-medium">{video.title}</h1>
                 <ReactPlayer

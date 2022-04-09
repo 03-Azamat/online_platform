@@ -23,16 +23,11 @@ const Question = () => {
             <div className="container  flex justify-center align-middle">
                 <div className="question--block" key={elem.testId}>
                     <div className="question--block--box">
-
                         {
-                            elem.slice(0, 1).map(el => (
+                            elem?.choicetest?.map(el => (
                                 <div>
-                                    <p className="question--block--box--title">{el.title}</p>
-                                    {
-                                        el?.flags?.map(item => (
-                                            <button>{item.text}</button>
-                                        ))
-                                    }
+                                    <p className="question--block--box--title">{el.name}</p>
+                                    <p className="question--block--box--title">{el.text}</p>
                                 </div>
                             ))
                         }

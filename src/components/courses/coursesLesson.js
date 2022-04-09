@@ -45,7 +45,7 @@ const CoursesLesson = () => {
                                         elem?.coursechoice?.map(el => (
                                             <div>
                                                 <div>
-                                                    <CoursesVideoLesson el={el}/>
+                                                    <CoursesVideoLesson el={el} key={el.id}/>
                                                 </div>
                                                 <div>
                                                     <p dangerouslySetInnerHTML={{__html:el.choicetopic?.topics?.name_work}}/>
@@ -60,7 +60,7 @@ const CoursesLesson = () => {
                             <div className="lesson--box--end">
 
                             </div>
-                            <NavLink to="/coursesDetailsPaid/:id">
+                            <NavLink to={`/coursesDetails/${elem.lessonId}`}>
                                 <button className="lesson--box--btn">Назад</button>
                             </NavLink>
                         </div>

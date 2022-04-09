@@ -31,15 +31,11 @@ const About = () => {
                             <img src={Traced} alt="" className="about2--block--arch--img"/>
                         </div>
                         <div className="about2--block--arch--box">
-
-
                                 {
                                     about.map(el=> (
                                         <p className="about2--block--arch--box--desc" dangerouslySetInnerHTML={{__html:el.text}}/>
                                     ))
                                 }
-
-
                         </div>
 
                     </div>
