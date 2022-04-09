@@ -1,6 +1,6 @@
 #person{
   flex-wrap: wrap;
-  padding: 100px 0 0 0;
+  padding: 50px 0 150px 0;
   width: 100%;
   background: #E5E5E5;
 
@@ -17,10 +17,8 @@
 
 
   .contentBtn{
-
     display: flex;
     justify-content: space-between;
-
     .btn{
       flex-wrap: wrap;
       background: #FFFFFF;
@@ -30,8 +28,26 @@
       justify-content: start;
       width: 300px;
       height: 430px;
-      margin: 80px 0 50px 0;
-      //display: none;
+      & input[type="file"] {
+        display: none;
+      }
+
+      &--input{
+        border: 1px solid #ccc;
+        display: inline-block;
+        padding: 10px 15px;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 220px;
+        color:white;
+        background: #01487E;
+        border-radius: 5px;
+        outline: none;
+       margin: 0 0  20px 38px;
+
+      }
 
       &.active{
         background: grey;
@@ -51,6 +67,7 @@
         margin: 7px 0 0 105px;
         color: #FFFFFF;
         background: #01487E;
+
       }
 
 
@@ -121,6 +138,7 @@
         }
 
         &--center{
+          margin: 35px 0 0  0;
           display: flex;
           justify-content: space-between;
           &--position {
@@ -149,6 +167,7 @@
           }
         }
         &--end{
+          margin: 35px 0 0 0 ;
           display: flex;
           justify-content: space-between;
           &--email{
@@ -170,12 +189,9 @@
             border: 1px solid #6A6A6A;
             box-sizing: border-box;
             border-radius: 5px;
-
-            &--icons{
-              display: flex;
-              justify-content: space-between;
-              margin: -37px 0 0 0;
-              padding: 5px 10px 5px 10px;
+            &--button {
+              width: 357px;
+              height: 53px;
             }
           }
         }
