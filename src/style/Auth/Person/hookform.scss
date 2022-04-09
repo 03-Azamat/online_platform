@@ -1,0 +1,95 @@
+.forms{
+  flex-wrap: wrap;
+  background: rgba(0,0,0,0.5);
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  transition: 0.5s;
+  opacity:0 ;
+  pointer-events: none;
+
+
+  &.active{
+    flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.5s;
+    height: 100vh;
+
+  }
+  &--inputs{
+    flex-wrap: wrap;
+
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    transition: 0.5s all;
+    //position: fixed;
+
+    &.active{
+      transition: 0.5s;
+      transform: scale(1);
+    }
+
+    &--hook{
+      width: 300px;
+      height: 425px;
+      //position: relative;
+      display: flex;
+      flex-direction: column;
+      top:0;
+
+      //background: rgba(178,185,178,0.99);
+      background: white ;
+      border-radius: 5px;
+      padding: 15px 0 0 0;
+      transform: scale(1);
+      transition: 0.6s all;
+      &--btnx{
+        //display: flex;
+        //align-items: start;
+        //justify-content: center;
+          margin: -10px 0  0  260px ;
+        color: #01487E;
+      }
+      & div {
+        color: red;
+        font-size: 12px;
+        width: 200px;
+        padding:  0 0 0 40px;
+      }
+      & h2{
+        color:black;
+        display: flex;
+        padding: 0 0 15px  0 ;
+        justify-content: center;
+      }
+      & input{
+        position: relative;
+        width: 230px;
+        height: 20px;
+        margin:13px 0 0 35px;
+        padding: 15px;
+
+      }
+      & button {
+        margin: 10px 0 25px 35px;
+        width: 230px;
+        height: 35px;
+        color: white;
+
+        background: #01487E;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+    }
+  }
+}
