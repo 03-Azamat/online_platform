@@ -8,7 +8,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import {authenticate, isAuth} from "./helpers";
+import {authenticate, isAuth} from "../Register/helpers";
 import {publicApi} from "../HTTP/publicApi";
 
 const SignIn = ({signActive,setSignActive}) => {

@@ -4,28 +4,26 @@ import {useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import BurgerMenu from "../BurgerMenu/BurgerMenu";
 import {NavLink, useNavigate} from "react-router-dom";
-import HookForm from "../Auth/Person/HookForm";
-import SignIn from "../Auth/Register/SignIn";
+import HookForm from "../Auth/Register/HookForm";
+import SignIn from "../Auth/Person/SignIn";
 import {isAuth} from "../Auth/Register/helpers";
 import {publicApi} from "../Auth/HTTP/publicApi";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
+import {useDispatch, useSelector} from "react-redux";
+import {getUser} from "../../redux/action/corsesAction";
 
 const Header = () => {
-    const [persons, setPersons] = useState({})
     const [activeForm,setActiveForm] = useState(false)
     const [signActive, setSignActive] = useState(false)
     const navigate = useNavigate();
     const link = window.location.href.split("/").pop();
     const access = JSON.parse(localStorage.getItem("access"));
+    const persons = useSelector(state => state.getUser)
+    console.log(persons, "personssssss")
+    const dispatch = useDispatch()
     useEffect(() => {
-        const  user = publicApi.get("users/me/", {
-            headers: {
-                "Authorization": `Bearer ${access}`
-            }
-        })
-            .then(({data}) => setPersons(data))
-
-    }, [])
+        dispatch(getUser())
+    },[1])
 
     return (
         <header>

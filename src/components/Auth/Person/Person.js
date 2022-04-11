@@ -11,74 +11,48 @@ import {publicApi} from "../HTTP/publicApi";
 import UpdatePhone from "../Updated/UpdatePhone";
 import axios from "axios";
 import Accordion from "../../accordion/accordion";
+import UpdateName from "../Updated/UpdateName";
+import AddPosition from "../Register/AddPosition";
+import {useDispatch, useSelector} from "react-redux";
+import {getCourses, getUser} from "../../../redux/action/corsesAction";
 
 const Person = () => {
     const [index, setIndex] = useState(0)
-    const [persons, setPersons] = useState({})
+    // const [persons, setPersons] = useState({})
+    const [posOrgan,setPosOrgan] = useState({})
     const [poModal, setPoModal] = useState(false)
     const [orModal, setOrModal] = useState(false)
     const [emailModal, setEmailModal] = useState(false)
     const [passwordModal, setPasswordModal] = useState(false)
+    const [add, setAdd] = useState(false)
     const [phoneModal, setPhoneModal] = useState(false)
-
+    const [nameModal, setNameAModal] = useState(false)
     const navigate = useNavigate()
     const access = JSON.parse(localStorage.getItem("access"));
-    const refresh = JSON.parse(localStorage.getItem("refresh"));
+    const userID = JSON.parse(localStorage.getItem("userID"));
+    const persons = useSelector(state => state.getUser)
+    console.log(persons, "personssssss")
+    const dispatch = useDispatch()
     useEffect(() => {
-        const user = publicApi.get("users/me/", {
-            headers: {
-                "Authorization": `Bearer ${access}`
-            }
-        })
-            .then(({data}) => setPersons(data))
-
-
-    }, [persons])
-
-    const [name, setName] = useState("")
-    // const [phone, setPhone] = useState('')
-    const [phone, setPhone] = useState(persons.phone_number)
-    // const [emailUser,setEmailUser] = useState("")
-    const handleChangeUser = (e) => {
-        setPhone(e.target.value)
-        setPersons({...persons, [e.target.value]: e.target.value})
-    }
-    const btn = async  () => {
-        let obj = {
-            name: name,
-            phone_number: phone,
-            id: persons.id,
-        }
-        let options = {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${access}` },
-            body: JSON.stringify(obj)
-        }
-
-        console.log(obj)
-
-       await  axios.put("https://djangorestapp.herokuapp.com/users/me/", options)
-
-            .then(({data}) => {
-                console.log(data, "data")
-
-            })
-            .then(() => {
-                setPhone(persons.phone_number)
-            })
-    }
-
-
-
+        dispatch(getUser())
+    },[])
+    // useEffect(() => {
+    //     publicApi.get("users/me/", {
+    //         headers: {
+    //             "Authorization": `Bearer ${access}`
+    //         }
+    //     })
+    //         .then(({data}) => setPersons(data))
+    //     publicApi.get(`/data-detailID/${userID}/`, {
+    //         headers: {
+    //             "Authorization": `Bearer ${access}`
+    //         }
+    //     })
+    //         .then(({data}) => setPosOrgan(data))
+    // }, [])
+    console.log(posOrgan)
     return (
         <section id='person'>
-            <Accordion persons={persons} />
-            <input onChange={e => setName(e.target.value)} type="text"  value={name}/>
-            {/*<input onChange={e => setPhone(e.target.value)} type="tel" value={phone}/>*/}
-            {/*<input onChange={e => setEmailUser(e.target.value)} type="text" value={emailUser}/>*/}
-            <button onClick={btn}> Отправить</button>
             <div className='container'>
                 <h1>Личный кабинет</h1>
                 <div className="contentBtn">
@@ -128,18 +102,20 @@ const Person = () => {
                                 <div className="flex flex-col">
                                     <label>ФИО</label>
                                     <div
-                                        className='person--content--start--name '>
-
+                                        className='person--content--start--name  '>
                                         <p className='p-3'> {persons.name} </p>
+                                        < FontAwesomeIcon
+                                            onClick={() => setNameAModal(true)}
+                                            icon={faPen} style={{color: "#01487E",cursor:"pointer"}}/>
                                     </div>
                                 </div>
                                 <div className="flex flex-col">
                                     <label>Номер телефона</label>
-                                    <div className='person--content--start--number'>
+                                    <div  className='person--content--start--number '>
                                         <p>{persons.phone_number}</p>
                                         < FontAwesomeIcon
                                             onClick={() => setPhoneModal(true)}
-                                            icon={faPen} style={{color: "#01487E"}}/>
+                                            icon={faPen} style={{color: "#01487E",cursor:"pointer"}}/>
                                     </div>
                                 </div>
 
@@ -149,8 +125,8 @@ const Person = () => {
                                 <div className="flex flex-col">
                                     <label>Должность</label>
                                     <div className='person--content--center--position'>
-                                        <p></p>
-                                        < FontAwesomeIcon icon={faPen} style={{color: "#01487E"}}
+                                        <p>{posOrgan.position}</p>
+                                        < FontAwesomeIcon icon={faPen} style={{color: "#01487E",cursor:"pointer"}}
                                                           onClick={() => setPoModal(true)}
 
                                         />
@@ -160,22 +136,26 @@ const Person = () => {
                                 <div className="flex flex-col">
                                     <label>Организация</label>
                                     <div className='person--content--center--organization'>
-                                        <p>     </p>
+                                        <p>{posOrgan.organization} </p>
                                         < FontAwesomeIcon
-                                            icon={faPen} style={{color: "#01487E"}}
+                                            icon={faPen} style={{color: "#01487E",cursor:"pointer"}}
                                             onClick={() => setOrModal(true)}/>
                                     </div>
                                 </div>
 
                             </div>
-
+                            <button
+                                className='btn--btns--tabRoute'
+                                style={{margin:"30px 0 0 0 ",width:"100%"}}
+                                onClick={() => setAdd(true)}
+                            >Добавить</button>
                             <div className='person--content--end'>
                                 <div className="flex flex-col">
                                     <label>Email</label>
                                     <div className='person--content--end--email'>
                                         <p className='flex items-center justify-start '>{persons.email}</p>
                                         < FontAwesomeIcon
-                                            icon={faPen} style={{color: "#01487E"}}
+                                            icon={faPen} style={{color: "#01487E",cursor:"pointer"}}
                                             onClick={() => setEmailModal(true)}/>
                                     </div>
                                 </div>
@@ -192,13 +172,27 @@ const Person = () => {
                                 </div>
                             </div>
                         </div>
-                        <UpdatePosition poModal={poModal} setPoModal={setPoModal}/>
-                        <UpdateOrganization orModal={orModal} setOrModal={setOrModal}/>
+                        <UpdatePosition
+                            poModal={poModal}
+                            setPoModal={setPoModal}
+                            posOrgan={posOrgan}
+                            persons={persons}
+                        />
+                        <UpdateOrganization
+                            orModal={orModal}
+                            setOrModal={setOrModal}
+                            posOrgan={posOrgan}
+                            persons={persons}
+                        />
+                        <UpdateName
+                            modal={nameModal}
+                            setModal={setNameAModal}
+                            persons={persons}
+                        />
                         <UpdateEmail
                             persons={persons}
                             emailModal={emailModal}
                             setEmailModal={setEmailModal}
-                            handleChangeUser={handleChangeUser}
                         />
                         <UpdatePassword
                             passwordModal={passwordModal}
@@ -209,7 +203,11 @@ const Person = () => {
                             phoneModal={phoneModal}
                             setPhoneModal={setPhoneModal}
                             persons={persons}
-                            handleChangeUser={handleChangeUser}
+                        />
+                        <AddPosition
+                            add={add}
+                            setAdd={setAdd}
+                            persons={persons}
                         />
                     </div>
                     <div className='my-courses' hidden={index !== 1}>
@@ -271,5 +269,38 @@ export default Person;
 //         .then(res => res.json())
 //         .then(data => {
 //             console.log(data)
+//         })
+// }
+
+
+
+
+
+
+
+// const btn = async  () => {
+//     let obj = {
+//         name: name,
+//         phone_number: phone,
+//         id: persons.id,
+//     }
+//     let options = {
+//         method: "PUT",
+//         headers: {
+//             "Content-Type": "application/json",
+//             "Authorization": `Bearer ${access}` },
+//         body: JSON.stringify(obj)
+//     }
+//
+//     console.log(obj)
+//
+//    await  axios.put("https://djangorestapp.herokuapp.com/users/me/", options)
+//
+//         .then(({data}) => {
+//             console.log(data, "data")
+//
+//         })
+//         .then(() => {
+//             setPhone(persons.phone_number)
 //         })
 // }

@@ -1,0 +1,130 @@
+.modal{
+  flex-wrap: wrap;
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  transition: 0.5s;
+  opacity:0 ;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+  &.active{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: fixed;
+
+    right: 0;
+    left: 0;
+    bottom: 0;
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.5s;
+    height: 100vh;
+
+  }
+
+  &--name{
+    width: 360px;
+    height: 260px;
+    background: white;
+    border-radius: 5px;
+    transform: scale(0);
+    transition: 0.5s all;
+
+    & label{
+      display: block;
+      padding: 30px 0 0 28px;
+      top: 25px;
+      color: grey;
+      font-size: 14px;
+    }
+    &.active{
+      transition: 0.5s;
+      transform: scale(1);
+    }
+
+
+    &--title{
+      color: #01487E;
+      font-size: 18px;
+      margin: 25px 0 0 28px;
+    }
+    &--form{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      & input{
+        display: flex;
+        justify-content: center;
+        //margin: 2px 0 0 23px;
+        padding: 5px 10px 10px 10px;
+        align-items: start;
+        width: 310px;
+        height: 53px;
+        border: 1px solid #777777;
+        box-sizing: border-box;
+        border-radius: 5px;
+      }
+      &--error{
+        color: red;
+        font-size: 12px;
+        width: 200px;
+        display: block;
+        margin: 0 0 0 -115px;  ;
+      }
+      &--btns{
+        display: flex;
+        justify-content: space-around;
+        margin: 30px 0 0 0;
+
+
+        &--btn2{
+          width: 140px;
+          height: 39px;
+          color:white;
+          font-size: 14px;
+          background: #01487E;
+          border-radius: 5px;
+        }
+        &--btn2:hover{
+          width: 140px;
+          height: 39px;
+          color:#01487E;
+          font-size: 14px;
+          background:none ;
+          border-radius: 5px;
+          transition: 0.2s;
+          border: 1px solid #01487E;
+        }
+        &--btn1{
+          width: 140px;
+          height: 39px;
+          color:#01487E;
+          font-size: 14px;
+          background: none;
+          border-radius: 5px;
+          border: 1px solid #01487E;
+        }
+        &--btn1:hover{
+          transition: 0.2s;
+          width: 140px;
+          height: 39px;
+          color:white;
+          font-size: 14px;
+          background:#01487E ;
+          border-radius: 5px;
+
+        }
+      }
+    }
+  }
+}

@@ -15,7 +15,7 @@ import {QuizContext} from "./data/Contexts";
 import Quiz from "./components/Test/function/Quiz";
 import EndScreen from "./components/Test/function/EndScreen";
 import Question from "./components/question/question";
-import Login from "./components/Auth/Person/Login";
+import Login from "./components/Auth/emailActive/Login";
 import EmailActive from "./components/Auth/emailActive/EmailActive";
 
 

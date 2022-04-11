@@ -12,11 +12,7 @@ import {publicApi} from "../HTTP/publicApi";
 
 const UpdatePhone = ({phoneModal,setPhoneModal,persons, handleChangeUser}) => {
     const access = JSON.parse(localStorage.getItem("access"));
-
-
-
     const [phone, setPhone] = useState(persons.phone_number)
-
     const btn = (e) => {
         e.preventDefault()
         let obj = {

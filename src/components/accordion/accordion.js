@@ -8,6 +8,7 @@ const Accordion = ({el}) => {
     const lessonId = useParams()
     const [active,setActive] = useState(false)
     console.log(lessonId, "lessonId")
+    console.log(el.phone_number)
     return (
         <div className={`accordion ${active ? 'active' : ''}`}>
             <div className="accordion__title" onClick={()=> setActive(!active)} >
