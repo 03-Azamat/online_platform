@@ -7,30 +7,41 @@ import {add , format } from "date-fns"
 import Accordion from "../accordion/accordion";
 import Loader from "../../loader/loader";
 import {isAuth} from "../Auth/Register/helpers";
+import axios from "axios";
+import activate from "../account/activate";
+import AccordionDemo from "../accordion/accordionDemo";
 
 
-const CoursesDetails = () => {
-    const [ isBought , setIsBought ] = useState(false)
+const CoursesDetails = ({persons}) => {
     const {id} = useParams()
-
     const dispatch = useDispatch()
-    console.log(id, "iddd")
     const {coursesDetails : course} = useSelector(s => s)
-    // if(course?.free) {
-    //     setIsBought(false);
-    //     dispatch(getAdmin(course?.free))
-    // }else{
-    //     setIsBought(true);
-    //     dispatch(getAdmin(course?.bought))
-    // }
 
-    console.log(course?.id , "courses")
-    console.log(id)
+    // const [ isBought , setIsBought ] = useState(false)
+    const [paid , setPaid] = useState([false])
+    const showPaid = () => {
+        try {
+            axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-Detail/${persons}/`)
+                .then(({data}) => {
+                    setPaid(data)
+                    console.log(data)
+                })
+        } catch (e) {
+            console.log(e)}};
 
     useEffect(() => {
         dispatch(getCoursesDetails(id))
+        showPaid()
     }, [])
-
+//////////////////////////////////////////////////////
+//
+//     if(paid?.activation === false) {
+//         setIsBought(false);
+//         showPaid(paid.activation === false)
+//     }else{
+//         setIsBought(true);
+//         showPaid(paid.activation === true)
+//     }
 
     //////date-fns//////
     const date = new Date()
@@ -94,11 +105,15 @@ const CoursesDetails = () => {
 
                             <div className="cour--box--accordion--block">
                             </div>
-                                {
-                                    course?.coursechoice?.map(el=>(
+                            {
+                                paid.activation === true ?
+                                        course?.coursechoice?.map(el => (
                                         <Accordion el={el} key={el.id}/>
                                     ))
-                                }
+                                    : course?.coursechoice?.map(el=>(
+                                        <AccordionDemo el={el} key={el.id}/>
+                                    ))
+                            }
                             </div>
 
                         <div className="cour--box--test">

@@ -21,8 +21,6 @@ import EmailActive from "./components/Auth/emailActive/EmailActive";
 
 
 function Main() {
-
-
     return (
         <>
             <Header/>
@@ -41,7 +39,7 @@ function Main() {
                 <Route path={"/home"} element={<Home/>}/>
                 <Route path={"/quiz/:idTest"} element={<Quiz/>}/>
                 <Route path={"/person"} element={<Person/>}/>
-                <Route path={"/*"} element={<EmailActive/>}/>
+                <Route path={"account/activate/*"} element={<EmailActive/>}/>
                 <Route path={"/login"} element={<Login/>}/>
             </Routes>
 

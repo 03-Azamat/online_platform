@@ -15,14 +15,14 @@ import {injectStyle} from "react-toastify/dist/inject-style";
 import {publicApi} from "../HTTP/publicApi";
 
 export default function HookForm({active, setActive}) {
-    const navigate =useNavigate()
+    const navigate = useNavigate()
     const validationSchema = Yup.object().shape({
         name: Yup.string()
             .required('Введите фамилия'),
         phone_number: Yup.string()
             .required('Введите телефон')
             .min(8, 'Введите телефон'),
-        email:Yup.string()
+        email: Yup.string()
             .required('Введите Email'),
         password: Yup.string()
             .required('Введите пароль')
@@ -32,8 +32,8 @@ export default function HookForm({active, setActive}) {
             .oneOf([Yup.ref('password')], 'Пароли должны совпадать')
 
     });
-    const formOptions = { resolver: yupResolver(validationSchema) };
-    const { register,handleSubmit, formState: { errors,} } = useForm(formOptions);
+    const formOptions = {resolver: yupResolver(validationSchema)};
+    const {register, handleSubmit, formState: {errors,}} = useForm(formOptions);
 
     const onSubmit = data => {
         const submit = publicApi.post("/users/", data)
@@ -41,15 +41,15 @@ export default function HookForm({active, setActive}) {
                 toast.success(`Вам отправлено ссылка в электронные почте `)
                 setActive(false)
                 // localStorage.setItem("user", JSON.stringify(data.user))
-                console.log(response ,"response")
+                console.log(response, "response")
             }).catch((error) => {
-                if (error.response.data.password){
+                if (error.response.data.password) {
                     toast.error(error.response.data.password[0])
-                } else if (error.response.data.phone_number && error.response.data.email ){
-                    toast.error(error.response.data.phone_number[0] ) &&  toast.error(error.response.data.email[0])
-                } else if (error.response.data.phone_number){
-                    toast.error(error.response.data.phone_number[0] )
-                } else if (error.response.data.email){
+                } else if (error.response.data.phone_number && error.response.data.email) {
+                    toast.error(error.response.data.phone_number[0]) && toast.error(error.response.data.email[0])
+                } else if (error.response.data.phone_number) {
+                    toast.error(error.response.data.phone_number[0])
+                } else if (error.response.data.email) {
                     toast.error(error.response.data.email[0])
                 }
             })
@@ -59,28 +59,42 @@ export default function HookForm({active, setActive}) {
     return (
         <>
             <ToastContainer/>
-            <section className={ active ? "forms active  " : "forms"}>
+            <section className={active ? "forms active  " : "forms"}>
 
-                <div className={ active ? "forms--inputs active  " : "forms--inputs"}  >
+                <div className={active ? "forms--inputs active  " : "forms--inputs"}>
 
-                    <form onSubmit={handleSubmit(onSubmit)}  className='forms--inputs--hook' >
+                    <form onSubmit={handleSubmit(onSubmit)} className='forms--inputs--hook'>
                         <FontAwesomeIcon className='forms--inputs--hook--btnx' icon={faXmark}
-                                         style={{fontSize:'25px'}}
+                                         style={{fontSize: '25px'}}
                                          onClick={() => {
                                              setActive(false)
                                              // navigate("/")
                                          }}
                         />
                         <h2>Регистрация</h2>
-                        <input  type="text" placeholder="ФИО"  {...register("name")} className={`form-control ${errors.password ? 'is-invalid' : ''}`}/>
+
+                        <input type="text" placeholder="ФИО"  {...register("name")}
+                               className={`form-control ${errors.password ? 'is-invalid' : ''}`}/>
                         <div className="invalid-feedback">{errors.name?.message}</div>
-                        <input  type="tel" placeholder="+996 555 555 555" {...register("phone_number")} className={`form-control ${errors.password ? 'is-invalid' : ''}`}/>
+                        <input type="tel" placeholder="+996 555 555 555" {...register("phone_number")}
+                               className={`form-control ${errors.password ? 'is-invalid' : ''}`}/>
+                        <input type="text" placeholder="ФИО"  {...register("name")}
+                               className={`form-control ${errors.name ? 'is-invalid' : ''}`}/>
+                        <div className="invalid-feedback">{errors.name?.message}</div>
+                        <input type="tel" placeholder="+996 555 555 555" {...register("phone_number")}
+                               className={`form-control ${errors.phone_number ? 'is-invalid' : ''}`}/>
                         <div className="invalid-feedback">{errors.phone_number?.message}</div>
-                        <input  type="email" placeholder="Email" {...register("email", {required: true, pattern: /^\S+@\S+$/i})}/>
+                        <input type="email" placeholder="Email" {...register("email", {
+                            required: true,
+                            pattern: /^\S+@\S+$/i
+                        })}/>
                         <div className="invalid-feedback">{errors.email?.message}</div>
-                        <input  name="password"  placeholder="Пароль"  type="password" {...register('password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
+                        <input name="password" placeholder="Пароль" type="password" {...register('password')}
+                               className={`form-control ${errors.password ? 'is-invalid' : ''}`}/>
                         <div className="invalid-feedback">{errors.password?.message}</div>
-                        <input name="confirmPassword" type="password" placeholder="Подвердить пароль" {...register('confirmPassword')} className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`} />
+                        <input name="confirmPassword" type="password"
+                               placeholder="Подвердить пароль" {...register('confirmPassword')}
+                               className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`}/>
                         <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
                         <button
                             type="submit"
@@ -92,4 +106,5 @@ export default function HookForm({active, setActive}) {
             </section>
         </>
     );
-}
+};
+

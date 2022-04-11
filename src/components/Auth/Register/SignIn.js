@@ -45,16 +45,13 @@ const SignIn = ({signActive,setSignActive}) => {
 
                <form
                    onSubmit={handleSubmit(onSubmit)}
-                   className={ signActive ? "signin--forms active  " : "signin--forms"}
-               >
+                   className={ signActive ? "signin--forms active  " : "signin--forms"}>
                    <FontAwesomeIcon
                        className='signin--forms--btn' icon={faXmark}
                        style={{fontSize:'25px'}}
                        onClick={() => {
                            setSignActive(false)
-                           navigate("/person")
-                       }
-                       }
+                           navigate("/person")}}
                    />
                    <h2>Вход</h2>
                    <input className='signin--forms--input1'  type="email" placeholder="Email" {...register("email", {required: true, pattern: /^\S+@\S+$/i})}/>

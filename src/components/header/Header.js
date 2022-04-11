@@ -12,9 +12,9 @@ import {faUser} from "@fortawesome/free-solid-svg-icons";
 
 
 const Header = () => {
-    const [activeForm, setActiveForm] = useState(false)
+    const [persons, setPersons] = useState({})
+    const [activeForm,setActiveForm] = useState(false)
     const [signActive, setSignActive] = useState(false)
-    const [persons , setPersons] = useState({})
     const navigate = useNavigate();
     const link = window.location.href.split("/").pop();
     const access = JSON.parse(localStorage.getItem("access"));
@@ -44,10 +44,10 @@ const Header = () => {
                             <NavLink to={"/certificate"}>Проверка сертификатов</NavLink>
                             {/*<NavLink to={"/person"}>Person</NavLink>*/}
                             <NavLink to={"/about"}>О нас</NavLink>
-                            <NavLink to={"contact"}>Контакты</NavLink>
                             <NavLink to={"/contact"}>Контакты</NavLink>
+
                         </div>
-                        <div className="header--content--auth flex items-center ">
+                        <div className="header--content--auth  ">
                             {
                                 isAuth() ?
                                     <>{
@@ -58,7 +58,7 @@ const Header = () => {
                                                     navigate("/")
                                                 }}
                                             >Выйти </button> :
-                                            <>
+                                            <div className='flex items-center'>
                                                 <NavLink to="/person">
                                                     <div>
                                                         <FontAwesomeIcon
@@ -80,9 +80,11 @@ const Header = () => {
                                                         }}
                                                     >{persons.name}</h1>
                                                 </NavLink>
-                                            </>
+                                            </div>
                                     }
-                                    </> :
+
+                                    </>
+                                    :
                                     <>
                                         <button onClick={() => setActiveForm(true)}
                                                 className="header--content--auth--btn1">Регистрация
@@ -102,7 +104,6 @@ const Header = () => {
             </div>
             <HookForm active={activeForm}  setActive={setActiveForm}  />
             <SignIn signActive={signActive}  setSignActive={setSignActive}  />
-
         </header>
 
     );

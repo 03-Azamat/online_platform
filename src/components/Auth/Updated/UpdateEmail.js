@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import * as Yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form";
@@ -6,7 +6,13 @@ import axios from "axios";
 import 'react-toastify/dist/ReactToastify.css';
 import {toast, ToastContainer,} from "react-toastify";
 
-const UpdateEmail = ({emailModal,setEmailModal}) => {
+
+
+import {publicApi} from "../HTTP/publicApi";
+
+
+const UpdateEmail = ({emailModal,setEmailModal,handleChangeUser, persons}) => {
+    const access = JSON.parse(localStorage.getItem("access"));
     const validationSchema = Yup.object().shape({
         email:Yup.string()
             .required('Введите Email'),
@@ -16,13 +22,21 @@ const UpdateEmail = ({emailModal,setEmailModal}) => {
     const { register,handleSubmit,handleChange,value,  formState: { errors,} } = useForm(formOptions);
     const onSubmit = data => {
         axios.post('https://djangorestapp.herokuapp.com/users/reset_email/', data)
+    const onSubmit = data => {
+        axios.patch('https://djangorestapp.herokuapp.com/users/me', data)
+
             .then(response => {
                 toast.success("updated")
             }).catch((error) => {
              toast.error(error)
         })
+
         console.log(data)
     };
+    };
+
+
+
     return (
         <div  className={ emailModal ? "modal active   " : "modal"}>
             <ToastContainer
@@ -36,12 +50,22 @@ const UpdateEmail = ({emailModal,setEmailModal}) => {
                 <label>Введите e-mail *</label>
                 <form className='modal--email--form'  onSubmit={handleSubmit(onSubmit)}>
                     <input  type="email" placeholder="Email" {...register("email", {required: true, pattern: /^\S+@\S+$/i})}/>
+                    <input
+                        type="email"
+                        placeholder="Email" {...register("email", {required: true, pattern: /^\S+@\S+$/i})}
+                        name="email"
+                        onChange={handleChangeUser}
+                        defaultValue={persons.email}
+                    />
                     <div className="modal--email--form--error invalid-feedback">{errors.email?.message}</div>
                     <div className='modal--email--form--btns'>
                         <button type='button' className='modal--email--form--btns--btn1 mx-2.5'
                                 onClick={() => setEmailModal(false)}
                         >отменить</button>
                         <button type='submit' className='modal--email--form--btns--btn2 mx-2.5'>Сохранить</button>
+                        <button type='submit'
+                                className='modal--email--form--btns--btn2 mx-2.5'
+                        >Сохранить</button>
                     </div>
                 </form>
             </div>

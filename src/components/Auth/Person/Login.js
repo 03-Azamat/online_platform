@@ -26,7 +26,7 @@ const Login = ({signActive,setSignActive}) => {
     const onSubmit = data => {
         const login = publicApi.post("/jwt/create", data)
             .then(response => {
-                toast.success("Salam " + data.email)
+                toast.success("Salam  " + data.email)
                 authenticate(response)
                 navigate("/person")
             }).catch((error) => {
@@ -51,8 +51,7 @@ const Login = ({signActive,setSignActive}) => {
                         style={{fontSize:'25px'}}
                         onClick={() => {
                             navigate("/")
-                        }
-                        }
+                        }}
                     />
                     <h2>Вход</h2>
                     <input className='signin1--forms1--input1'  type="email" placeholder="Email" {...register("email", {required: true, pattern: /^\S+@\S+$/i})}/>
