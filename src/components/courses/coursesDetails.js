@@ -3,55 +3,48 @@ import {NavLink, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getAdmin, getCoursesDetails} from "../../redux/action/corsesAction";
 import Cour from "../../image/cour_logo.svg"
-import {add , format } from "date-fns"
+import {add, format} from "date-fns"
 import Accordion from "../accordion/accordion";
 import Loader from "../../loader/loader";
 import {isAuth} from "../Auth/Register/helpers";
 import axios from "axios";
-import activate from "../account/activate";
 import AccordionDemo from "../accordion/accordionDemo";
 
 
-const CoursesDetails = ({persons}) => {
+const CoursesDetails = () => {
+
     const {id} = useParams()
     const dispatch = useDispatch()
-    const {coursesDetails : course} = useSelector(s => s)
+    const {coursesDetails: course} = useSelector(s => s)
+    const {getUser: user} = useSelector(s => s)
+    const [paid, setPaid] = useState([])
 
-    // const [ isBought , setIsBought ] = useState(false)
-    const [paid , setPaid] = useState([false])
-    const showPaid = () => {
+
+    function showPaid() {
         try {
-            axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-Detail/${persons}/`)
-                .then(({data}) => {
-                    setPaid(data)
-                    console.log(data)
-                })
+            axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-UpdateDelete/${id}/`)
+                .then(({data})=>{setPaid(data)})
         } catch (e) {
-            console.log(e)}};
+            console.log(e)
+        }
+    }
 
     useEffect(() => {
         dispatch(getCoursesDetails(id))
-        showPaid()
+        showPaid(user?.id)
     }, [])
-//////////////////////////////////////////////////////
-//
-//     if(paid?.activation === false) {
-//         setIsBought(false);
-//         showPaid(paid.activation === false)
-//     }else{
-//         setIsBought(true);
-//         showPaid(paid.activation === true)
-//     }
+
 
     //////date-fns//////
     const date = new Date()
     const calendarDateFormat = 'dd/MM/yy'
     const currentDate = format(date, calendarDateFormat)
-    const in7DaysCalendarDate = format( add(date , {days:7}) , calendarDateFormat)
+    const in7DaysCalendarDate = format(add(date, {days: 7}), calendarDateFormat)
 
     return (
-        <section id="cour"  key={course?.id}>
+        <section id="cour" key={course?.id}>
 
+            <div>{paid.applicationcourse}</div>
             <div className="container">
                 {course ? (
                     <div className="cour--box">
@@ -69,7 +62,7 @@ const CoursesDetails = ({persons}) => {
                                 </p>
                                 {
                                     isAuth() ?
-                                        "" :
+                                        "галдыр баш акчанды жон дле жеп жатышат" :
                                         <button className="cour--box--head--titles--btn">Оставить заявку</button>
 
                                 }
@@ -94,7 +87,7 @@ const CoursesDetails = ({persons}) => {
                             <h1 className="cour--box__middle__title">О курсе</h1>
 
                             <div className="cour--box__middle__desc">
-                                <p dangerouslySetInnerHTML={{__html:course.text}}/>
+                                <p dangerouslySetInnerHTML={{__html: course.text}}/>
                             </div>
                         </div>
 
@@ -106,15 +99,19 @@ const CoursesDetails = ({persons}) => {
                             <div className="cour--box--accordion--block">
                             </div>
                             {
-                                paid.activation === true ?
+                                paid?.activation ?
+                                    <div>{
                                         course?.coursechoice?.map(el => (
-                                        <Accordion el={el} key={el.id}/>
-                                    ))
-                                    : course?.coursechoice?.map(el=>(
-                                        <AccordionDemo el={el} key={el.id}/>
-                                    ))
+                                            <Accordion el={el} key={el.id}/>
+                                        ))
+                                    }</div>
+                                    : <div>{
+                                        course?.coursechoice?.map(el => (
+                                            <AccordionDemo el={el} key={el.id}/>
+                                        ))
+                                    }</div>
                             }
-                            </div>
+                        </div>
 
                         <div className="cour--box--test">
                             <h1 className="cour--box--test--title">Внимание! </h1>
@@ -128,12 +125,10 @@ const CoursesDetails = ({persons}) => {
                                     <button className="cour--box--test--btn">Тест</button>
                                 </div>
                             </NavLink>
-
-
                         </div>
                     </div>
 
-                ): <Loader/>}
+                ) : <Loader/>}
 
             </div>
 

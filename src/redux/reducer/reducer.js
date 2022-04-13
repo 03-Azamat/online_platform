@@ -3,7 +3,8 @@ import {
     GET_COURSES,
     GET_COURSES_TEST,
     GET_COURSES_TEST_DETAILS,
-    GET_SINGLE_COURSES
+    GET_SINGLE_COURSES,
+    GET_USER,
 } from "../types/actionTypes";
 
 const initialState = {
@@ -12,31 +13,29 @@ const initialState = {
     aboutReducer:[],
     question:[],
     questionDetails:{},
-    admin: null
+    admin: {},
+    getUser:{}
 }
 
 export const reducer = (state = initialState, action) => {
-    console.log("payload:", action.payload)
     switch (action.type) {
         case GET_SINGLE_COURSES:
-            console.log(action.payload,"coursesDetails")
             return {...state, coursesDetails: action.payload}
 
         case GET_COURSES:
-            // console.log(action.payload,"COURSES")
             return {...state, courses: action.payload}
 
         case GET_ABOUT:
-            console.log(action.payload,"about")
             return {...state, aboutReducer: action.payload}
 
         case GET_COURSES_TEST:
-            console.log(action.payload ,"TEST")
             return {...state, question: action.payload}
 
         case GET_COURSES_TEST_DETAILS:
-            console.log(action.payload , "question")
             return {...state, questionDetails: action.payload}
+
+        case GET_USER:
+            return {...state,getUser: action.payload}
 
         case GET_ADMIN:
             return {...state, admin :action.payload }

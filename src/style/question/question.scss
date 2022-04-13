@@ -1,28 +1,5 @@
 #question {
-  background: #8F8F8F;
+  background: #ffffff;
   min-height: 90vh;
 
-  .question--block {
-    display: flex;
-    width: 635px;
-    height: 30em;
-    background: #FFFFFF;
-    border-top-color: #01487E;
-    border-radius: 10px;
-    margin-top: 100px;
-
-    .question--block--box{
-      width: 635px;
-      height: 10px;
-      background: aqua;
-      border-top-right-radius: 10px;
-      border-top-left-radius: 10px;
-
-      &--title{
-        text-align: center;
-      }
-    }
-
-
-  }
 }

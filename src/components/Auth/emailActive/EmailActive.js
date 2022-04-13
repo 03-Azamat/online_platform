@@ -6,7 +6,6 @@ import {NavLink, useNavigate} from "react-router-dom";
 import axios from "axios";
 
 const EmailActive = ({setSignActive}) => {
-    // const [activate, setActivate] = useState(false)
     const navigate = useNavigate()
     const url = window.location.href;
     const link = url.split("/").filter(i => i !== "")

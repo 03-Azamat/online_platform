@@ -18,7 +18,7 @@ const Courses = () => {
     return (
         elem.length === 0 ? <Loader/> :
         <section id="courses">
-            <div className='courses--block'>0
+            <div className='courses--block'>
                 <div className="container">
                     <h1 className="courses--block--title">Курсы</h1>
                 </div>

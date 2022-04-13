@@ -1,5 +1,7 @@
 import axios from "axios";
-import {GET_ABOUT, GET_ADMIN, GET_COURSES, GET_COURSES_TEST, GET_SINGLE_COURSES} from "../types/actionTypes";
+import {GET_ABOUT, GET_ADMIN, GET_COURSES, GET_COURSES_TEST, GET_SINGLE_COURSES, GET_USER} from "../types/actionTypes";
+
+const access = JSON.parse(localStorage.getItem("access"));
 
 export const getCourses = () =>{
     return(dispatch) =>{
@@ -28,7 +30,7 @@ export const getAbout = () =>{
 
 export const getTest = (id) =>{
     return(dispatch) =>{
-        axios(`https://djangorestapp.herokuapp.com/test-list/${id}/`)
+        axios(`https://djangorestapp.herokuapp.com/test-detailid/${id}/`)
             .then(({data})=>{
                 console.log(data)
                 dispatch({type:GET_COURSES_TEST, payload:data})
@@ -50,12 +52,24 @@ export const getTestDetails = (id) =>{
 
 export const getAdmin = (id) =>{
     return(dispatch) =>{
-        axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-Detail/${id}/`)
+        axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-UpdateDelete/${id}/`)
             .then(({data})=> {
                 dispatch({type:GET_ADMIN, payload:data})
             })
     }
 }
 
+export const getUser = () => {
+
+    return(dispatch) => {
+        axios("https://djangorestapp.herokuapp.com/users/me/", {
+            headers: {
+                "Authorization": `Bearer ${access}`
+            }
+        }).then(({data}) => {
+            dispatch({type:GET_USER,payload:data})
+        })
+    }
+}
 
 
