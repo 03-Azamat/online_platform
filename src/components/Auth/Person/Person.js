@@ -6,20 +6,18 @@ import UpdateOrganization from "../Updated/UpdateOrganization";
 import UpdateEmail from "../Updated/UpdateEmail";
 import UpdatePassword from "../Updated/UpdatePassword";
 import {useNavigate} from "react-router-dom";
-import {logout} from "../Register/helpers";
+import {dataAddID, deleteId, logout} from "../Register/helpers";
 import {publicApi} from "../HTTP/publicApi";
 import UpdatePhone from "../Updated/UpdatePhone";
 import axios from "axios";
-import Accordion from "../../accordion/accordion";
 import UpdateName from "../Updated/UpdateName";
 import AddPosition from "../Register/AddPosition";
 import {useDispatch, useSelector} from "react-redux";
-import {getCourses, getUser} from "../../../redux/action/corsesAction";
+import {getPosition, getUser} from "../../../redux/action/corsesAction";
+import {toast} from "react-toastify";
 
 const Person = () => {
     const [index, setIndex] = useState(0)
-    // const [persons, setPersons] = useState({})
-    const [posOrgan,setPosOrgan] = useState({})
     const [poModal, setPoModal] = useState(false)
     const [orModal, setOrModal] = useState(false)
     const [emailModal, setEmailModal] = useState(false)
@@ -28,35 +26,29 @@ const Person = () => {
     const [phoneModal, setPhoneModal] = useState(false)
     const [nameModal, setNameAModal] = useState(false)
     const navigate = useNavigate()
-    const access = JSON.parse(localStorage.getItem("access"));
-    const userID = JSON.parse(localStorage.getItem("userID"));
     const persons = useSelector(state => state.getUser)
-    console.log(persons, "personssssss")
+    const posOrgan = useSelector(state => state.getPosition)
+    const dataID = JSON.parse(localStorage.getItem("dataID"));
     const dispatch = useDispatch()
     useEffect(() => {
+        dispatch(getPosition())
         dispatch(getUser())
     },[])
-    // useEffect(() => {
-    //     publicApi.get("users/me/", {
-    //         headers: {
-    //             "Authorization": `Bearer ${access}`
-    //         }
-    //     })
-    //         .then(({data}) => setPersons(data))
-    //     publicApi.get(`/data-detailID/${userID}/`, {
-    //         headers: {
-    //             "Authorization": `Bearer ${access}`
-    //         }
-    //     })
-    //         .then(({data}) => setPosOrgan(data))
-    // }, [])
-    console.log(posOrgan)
+    const deletePosition = () => {
+            axios.delete(`https://djangorestapp.herokuapp.com/data-delete/${dataID}/`)
+                .then(data => {
+                    toast.success('Успешно удалили')
+                }).catch(error => {
+                    toast.error("error")
+                console.log(error)
+            })
+    }
+
     return (
         <section id='person'>
             <div className='container'>
                 <h1>Личный кабинет</h1>
                 <div className="contentBtn">
-
                     <div className='btn'>
                         <FontAwesomeIcon icon={faUser} className='btn--user'/>
                         <h2>{persons.name}</h2>
@@ -126,10 +118,13 @@ const Person = () => {
                                     <label>Должность</label>
                                     <div className='person--content--center--position'>
                                         <p>{posOrgan.position}</p>
-                                        < FontAwesomeIcon icon={faPen} style={{color: "#01487E",cursor:"pointer"}}
-                                                          onClick={() => setPoModal(true)}
-
-                                        />
+                                        {
+                                            dataAddID()  ?
+                                                < FontAwesomeIcon icon={faPen} style={{color: "#01487E",cursor:"pointer"}}
+                                                                  onClick={() => setPoModal(true)}
+                                                />
+                                                : ''
+                                        }
                                     </div>
                                 </div>
 
@@ -137,18 +132,35 @@ const Person = () => {
                                     <label>Организация</label>
                                     <div className='person--content--center--organization'>
                                         <p>{posOrgan.organization} </p>
-                                        < FontAwesomeIcon
-                                            icon={faPen} style={{color: "#01487E",cursor:"pointer"}}
-                                            onClick={() => setOrModal(true)}/>
+                                        {
+                                            dataAddID() ?
+                                                < FontAwesomeIcon
+                                                    icon={faPen} style={{color: "#01487E",cursor:"pointer"}}
+                                                    onClick={() => setOrModal(true)}/>
+                                                : ''
+                                        }
                                     </div>
                                 </div>
 
                             </div>
-                            <button
-                                className='btn--btns--tabRoute'
-                                style={{margin:"30px 0 0 0 ",width:"100%"}}
-                                onClick={() => setAdd(true)}
-                            >Добавить</button>
+                            {
+                                dataAddID() ?
+                                    <button
+                                        className='btn--btns--tabRoute1'
+                                        style={{margin:"30px 0 0 0 ",width:"100%"}}
+                                        onClick={() =>
+                                            {
+                                                deleteId()
+                                                deletePosition()
+                                            }}
+                                    >Удалить должность и организация</button>
+                                    :
+                                    <button
+                                        className='btn--btns--tabRoute'
+                                        style={{margin:"30px 0 0 0 ",width:"100%"}}
+                                        onClick={() => setAdd(true)}
+                                    >Добавить должность и организация</button>
+                            }
                             <div className='person--content--end'>
                                 <div className="flex flex-col">
                                     <label>Email</label>

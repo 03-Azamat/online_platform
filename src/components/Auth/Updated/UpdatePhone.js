@@ -12,7 +12,7 @@ import {publicApi} from "../HTTP/publicApi";
 
 const UpdatePhone = ({phoneModal,setPhoneModal,persons, handleChangeUser}) => {
     const access = JSON.parse(localStorage.getItem("access"));
-    const [phone, setPhone] = useState(persons.phone_number)
+    const [phone, setPhone] = useState('')
     const btn = (e) => {
         e.preventDefault()
         let obj = {
@@ -32,9 +32,17 @@ const UpdatePhone = ({phoneModal,setPhoneModal,persons, handleChangeUser}) => {
         fetch("https://djangorestapp.herokuapp.com/users/me/", options)
             .then(res => res.json())
             .then(data => {
-                toast.success("Успешно " +data.phone_number)
-                console.log(data)
-            })
+                if (data.phone_number[0] === 'Введен некорректный номер телефона.'){
+                    toast.error('Введен некорректный номер телефона.')
+                } else if (data.phone_number.length === 0){
+                    toast.error("Это поле не может быть пустым.")}
+                else {
+                    setPhoneModal(false)
+                    toast.success("Успешно ")
+                }
+            }).catch(error => {
+                toast.error("error")
+        })
     }
     return (
         <div
@@ -70,9 +78,6 @@ const UpdatePhone = ({phoneModal,setPhoneModal,persons, handleChangeUser}) => {
                             onClick={() => setPhoneModal(false)}
                     >отменить</button>
                     <button
-                            onClick={() => {
-                                setPhoneModal(false)
-                            }}
                             className='modal--email--form--btns--btn2 mx-2.5'
                     >Сохранить</button>
                 </div>

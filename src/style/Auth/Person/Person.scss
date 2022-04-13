@@ -75,6 +75,19 @@
         display: flex;
         flex-direction: column;
         margin: 30px 0 -30px 0;
+        &--tabRoute1{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 220px;
+          height: 42px;
+          margin:  0 0 20px 40px;
+          color:white;
+          font-size: 16px;
+          background:rgba(119,14,5,0.99);
+          border-radius: 5px;
+          cursor: pointer;
+        }
         &--tabRoute{
           display: flex;
           justify-content: center;

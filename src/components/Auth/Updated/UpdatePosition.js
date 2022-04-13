@@ -2,42 +2,37 @@ import React, {useEffect, useState} from 'react';
 import {publicApi} from "../HTTP/publicApi";
 import {authenticate, userId} from "../Register/helpers";
 import {toast} from "react-toastify";
+import {useDispatch, useSelector} from "react-redux";
+import {getPosition} from "../../../redux/action/corsesAction";
+import axios from "axios";
 
 
-const UpdatePosition = ({poModal,setPoModal,posOrgan,persons}) => {
-    const [comment,setComment] = useState('')
-    const textHandler = () => {
-        publicApi.put(`data-create/${28}`, {
-            user:persons.id,
+const UpdatePosition = ({poModal,setPoModal,persons}) => {
+    const [comment, setComment] = useState('');
+    const dataID = JSON.parse(localStorage.getItem("dataID"));
+    const posOrgan = useSelector(state => state.getPosition)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getPosition())
+    },[])
+    const update = (e) => {
+        e.preventDefault()
+        axios.put(`https://djangorestapp.herokuapp.com/data-update/${dataID}/`, {
+            id: persons.id,
+            organization: posOrgan.organization,
             position:comment,
-
-        })
-            .then(data => {
-                toast.success("success " +data.data.id)
+        }).then(data => {
+            if (data.data.position.length === 0){
+                toast.error("Это поле не может быть пустым.")}
+            else {
+                setPoModal(false)
+                toast.success("Успешно ")
+            }
                 console.log(data)
-            })
+            }).catch(error => {
+                toast.error("error")
+        })
     }
-
-    // const textHandler = () => {
-    //     userId ?  publicApi.put("data-create/", {
-    //         user: persons.id,
-    //         organization: comment,
-    //         position: comment
-    //
-    //     })
-    //         .then(data => {
-    //             authenticate(data)
-    //             toast.success("success " + data.data.id)
-    //             console.log(data)
-    //         })
-    //         :
-    //         publicApi.post("data-create/", {
-    //             user: persons.id,
-    //             organization: comment,
-    //             position: comment
-    //
-    //         })
-    // }
 
     return (
         <div  className={ poModal ? "update active   " : "update"}>
@@ -45,21 +40,23 @@ const UpdatePosition = ({poModal,setPoModal,posOrgan,persons}) => {
                 <p className='update--position--title' >Изменение должность</p>
                 <label>Должность*</label>
                 <form
-                    onSubmit={textHandler}
+                    onSubmit={update}
                     className='update--position--form'
                 >
-                    <textarea onChange={(e) => setComment(e.target.value)} name="text" id="" cols="" rows="" />
-
+                    <textarea
+                        defaultValue={posOrgan.position}
+                        onChange={(e) => setComment(e.target.value)}
+                        name="text" id="" cols="" rows="" />
                     <div className='update--position--form--btns'>
                         <button
-                            className='update--position--form--btns--btn1 mx-2.5'
                             type='button'
+                            className='update--position--form--btns--btn1 mx-2.5'
                         onClick={() => setPoModal(false)}
                         >отменить</button>
                         <button
-                            onClick={textHandler}
+                            type='submit'
+                            // onClick={btn}
                             className='update--position--form--btns--btn2 mx-2.5'
-                            type='button'
                         >Сохранить</button>
 
                     </div>
