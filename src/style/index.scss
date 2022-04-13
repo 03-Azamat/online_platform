@@ -4,9 +4,8 @@
 @tailwind components;
 @tailwind utilities;
 ///////////////////////////////////////////////////////
-@import "Auth/Register/Register";
-@import "Auth/Register/FormInput";
 @import "Auth/Register/registerCode";
+@import "Auth/Register/Activate";
 @import "Auth/Register/SignIn";
 @import "Auth/Person/Person";
 @import "Auth/Person/hookform";
@@ -17,6 +16,7 @@
 @import "Auth/Updated/UpdateEmail";
 @import "Auth/Person/Login";
 @import "Auth/Updated/UpdateName";
+@import "Auth/Register/AddPosition";
 
 
 //////////////////////MAIN COURSES//////////////////////

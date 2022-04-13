@@ -1,42 +1,60 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { publicApi} from "../HTTP/publicApi";
 import {toast} from "react-toastify";
+import {getPosition, getUser} from "../../../redux/action/corsesAction";
+import {useDispatch, useSelector} from "react-redux";
+import axios from "axios";
 
-const UpdateOrganization = ({orModal,setOrModal,persons, posOrgan}) => {
-    const access = JSON.parse(localStorage.getItem("access"));
+const UpdateOrganization = ({orModal,setOrModal,persons}) => {
     const [comment, setComment] = useState('');
-    const [newComment, setNewComment] = useState('');
-    // console.log(newComment)
-    // console.log(comment)
-    //
-
-    const textHandler = () => {
-    publicApi.post("data-create/", {
-        user:persons.id,
-        organization:comment,
-        position:posOrgan.position,
-
-    })
-        .then(data => {
-            localStorage.setItem("userID", JSON.stringify(data.data.id))
-            toast.success("success " +data.data.id)
+    const dataID = JSON.parse(localStorage.getItem("dataID"));
+    const posOrgan = useSelector(state => state.getPosition)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getPosition())
+    },[])
+    const update = (e) => {
+        e.preventDefault()
+        axios.put(`https://djangorestapp.herokuapp.com/data-update/${dataID}/`, {
+            id: persons.id,
+            position: posOrgan.position,
+            organization:comment,
+        }).then(data => {
+            if (data.data.organization.length === 0){
+                toast.error("Это поле не может быть пустым.")}
+            else {
+                setOrModal(false)
+                toast.success("Успешно ")
+            }
             console.log(data)
+        }).catch(error => {
+            toast.error("error")
         })
-}
-
+    }
 
     return (
         <div  className={ orModal ? "updated active  " : "updated"}>
             <div  className={ orModal ? "updated--organization active  " : "updated--organization"}>
                 <p className="updated--organization--title" >Изменение организация</p>
                 <label>Организация*</label>
-                <form className="updated--organization--form"  onSubmit={textHandler}>
-                    <textarea onChange={(e) => setComment(e.target.value)} name="text" id="" cols="" rows="" />
+                <form
+                    className="updated--organization--form"
+                      onSubmit={update}>
+                    <textarea
+                        onChange={(e) => setComment(e.target.value)}
+                        name="text" id="" cols="" rows=""
+                        defaultValue={posOrgan.organization}
+                    />
                     <div className="updated--organization--form--btns">
-                        <button type="button" className=" updated--organization--form--btns--btn1 mx-2.5"
-                                onClick={() => setOrModal(false)}
+                        <button
+                            type="button"
+                            className=" updated--organization--form--btns--btn1 mx-2.5"
+                            onClick={() => setOrModal(false)}
                         >отменить</button>
-                        <button type="button" className="updated--organization--form--btns--btn2 mx-2.5" onClick={textHandler}>Сохранить</button>
+                        <button
+                            type='submit'
+                            className="updated--organization--form--btns--btn2 mx-2.5"
+                        >Сохранить</button>
                     </div>
                 </form>
             </div>

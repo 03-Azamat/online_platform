@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import {toast, ToastContainer,} from "react-toastify";
+import axios from "axios";
 
 const UpdateName = ({modal,setModal,handleChangeUser, persons}) => {
     const access = JSON.parse(localStorage.getItem("access"));
@@ -18,14 +19,20 @@ const UpdateName = ({modal,setModal,handleChangeUser, persons}) => {
                 "Authorization": `Bearer ${access}` },
             body: JSON.stringify(obj)
         }
-
-        console.log(obj)
-        fetch("https://djangorestapp.herokuapp.com/users/me/", options)
+        fetch(`https://djangorestapp.herokuapp.com/users/me/`, options )
             .then(res => res.json())
             .then(data => {
-                toast.success("Успешно " +data.name)
-                console.log(data)
-            })
+                if (data.name[0] === 'Это поле не может быть пустым.'){
+                    toast.error("Это поле не может быть пустым.")
+                } else {
+                    setModal(false)
+                    toast.success("Успешно ")
+                }
+            }).catch(error => {
+            toast.error("error")
+                // toast.error(error.data.name)
+        })
+
     }
     return (
         <div  className={ modal ? "modal active   " : "modal"}>
@@ -38,8 +45,8 @@ const UpdateName = ({modal,setModal,handleChangeUser, persons}) => {
                 <form className='modal--name--form'  onSubmit={btn}>
                     <input
                         onChange={e => setName(e.target.value)}
-                        type="tel"
-                        name="phone_number"
+                        type="name"
+                        name="name"
                         defaultValue={persons.name}
                     />
                     <div className='modal--name--form--btns'>
@@ -47,9 +54,6 @@ const UpdateName = ({modal,setModal,handleChangeUser, persons}) => {
                                 onClick={() => setModal(false)}
                         >отменить</button>
                         <button
-                            onClick={() => {
-                                setModal(false)
-                            }}
                                 className='modal--name--form--btns--btn2 mx-2.5'
                         >Сохранить</button>
                     </div>

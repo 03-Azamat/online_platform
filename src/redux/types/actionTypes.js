@@ -5,4 +5,6 @@ export const GET_COURSES_TEST = "GET_COURSES_TEST"
 export const GET_COURSES_TEST_DETAILS = "GET_COURSES_TEST_DETAILS"
 export const GET_ADMIN = "GET_ADMIN"
 export const GET_USER = "GET_USER"
+export const GET_POSITION = "GET_POSITION"
+// export const DELETE_POSITION = "DELETE_POSITION"
 

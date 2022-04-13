@@ -18,13 +18,11 @@ const Header = () => {
     const [signActive, setSignActive] = useState(false)
     const navigate = useNavigate();
     const link = window.location.href.split("/").pop();
-    const access = JSON.parse(localStorage.getItem("access"));
-    const persons = useSelector(state => state.getUser)
-    console.log(persons, "personssssss")
+   const persons = useSelector(state => state.getUser)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getUser())
-    },[1])
+    },[])
 
     return (
         <header>
