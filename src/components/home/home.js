@@ -39,7 +39,7 @@ const Home = () => {
                                 home.map(el => (
                                     <NavLink to={"/courses"}>
                                         <div>
-                                            <CoursesCard el={el} key={el.id}/>
+                                            <CoursesCard key={el.id} el={el} />
                                         </div>
                                     </NavLink>
                                 ))
