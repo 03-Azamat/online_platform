@@ -20,9 +20,9 @@ const CoursesDetails = () => {
     console.log(paid, "PAID")
     function showPaid() {
         try {
-            if (user)
-                axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-UpdateDelete/${user?.id}/`)
+            axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-UpdateDelete/${user.id}/`)
                     .then(({data}) => {
+                        console.log(data, "data")
                         setPaid(data.activation)
                     })
         } catch (e) {
@@ -30,13 +30,14 @@ const CoursesDetails = () => {
         }
     }
 
+
     useEffect(() => {
         dispatch(getCoursesDetails(id))
         if (Object.entries(user).length > 0) {
             console.log(user, 'asdkfjakl')
             showPaid()
         }
-    }, [user])
+    }, [user, paid])
 
 
     //////date-fns//////
