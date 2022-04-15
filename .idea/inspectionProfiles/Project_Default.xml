@@ -3,27 +3,9 @@
     <option name="myName" value="Project Default" />
     <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <Languages>
-<<<<<<< HEAD
-<<<<<<< HEAD
+        <language minSize="19" name="Style Sheets" />
         <language minSize="76" name="JavaScript" />
-=======
-        <language minSize="56" name="Style Sheets" />
->>>>>>> 3fdb509ddc73e499073a1e443d08ef078657bbc3
-=======
-        <language minSize="91" name="Style Sheets" />
-        <language minSize="108" name="JavaScript" />
->>>>>>> d93516e3b26c5345d3b0f5524c568417ffd4d251
       </Languages>
-    </inspection_tool>
-    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="myValues">
-        <value>
-          <list size="1">
-            <item index="0" class="java.lang.String" itemvalue="handlechange" />
-          </list>
-        </value>
-      </option>
-      <option name="myCustomValuesEnabled" value="true" />
     </inspection_tool>
   </profile>
 </component>

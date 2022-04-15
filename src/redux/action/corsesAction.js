@@ -6,10 +6,11 @@ import {
     GET_COURSES_TEST,
     GET_POSITION,
     GET_SINGLE_COURSES,
-    GET_USER
+    GET_USER,
 } from "../types/actionTypes";
 
 import {publicApi} from "../../components/Auth/HTTP/publicApi";
+import {useEffect} from "react";
 const access = JSON.parse(localStorage.getItem("access"));
 const dataID = JSON.parse(localStorage.getItem("dataID"));
 
@@ -71,27 +72,31 @@ export const getAdmin = (id) =>{
 
 export const getUser = () => {
     return(dispatch) => {
-        axios("https://djangorestapp.herokuapp.com/users/me/", {
-            headers: {
-                "Authorization": `Bearer ${access}`
-            }
-        }).then(({data}) => {
-            dispatch({type:GET_USER,payload:data})
-        })
+        if (access){
+            axios("https://djangorestapp.herokuapp.com/users/me/", {
+                headers: {
+                    "Authorization": `Bearer ${access}`
+                }
+            }).then(({data}) => {
+                dispatch({type:GET_USER,payload:data})
+            })
+        }
     }
 }
 
 
 export const getPosition = () => {
   return(dispatch) => {
-      axios(`https://djangorestapp.herokuapp.com/data-detailID/${dataID}/`, {
-          headers: {
-              "Authorization": `Bearer ${access}`
+          if (dataID){
+              axios(`https://djangorestapp.herokuapp.com/data-detailID/${dataID}/`, {
+                  headers: {
+                      "Authorization": `Bearer ${access}`
+                  }
+              })
+                  .then(({data}) => {
+                      dispatch({type:GET_POSITION,payload:data})
+                  })
           }
-      })
-          .then(({data}) => {
-              dispatch({type:GET_POSITION,payload:data})
-          })
   }
 }
 

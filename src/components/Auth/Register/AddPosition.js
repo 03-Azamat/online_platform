@@ -26,14 +26,14 @@ const AddPosition = ({add,setAdd}) => {
     const formOptions = { resolver: yupResolver(validationSchema) };
     const { register,handleSubmit, formState: { errors,} } = useForm(formOptions);
     useEffect(() => {
-        dispatch(getUser())
+        getUser()
+        // dispatch(getUser())
     }, [])
     const onSubmit = data => {
             publicApi.post(`data-create/`,{
                 user:persons.id,
                 position:commentPosition,
                 organization:commentOrganization,
-
             })
                 .then(data => {
                     dataId(data)

@@ -15,21 +15,21 @@ const UpdateOrganization = ({orModal,setOrModal,persons}) => {
     },[])
     const update = (e) => {
         e.preventDefault()
-        axios.put(`https://djangorestapp.herokuapp.com/data-update/${dataID}/`, {
-            id: persons.id,
-            position: posOrgan.position,
-            organization:comment,
-        }).then(data => {
-            if (data.data.organization.length === 0){
-                toast.error("Это поле не может быть пустым.")}
-            else {
-                setOrModal(false)
-                toast.success("Успешно ")
-            }
-            console.log(data)
-        }).catch(error => {
-            toast.error("error")
-        })
+           axios.put(`https://djangorestapp.herokuapp.com/data-update/${dataID}/`, {
+               id: persons.id,
+               position: posOrgan.position,
+               organization:comment,
+           }).then(data => {
+               if (data.data.organization.length === 0){
+                   toast.error("Это поле не может быть пустым.")}
+               else {
+                   setOrModal(false)
+                   toast.success("Успешно ")
+               }
+               console.log(data)
+           }).catch(error => {
+               toast.error("error")
+           })
     }
 
     return (

@@ -27,10 +27,8 @@
       flex-direction: column;
       justify-content: start;
       width: 300px;
-      height: 430px;
-      & input[type="file"] {
-        display: none;
-      }
+      height: 480px;
+
 
       &--input{
         border: 1px solid #ccc;
@@ -58,48 +56,186 @@
         display: flex;
         justify-content: center;
         font-size: 18px;
+        width: 300px;
       }
       &--user {
-        width: 60px;
-        height: 60px;
-        padding: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 300px;
         border-radius: 50%;
-        margin: 7px 0 0 105px;
+        margin: 8px 0 9px 0 ;
         color: #FFFFFF;
-        background: #01487E;
+        &--icon{
+          width: 60px;
+          height: 60px;
+          padding: 15px;
+          border-radius: 50%;
+          color: #FFFFFF;
+          background: #01487E
+        }
+        &--photo{
 
+          width: 90px;
+          height: 90px;
+          border-radius: 50%;
+          //background: #01487E
+        }
       }
 
 
       &--btns{
+        width: 300px;
         display: flex;
         flex-direction: column;
-        margin: 30px 0 -30px 0;
+        align-items: center;
+        //margin: 30px 0 -30px 0;
+        & input[type="file"] {
+          opacity: 0;
+          margin: 0 0 0 0;
+        }
+       &--div{
+         width: 220px;
+         height: 42px;
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+         margin: 20px 0 0 0 ;
+         & p{
+           position: absolute;
+           width: 123px;
+           height: 24px;
+           font-weight: 500;
+           font-size: 16px;
+         }
+         &--iconTrash{
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           width: 42px;
+           height: 42px;
+          padding: 8px;
+           color:#01487E;
+           cursor: pointer;
+           border: 2px solid #01487E;
+           box-sizing: border-box;
+           border-radius: 10px;
+
+           &:hover{
+             transition: 0.2s;
+             background: darkred;
+             border: 2px solid darkred;
+             border-radius: 10px;
+             color: white;
+           }
+         }
+         &--innn{
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           width: 170px;
+           height: 42px;
+           color:white;
+           font-size: 16px;
+           background:#01487E;
+           border-radius: 5px;
+           cursor: pointer;
+         }
+         &--label{
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           width: 170px;
+           height: 42px;
+           color:white;
+           font-size: 16px;
+           background:#01487E;
+           border-radius: 5px;
+           cursor: pointer;
+         }
+       }
+        &--btnSubmit{
+          margin: 20px 0 0 0;
+          width: 220px;
+          height: 42px;
+          color: #FFFFFF;
+          font-size: 16px;
+          border-radius: 5px;
+          background:#01487E;
+        }
+        &--innn2{
+          & span{
+            position: absolute;
+            width: 220px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+          }
+          cursor: pointer;
+          display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 220px;
+            height: 42px;
+            margin: 20px 0 0 0 ;
+            color:white;
+            font-size: 16px;
+            background:#01487E;
+            border-radius: 5px;
+        }
+        &--innn3{
+
+          & span{
+            position: absolute;
+            width: 220px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+          }
+          cursor: pointer;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 220px;
+          height: 42px;
+          margin: 20px 0 0 0 ;
+          color:white;
+          font-size: 16px;
+          background:#01487E;
+          border-radius: 5px;
+        }
+
         &--tabRoute1{
           display: flex;
           justify-content: center;
           align-items: center;
           width: 220px;
           height: 42px;
-          margin:  0 0 20px 40px;
-          color:white;
+          margin:20px  0 0 0 ;
+          color:red;
           font-size: 16px;
-          background:rgba(119,14,5,0.99);
+          background: #01487E;
           border-radius: 5px;
           cursor: pointer;
         }
+
         &--tabRoute{
           display: flex;
           justify-content: center;
           align-items: center;
           width: 220px;
           height: 42px;
-          margin:  0 0 20px 40px;
+          margin:20px  0 10px 0 ;
           color:white;
           font-size: 16px;
           background: #01487E;
           border-radius: 5px;
           cursor: pointer;
+          //padding: 0 0 25px 0;
 
           &.active{
             background: #6A6A6A;
