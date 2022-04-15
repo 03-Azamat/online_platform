@@ -8,9 +8,6 @@ import {QuizContext} from "../../data/Contexts";
 import data from "../../data/state";
 
 const Question = () => {
-    const {score, setScore, setGameState,setMistakes,mistakes} = useContext(QuizContext)
-    const [currQuestion, setCurrQuestion] = useState(0)
-    const [optionChosen, setOptionChosen] = useState("")
     const intervalRef = useRef(null)
     const [timer, setTimer] = useState('00:00:00');
 
@@ -19,9 +16,6 @@ const Question = () => {
 
     const elem = useSelector(state => state.question)
     const dispatch = useDispatch()
-
-    console.log(testId, "TestID")
-    console.log(elem, "testElem")
 
     useEffect(() => {
         dispatch(getTest(testId))
@@ -71,39 +65,9 @@ const Question = () => {
         return () => {if (intervalRef.current) clearInterval(intervalRef.current)}
     },[])
 
-    function onClickResetBtn () {
-        if (intervalRef.current) clearInterval(intervalRef.current);
-        clearTimer(getDeadlineTime());
-    }
-
-    const nextQuestion = () => {
-        console.log(optionChosen)
-        clearTimer(getDeadlineTime())
-
-        if(data[currQuestion].answer === optionChosen){
-            console.log(optionChosen,"correct")
-
-            setScore(score + 1)
-            console.log(score)
-        } else {
-            console.log(mistakes, "mistakes")
-            setMistakes(mistakes + 1)
-        }
-        setCurrQuestion(currQuestion + 1)
-    };
-    const finishQuiz = () => {
-        if(data[currQuestion].answer === optionChosen){
-            setScore(score - 0);
-        }
-        setGameState("endScreen")
-    }
-
     return (
         <section className="flex align-middle justify-center w-full min-h-screen">
             <div className="bg-gray-500 text-white w-7/12 h-56" key={elem.idTest}>
-                <div>{elem.name}</div>
-                <div dangerouslySetInnerHTML={{__html:elem.text}}/>
-                <div>{elem.timer}</div>
                 {
                     elem?.choicetest?.slice(0,1).map(el =>(
                             <div>

@@ -39,14 +39,22 @@ const Accordion = ({el}) => {
                 </div>
             </div>
             <ol>
-                <li>
-                    {
-                        <NavLink to={`/coursesDetails/coursesLesson/${el.lessonId}`}>
-                            <p className="accordion__content"
-                               dangerouslySetInnerHTML={{__html: el.choicetopic?.topicmain?.text}}/>
-                        </NavLink>
-                    }
-                </li>
+                {
+                    isAuth()?<li>
+                        {
+                            <NavLink to={`/coursesDetails/coursesLesson/${el.lessonId}`}>
+                                <p className="accordion__content"
+                                   dangerouslySetInnerHTML={{__html: el.choicetopic?.topicmain?.text}}/>
+                            </NavLink>
+                        }
+                    </li>:
+                        <li>
+                        {
+                                <p className="accordion__content"
+                                   dangerouslySetInnerHTML={{__html: el.choicetopic?.topicmain?.text}}/>
+                        }
+                    </li>
+                }
             </ol>
 
         </div>

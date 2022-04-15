@@ -13,7 +13,6 @@ const Quiz = () => {
     //
     // const elem = useSelector(state => state.question)
     // const dispatch = useDispatch()
-    //
     // console.log
     // console.log(elem, "testElem")
     //

@@ -16,7 +16,7 @@ const initialState = {
     aboutReducer:[],
     question:[],
     questionDetails:{},
-    admin: {},
+    admin: [],
     getUser:{},
     getPosition:{},
 }

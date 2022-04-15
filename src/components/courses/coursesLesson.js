@@ -14,9 +14,11 @@ const CoursesLesson = () => {
     console.log(elem , "lessonVideos")
     console.log(lessonId)
 
+
     useEffect(() => {
         dispatch(getCoursesDetails(lessonId))
     }, [])
+
     return (
         <section id="lesson">
             <div className="container">
@@ -45,7 +47,7 @@ const CoursesLesson = () => {
                                         elem?.coursechoice?.map(el => (
                                             <div>
                                                 <div>
-                                                    <CoursesVideoLesson el={el} key={el.id}/>
+                                                    <CoursesVideoLesson el={el} key={el.lessonId}/>
                                                 </div>
                                                 <div>
                                                     <p dangerouslySetInnerHTML={{__html:el.choicetopic?.topics?.name_work}}/>

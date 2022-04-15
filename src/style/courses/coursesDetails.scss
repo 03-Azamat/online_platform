@@ -50,11 +50,12 @@
         &--btn{
           width: 236px;
           height: 40px;
-          border-color: transparent;
+          border-color: #01487E;
           margin-bottom: 60px;
 
           background: #01487E;
           border-radius: 5px;
+
 
           font-style: normal;
           font-weight: 600;
@@ -70,6 +71,8 @@
       &--dates{
         background: #FFFFFF;
         border-radius: 5px;
+        box-shadow: 5px 5px 25px rgba(100, 100, 100, 0.15);
+
         &--start{
           width: 252px;
           height: 94px;
