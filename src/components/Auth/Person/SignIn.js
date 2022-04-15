@@ -24,13 +24,14 @@ const SignIn = ({signActive,setSignActive}) => {
     const { register, handleSubmit,
         formState: { errors, } } = useForm(formOptions);
     const onSubmit = data => {
-        const login = publicApi.post("/jwt/create", data)
+        publicApi.post("/jwt/create", data)
             .then(response => {
                 toast.success("Salam  " +data.email)
                 authenticate(response)
                   navigate("/person")
                 setSignActive(false)
             }).catch((error) => {
+
                 toast.error(error.response.data.detail)
         })
     };
@@ -51,7 +52,7 @@ const SignIn = ({signActive,setSignActive}) => {
                        style={{fontSize:'25px'}}
                        onClick={() => {
                            setSignActive(false)
-                           navigate("/person")}}
+                           }}
                    />
                    <h2>Вход</h2>
                    <input className='signin--forms--input1'  type="email" placeholder="Email" {...register("email", {required: true, pattern: /^\S+@\S+$/i})}/>

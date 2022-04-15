@@ -11,17 +11,28 @@ import {publicApi} from "../Auth/HTTP/publicApi";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
 import {useDispatch, useSelector} from "react-redux";
 import {getUser} from "../../redux/action/corsesAction";
+import axios from "axios";
 
 
 const Header = () => {
-    const [activeForm,setActiveForm] = useState(false)
-    const [signActive, setSignActive] = useState(false)
+    const [activeForm,setActiveForm] = useState(false);
+    const [signActive, setSignActive] = useState(false);
     const navigate = useNavigate();
     const link = window.location.href.split("/").pop();
-   const persons = useSelector(state => state.getUser)
+   const persons = useSelector(state => state.getUser);
+    const [createImg, setCreateImg] = useState([])
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getUser())
+    },[])
+    const IdImg = JSON.parse(localStorage.getItem("imgId"));
+    useEffect(() => {
+        if (IdImg){
+            axios.get(`https://djangorestapp.herokuapp.com/photo-detail/${IdImg}`)
+                .then(({data}) => {
+                    setCreateImg(data)
+                })
+        }
     },[])
 
     return (
@@ -56,16 +67,33 @@ const Header = () => {
                                             >Выйти </button> :
                                             <div className='flex items-center'>
                                                 <NavLink to="/person">
-                                                    <div>
-                                                        <FontAwesomeIcon
-                                                            className="mx-2"
-                                                            icon={faUser}
-                                                            style={{color:"#01487E",
-                                                                fontStyle:"32px",
-                                                                padding:"5px",
-                                                                background:"white",
-                                                                borderRadius:"50%"}}
-                                                        />
+                                                    <div
+                                                        className='mx-2'
+                                                        style={{
+                                                        width:"40px",
+                                                        height:"40px",
+                                                        // padding:"5px",
+                                                        borderRadius:"50%"}}>
+                                                        {
+                                                            IdImg ?
+                                                                <img src={createImg.img}
+                                                                     className=''
+                                                                     style={{
+                                                                         width:"40px",
+                                                                         height:"40px",
+                                                                         borderRadius:"50%"}}
+                                                                     alt=""/>
+                                                                :
+                                                                <FontAwesomeIcon
+                                                                    className="mx-2"
+                                                                    icon={faUser}
+                                                                    style={{color:"#01487E",
+                                                                        fontStyle:"32px",
+                                                                        padding:"5px",
+                                                                        background:"white",
+                                                                        borderRadius:"50%"}}
+                                                                />
+                                                        }
                                                     </div>
                                                 </NavLink>
                                                 <NavLink to="/person">

@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPen,faUser,faArrowRightLong} from "@fortawesome/free-solid-svg-icons";
+import {faPen, faUser, faArrowRightLong, faTrash} from "@fortawesome/free-solid-svg-icons";
 import UpdatePosition from "../Updated/UpdatePosition";
 import UpdateOrganization from "../Updated/UpdateOrganization";
 import UpdateEmail from "../Updated/UpdateEmail";
 import UpdatePassword from "../Updated/UpdatePassword";
 import {useNavigate} from "react-router-dom";
-import {dataAddID, deleteId, logout} from "../Register/helpers";
+import {dataAddID, deleteId, imgId, logout} from "../Register/helpers";
 import {publicApi} from "../HTTP/publicApi";
 import UpdatePhone from "../Updated/UpdatePhone";
 import axios from "axios";
@@ -15,6 +15,9 @@ import AddPosition from "../Register/AddPosition";
 import {useDispatch, useSelector} from "react-redux";
 import {getPosition, getUser} from "../../../redux/action/corsesAction";
 import {toast} from "react-toastify";
+import {GET_POSITION, GET_USER} from "../../../redux/types/actionTypes";
+import {useForm} from "react-hook-form";
+import UpdatePhoto from "../Updated/UpdatePhoto";
 
 const Person = () => {
     const [index, setIndex] = useState(0)
@@ -29,20 +32,104 @@ const Person = () => {
     const persons = useSelector(state => state.getUser)
     const posOrgan = useSelector(state => state.getPosition)
     const dataID = JSON.parse(localStorage.getItem("dataID"));
+    const access = JSON.parse(localStorage.getItem("access"));
     const dispatch = useDispatch()
+    // const [persons, setPersons] = useState({})
+
+    // useEffect(() => {
+    //     if (access){
+    //         axios(`https://djangorestapp.herokuapp.com/users/me/`, {
+    //             headers: {
+    //                 "Authorization": `Bearer ${access}`
+    //             }
+    //         }).then(({data}) => {
+    //             dispatch({type:GET_USER,payload:data})
+    //         })
+    //     }
+    // },[])
+
+    // useEffect(() => {
+    //     return(dispatch) => {
+    //         if (dataID){
+    //             axios(`https://djangorestapp.herokuapp.com/data-detailID/${dataID}/`, {
+    //                 headers: {
+    //                     "Authorization": `Bearer ${access}`
+    //                 }
+    //             })
+    //                 .then(({data}) => {
+    //                     dispatch({type:GET_POSITION,payload:data})
+    //                 })
+    //         }
+    //     }
+    // },[])
+
+
+
     useEffect(() => {
         dispatch(getPosition())
         dispatch(getUser())
-    },[])
+    },[dispatch])
     const deletePosition = () => {
-        axios.delete(`https://djangorestapp.herokuapp.com/data-delete/${dataID}/`)
-    .then(data => {
-            toast.success('Успешно удалили')
-        }).catch(error => {
-            toast.error("error")
-            console.log(error)
-        })
+       if (dataID){
+           axios.delete(`https://djangorestapp.herokuapp.com/data-delete/${dataID}/`)
+               .then(data => {
+                   toast.success('Успешно удалили')
+               }).catch(error => {
+               toast.error("error")
+               console.log(error)
+           })
+       }
+
     }
+
+    const blobToBase64 = (blob) => new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(blob);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+    })
+
+
+    // const createPhoto = () => {
+    //     axios.post(`https://djangorestapp.herokuapp.com/photo-create/`, {
+    //         user:persons.id
+    //     })
+    //         .then(data => {
+    //             console.log(data)
+    //         })
+    // }
+
+
+    const [newImg, setNewImg] = useState([])
+    const [createImg, setCreateImg] = useState([])
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const onSubmit = data => {
+        // data.preventDefault(false)
+        console.log(data)
+        const formData = new FormData()
+        formData.append("user", persons.id)
+        formData.append("img", data.img[0])
+        axios.post(`https://djangorestapp.herokuapp.com/photo-create/`, formData)
+            .then(data => {
+                toast.success("успешно")
+                imgId(data)
+            })
+            .catch((e) => {
+                console.log(e)
+            })
+    };
+    const IdImg = JSON.parse(localStorage.getItem("imgId"));
+    useEffect(() => {
+        if (IdImg){
+            axios.get(`https://djangorestapp.herokuapp.com/photo-detail/${IdImg}`)
+                .then(({data}) => {
+                    setCreateImg(data)
+                })
+        }
+    },[])
+
+
+
 
     return (
         <section id='person'>
@@ -50,27 +137,59 @@ const Person = () => {
                 <h1>Личный кабинет</h1>
                 <div className="contentBtn">
                     <div className='btn'>
-                        <FontAwesomeIcon icon={faUser} className='btn--user'/>
+                        <div className="btn--user">
+                            {
+                                IdImg   ?
+                                    <img className="btn--user--photo" src={createImg.img} alt=""/>
+                                    :
+                                    <FontAwesomeIcon icon={faUser} className='btn--user--icon'/>
+                            }
+                        </div>
                         <h2>{persons.name}</h2>
                         <div className="btn--btns">
-                            <form action=""
-                            >
-                                <button type='submit'>
-                                    <label
-                                        htmlFor="file-upload"
-                                        className="btn--input"
+                            {
+                                IdImg ?
+                                    <UpdatePhoto/>
+                                    :
+                                    <form
+                                        onSubmit={handleSubmit(onSubmit)}
                                     >
-                                        Выберите фото
-                                    </label>
-                                    <input id="file-upload" type="file"  name="user"/></button>
-                            </form>
+                                                <label className ="btn--btns--innn2 ">
+                                                    <span>Выбрать фото</span>
+                                                    <input
+                                                        className={`btn--btns--innn2---in1 ${createImg.length === 0 ? "btn--btns--innn2---in2" : "btn--btns--innn2---in1" }`}
+                                                        {...register("img")} id="file-upload" type="file" onChange={(e) => {
+                                                        blobToBase64(e.target.files[0]).then((data) => {
+                                                            setCreateImg(data)
+                                                        })
+                                                    }}/>
+                                                </label>
+                                        {
+                                            createImg.length > 0 ?
+                                                <button
+                                                    onSubmit={handleSubmit(onSubmit)}
+                                                    className="btn--btns--btnSubmit"
+                                                    type='submit'
+                                                >Profile</button>
+                                               : ""
 
+                                        }
+                                        {/*<label className ="btn--btns--innn3">*/}
+                                        {/*    <span>Фото</span>*/}
+                                        {/*    <input {...register("img")} id="file-upload" type="file" onChange={(e) => {*/}
+                                        {/*        blobToBase64(e.target.files[0]).then((data) => {*/}
+                                        {/*            setImg(data)*/}
+                                        {/*        })*/}
+                                        {/*    }}/>*/}
+                                        {/*</label>*/}
+
+                                    </form>
+                            }
                             <div className={`btn--btns--tabRoute ${index === 0 ? 'active' : null}`}
                                  onClick={() =>
                                      setIndex(0)
                                  }>Персональные данные
                             </div>
-
                             <div className={`btn--btns--tabRoute ${index === 1 ? 'active' : null}`}
                                  onClick={() =>
                                      setIndex(1)
@@ -157,16 +276,16 @@ const Person = () => {
                                         className='btn--btns--tabRoute'
                                         style={{margin:"30px 0 0 0 ",width:"100%"}}
                                         onClick={() => setAdd(true)}
-                                    >Добавить должность и организация</button>
+                                    >Добавить должность и организацию</button>
                             }
                             <div className='person--content--end'>
                                 <div className="flex flex-col">
                                     <label>Email</label>
                                     <div className='person--content--end--email'>
                                         <p className='flex items-center justify-start '>{persons.email}</p>
-                                        < FontAwesomeIcon
-                                            icon={faPen} style={{color: "#01487E",cursor:"pointer"}}
-                                            onClick={() => setEmailModal(true)}/>
+                                        {/*< FontAwesomeIcon*/}
+                                        {/*    icon={faPen} style={{color: "#01487E",cursor:"pointer"}}*/}
+                                        {/*    onClick={() => setEmailModal(true)}/>*/}
                                     </div>
                                 </div>
 
@@ -198,11 +317,6 @@ const Person = () => {
                             modal={nameModal}
                             setModal={setNameAModal}
                             persons={persons}
-                        />
-                        <UpdateEmail
-                            persons={persons}
-                            emailModal={emailModal}
-                            setEmailModal={setEmailModal}
                         />
                         <UpdatePassword
                             passwordModal={passwordModal}
@@ -251,7 +365,6 @@ const Person = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
     );

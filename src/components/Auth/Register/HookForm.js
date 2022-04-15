@@ -67,7 +67,7 @@ export default function HookForm({active, setActive}) {
                                          style={{fontSize:'25px'}}
                                          onClick={() => {
                                              setActive(false)
-                                             // navigate("/")
+                                             navigate("/")
                                          }}
                         />
                         <h2>Регистрация</h2>

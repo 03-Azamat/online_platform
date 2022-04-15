@@ -27,10 +27,14 @@ export const logout = () => {
     cookies.remove("refresh")
     localStorage.removeItem("access")
     localStorage.removeItem("refresh")
-    // localStorage.removeItem("userID")
+    localStorage.removeItem("userID")
 }
 export const dataId = (response) => {
     localStorage.setItem("dataID", JSON.stringify(response.data.id))
+}
+
+export const imgId = (response) => {
+    localStorage.setItem("imgId", JSON.stringify(response.data.id))
 }
 
 // export const userId = () => {

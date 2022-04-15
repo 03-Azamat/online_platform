@@ -2,9 +2,11 @@ import React, {useState} from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import {toast, ToastContainer,} from "react-toastify";
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const UpdateName = ({modal,setModal,handleChangeUser, persons}) => {
     const access = JSON.parse(localStorage.getItem("access"));
+    const navigate = useNavigate()
     const [name, setName] = useState('')
     const btn = (e) => {
         e.preventDefault()
