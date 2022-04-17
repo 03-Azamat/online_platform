@@ -9,10 +9,13 @@ import 'react-phone-input-2/lib/style.css'
 import axios from "axios";
 import {toast} from "react-toastify";
 import {publicApi} from "../HTTP/publicApi";
+import {useDispatch} from "react-redux";
+import {getUser} from "../../../redux/action/corsesAction";
 
 const UpdatePhone = ({phoneModal,setPhoneModal,persons, handleChangeUser}) => {
     const access = JSON.parse(localStorage.getItem("access"));
     const [phone, setPhone] = useState('')
+    const dispatch = useDispatch()
     const btn = (e) => {
         e.preventDefault()
         let obj = {
@@ -37,6 +40,7 @@ const UpdatePhone = ({phoneModal,setPhoneModal,persons, handleChangeUser}) => {
                 } else if (data.phone_number.length === 0){
                     toast.error("Это поле не может быть пустым.")}
                 else {
+                    dispatch(getUser())
                     setPhoneModal(false)
                     toast.success("Успешно ")
                 }

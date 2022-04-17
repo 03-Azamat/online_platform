@@ -1,6 +1,5 @@
 import cookies from "js-cookie";
-import {useEffect} from "react";
-import axios from "axios";
+
 
 
 export const authenticate = (response) => {
@@ -35,6 +34,8 @@ export const dataId = (response) => {
 
 export const imgId = (response) => {
     localStorage.setItem("imgId", JSON.stringify(response.data.id))
+    cookies.set("cookiesImgID", response.data.id)
+
 }
 
 // export const userId = () => {

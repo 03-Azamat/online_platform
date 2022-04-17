@@ -18,6 +18,7 @@ import {toast} from "react-toastify";
 import {GET_POSITION, GET_USER} from "../../../redux/types/actionTypes";
 import {useForm} from "react-hook-form";
 import UpdatePhoto from "../Updated/UpdatePhoto";
+import cookies from "js-cookie";
 
 const Person = () => {
     const [index, setIndex] = useState(0)
@@ -31,44 +32,17 @@ const Person = () => {
     const navigate = useNavigate()
     const persons = useSelector(state => state.getUser)
     const posOrgan = useSelector(state => state.getPosition)
+    const [delImg, setDelImg] = useState("")
+
     const dataID = JSON.parse(localStorage.getItem("dataID"));
     const access = JSON.parse(localStorage.getItem("access"));
     const dispatch = useDispatch()
     // const [persons, setPersons] = useState({})
-
-    // useEffect(() => {
-    //     if (access){
-    //         axios(`https://djangorestapp.herokuapp.com/users/me/`, {
-    //             headers: {
-    //                 "Authorization": `Bearer ${access}`
-    //             }
-    //         }).then(({data}) => {
-    //             dispatch({type:GET_USER,payload:data})
-    //         })
-    //     }
-    // },[])
-
-    // useEffect(() => {
-    //     return(dispatch) => {
-    //         if (dataID){
-    //             axios(`https://djangorestapp.herokuapp.com/data-detailID/${dataID}/`, {
-    //                 headers: {
-    //                     "Authorization": `Bearer ${access}`
-    //                 }
-    //             })
-    //                 .then(({data}) => {
-    //                     dispatch({type:GET_POSITION,payload:data})
-    //                 })
-    //         }
-    //     }
-    // },[])
-
-
-
     useEffect(() => {
+
         dispatch(getPosition())
         dispatch(getUser())
-    },[dispatch])
+    },[])
     const deletePosition = () => {
        if (dataID){
            axios.delete(`https://djangorestapp.herokuapp.com/data-delete/${dataID}/`)
@@ -88,21 +62,10 @@ const Person = () => {
         reader.onload = () => resolve(reader.result);
         reader.onerror = error => reject(error);
     })
-
-
-    // const createPhoto = () => {
-    //     axios.post(`https://djangorestapp.herokuapp.com/photo-create/`, {
-    //         user:persons.id
-    //     })
-    //         .then(data => {
-    //             console.log(data)
-    //         })
-    // }
-
-
     const [newImg, setNewImg] = useState([])
-    const [createImg, setCreateImg] = useState([])
+    const [createImg, setCreateImg] = useState({ preview: "", raw: "" })
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
     const onSubmit = data => {
         // data.preventDefault(false)
         console.log(data)
@@ -111,36 +74,44 @@ const Person = () => {
         formData.append("img", data.img[0])
         axios.post(`https://djangorestapp.herokuapp.com/photo-create/`, formData)
             .then(data => {
-                toast.success("успешно")
                 imgId(data)
+                toast.success("успешно")
             })
             .catch((e) => {
                 console.log(e)
             })
     };
     const IdImg = JSON.parse(localStorage.getItem("imgId"));
+    // const cookiesImgId = JSON.parse(cookies.getItem("cookiesImgId"));
     useEffect(() => {
         if (IdImg){
             axios.get(`https://djangorestapp.herokuapp.com/photo-detail/${IdImg}`)
                 .then(({data}) => {
-                    setCreateImg(data)
+                    setCreateImg({
+                            preview: data.img,
+                            raw: data.img
+                        })
+                    console.log(data, "data")
+                    setDelImg(data.img)
                 })
         }
     },[])
 
 
-
-
+    console.log("position",posOrgan)
+    console.log("persons",persons)
+    console.log("photo",createImg)
     return (
         <section id='person'>
             <div className='container'>
                 <h1>Личный кабинет</h1>
+
                 <div className="contentBtn">
                     <div className='btn'>
                         <div className="btn--user">
                             {
                                 IdImg   ?
-                                    <img className="btn--user--photo" src={createImg.img} alt=""/>
+                                    <img src={createImg.raw}  className="btn--user--photo" alt=""/>
                                     :
                                     <FontAwesomeIcon icon={faUser} className='btn--user--icon'/>
                             }
@@ -149,7 +120,7 @@ const Person = () => {
                         <div className="btn--btns">
                             {
                                 IdImg ?
-                                    <UpdatePhoto/>
+                                    <UpdatePhoto delImg={delImg} setDelImg={setDelImg}  createImg={createImg} setCreateImg={setCreateImg}/>
                                     :
                                     <form
                                         onSubmit={handleSubmit(onSubmit)}
@@ -167,22 +138,13 @@ const Person = () => {
                                         {
                                             createImg.length > 0 ?
                                                 <button
-                                                    onSubmit={handleSubmit(onSubmit)}
+                                                    // onSubmit={handleSubmit(onSubmit)}
                                                     className="btn--btns--btnSubmit"
                                                     type='submit'
                                                 >Profile</button>
                                                : ""
 
                                         }
-                                        {/*<label className ="btn--btns--innn3">*/}
-                                        {/*    <span>Фото</span>*/}
-                                        {/*    <input {...register("img")} id="file-upload" type="file" onChange={(e) => {*/}
-                                        {/*        blobToBase64(e.target.files[0]).then((data) => {*/}
-                                        {/*            setImg(data)*/}
-                                        {/*        })*/}
-                                        {/*    }}/>*/}
-                                        {/*</label>*/}
-
                                     </form>
                             }
                             <div className={`btn--btns--tabRoute ${index === 0 ? 'active' : null}`}

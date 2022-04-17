@@ -25,6 +25,7 @@ const UpdatePosition = ({poModal,setPoModal,persons}) => {
             if (data.data.position.length === 0){
                 toast.error("Это поле не может быть пустым.")}
             else {
+                dispatch(getPosition())
                 setPoModal(false)
                 toast.success("Успешно ")
             }
