@@ -3,11 +3,9 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPen, faUser, faArrowRightLong, faTrash} from "@fortawesome/free-solid-svg-icons";
 import UpdatePosition from "../Updated/UpdatePosition";
 import UpdateOrganization from "../Updated/UpdateOrganization";
-import UpdateEmail from "../Updated/UpdateEmail";
 import UpdatePassword from "../Updated/UpdatePassword";
 import {useNavigate} from "react-router-dom";
 import {dataAddID, deleteId, imgId, logout} from "../Register/helpers";
-import {publicApi} from "../HTTP/publicApi";
 import UpdatePhone from "../Updated/UpdatePhone";
 import axios from "axios";
 import UpdateName from "../Updated/UpdateName";
@@ -15,10 +13,10 @@ import AddPosition from "../Register/AddPosition";
 import {useDispatch, useSelector} from "react-redux";
 import {getPosition, getUser} from "../../../redux/action/corsesAction";
 import {toast} from "react-toastify";
-import {GET_POSITION, GET_USER} from "../../../redux/types/actionTypes";
 import {useForm} from "react-hook-form";
 import UpdatePhoto from "../Updated/UpdatePhoto";
-import cookies from "js-cookie";
+
+
 
 const Person = () => {
     const [index, setIndex] = useState(0)
@@ -29,6 +27,8 @@ const Person = () => {
     const [add, setAdd] = useState(false)
     const [phoneModal, setPhoneModal] = useState(false)
     const [nameModal, setNameAModal] = useState(false)
+    const [commentPosition, setCommentPosition] = useState('')
+    const [commentOrganization, setCommentOrganization] = useState('')
     const navigate = useNavigate()
     const persons = useSelector(state => state.getUser)
     const posOrgan = useSelector(state => state.getPosition)
@@ -39,23 +39,9 @@ const Person = () => {
     const dispatch = useDispatch()
     // const [persons, setPersons] = useState({})
     useEffect(() => {
-
         dispatch(getPosition())
         dispatch(getUser())
-    },[])
-    const deletePosition = () => {
-       if (dataID){
-           axios.delete(`https://djangorestapp.herokuapp.com/data-delete/${dataID}/`)
-               .then(data => {
-                   toast.success('Успешно удалили')
-               }).catch(error => {
-               toast.error("error")
-               console.log(error)
-           })
-       }
-
-    }
-
+    }, [])
     const blobToBase64 = (blob) => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(blob);
@@ -63,8 +49,24 @@ const Person = () => {
         reader.onerror = error => reject(error);
     })
     const [newImg, setNewImg] = useState([])
-    const [createImg, setCreateImg] = useState({ preview: "", raw: "" })
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const [createImg, setCreateImg] = useState({preview: "", raw: ""})
+    const {register, handleSubmit, watch, formState: {errors}} = useForm();
+
+    const deletePosition = () => {
+        if (dataID) {
+            axios.delete(`https://djangorestapp.herokuapp.com/data-delete/${dataID}/`)
+                .then(data => {
+                    setCommentPosition(data)
+                    // setCommentOrganization(data)
+
+                    toast.success('Успешно удалили')
+                }).catch(error => {
+                toast.error("error")
+                console.log(error)
+            })
+        }
+
+    }
 
     const onSubmit = data => {
         // data.preventDefault(false)
@@ -84,23 +86,23 @@ const Person = () => {
     const IdImg = JSON.parse(localStorage.getItem("imgId"));
     // const cookiesImgId = JSON.parse(cookies.getItem("cookiesImgId"));
     useEffect(() => {
-        if (IdImg){
+        if (IdImg) {
             axios.get(`https://djangorestapp.herokuapp.com/photo-detail/${IdImg}`)
                 .then(({data}) => {
                     setCreateImg({
-                            preview: data.img,
-                            raw: data.img
-                        })
+                        preview: data.img,
+                        raw: data.img
+                    })
                     console.log(data, "data")
                     setDelImg(data.img)
                 })
         }
-    },[])
+    }, [])
 
 
-    console.log("position",posOrgan)
-    console.log("persons",persons)
-    console.log("photo",createImg)
+    console.log("position", posOrgan)
+    console.log("persons", persons)
+    console.log("photo", createImg)
     return (
         <section id='person'>
             <div className='container'>
@@ -110,8 +112,8 @@ const Person = () => {
                     <div className='btn'>
                         <div className="btn--user">
                             {
-                                IdImg   ?
-                                    <img src={createImg.raw}  className="btn--user--photo" alt=""/>
+                                IdImg ?
+                                    <img src={createImg.raw} className="btn--user--photo" alt=""/>
                                     :
                                     <FontAwesomeIcon icon={faUser} className='btn--user--icon'/>
                             }
@@ -120,21 +122,22 @@ const Person = () => {
                         <div className="btn--btns">
                             {
                                 IdImg ?
-                                    <UpdatePhoto delImg={delImg} setDelImg={setDelImg}  createImg={createImg} setCreateImg={setCreateImg}/>
+                                    <UpdatePhoto delImg={delImg} setDelImg={setDelImg} createImg={createImg}
+                                                 setCreateImg={setCreateImg}/>
                                     :
                                     <form
                                         onSubmit={handleSubmit(onSubmit)}
                                     >
-                                                <label className ="btn--btns--innn2 ">
-                                                    <span>Выбрать фото</span>
-                                                    <input
-                                                        className={`btn--btns--innn2---in1 ${createImg.length === 0 ? "btn--btns--innn2---in2" : "btn--btns--innn2---in1" }`}
-                                                        {...register("img")} id="file-upload" type="file" onChange={(e) => {
-                                                        blobToBase64(e.target.files[0]).then((data) => {
-                                                            setCreateImg(data)
-                                                        })
-                                                    }}/>
-                                                </label>
+                                        <label className="btn--btns--innn2 ">
+                                            <span>Выбрать фото</span>
+                                            <input
+                                                className={`btn--btns--innn2---in1 ${createImg.length === 0 ? "btn--btns--innn2---in2" : "btn--btns--innn2---in1"}`}
+                                                {...register("img")} id="file-upload" type="file" onChange={(e) => {
+                                                blobToBase64(e.target.files[0]).then((data) => {
+                                                    setCreateImg(data)
+                                                })
+                                            }}/>
+                                        </label>
                                         {
                                             createImg.length > 0 ?
                                                 <button
@@ -142,7 +145,7 @@ const Person = () => {
                                                     className="btn--btns--btnSubmit"
                                                     type='submit'
                                                 >Profile</button>
-                                               : ""
+                                                : ""
 
                                         }
                                     </form>
@@ -161,10 +164,10 @@ const Person = () => {
                                 onClick={() => {
                                     logout()
                                     navigate('/')
-                                }
-                                }
+                                }}
                                 className='btn--btns--tabRoute'
-                            >Выйти</div>
+                            >Выйти
+                            </div>
                         </div>
                     </div>
                     <div className="person" hidden={index !== 0}>
@@ -178,16 +181,16 @@ const Person = () => {
                                         <p className='p-3'> {persons.name} </p>
                                         < FontAwesomeIcon
                                             onClick={() => setNameAModal(true)}
-                                            icon={faPen} style={{color: "#01487E",cursor:"pointer"}}/>
+                                            icon={faPen} style={{color: "#01487E", cursor: "pointer"}}/>
                                     </div>
                                 </div>
                                 <div className="flex flex-col">
                                     <label>Номер телефона</label>
-                                    <div  className='person--content--start--number '>
+                                    <div className='person--content--start--number '>
                                         <p>{persons.phone_number}</p>
                                         < FontAwesomeIcon
                                             onClick={() => setPhoneModal(true)}
-                                            icon={faPen} style={{color: "#01487E",cursor:"pointer"}}/>
+                                            icon={faPen} style={{color: "#01487E", cursor: "pointer"}}/>
                                     </div>
                                 </div>
 
@@ -199,8 +202,9 @@ const Person = () => {
                                     <div className='person--content--center--position'>
                                         <p>{posOrgan.position}</p>
                                         {
-                                            dataAddID()  ?
-                                                < FontAwesomeIcon icon={faPen} style={{color: "#01487E",cursor:"pointer"}}
+                                            dataAddID() ?
+                                                < FontAwesomeIcon icon={faPen}
+                                                                  style={{color: "#01487E", cursor: "pointer"}}
                                                                   onClick={() => setPoModal(true)}
                                                 />
                                                 : ''
@@ -215,7 +219,7 @@ const Person = () => {
                                         {
                                             dataAddID() ?
                                                 < FontAwesomeIcon
-                                                    icon={faPen} style={{color: "#01487E",cursor:"pointer"}}
+                                                    icon={faPen} style={{color: "#01487E", cursor: "pointer"}}
                                                     onClick={() => setOrModal(true)}/>
                                                 : ''
                                         }
@@ -226,9 +230,8 @@ const Person = () => {
                                 dataAddID() ?
                                     <button
                                         className='btn--btns--tabRoute1'
-                                        style={{margin:"30px 0 0 0 ",width:"100%"}}
-                                        onClick={() =>
-                                        {
+                                        style={{margin: "30px 0 0 0 ", width: "100%"}}
+                                        onClick={() => {
                                             deleteId()
                                             deletePosition()
                                         }}
@@ -236,7 +239,7 @@ const Person = () => {
                                     :
                                     <button
                                         className='btn--btns--tabRoute'
-                                        style={{margin:"30px 0 0 0 ",width:"100%"}}
+                                        style={{margin: "30px 0 0 0 ", width: "100%"}}
                                         onClick={() => setAdd(true)}
                                     >Добавить должность и организацию</button>
                             }
@@ -294,6 +297,7 @@ const Person = () => {
                             add={add}
                             setAdd={setAdd}
                             persons={persons}
+
                         />
                     </div>
                     <div className='my-courses' hidden={index !== 1}>
