@@ -8,7 +8,6 @@ import CoursesDetails from "./components/courses/coursesDetails";
 import Person from "./components/Auth/Person/Person";
 import CoursesLesson from "./components/courses/coursesLesson";
 import Footer from "./components/footer/Footer";
-import Quiz from "./components/Test/function/Quiz";
 import Question from "./components/question/question";
 import Login from "./components/Auth/emailActive/Login";
 import EmailActive from "./components/Auth/emailActive/EmailActive";

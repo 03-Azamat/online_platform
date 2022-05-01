@@ -5,7 +5,7 @@ import {
     GET_COURSES_TEST_DETAILS,
     GET_SINGLE_COURSES,
     GET_USER,
-    GET_POSITION,
+    GET_POSITION, GET_APPLICATION,
     // DELETE_POSITION,
 } from "../types/actionTypes";
 import {publicApi} from "../../components/Auth/HTTP/publicApi";
@@ -14,11 +14,12 @@ const initialState = {
     courses: [],
     coursesDetails: {},
     aboutReducer:[],
-    question:[],
+    question:{},
     questionDetails:{},
     admin: [],
     getUser:{},
     getPosition:{},
+    getApp:[],
 }
 
 export const reducer = (state = initialState, action) => {
@@ -40,14 +41,12 @@ export const reducer = (state = initialState, action) => {
 
         case GET_USER:
             return {...state,getUser: action.payload}
+
         case GET_POSITION:
             return {...state,getPosition: action.payload}
-        // case DELETE_POSITION:
-        //     return {...state,deletePosition: action.payload}
 
-        case GET_ADMIN:
-            return {...state, admin :action.payload }
-
+        case GET_APPLICATION:
+            return {...state, getApp: action.payload}
 
         default :
             return state

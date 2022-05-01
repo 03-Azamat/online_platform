@@ -1,13 +1,12 @@
-import React, {useEffect, useState} from'react';
+import React, {useEffect, useState} from 'react';
 import {NavLink, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getCoursesDetails} from "../../redux/action/corsesAction";
+import {getApplication, getCoursesDetails} from "../../redux/action/corsesAction";
 import Cour from "../../image/cour_logo.svg"
 import {add, format} from "date-fns"
 import Accordion from "../accordion/accordion";
 import Loader from "../../loader/loader";
 import {isAuth} from "../Auth/Register/helpers";
-import axios from "axios";
 import AccordionDemo from "../accordion/accordionDemo";
 
 
@@ -16,29 +15,26 @@ const CoursesDetails = () => {
     const dispatch = useDispatch()
     const {coursesDetails: course} = useSelector(s => s)
     const {getUser: user} = useSelector(s => s)
+    const {getApp: app} = useSelector(s => s)
     const [paid, setPaid] = useState(false)
-    console.log(paid, "PAID")
-    function showPaid() {
-        try {
-            axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-UpdateDelete/${user.id}/`)
-                    .then(({data}) => {
-                        console.log(data, "data")
-                        setPaid(data.activation)
-                    })
-        } catch (e) {
-            console.log(e)
-        }
-    }
 
+    useEffect(() => {
+        app.forEach(data => {
+                if (data.user === user.id && data.activation) {
+                    setPaid(true)
+                } else if (course.id === data.applicationcourse){
+                    setPaid(true)
+                } else {
+                    setPaid(false)
+                }
+            }
+        )
+    }, [app])
 
     useEffect(() => {
         dispatch(getCoursesDetails(id))
-        if (Object.entries(user).length > 0) {
-            console.log(user, 'asdkfjakl')
-            showPaid()
-        }
-    }, [user, paid])
-
+        dispatch(getApplication())
+    }, [user])
 
     //////date-fns//////
     const date = new Date()
@@ -100,33 +96,43 @@ const CoursesDetails = () => {
 
                             <div className="cour--box--accordion--block">
                             </div>
-                            {
-                                paid?
-                                    <div>{
-                                        course?.coursechoice?.map(el => (
-                                            <Accordion el={el} key={el.id}/>
-                                        ))}
-                                    </div>
-                                    : <div>{
-                                        course?.coursechoice?.map(el => (
-                                            <AccordionDemo el={el} key={el.id}/>
-                                        ))
-                                    }</div>
-                            }
+                            <div>
+
+                                {
+                                    paid ?
+                                        <div>
+                                            keldi
+                                            {
+                                                course?.coursechoice?.map(el => (
+                                                    <Accordion el={el} key={el.id}/>
+                                                ))
+                                            }
+                                        </div> :
+                                        <div>
+                                            kelgen jok
+                                            {
+                                                course?.coursechoice?.map(el => (
+                                                    <AccordionDemo el={el} key={el.id}/>
+                                                ))
+                                            }
+                                        </div>
+                                }
+                            </div>
+
                         </div>
 
                         <div className="cour--box--test">
                             <h1 className="cour--box--test--title">Внимание! </h1>
-                                    <p className="cour--box--test--desc">
-                                        После изучения материалов курса Вы должны будете пройти тестирование.
-                                        На прохождение теста Вам будет предоставлена одна попытка!
-                                    </p>
+                            <p className="cour--box--test--desc">
+                                После изучения материалов курса Вы должны будете пройти тестирование.
+                                На прохождение теста Вам будет предоставлена одна попытка!
+                            </p>
 
-                                    <NavLink to={`/question/${course.id}`}>
-                                        <div>
-                                            <button className="cour--box--test--btn">Тест</button>
-                                        </div>
-                                    </NavLink>
+                            <NavLink to={`/question/${course.id}`}>
+                                <div>
+                                    <button className="cour--box--test--btn">Тест</button>
+                                </div>
+                            </NavLink>
                         </div>
                     </div>
                 ) : <Loader/>}

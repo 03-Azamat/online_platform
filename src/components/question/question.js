@@ -1,86 +1,73 @@
-import React, {useContext, useEffect, useRef, useState} from 'react';
-import {NavLink, useParams} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getTest} from "../../redux/action/corsesAction";
-import QuestionCard from "./questionCard";
-import questionCard from "./questionCard";
-import {QuizContext} from "../../data/Contexts";
-import data from "../../data/state";
+
 
 const Question = () => {
-    const intervalRef = useRef(null)
-    const [timer, setTimer] = useState('00:00:00');
-
     const {testId} = useParams()
-    console.log(useParams())
-
     const elem = useSelector(state => state.question)
     const dispatch = useDispatch()
+
+    const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [showScore, setShowScore] = useState(false)
+    const [score, setScore] = useState(0)
+    const handleAnswerButtonClick = (boo) => {
+        if (boo === true) {
+            setScore(score + 1)
+        }
+
+        const nextQuestion = currentQuestion + 1;
+        if (nextQuestion < elem.choicetest.length) {
+            setCurrentQuestion(nextQuestion)
+        } else {
+            setShowScore(true)
+        }
+    }
+
+    function result() {
+        return  Math.round(100 / elem?.choicetest.length) * score
+    }
 
     useEffect(() => {
         dispatch(getTest(testId))
     }, [])
-
-    function  getTimeRemaining(endtime){
-        const total = Date.parse(endtime) - Date.parse(new Date());
-        const seconds = Math.floor((total/1000) % 60);
-        const minutes = Math.floor((total/1000/60) % 60);
-        const hours = Math.floor((total/1000*60*60)%24);
-        const days = Math.floor(total/(1000*60* 60 *24));
-        return{
-            total, days, seconds, minutes, hours,
-        };
-    }
-    function startTimer (deadline){
-        let {total, days, seconds, minutes, hours, } = getTimeRemaining(deadline);
-        if (total >= 0){
-            setTimer(
-                (hours > 9 ?hours : '0'+hours) + ':' +
-                (minutes > 9 ? minutes: '0'+minutes)+ ':'+
-                (seconds > 9 ? seconds : '0'+seconds)
-            )
-        }else {
-            clearInterval(intervalRef.current)
-        }
-    }
-
-
-    function clearTimer (insaider){
-        setTimer('00:01:50');
-        if(intervalRef.current)clearInterval(intervalRef.current);
-        const id = setInterval(() => {
-            startTimer(insaider);
-        },1000)
-        intervalRef.current = id;
-    }
-
-    function getDeadlineTime(){
-        let deadline = new Date();
-        deadline.setSeconds(deadline.getSeconds()+109  )
-        return deadline;
-    }
-
-    useEffect(() => {
-        clearTimer(getDeadlineTime());
-        return () => {if (intervalRef.current) clearInterval(intervalRef.current)}
-    },[])
-
+    console.log(elem.choicetest, "111")
     return (
-        <section className="flex align-middle justify-center w-full min-h-screen">
-            <div className="bg-gray-500 text-white w-7/12 h-56" key={elem.idTest}>
+        <section className="flex align-middle justify-center w-full min-h-full">
+            <div className="bg-gray-500 text-white w-7/12 h-56 h-full" key={elem.id}>
                 {
-                    elem?.choicetest?.slice(0,1).map(el =>(
+                    showScore ? (
+                        <div>
+                            <p>You scored {score} out {elem?.choicetest.length}</p>
                             <div>
-                              <p>{el.question.title}</p>
+                                {result() > 50 ? `Тест пройден : ${result()} %`
+                                    :
+                                    `Тест не пройден ${result()} %`}
+                            </div>
+                        </div>
+                    ) : (
+                        <div>
+                            <span>Вопрос № : {currentQuestion + 1}</span>/ Вопросы {elem?.choicetest?.length}
+                            <div>
                                 {
-                                    el.question.flags.map(e=>(
+                                    elem?.choicetest?.question?.flags.map(el => (
                                         <div>
-                                            <button>{e.text}</button>
+                                            <p>{el?.question?.title}</p>
+                                            {
+                                                el?.question?.flags.map((flag) => (
+                                                    <div>
+                                                        <button onClick={() => handleAnswerButtonClick(flag?.boo)}
+                                                                className="bg-amber-400 mt-2  mx-2 border-amber-800 w-full">{flag.text}</button>
+                                                    </div>
+                                                ))
+                                            }
                                         </div>
                                     ))
                                 }
                             </div>
-                    ))
+                        </div>
+                    )
                 }
             </div>
         </section>

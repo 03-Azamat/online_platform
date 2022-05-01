@@ -1,7 +1,7 @@
 import axios from "axios";
 import {
     GET_ABOUT,
-    GET_ADMIN,
+    GET_APPLICATION,
     GET_COURSES,
     GET_COURSES_TEST,
     GET_POSITION,
@@ -9,8 +9,7 @@ import {
     GET_USER,
 } from "../types/actionTypes";
 
-import {publicApi} from "../../components/Auth/HTTP/publicApi";
-import {useEffect} from "react";
+
 const access = JSON.parse(localStorage.getItem("access"));
 const dataID = JSON.parse(localStorage.getItem("dataID"));
 
@@ -43,7 +42,7 @@ export const getTest = (id) =>{
     return(dispatch) =>{
         axios(`https://djangorestapp.herokuapp.com/test-detailid/${id}/`)
             .then(({data})=>{
-                console.log(data)
+                console.log(data,"DATA")
                 dispatch({type:GET_COURSES_TEST, payload:data})
             })
     }
@@ -57,15 +56,6 @@ export const getTestDetails = (id) =>{
             .then(({data})=> {
                 dispatch({type: GET_COURSES_TEST, payload: data})
                 console.log(data, "accard")
-            })
-    }
-}
-
-export const getAdmin = (id) =>{
-    return(dispatch) =>{
-        axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-UpdateDelete/${id}/`)
-            .then(({data})=> {
-                dispatch({type:GET_ADMIN, payload:data})
             })
     }
 }
@@ -98,6 +88,15 @@ export const getPosition = () => {
                   })
           }
   }
+}
+
+export const getApplication = () =>{
+    return(dispatch) => {
+        axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-List/`)
+            .then(({data})=>{
+                dispatch({type:GET_APPLICATION, payload:data})
+            })
+    }
 }
 
 // export const deletePosition = () => {

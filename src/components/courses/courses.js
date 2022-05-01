@@ -4,9 +4,7 @@ import {getCourses} from "../../redux/action/corsesAction";
 import CoursesCard from "../card/coursesCard";
 import Loader from "../../loader/loader";
 
-
 const Courses = () => {
-
     const elem = useSelector(state => state.courses)
 
     console.log(elem, "coursesTwo")
