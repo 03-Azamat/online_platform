@@ -1,12 +1,21 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import {toast, ToastContainer,} from "react-toastify";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {getUser} from "../../../redux/action/corsesAction";
+import {useDispatch, useSelector} from "react-redux";
+import {GET_USER} from "../../../redux/types/actionTypes";
 
-const UpdateName = ({modal,setModal,handleChangeUser, persons}) => {
+const UpdateName = ({modal,setModal,handleChangeUser}) => {
     const access = JSON.parse(localStorage.getItem("access"));
     const navigate = useNavigate()
+    const persons = useSelector(state => state.getUser)
+    const dispatch = useDispatch()
+    // const [persons, setPersons] = useState({})
+    useEffect(() => {
+        dispatch(getUser())
+    },[])
     const [name, setName] = useState('')
     const btn = (e) => {
         e.preventDefault()
@@ -27,6 +36,7 @@ const UpdateName = ({modal,setModal,handleChangeUser, persons}) => {
                 if (data.name[0] === 'Это поле не может быть пустым.'){
                     toast.error("Это поле не может быть пустым.")
                 } else {
+                    dispatch(getUser())
                     setModal(false)
                     toast.success("Успешно ")
                 }

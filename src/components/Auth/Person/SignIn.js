@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useNavigate} from "react-router-dom"
 import * as Yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
@@ -10,6 +10,9 @@ import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {authenticate, isAuth} from "../Register/helpers";
 import {publicApi} from "../HTTP/publicApi";
+import {useDispatch} from "react-redux";
+import {getPosition, getUser} from "../../../redux/action/corsesAction";
+import person from "./Person";
 
 const SignIn = ({signActive,setSignActive}) => {
     const navigate =  useNavigate()
@@ -20,6 +23,11 @@ const SignIn = ({signActive,setSignActive}) => {
             .required('Введите пароль')
             .min(4, 'Пароль должен быть не менее 8 символов'),
     });
+    useEffect(() => {
+        dispatch(getPosition())
+        dispatch(getUser())
+    },[])
+    const dispatch = useDispatch()
     const formOptions = { resolver: yupResolver(validationSchema) };
     const { register, handleSubmit,
         formState: { errors, } } = useForm(formOptions);
@@ -27,9 +35,10 @@ const SignIn = ({signActive,setSignActive}) => {
         publicApi.post("/jwt/create", data)
             .then(response => {
                 toast.success("Salam  " +data.email)
-                authenticate(response)
-                  navigate("/person")
+                authenticate(response,dispatch(getUser()))
+                navigate("/person")
                 setSignActive(false)
+                person()
             }).catch((error) => {
 
                 toast.error(error.response.data.detail)
@@ -60,7 +69,7 @@ const SignIn = ({signActive,setSignActive}) => {
                    {/*<input  type="Email" name='email' placeholder='Электронная почта' className='signin--forms--input1' />*/}
                    <input className='signin--forms--input1' name="password"  placeholder="Пароль"  type="password" {...register('password')} />
                    <div className="invalid-feedback">{errors.password?.message}</div>
-                   <button  type='submit' >Войти</button>
+                   <button>Войти</button>
                </form>
            </div>
        </>

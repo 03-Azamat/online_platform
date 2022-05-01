@@ -2,16 +2,19 @@ import React from 'react';
 import * as Yup from "yup";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form";
+import axios from "axios";
+import {toast} from "react-toastify";
 
 const UpdatePassword = ({passwordModal,setPasswordModal}) => {
+    const access = JSON.parse(localStorage.getItem("access"));
     const validationSchema = Yup.object().shape({
-        password1: Yup.string()
+        current_password: Yup.string()
             .required('Введите пароль')
             .min(6, 'Старый пароль'),
         password: Yup.string()
             .required('Введите пароль')
             .min(6, 'Пароль должен быть не менее 4 символов'),
-        confirmPassword: Yup.string()
+        new_password: Yup.string()
             .required('Введите пароль')
             .oneOf([Yup.ref('password')], 'Пароли должны совпадать')
     });
@@ -19,7 +22,25 @@ const UpdatePassword = ({passwordModal,setPasswordModal}) => {
     const formOptions = { resolver: yupResolver(validationSchema) };
     const { register,handleSubmit,handleChange,value,  formState: { errors,} } = useForm(formOptions);
     const onSubmit = data => {
+
         console.log(data)
+        axios.post('https://djangorestapp.herokuapp.com/users/set_password/',data,{
+            headers: {
+                "Authorization": `Bearer ${access}`
+            }
+        })
+            .then(data => {
+            console.log(data)
+            setPasswordModal(false)
+            toast.success("Успешно")
+
+        }).catch((error) => {
+           if (error.response.data.current_password){
+               toast.error( "Старый пароль неправильный ")
+           } else  if (error.response.data.new_password){
+               toast.error(error.response.data.new_password[0])
+           }
+        })
     };
     return (
         <div  className={ passwordModal ? "modal active   " : "modal"}>
@@ -28,15 +49,15 @@ const UpdatePassword = ({passwordModal,setPasswordModal}) => {
 
                 <form className='modal--password--form'  onSubmit={handleSubmit(onSubmit)}>
                     <label className='modal--password--form--s-password'>Старый пароль</label>
-                    <input  name="password"  placeholder="Пароль"  type="password" {...register('password1')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
-                    <div className="modal--password--form--error invalid-feedback">{errors.password1?.message}</div>
+                    <input  name="current_password"  placeholder="Пароль"  type="password" {...register('current_password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
+                    <div className="modal--password--form--error invalid-feedback">{errors.current_password?.message}</div>
 
                     <label className='modal--password--form--new-password'>Новый пароль</label>
                     <input  name="password"  placeholder="Пароль"  type="password" {...register('password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
                     <div className="modal--password--form--error invalid-feedback">{errors.password?.message}</div>
                     <label className='modal--password--form--confirmPassword'>Потвердите новый пароль</label>
-                    <input name="confirmPassword" type="password" placeholder="Подвердить пароль" {...register('confirmPassword')} className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`} />
-                    <div className="modal--password--form--error invalid-feedback">{errors.confirmPassword?.message}</div>
+                    <input name="new_password" type="password" placeholder="Подвердить пароль" {...register('new_password')} className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`} />
+                    <div className="modal--password--form--error invalid-feedback">{errors.new_password?.message}</div>
                     <div className='modal--password--form--btns'>
                         <button type='button' className='modal--password--form--btns--btn1 mx-2.5'
                                 onClick={() => setPasswordModal(false)}

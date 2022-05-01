@@ -81,7 +81,9 @@ const Header = () => {
                                                                      style={{
                                                                          width:"40px",
                                                                          height:"40px",
-                                                                         borderRadius:"50%"}}
+                                                                         borderRadius:"50%",
+                                                                         background:"fixed"
+                                                                     }}
                                                                      alt=""/>
                                                                 :
                                                                 <FontAwesomeIcon

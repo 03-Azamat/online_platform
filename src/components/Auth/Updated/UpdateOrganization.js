@@ -23,6 +23,7 @@ const UpdateOrganization = ({orModal,setOrModal,persons}) => {
                if (data.data.organization.length === 0){
                    toast.error("Это поле не может быть пустым.")}
                else {
+                   dispatch(getPosition())
                    setOrModal(false)
                    toast.success("Успешно ")
                }

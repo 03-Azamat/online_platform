@@ -8,21 +8,26 @@ import {imgId} from "../Register/helpers";
 import {useDispatch, useSelector} from "react-redux";
 import {getUser} from "../../../redux/action/corsesAction";
 
-const UpdatePhoto = () => {
+const UpdatePhoto = ({ setCreateImg, createImg}) => {
     const IdImg = JSON.parse(localStorage.getItem("imgId"));
     const [newImg, setNewImg] = useState([])
-    const [createImg, setCreateImg] = useState([])
+    // const [createImg, setCreateImg] = useState([])
     const persons = useSelector(state => state.getUser)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getUser())
+
     },[])
+
     const deletePhoto =() => {
         axios.delete(`https://djangorestapp.herokuapp.com/photo-delete/${IdImg}`)
             .then(data => {
                 localStorage.removeItem("imgId")
                 toast("deleted photo")
                 console.log(data)
+                setCreateImg({preview:"", raw: ""})
+
+
             })
     }
     const blobToBase64 = (blob) => new Promise((resolve, reject) => {
@@ -35,35 +40,32 @@ const UpdatePhoto = () => {
     const onSubmit = data => {
         const formData = new FormData()
         formData.append("user", persons.id)
-        console.log(data)
+        console.log(data.img)
         formData.append("img", data.img[0])
         axios.put(`https://djangorestapp.herokuapp.com/photo-update/${IdImg}/`,formData)
             .then(data => {
+                axios.get(`https://djangorestapp.herokuapp.com/photo-detail/${IdImg}`)
+                    .then(({data}) => {
+                        setCreateImg({
+                            preview: data.img,
+                            raw: data.img
+                        })
+                        console.log(data, "data")
+                    })
+
+                setCreateImg(data)
                 toast.success("Update")
                 console.log(data)
             }).catch(error => {
             console.log(error)
         })
     };
-    // const updatePhoto = data => {
-    //     const formData = new FormData()
-    //     formData.append("userId", persons.id)
-    //     console.log(formData,"formDataaa")
-    //     formData.append("newImg", data.img[0])
-    //     axios.put(`https://djangorestapp.herokuapp.com/photo-update/${IdImg}/`,formData)
-    //         .then(data => {
-    //             toast.success("Update")
-    //             console.log(data)
-    //         }).catch(error => {
-    //         console.log(error)
-    //     })
-    //
-    //
-    // }
+
+
     return (
         <div>
             <form
-                // onSubmit={handleSubmit(onSubmit)}
+                onSubmit={handleSubmit(onSubmit)}
             >
                         <div className='btn--btns--div flex'>
                             <label className="btn--btns--div--label">
@@ -82,11 +84,9 @@ const UpdatePhoto = () => {
                         </div>
 
                 {
-                    createImg.length === 0 && IdImg ? " " :
+                    createImg.raw  && IdImg ? " " :
                         <button
                             type='submit'
-                            onSubmit={handleSubmit(onSubmit)}
-                            // onClick={updatePhoto}
                             className="btn--btns--btnSubmit"
                         >Update</button>
                 }
