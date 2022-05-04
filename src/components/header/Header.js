@@ -49,7 +49,6 @@ const Header = () => {
                             <NavLink to={"/"}>Главная</NavLink>
                             <NavLink to={"/courses"}>Курсы</NavLink>
                             <NavLink to={"/certificate"}>Проверка сертификатов</NavLink>
-                            {/*<NavLink to={"/person"}>Person</NavLink>*/}
                             <NavLink to={"/about"}>О нас</NavLink>
                             <NavLink to={"/contact"}>Контакты</NavLink>
 

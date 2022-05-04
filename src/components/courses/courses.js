@@ -6,7 +6,6 @@ import Loader from "../../loader/loader";
 
 const Courses = () => {
     const elem = useSelector(state => state.courses)
-
     console.log(elem, "coursesTwo")
     const dispatch = useDispatch()
     useEffect(() => {

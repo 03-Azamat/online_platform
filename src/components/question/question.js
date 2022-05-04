@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getTest} from "../../redux/action/corsesAction";
+import axios from "axios";
+import {toast} from "react-toastify";
 
 
 const Question = () => {
@@ -12,6 +14,19 @@ const Question = () => {
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [showScore, setShowScore] = useState(false)
     const [score, setScore] = useState(0)
+
+    const onClickTest = () =>{
+        axios.post(`https://djangorestapp.herokuapp.com/scoreboard-Create-list/`, result())
+            .then(data => {
+                result(data)
+                toast.success("успешно")
+            })
+            .catch((e) => {
+                console.log(e)
+                toast.error("ERROR")
+            })
+    }
+
     const handleAnswerButtonClick = (boo) => {
         if (boo === true) {
             setScore(score + 1)
@@ -34,8 +49,8 @@ const Question = () => {
     }, [])
     console.log(elem.choicetest, "111")
     return (
-        <section className="flex align-middle justify-center w-full min-h-full">
-            <div className="bg-gray-500 text-white w-7/12 h-56 h-full" key={elem.id}>
+        <section className="bg-gray-300 flex align-middle justify-center w-full min-h-full">
+            <div className=" bg-white text-white w-6/12 h-3/6 my-12 rounded-md text-black" key={elem.id}>
                 {
                     showScore ? (
                         <div>
@@ -45,20 +60,25 @@ const Question = () => {
                                     :
                                     `Тест не пройден ${result()} %`}
                             </div>
+
+                            <button onSubmit={onClickTest}>Назад</button>
                         </div>
                     ) : (
                         <div>
-                            <span>Вопрос № : {currentQuestion + 1}</span>/ Вопросы {elem?.choicetest?.length}
+                            <span>{currentQuestion + 1}</span>/{elem?.choicetest?.length}
                             <div>
                                 {
-                                    elem?.choicetest?.question?.flags.map(el => (
+                                    elem?.choicetest?.map(el => (
                                         <div>
-                                            <p>{el?.question?.title}</p>
+                                            <p className="font-normal text-sm text-center font-bold">Бизнес аналитик</p>
+                                            <p className="text-center text-sm">Вопрос : № {currentQuestion + 1}</p>
+                                            <p className="text-center text-sm">{el?.question?.title}</p>
+                                            <p className="text-center text-sm text-light ">Ответы ( один вариант )</p>
                                             {
                                                 el?.question?.flags.map((flag) => (
-                                                    <div>
+                                                    <div className="flex align-middle justify-center">
                                                         <button onClick={() => handleAnswerButtonClick(flag?.boo)}
-                                                                className="bg-amber-400 mt-2  mx-2 border-amber-800 w-full">{flag.text}</button>
+                                                                className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded w-10/12 my-1">{flag.text}</button>
                                                     </div>
                                                 ))
                                             }

@@ -8,6 +8,7 @@ import Accordion from "../accordion/accordion";
 import Loader from "../../loader/loader";
 import {isAuth} from "../Auth/Register/helpers";
 import AccordionDemo from "../accordion/accordionDemo";
+import HookForm from "../Auth/Register/HookForm";
 
 
 const CoursesDetails = () => {
@@ -17,24 +18,30 @@ const CoursesDetails = () => {
     const {getUser: user} = useSelector(s => s)
     const {getApp: app} = useSelector(s => s)
     const [paid, setPaid] = useState(false)
+    const [activeForm,setActiveForm] = useState(false);
+
+    console.log(course.id, "course_Id")
+    console.log(app, "app")
+
 
     useEffect(() => {
         app.forEach(data => {
-                if (data.user === user.id && data.activation) {
-                    setPaid(true)
-                } else if (course.id === data.applicationcourse){
+                if (data.applicationcourse === course.id  && data.user === user.id && data.activation ) {
+                    console.log(data.applicationcourse , "app_id")
                     setPaid(true)
                 } else {
                     setPaid(false)
                 }
             }
         )
-    }, [app])
+    }, [app , course])
+
+
 
     useEffect(() => {
         dispatch(getCoursesDetails(id))
         dispatch(getApplication())
-    }, [user])
+    }, [])
 
     //////date-fns//////
     const date = new Date()
@@ -62,7 +69,9 @@ const CoursesDetails = () => {
                                 {
                                     isAuth() ?
                                         "" :
-                                        <button className="cour--box--head--titles--btn">Оставить заявку</button>
+                                        <button className="cour--box--head--titles--btn"
+                                                onClick={() => setActiveForm(true)}
+                                        >Оставить заявку</button>
                                 }
                             </div>
 
@@ -120,25 +129,26 @@ const CoursesDetails = () => {
                             </div>
 
                         </div>
+                        {
+                            paid ? <div className="cour--box--test">
+                                <h1 className="cour--box--test--title">Внимание! </h1>
+                                <p className="cour--box--test--desc">
+                                    После изучения материалов курса Вы должны будете пройти тестирование.
+                                    На прохождение теста Вам будет предоставлена одна попытка!
+                                </p>
 
-                        <div className="cour--box--test">
-                            <h1 className="cour--box--test--title">Внимание! </h1>
-                            <p className="cour--box--test--desc">
-                                После изучения материалов курса Вы должны будете пройти тестирование.
-                                На прохождение теста Вам будет предоставлена одна попытка!
-                            </p>
-
-                            <NavLink to={`/question/${course.id}`}>
-                                <div>
-                                    <button className="cour--box--test--btn">Тест</button>
-                                </div>
-                            </NavLink>
-                        </div>
+                                <NavLink to={`/question/${course.id}`}>
+                                    <div>
+                                        <button className="cour--box--test--btn">Тест</button>
+                                    </div>
+                                </NavLink>
+                            </div> : ""
+                        }
                     </div>
                 ) : <Loader/>}
 
             </div>
-
+            <HookForm active={activeForm}  setActive={setActiveForm} />
         </section>
     );
 };

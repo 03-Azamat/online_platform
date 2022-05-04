@@ -1,6 +1,8 @@
 import axios from "axios";
+import {api} from "../../http/http";
+
 import {
-    GET_ABOUT,
+    GET_ABOUT, GET_ACTIVE_CASE,
     GET_APPLICATION,
     GET_COURSES,
     GET_COURSES_TEST,
@@ -95,6 +97,15 @@ export const getApplication = () =>{
         axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-List/`)
             .then(({data})=>{
                 dispatch({type:GET_APPLICATION, payload:data})
+            })
+    }
+}
+
+export const getMyCourse = () =>{
+    return(dispatch) => {
+        axios(`https://djangorestapp.herokuapp.com/scoreboard-Create-list/`)
+            .then(({data})=>{dispatch({type:GET_ACTIVE_CASE, payload:data})
+                console.log(data, "DDDDDD")
             })
     }
 }

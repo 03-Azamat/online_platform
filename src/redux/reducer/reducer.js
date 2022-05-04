@@ -1,14 +1,13 @@
 import {
-    GET_ABOUT, GET_ADMIN,
+    GET_ABOUT,
     GET_COURSES,
     GET_COURSES_TEST,
     GET_COURSES_TEST_DETAILS,
     GET_SINGLE_COURSES,
     GET_USER,
-    GET_POSITION, GET_APPLICATION,
+    GET_POSITION, GET_APPLICATION, GET_ACTIVE_CASE,
     // DELETE_POSITION,
 } from "../types/actionTypes";
-import {publicApi} from "../../components/Auth/HTTP/publicApi";
 
 const initialState = {
     courses: [],
@@ -20,6 +19,7 @@ const initialState = {
     getUser:{},
     getPosition:{},
     getApp:[],
+    getCase:[]
 }
 
 export const reducer = (state = initialState, action) => {
@@ -48,6 +48,8 @@ export const reducer = (state = initialState, action) => {
         case GET_APPLICATION:
             return {...state, getApp: action.payload}
 
+        case GET_ACTIVE_CASE:
+            return {...state, getCase: action.payload}
         default :
             return state
     }

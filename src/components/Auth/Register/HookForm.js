@@ -5,13 +5,8 @@ import {faXmark} from "@fortawesome/free-solid-svg-icons";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import {useNavigate} from "react-router-dom";
-import axios from "axios";
 import {toast, ToastContainer,} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
-import {data} from "autoprefixer";
-import {number} from "yup";
-import {injectStyle} from "react-toastify/dist/inject-style";
 import {publicApi} from "../HTTP/publicApi";
 
 export default function HookForm({active, setActive}) {

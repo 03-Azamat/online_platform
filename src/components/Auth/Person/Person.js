@@ -11,7 +11,7 @@ import axios from "axios";
 import UpdateName from "../Updated/UpdateName";
 import AddPosition from "../Register/AddPosition";
 import {useDispatch, useSelector} from "react-redux";
-import {getPosition, getUser} from "../../../redux/action/corsesAction";
+import {getApplication, getCourses, getCoursesDetails, getPosition, getUser} from "../../../redux/action/corsesAction";
 import {toast} from "react-toastify";
 import {useForm} from "react-hook-form";
 import UpdatePhoto from "../Updated/UpdatePhoto";
@@ -19,6 +19,13 @@ import UpdatePhoto from "../Updated/UpdatePhoto";
 
 
 const Person = () => {
+    const {coursesDetails: course} = useSelector(s => s)
+    const {getApp: act} = useSelector(s => s)
+    const {getUser: user} = useSelector(s => s)
+    const {courses: cour} = useSelector(s => s)
+    const [personActive, setPersonActive] = useState(false)
+
+
     const [index, setIndex] = useState(0)
     const [poModal, setPoModal] = useState(false)
     const [orModal, setOrModal] = useState(false)
@@ -37,11 +44,17 @@ const Person = () => {
     const dataID = JSON.parse(localStorage.getItem("dataID"));
     const access = JSON.parse(localStorage.getItem("access"));
     const dispatch = useDispatch()
-    // const [persons, setPersons] = useState({})
+    console.log(act , "ACT")
+
+
     useEffect(() => {
         dispatch(getPosition())
         dispatch(getUser())
-    }, [])
+        dispatch(getApplication())
+        dispatch(getCourses())
+    }, [posOrgan])
+    console.log(cour, "COURSES")
+
     const blobToBase64 = (blob) => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(blob);
@@ -70,7 +83,7 @@ const Person = () => {
 
     const onSubmit = data => {
         // data.preventDefault(false)
-        console.log(data)
+
         const formData = new FormData()
         formData.append("user", persons.id)
         formData.append("img", data.img[0])
@@ -99,6 +112,16 @@ const Person = () => {
         }
     }, [])
 
+    useEffect(()=>{
+        act.forEach(data =>{
+            if (data.applicationcourse === course.id  && data.user === user.id && data.activation ){
+                console.log(data.applicationcourse)
+                setPersonActive(true)
+            }else {
+                setPersonActive(false)
+            }
+        })
+    },[act])
 
     console.log("position", posOrgan)
     console.log("persons", persons)
@@ -312,23 +335,40 @@ const Person = () => {
                                                  }}
                                 /></div>
                         </div>
-                        <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
-                            <div className='my-courses--business'>
-                                <p className='my-courses--business--p'>Бизнес аналитик</p>
-                                <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}
-                                                 onClick={() => {
-                                                     // navigate("/")
-                                                 }}
-                                />
+
+                        {
+                            personActive ?
+                                <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
+                                    <div className='my-courses--business'>
+                                        <p className='my-courses--business--p'>{course.id === act.applicationcourse ? "У вас нету курс" : course.title}</p>
+                                        <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}
+                                                         onClick={() => {
+                                                         }}
+                                        />
+                                    </div>
+                                </div> : ""
+
+                        }
+
+                        {
+                            personActive ? <div>
+                                <p className='my-courses--pp'>Активен:</p>
+                                <div className='my-courses--active'>
+                                    <p className='my-courses--active--pp'>{course.id === act.applicationcourse ? "У вас нету курс" : course.title}</p>
+                                    <FontAwesomeIcon className='my-courses--active--icon' icon={faArrowRightLong}/>
+                                </div>
+                            </div> : <div>
+                                <p className='my-courses--pp'>Не активен!</p>
+                                <div className='my-courses--business'>
+                                    <p className='my-courses--business--p'>Вы не записались ни на один курс!</p>
+                                    <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}
+                                                     onClick={() => {
+                                                     }}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <p className='my-courses--pp'>Активен:</p>
-                            <div className='my-courses--active'>
-                                <p className='my-courses--active--pp'>Бизнес аналитик</p>
-                                <FontAwesomeIcon className='my-courses--active--icon' icon={faArrowRightLong}/>
-                            </div>
-                        </div>
+                        }
+
                     </div>
                 </div>
             </div>

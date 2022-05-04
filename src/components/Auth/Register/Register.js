@@ -1,6 +1,5 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faCheck} from "@fortawesome/free-solid-svg-icons";
-
 import React, {useEffect, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 
