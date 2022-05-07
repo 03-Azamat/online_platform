@@ -12,7 +12,6 @@ const CoursesLesson = () => {
     const {coursesDetails: elem} = useSelector(s => s)
     const dispatch = useDispatch()
     console.log(elem , "lessonVideos")
-    console.log(lessonId)
 
 
     useEffect(() => {

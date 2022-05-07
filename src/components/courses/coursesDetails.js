@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from'react';
+import React, {useEffect, useState} from 'react';
 import {NavLink, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getCoursesDetails} from "../../redux/action/corsesAction";
+import {getApplication, getCoursesDetails} from "../../redux/action/corsesAction";
 import Cour from "../../image/cour_logo.svg"
 import {add, format} from "date-fns"
 import Accordion from "../accordion/accordion";
 import Loader from "../../loader/loader";
 import {isAuth} from "../Auth/Register/helpers";
-import axios from "axios";
 import AccordionDemo from "../accordion/accordionDemo";
+import HookForm from "../Auth/Register/HookForm";
 
 
 const CoursesDetails = () => {
@@ -16,29 +16,32 @@ const CoursesDetails = () => {
     const dispatch = useDispatch()
     const {coursesDetails: course} = useSelector(s => s)
     const {getUser: user} = useSelector(s => s)
+    const {getApp: app} = useSelector(s => s)
     const [paid, setPaid] = useState(false)
-    console.log(paid, "PAID")
-    function showPaid() {
-        try {
-            axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-UpdateDelete/${user.id}/`)
-                    .then(({data}) => {
-                        console.log(data, "data")
-                        setPaid(data.activation)
-                    })
-        } catch (e) {
-            console.log(e)
-        }
-    }
+    const [activeForm,setActiveForm] = useState(false);
+
+    console.log(course.id, "course_Id")
+    console.log(app, "app")
+
+
+    useEffect(() => {
+        app.forEach(data => {
+                if (data.applicationcourse === course.id  && data.user === user.id && data.activation ) {
+                    console.log(data.applicationcourse , "app_id")
+                    setPaid(true)
+                } else {
+                    setPaid(false)
+                }
+            }
+        )
+    }, [app , course])
+
 
 
     useEffect(() => {
         dispatch(getCoursesDetails(id))
-        if (Object.entries(user).length > 0) {
-            console.log(user, 'asdkfjakl')
-            showPaid()
-        }
-    }, [user, paid])
-
+        dispatch(getApplication())
+    }, [])
 
     //////date-fns//////
     const date = new Date()
@@ -66,7 +69,9 @@ const CoursesDetails = () => {
                                 {
                                     isAuth() ?
                                         "" :
-                                        <button className="cour--box--head--titles--btn">Оставить заявку</button>
+                                        <button className="cour--box--head--titles--btn"
+                                                onClick={() => setActiveForm(true)}
+                                        >Оставить заявку</button>
                                 }
                             </div>
 
@@ -100,39 +105,50 @@ const CoursesDetails = () => {
 
                             <div className="cour--box--accordion--block">
                             </div>
-                            {
-                                paid?
-                                    <div>{
-                                        course?.coursechoice?.map(el => (
-                                            <Accordion el={el} key={el.id}/>
-                                        ))}
-                                    </div>
-                                    : <div>{
-                                        course?.coursechoice?.map(el => (
-                                            <AccordionDemo el={el} key={el.id}/>
-                                        ))
-                                    }</div>
-                            }
-                        </div>
+                            <div>
 
-                        <div className="cour--box--test">
-                            <h1 className="cour--box--test--title">Внимание! </h1>
-                                    <p className="cour--box--test--desc">
-                                        После изучения материалов курса Вы должны будете пройти тестирование.
-                                        На прохождение теста Вам будет предоставлена одна попытка!
-                                    </p>
-
-                                    <NavLink to={`/question/${course.id}`}>
+                                {
+                                    paid ?
                                         <div>
-                                            <button className="cour--box--test--btn">Тест</button>
+                                            keldi
+                                            {
+                                                course?.coursechoice?.map(el => (
+                                                    <Accordion el={el} key={el.id}/>
+                                                ))
+                                            }
+                                        </div> :
+                                        <div>
+                                            kelgen jok
+                                            {
+                                                course?.coursechoice?.map(el => (
+                                                    <AccordionDemo el={el} key={el.id}/>
+                                                ))
+                                            }
                                         </div>
-                                    </NavLink>
+                                }
+                            </div>
+
                         </div>
+                        {
+                            paid ? <div className="cour--box--test">
+                                <h1 className="cour--box--test--title">Внимание! </h1>
+                                <p className="cour--box--test--desc">
+                                    После изучения материалов курса Вы должны будете пройти тестирование.
+                                    На прохождение теста Вам будет предоставлена одна попытка!
+                                </p>
+
+                                <NavLink to={`/question/${course.id}`}>
+                                    <div>
+                                        <button className="cour--box--test--btn">Тест</button>
+                                    </div>
+                                </NavLink>
+                            </div> : ""
+                        }
                     </div>
                 ) : <Loader/>}
 
             </div>
-
+            <HookForm active={activeForm}  setActive={setActiveForm} />
         </section>
     );
 };

@@ -16,10 +16,12 @@
 
 
 
-  .contentBtn{
+  .contentBtn {
     display: flex;
     justify-content: space-between;
-    .btn{
+
+    .btn {
+      box-shadow: 0 2px 4px rgba(100, 100, 100, 0.15);
       flex-wrap: wrap;
       background: #FFFFFF;
       border-radius: 5px;
@@ -30,7 +32,7 @@
       height: 480px;
 
 
-      &--input{
+      &--input {
         border: 1px solid #ccc;
         display: inline-block;
         padding: 10px 15px;
@@ -39,34 +41,37 @@
         align-items: center;
         text-align: center;
         width: 220px;
-        color:white;
+        color: white;
         background: #01487E;
         border-radius: 5px;
         outline: none;
-        margin: 0 0  20px 38px;
+        margin: 0 0 20px 38px;
 
       }
 
-      &.active{
+      &.active {
         background: grey;
         color: #FFFFFF;
         display: block;
       }
+
       & h2 {
         display: flex;
         justify-content: center;
         font-size: 18px;
         width: 300px;
       }
+
       &--user {
         display: flex;
         align-items: center;
         justify-content: center;
         width: 300px;
         border-radius: 50%;
-        margin: 8px 0 9px 0 ;
+        margin: 8px 0 9px 0;
         color: #FFFFFF;
-        &--icon{
+
+        &--icon {
           width: 60px;
           height: 60px;
           padding: 15px;
@@ -74,7 +79,8 @@
           color: #FFFFFF;
           background: #01487E
         }
-        &--photo{
+
+        &--photo {
 
           width: 90px;
           height: 90px;
@@ -84,7 +90,7 @@
       }
 
 
-      &--btns{
+      &--btns {
         width: 300px;
         display: flex;
         flex-direction: column;
@@ -94,100 +100,84 @@
           opacity: 0;
           margin: 0 0 0 0;
         }
-       &--div{
-         width: 220px;
-         height: 42px;
-         display: flex;
-         align-items: center;
-         justify-content: space-between;
-         margin: 20px 0 0 0 ;
-         & p{
-           position: absolute;
-           width: 123px;
-           height: 24px;
-           font-weight: 500;
-           font-size: 16px;
-         }
-         &--iconTrash{
-           display: flex;
-           align-items: center;
-           justify-content: center;
-           width: 42px;
-           height: 42px;
-          padding: 8px;
-           color:#01487E;
-           cursor: pointer;
-           border: 2px solid #01487E;
-           box-sizing: border-box;
-           border-radius: 10px;
 
-           &:hover{
-             transition: 0.2s;
-             background: darkred;
-             border: 2px solid darkred;
-             border-radius: 10px;
-             color: white;
-           }
-         }
-         &--innn{
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           width: 170px;
-           height: 42px;
-           color:white;
-           font-size: 16px;
-           background:#01487E;
-           border-radius: 5px;
-           cursor: pointer;
-         }
-         &--label{
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           width: 170px;
-           height: 42px;
-           color:white;
-           font-size: 16px;
-           background:#01487E;
-           border-radius: 5px;
-           cursor: pointer;
-         }
-       }
-        &--btnSubmit{
+        &--div {
+          width: 220px;
+          height: 42px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin: 20px 0 0 0;
+
+          & p {
+            position: absolute;
+            width: 123px;
+            height: 24px;
+            font-weight: 500;
+            font-size: 16px;
+          }
+
+          &--iconTrash {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            padding: 8px;
+            color: #01487E;
+            cursor: pointer;
+            border: 2px solid #01487E;
+            box-sizing: border-box;
+            border-radius: 10px;
+
+            &:hover {
+              transition: 0.2s;
+              background: darkred;
+              border: 2px solid darkred;
+              border-radius: 10px;
+              color: white;
+            }
+          }
+
+          &--innn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 170px;
+            height: 42px;
+            color: white;
+            font-size: 16px;
+            background: #01487E;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+
+          &--label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 170px;
+            height: 42px;
+            color: white;
+            font-size: 16px;
+            background: #01487E;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+        }
+
+        &--btnSubmit {
           margin: 20px 0 0 0;
           width: 220px;
           height: 42px;
           color: #FFFFFF;
           font-size: 16px;
           border-radius: 5px;
-          background:#01487E;
+          background: #01487E;
         }
-        &--innn2{
-          & span{
-            position: absolute;
-            width: 220px;
-            height: 42px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #FFFFFF;
-          }
-          cursor: pointer;
-          display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 220px;
-            height: 42px;
-            margin: 20px 0 0 0 ;
-            color:white;
-            font-size: 16px;
-            background:#01487E;
-            border-radius: 5px;
-        }
-        &--innn3{
 
-          & span{
+        &--innn2 {
+          & span {
             position: absolute;
             width: 220px;
             height: 42px;
@@ -196,48 +186,74 @@
             justify-content: center;
             color: #FFFFFF;
           }
+
           cursor: pointer;
           display: flex;
           justify-content: center;
           align-items: center;
           width: 220px;
           height: 42px;
-          margin: 20px 0 0 0 ;
-          color:white;
+          margin: 20px 0 0 0;
+          color: white;
           font-size: 16px;
-          background:#01487E;
+          background: #01487E;
           border-radius: 5px;
         }
 
-        &--tabRoute1{
+        &--innn3 {
+
+          & span {
+            position: absolute;
+            width: 220px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+          }
+
+          cursor: pointer;
           display: flex;
           justify-content: center;
           align-items: center;
           width: 220px;
           height: 42px;
-          margin:20px  0 0 0 ;
-          color:red;
+          margin: 20px 0 0 0;
+          color: white;
+          font-size: 16px;
+          background: #01487E;
+          border-radius: 5px;
+        }
+
+        &--tabRoute1 {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 220px;
+          height: 42px;
+          margin: 20px 0 0 0;
+          color: red;
           font-size: 16px;
           background: #01487E;
           border-radius: 5px;
           cursor: pointer;
         }
 
-        &--tabRoute{
+        &--tabRoute {
           display: flex;
           justify-content: center;
           align-items: center;
           width: 220px;
           height: 42px;
-          margin:20px  0 10px 0 ;
-          color:white;
+          margin: 20px 0 10px 0;
+          color: white;
           font-size: 16px;
           background: #01487E;
           border-radius: 5px;
           cursor: pointer;
           //padding: 0 0 25px 0;
 
-          &.active{
+          &.active {
             background: #6A6A6A;
             color: #FFFFFF;
           }
@@ -248,49 +264,58 @@
 
     }
 
-    .person{
+    .person {
       flex-wrap: wrap;
       width: 70%;
+
       & h3 {
         font-size: 25px;
       }
+
       &--content {
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-        margin: 50px 0 0 0 ;
-        &--start{
+        margin: 50px 0 0 0;
+
+        &--start {
           display: flex;
           justify-content: space-between;
-          &--name{
+
+          &--name {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 10px  0 0;
+            padding: 0 10px 0 0;
             width: 357px;
             height: 53px;
-            border: 1px solid #6A6A6A;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            box-shadow: 5px 5px 25px rgba(100, 100, 100, 0.15);
             box-sizing: border-box;
             border-radius: 5px;
           }
 
-          &--number{
+          &--number {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px;
             width: 357px;
             height: 53px;
-            border: 1px solid #6A6A6A;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            box-shadow: 5px 5px 25px rgba(100, 100, 100, 0.15);
             box-sizing: border-box;
             border-radius: 5px;
           }
         }
 
-        &--center{
-          margin: 35px 0 0  0;
+        &--center {
+          margin: 35px 0 0 0;
           display: flex;
           justify-content: space-between;
+
           &--position {
             width: 357px;
             height: 132px;
@@ -298,7 +323,9 @@
             display: flex;
             justify-content: space-between;
             text-align: start;
-            border: 1px solid #6A6A6A;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            box-shadow: 5px 5px 25px rgba(100, 100, 100, 0.15);
             box-sizing: border-box;
             border-radius: 5px;
           }
@@ -310,34 +337,42 @@
             display: flex;
             justify-content: space-between;
             text-align: start;
-            border: 1px solid #6A6A6A;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            box-shadow: 5px 5px 25px rgba(100, 100, 100, 0.15);
             box-sizing: border-box;
             border-radius: 5px;
           }
         }
-        &--end{
-          margin: 35px 0 0 0 ;
+
+        &--end {
+          margin: 35px 0 0 0;
           display: flex;
           justify-content: space-between;
-          &--email{
+
+          &--email {
             width: 357px;
             height: 53px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px;
-            border: 1px solid #6A6A6A;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            box-shadow: 5px 5px 25px rgba(100, 100, 100, 0.15);
             box-sizing: border-box;
             border-radius: 5px;
           }
 
-          &--password{
+          &--password {
             width: 357px;
             height: 53px;
-            background: transparent;
-            border: 1px solid #6A6A6A;
+            background: #ffffff;
+            border: 1px solid #ffffff;
+            box-shadow: 5px 5px 25px rgba(100, 100, 100, 0.15);
             box-sizing: border-box;
             border-radius: 5px;
+
             &--button {
               width: 357px;
               height: 53px;
@@ -348,28 +383,33 @@
 
     }
 
-    .my-courses{
+    .my-courses {
       flex-wrap: wrap;
       width: 65%;
-      & h3{
+
+      & h3 {
         margin: 0 0 0 15%;
         font-size: 24px;
       }
-      &--p1{
+
+      &--p1 {
         color: #747474;
         font-size: 18px;
       }
-      &--p2{
+
+      &--p2 {
         width: 166px;
         height: 54px;
         color: #747474;
         font-size: 18px;
       }
-      &--pp{
+
+      &--pp {
         color: #747474;
         font-size: 18px;
       }
-      &--bank{
+
+      &--bank {
         width: 565px;
         height: 80px;
         background: #FFFFFF;
@@ -379,17 +419,20 @@
         padding: 0 15px 0 15px;
         align-items: center;
         cursor: pointer;
-        margin: 5px 0 20px 0 ;
-        &--p{
+        margin: 5px 0 20px 0;
+
+        &--p {
           color: #01487E;
         }
-        &--icon{
-          color:#01487E;
+
+        &--icon {
+          color: #01487E;
           width: 50px;
           height: 25px;
         }
       }
-      &--business{
+
+      &--business {
         width: 565px;
         height: 80px;
         background: #FFFFFF;
@@ -399,14 +442,16 @@
         padding: 0 15px 0 15px;
         align-items: center;
         cursor: pointer;
-        margin: 5px 0 20px 0 ;
-        &--icon{
-          color:#01487E;
+        margin: 5px 0 20px 0;
+
+        &--icon {
+          color: #01487E;
           width: 50px;
           height: 25px;
         }
       }
-      &--active{
+
+      &--active {
         width: 565px;
         height: 80px;
         background: #FFFFFF;
@@ -418,21 +463,46 @@
         padding: 0 15px 0 15px;
         align-items: center;
         cursor: pointer;
-        margin: 5px 0 20px 0 ;
-        &--pp{
+        margin: 5px 0 20px 0;
+
+        &--pp {
           color: #00C32B;
         }
-        &--icon{
-          color:#00C32B;
+
+        &--icon {
+          color: #00C32B;
           width: 50px;
           height: 25px;
         }
       }
+
+      &--notactive {
+        width: 565px;
+        height: 80px;
+        background: #FFFFFF;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 15px 0 15px;
+        align-items: center;
+        cursor: pointer;
+        margin: 5px 0 20px 0;
+
+        &--pp {
+          color: #01487E;
+        }
+
+        &--icon {
+          color: #01487E;
+          width: 50px;
+          height: 25px;
+        }
+
+      }
+
     }
 
   }
-
-
 }
 
 

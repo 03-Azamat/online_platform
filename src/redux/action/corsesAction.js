@@ -1,7 +1,9 @@
 import axios from "axios";
+import {api} from "../../http/http";
+
 import {
-    GET_ABOUT,
-    GET_ADMIN,
+    GET_ABOUT, GET_ACTIVE_CASE,
+    GET_APPLICATION,
     GET_COURSES,
     GET_COURSES_TEST,
     GET_POSITION,
@@ -13,6 +15,7 @@ import {
 import {publicApi} from "../../components/Auth/HTTP/publicApi";
 import {useEffect} from "react";
 import {useSelector} from "react-redux";
+
 const access = JSON.parse(localStorage.getItem("access"));
 const dataID = JSON.parse(localStorage.getItem("dataID"));
 const IdImg = JSON.parse(localStorage.getItem("imgId"));
@@ -48,7 +51,7 @@ export const getTest = (id) =>{
     return(dispatch) =>{
         publicApi.get(`test-detailid/${id}/`)
             .then(({data})=>{
-                console.log(data)
+                console.log(data,"DATA")
                 dispatch({type:GET_COURSES_TEST, payload:data})
             })
     }
@@ -66,14 +69,7 @@ export const getTestDetails = (id) =>{
     }
 }
 
-export const getAdmin = (id) =>{
-    return(dispatch) =>{
-        publicApi.get(`ApplicationToAdmin-UpdateDelete/${id}/`)
-            .then(({data})=> {
-                dispatch({type:GET_ADMIN, payload:data})
-            })
-    }
-}
+
 
 export const getUser = () => {
     return(dispatch) => {
@@ -106,13 +102,14 @@ export const getPosition = () => {
 
 export const getImg = () => {
     return (dispatch) => {
-           axios.get(`https://djangorestapp.herokuapp.com/photo-list`)
-               .then(({data}) => {
-                   const sss = data.filter(el => el.user === 7)
-                   const sts = sss[0]
-                   dispatch({type:GET_IMG,payload:sts})
-               })
+        axios.get(`https://djangorestapp.herokuapp.com/photo-list`)
+            .then(({data}) => {
+                const sss = data.filter(el => el.user === 7)
+                const sts = sss[0]
+                dispatch({type: GET_IMG, payload: sts})
+            })
     }
+}
 
    // return(dispatch) => {
    //     if (IdImg){
@@ -122,6 +119,22 @@ export const getImg = () => {
    //             })
    //     }
    // }
+export const getApplication = () =>{
+    return(dispatch) => {
+        axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-List/`)
+            .then(({data})=>{
+                dispatch({type:GET_APPLICATION, payload:data})
+            })
+    }
+}
+
+export const getMyCourse = () =>{
+    return(dispatch) => {
+        axios(`https://djangorestapp.herokuapp.com/scoreboard-Create-list/`)
+            .then(({data})=>{dispatch({type:GET_ACTIVE_CASE, payload:data})
+                console.log(data, "DDDDDD")
+            })
+    }
 }
 
 // export const deletePosition = () => {
