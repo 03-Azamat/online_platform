@@ -1,4 +1,8 @@
 import cookies from "js-cookie";
+import {publicApi} from "../HTTP/publicApi";
+import {toast} from "react-toastify";
+import {useState} from "react";
+const dataID = JSON.parse(localStorage.getItem("dataID"));
 
 
 
@@ -37,16 +41,6 @@ export const imgId = (response) => {
     cookies.set("cookiesImgID", response.data.id)
 
 }
-
-// export const userId = () => {
-//     const checkUser = cookies.get("userId")
-//    if (checkUser){
-//        if (localStorage.getItem("userId")){
-//            return JSON.parse(localStorage.getItem("userId"))
-//        }
-//        return false
-//    }
-// }
 export const deleteId =() => {
     localStorage.removeItem("dataID")
 }
@@ -59,3 +53,21 @@ export const deleteId =() => {
         return false
     }
  }
+
+function refreshPage() {
+    window.location.reload(false);
+}
+
+ export function deletePosition(){
+     if (dataID) {
+        publicApi.delete(`data-delete/${dataID}/`)
+            .then(data => {
+                refreshPage()
+                toast.success('Успешно удалили')
+            }).catch(error => {
+            toast.error("error")
+            console.log(error)
+        })
+    }
+
+};

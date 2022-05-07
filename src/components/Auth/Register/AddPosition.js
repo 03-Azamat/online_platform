@@ -27,6 +27,9 @@ const AddPosition = ({add, setAdd}) => {
     });
     const formOptions = {resolver: yupResolver(validationSchema)};
     const {register, handleSubmit, formState: {errors,}} = useForm(formOptions);
+    function refreshPage() {
+        window.location.reload(false);
+    }
     useEffect(() => {
         getUser()
         // dispatch(getUser())
@@ -38,6 +41,7 @@ const AddPosition = ({add, setAdd}) => {
             organization: commentOrganization,
         })
             .then(data => {
+                refreshPage()
                 dataId(data)
                 toast.success("Успешно добавили")
                 setAdd(false)

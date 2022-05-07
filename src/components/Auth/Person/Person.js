@@ -5,115 +5,72 @@ import UpdatePosition from "../Updated/UpdatePosition";
 import UpdateOrganization from "../Updated/UpdateOrganization";
 import UpdatePassword from "../Updated/UpdatePassword";
 import {useNavigate} from "react-router-dom";
-import {dataAddID, deleteId, imgId, logout} from "../Register/helpers";
+import {dataAddID, deleteId, deletePosition, imgId, logout} from "../Register/helpers";
 import UpdatePhone from "../Updated/UpdatePhone";
-import axios from "axios";
 import UpdateName from "../Updated/UpdateName";
 import AddPosition from "../Register/AddPosition";
 import {useDispatch, useSelector} from "react-redux";
-import {getPosition, getUser} from "../../../redux/action/corsesAction";
+import {getImg, getPosition, getUser} from "../../../redux/action/corsesAction";
 import {toast} from "react-toastify";
 import {useForm} from "react-hook-form";
 import UpdatePhoto from "../Updated/UpdatePhoto";
-
-
+import {publicApi} from "../HTTP/publicApi";
 
 const Person = () => {
-    const [index, setIndex] = useState(0)
-    const [poModal, setPoModal] = useState(false)
-    const [orModal, setOrModal] = useState(false)
-    const [emailModal, setEmailModal] = useState(false)
-    const [passwordModal, setPasswordModal] = useState(false)
-    const [add, setAdd] = useState(false)
-    const [phoneModal, setPhoneModal] = useState(false)
-    const [nameModal, setNameAModal] = useState(false)
-    const [commentPosition, setCommentPosition] = useState('')
-    const [commentOrganization, setCommentOrganization] = useState('')
-    const navigate = useNavigate()
-    const persons = useSelector(state => state.getUser)
-    const posOrgan = useSelector(state => state.getPosition)
-    const [delImg, setDelImg] = useState("")
-
-    const dataID = JSON.parse(localStorage.getItem("dataID"));
-    const access = JSON.parse(localStorage.getItem("access"));
-    const dispatch = useDispatch()
-    // const [persons, setPersons] = useState({})
+    const [index, setIndex] = useState(0);
+    const [poModal, setPoModal] = useState(false);
+    const [orModal, setOrModal] = useState(false);
+    const [passwordModal, setPasswordModal] = useState(false);
+    const [add, setAdd] = useState(false);
+    const [phoneModal, setPhoneModal] = useState(false);
+    const [nameModal, setNameAModal] = useState(false);
+    const navigate = useNavigate();
+    const persons = useSelector(state => state.getUser);
+    const posOrgan = useSelector(state => state.getPosition);
+    const profileImg = useSelector(state => state.getImg);
+    const [createImg, setCreateImg] = useState({preview: "", raw: ""});
+    const dispatch = useDispatch();
+    function refreshPage() {
+        window.location.reload(false);
+    }
     useEffect(() => {
+        dispatch(getImg())
         dispatch(getPosition())
         dispatch(getUser())
-    }, [])
+    }, []);
+    const {register, handleSubmit, watch, formState: {errors}} = useForm();
     const blobToBase64 = (blob) => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(blob);
         reader.onload = () => resolve(reader.result);
         reader.onerror = error => reject(error);
     })
-    const [newImg, setNewImg] = useState([])
-    const [createImg, setCreateImg] = useState({preview: "", raw: ""})
-    const {register, handleSubmit, watch, formState: {errors}} = useForm();
-
-    const deletePosition = () => {
-        if (dataID) {
-            axios.delete(`https://djangorestapp.herokuapp.com/data-delete/${dataID}/`)
-                .then(data => {
-                    setCommentPosition(data)
-                    // setCommentOrganization(data)
-
-                    toast.success('Успешно удалили')
-                }).catch(error => {
-                toast.error("error")
-                console.log(error)
-            })
-        }
-
-    }
-
     const onSubmit = data => {
-        // data.preventDefault(false)
         console.log(data)
         const formData = new FormData()
         formData.append("user", persons.id)
         formData.append("img", data.img[0])
-        axios.post(`https://djangorestapp.herokuapp.com/photo-create/`, formData)
+        publicApi.post(`photo-create/`, formData)
             .then(data => {
+                refreshPage()
+                setCreateImg(data)
                 imgId(data)
                 toast.success("успешно")
             })
             .catch((e) => {
-                console.log(e)
+                toast.error("error")
             })
     };
-    const IdImg = JSON.parse(localStorage.getItem("imgId"));
-    // const cookiesImgId = JSON.parse(cookies.getItem("cookiesImgId"));
-    useEffect(() => {
-        if (IdImg) {
-            axios.get(`https://djangorestapp.herokuapp.com/photo-detail/${IdImg}`)
-                .then(({data}) => {
-                    setCreateImg({
-                        preview: data.img,
-                        raw: data.img
-                    })
-                    console.log(data, "data")
-                    setDelImg(data.img)
-                })
-        }
-    }, [])
-
-
-    console.log("position", posOrgan)
-    console.log("persons", persons)
-    console.log("photo", createImg)
     return (
         <section id='person'>
             <div className='container'>
                 <h1>Личный кабинет</h1>
-
                 <div className="contentBtn">
                     <div className='btn'>
                         <div className="btn--user">
                             {
-                                IdImg ?
-                                    <img src={createImg.raw} className="btn--user--photo" alt=""/>
+                                profileImg ?
+                                    <img src={profileImg.img} className="btn--user--photo" alt=""/>
                                     :
                                     <FontAwesomeIcon icon={faUser} className='btn--user--icon'/>
                             }
@@ -121,13 +78,10 @@ const Person = () => {
                         <h2>{persons.name}</h2>
                         <div className="btn--btns">
                             {
-                                IdImg ?
-                                    <UpdatePhoto delImg={delImg} setDelImg={setDelImg} createImg={createImg}
-                                                 setCreateImg={setCreateImg}/>
+                                profileImg ?
+                                    <UpdatePhoto/>
                                     :
-                                    <form
-                                        onSubmit={handleSubmit(onSubmit)}
-                                    >
+                                    <form onSubmit={handleSubmit(onSubmit)}>
                                         <label className="btn--btns--innn2 ">
                                             <span>Выбрать фото</span>
                                             <input
@@ -141,33 +95,27 @@ const Person = () => {
                                         {
                                             createImg.length > 0 ?
                                                 <button
-                                                    // onSubmit={handleSubmit(onSubmit)}
                                                     className="btn--btns--btnSubmit"
                                                     type='submit'
                                                 >Profile</button>
                                                 : ""
-
                                         }
                                     </form>
                             }
                             <div className={`btn--btns--tabRoute ${index === 0 ? 'active' : null}`}
                                  onClick={() =>
                                      setIndex(0)
-                                 }>Персональные данные
-                            </div>
+                                 }>Персональные данные</div>
                             <div className={`btn--btns--tabRoute ${index === 1 ? 'active' : null}`}
                                  onClick={() =>
                                      setIndex(1)
-                                 }>Мои курсы
-                            </div>
-                            <div
-                                onClick={() => {
-                                    logout()
-                                    navigate('/')
-                                }}
-                                className='btn--btns--tabRoute'
-                            >Выйти
-                            </div>
+                                 }>Мои курсы</div>
+                            <div className='btn--btns--tabRoute'
+                                 onClick={() => {
+                                     logout()
+                                     navigate('/')
+                                 }}
+                            >Выйти</div>
                         </div>
                     </div>
                     <div className="person" hidden={index !== 0}>
@@ -176,8 +124,8 @@ const Person = () => {
                             <div className='person--content--start'>
                                 <div className="flex flex-col">
                                     <label>ФИО</label>
-                                    <div
-                                        className='person--content--start--name  '>
+                                    <div className='person--content--start--name  '>
+
                                         <p className='p-3'> {persons.name} </p>
                                         < FontAwesomeIcon
                                             onClick={() => setNameAModal(true)}
@@ -193,9 +141,7 @@ const Person = () => {
                                             icon={faPen} style={{color: "#01487E", cursor: "pointer"}}/>
                                     </div>
                                 </div>
-
                             </div>
-
                             <div className="person--content--center">
                                 <div className="flex flex-col">
                                     <label>Должность</label>
@@ -211,11 +157,10 @@ const Person = () => {
                                         }
                                     </div>
                                 </div>
-
                                 <div className="flex flex-col">
                                     <label>Организация</label>
                                     <div className='person--content--center--organization'>
-                                        <p>{posOrgan.organization} </p>
+                                        <p>{posOrgan.organization}</p>
                                         {
                                             dataAddID() ?
                                                 < FontAwesomeIcon
@@ -248,20 +193,14 @@ const Person = () => {
                                     <label>Email</label>
                                     <div className='person--content--end--email'>
                                         <p className='flex items-center justify-start '>{persons.email}</p>
-                                        {/*< FontAwesomeIcon*/}
-                                        {/*    icon={faPen} style={{color: "#01487E",cursor:"pointer"}}*/}
-                                        {/*    onClick={() => setEmailModal(true)}/>*/}
                                     </div>
                                 </div>
-
                                 <div className="flex flex-col ">
                                     <label>Пароль</label>
                                     <div className="person--content--end--password">
                                         <button className='person--content--end--password--button'
                                                 onClick={() => setPasswordModal(true)}
-                                        >
-                                            Изменить пароль
-                                        </button>
+                                        >Изменить пароль</button>
                                     </div>
                                 </div>
                             </div>
@@ -297,7 +236,6 @@ const Person = () => {
                             add={add}
                             setAdd={setAdd}
                             persons={persons}
-
                         />
                     </div>
                     <div className='my-courses' hidden={index !== 1}>
@@ -305,21 +243,13 @@ const Person = () => {
                         <div>
                             <p className='my-courses--p1'>Пройден:</p>
                             <div className='my-courses--bank'><p className='my-courses--bank--p'>Банковский аналитик</p>
-                                <FontAwesomeIcon className='my-courses--bank--icon' icon={faArrowRightLong}
-                                    // style={{width:'38px', color:'#01487E'}}
-                                                 onClick={() => {
-                                                     // navigate("/")
-                                                 }}
-                                /></div>
+                                <FontAwesomeIcon className='my-courses--bank--icon' icon={faArrowRightLong}/>
+                            </div>
                         </div>
                         <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
                             <div className='my-courses--business'>
                                 <p className='my-courses--business--p'>Бизнес аналитик</p>
-                                <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}
-                                                 onClick={() => {
-                                                     // navigate("/")
-                                                 }}
-                                />
+                                <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}/>
                             </div>
                         </div>
                         <div>
@@ -336,3 +266,17 @@ const Person = () => {
     );
 };
 export default Person;
+
+// const [profileUser, setProfileUser] = useState({preview: "",raw:"" })
+// if (IdImg){
+//     axios.get(`https://djangorestapp.herokuapp.com/photo-detail/${IdImg}/`)
+//         .then(({data}) => {
+//             setCreateImg(data)
+//             setCreateImg({
+//                 preview: data.img,
+//                 raw: data.img
+//             })
+//
+//             setDelImg(data.img)
+//         })
+// }

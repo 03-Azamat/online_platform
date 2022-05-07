@@ -28,12 +28,10 @@ const UpdatePassword = ({passwordModal,setPasswordModal}) => {
             headers: {
                 "Authorization": `Bearer ${access}`
             }
-        })
-            .then(data => {
+        }).then(data => {
             console.log(data)
             setPasswordModal(false)
             toast.success("Успешно")
-
         }).catch((error) => {
            if (error.response.data.current_password){
                toast.error( "Старый пароль неправильный ")

@@ -6,28 +6,29 @@ import {toast} from "react-toastify";
 import {useForm} from "react-hook-form";
 import {imgId} from "../Register/helpers";
 import {useDispatch, useSelector} from "react-redux";
-import {getUser} from "../../../redux/action/corsesAction";
+import {getImg, getUser} from "../../../redux/action/corsesAction";
+import {publicApi} from "../HTTP/publicApi";
 
-const UpdatePhoto = ({ setCreateImg, createImg}) => {
+const UpdatePhoto = () => {
+    const [createImg,setCreateImg] = useState('')
     const IdImg = JSON.parse(localStorage.getItem("imgId"));
-    const [newImg, setNewImg] = useState([])
-    // const [createImg, setCreateImg] = useState([])
     const persons = useSelector(state => state.getUser)
+    const profileImg = useSelector(state => state.getImg);
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getUser())
-
+        dispatch(getImg())
     },[])
-
+    function refreshPage() {
+        window.location.reload(false);
+    }
     const deletePhoto =() => {
-        axios.delete(`https://djangorestapp.herokuapp.com/photo-delete/${IdImg}`)
+        axios.delete(`https://djangorestapp.herokuapp.com/photo-delete/${profileImg.id}`)
             .then(data => {
+                refreshPage()
                 localStorage.removeItem("imgId")
                 toast("deleted photo")
                 console.log(data)
-                setCreateImg({preview:"", raw: ""})
-
-
             })
     }
     const blobToBase64 = (blob) => new Promise((resolve, reject) => {
@@ -42,20 +43,11 @@ const UpdatePhoto = ({ setCreateImg, createImg}) => {
         formData.append("user", persons.id)
         console.log(data.img)
         formData.append("img", data.img[0])
-        axios.put(`https://djangorestapp.herokuapp.com/photo-update/${IdImg}/`,formData)
-            .then(data => {
-                axios.get(`https://djangorestapp.herokuapp.com/photo-detail/${IdImg}`)
+        publicApi.put(`photo-update/${profileImg.id}/`,formData)
                     .then(({data}) => {
-                        setCreateImg({
-                            preview: data.img,
-                            raw: data.img
-                        })
-                        console.log(data, "data")
-                    })
-
-                setCreateImg(data)
+                        dispatch(getImg())
+                        setCreateImg(data)
                 toast.success("Update")
-                console.log(data)
             }).catch(error => {
             console.log(error)
         })
@@ -64,9 +56,7 @@ const UpdatePhoto = ({ setCreateImg, createImg}) => {
 
     return (
         <div>
-            <form
-                onSubmit={handleSubmit(onSubmit)}
-            >
+            <form onSubmit={handleSubmit(onSubmit)}>
                         <div className='btn--btns--div flex'>
                             <label className="btn--btns--div--label">
                                 <p> Выбрать фото</p>
@@ -82,17 +72,14 @@ const UpdatePhoto = ({ setCreateImg, createImg}) => {
                                 icon={faTrash}
                             />
                         </div>
-
                 {
-                    createImg.raw  && IdImg ? " " :
+                    createImg.length > 0 ?
                         <button
                             type='submit'
                             className="btn--btns--btnSubmit"
                         >Update</button>
+                        : ""
                 }
-
-
-
             </form>
         </div>
     );

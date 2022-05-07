@@ -5,13 +5,8 @@ import {faXmark} from "@fortawesome/free-solid-svg-icons";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import {useNavigate} from "react-router-dom";
-import axios from "axios";
 import {toast, ToastContainer,} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
-import {data} from "autoprefixer";
-import {number} from "yup";
-import {injectStyle} from "react-toastify/dist/inject-style";
 import {publicApi} from "../HTTP/publicApi";
 
 export default function HookForm({active, setActive}) {
@@ -36,11 +31,10 @@ export default function HookForm({active, setActive}) {
     const { register,handleSubmit, formState: { errors,} } = useForm(formOptions);
 
     const onSubmit = data => {
-        const submit = publicApi.post("/users/", data)
+        publicApi.post("/users/", data)
             .then(response => {
                 toast.success('Вам отправлено ссылка в электронные почте ')
                 setActive(false)
-                // localStorage.setItem("user", JSON.stringify(data.user))
                 console.log(response ,"response")
             }).catch((error) => {
                 if (error.response.data.password){
@@ -54,13 +48,10 @@ export default function HookForm({active, setActive}) {
                 }
             })
     };
-
-
     return (
         <>
             <ToastContainer/>
             <section className={ active ? "forms active  " : "forms"}>
-
                 <div className={ active ? "forms--inputs active  " : "forms--inputs"}  >
                     <form onSubmit={handleSubmit(onSubmit)}  className='forms--inputs--hook' >
                         <FontAwesomeIcon className='forms--inputs--hook--btnx' icon={faXmark}

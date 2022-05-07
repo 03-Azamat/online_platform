@@ -10,8 +10,10 @@ import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {authenticate, isAuth} from "../Register/helpers";
 import {publicApi} from "../HTTP/publicApi";
+import {getUser} from "../../../redux/action/corsesAction";
+import {useDispatch} from "react-redux";
 
-const Login = ({signActive,setSignActive}) => {
+const Login = () => {
     const navigate =  useNavigate()
     const validationSchema = Yup.object().shape({
         email:Yup.string()
@@ -20,15 +22,20 @@ const Login = ({signActive,setSignActive}) => {
             .required('Введите пароль')
             .min(4, 'Пароль должен быть не менее 8 символов'),
     });
+    const dispatch = useDispatch()
+    function refreshPage() {
+        window.location.reload(false);
+    }
     const formOptions = { resolver: yupResolver(validationSchema) };
     const { register, handleSubmit,
         formState: { errors, } } = useForm(formOptions);
-    const onSubmit = data => {
-        const login = publicApi.post("/jwt/create", data)
+      const onSubmit = data => {
+          publicApi.post("/jwt/create", data)
             .then(response => {
                 toast.success("Salam  " + data.email)
-                authenticate(response)
+                authenticate(response,dispatch(getUser()))
                 navigate("/person")
+                refreshPage()
             }).catch((error) => {
             toast.error(error.response.data.detail)
         })
@@ -37,11 +44,7 @@ const Login = ({signActive,setSignActive}) => {
     return (
         <>
             <ToastContainer/>
-            <div
-                className='signin1'
-
-            >
-
+            <div className='signin1'>
                 <form
                     onSubmit={handleSubmit(onSubmit)}
                     className='signin1--forms1'

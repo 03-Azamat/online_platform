@@ -7,16 +7,21 @@ import {
     GET_POSITION,
     GET_SINGLE_COURSES,
     GET_USER,
+    GET_IMG,
 } from "../types/actionTypes";
 
 import {publicApi} from "../../components/Auth/HTTP/publicApi";
 import {useEffect} from "react";
+import {useSelector} from "react-redux";
 const access = JSON.parse(localStorage.getItem("access"));
 const dataID = JSON.parse(localStorage.getItem("dataID"));
+const IdImg = JSON.parse(localStorage.getItem("imgId"));
+
+
 
 export const getCourses = () =>{
     return(dispatch) =>{
-        axios(`https://djangorestapp.herokuapp.com/course-list/`)
+        publicApi.get(`course-list/`)
             .then(({data})=> dispatch({type:GET_COURSES, payload:data}))
     }
 }
@@ -24,7 +29,7 @@ export const getCourses = () =>{
 export const getCoursesDetails = (id) =>{
     return(dispatch) =>{
         console.log("course action is on")
-        axios(`https://djangorestapp.herokuapp.com/course-detail/${id}/`)
+        publicApi.get(`course-detail/${id}/`)
             .then(({data})=>{
                 console.log(data, "data-details-action")
                 dispatch({type:GET_SINGLE_COURSES, payload:data})
@@ -34,14 +39,14 @@ export const getCoursesDetails = (id) =>{
 
 export const getAbout = () =>{
     return (dispatch) =>{
-        axios('https://djangorestapp.herokuapp.com/about-createlist/')
+        publicApi.get('about-createlist/')
            .then(({data})=> dispatch({type:GET_ABOUT , payload:data}))
     }
 }
 
 export const getTest = (id) =>{
     return(dispatch) =>{
-        axios(`https://djangorestapp.herokuapp.com/test-detailid/${id}/`)
+        publicApi.get(`test-detailid/${id}/`)
             .then(({data})=>{
                 console.log(data)
                 dispatch({type:GET_COURSES_TEST, payload:data})
@@ -53,7 +58,7 @@ export const getTest = (id) =>{
 
 export const getTestDetails = (id) =>{
     return(dispatch) =>{
-        axios(`https://djangorestapp.herokuapp.com/question-detailid/${id}/`)
+        publicApi.get(`question-detailid/${id}/`)
             .then(({data})=> {
                 dispatch({type: GET_COURSES_TEST, payload: data})
                 console.log(data, "accard")
@@ -63,7 +68,7 @@ export const getTestDetails = (id) =>{
 
 export const getAdmin = (id) =>{
     return(dispatch) =>{
-        axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-UpdateDelete/${id}/`)
+        publicApi.get(`ApplicationToAdmin-UpdateDelete/${id}/`)
             .then(({data})=> {
                 dispatch({type:GET_ADMIN, payload:data})
             })
@@ -73,7 +78,7 @@ export const getAdmin = (id) =>{
 export const getUser = () => {
     return(dispatch) => {
         if (access){
-            axios("https://djangorestapp.herokuapp.com/users/me/", {
+            publicApi("users/me/", {
                 headers: {
                     "Authorization": `Bearer ${access}`
                 }
@@ -88,16 +93,35 @@ export const getUser = () => {
 export const getPosition = () => {
   return(dispatch) => {
           if (dataID){
-              axios(`https://djangorestapp.herokuapp.com/data-detailID/${dataID}/`, {
+              publicApi.get(`data-detailID/${dataID}/`, {
                   headers: {
                       "Authorization": `Bearer ${access}`
                   }
-              })
-                  .then(({data}) => {
+              }).then(({data}) => {
                       dispatch({type:GET_POSITION,payload:data})
                   })
           }
   }
+}
+
+export const getImg = () => {
+    return (dispatch) => {
+           axios.get(`https://djangorestapp.herokuapp.com/photo-list`)
+               .then(({data}) => {
+                   const sss = data.filter(el => el.user === 7)
+                   const sts = sss[0]
+                   dispatch({type:GET_IMG,payload:sts})
+               })
+    }
+
+   // return(dispatch) => {
+   //     if (IdImg){
+   //         publicApi.get(`photo-list/`)
+   //             .then(({data}) => {
+   //                 dispatch({type:GET_IMG,payload:data})
+   //             })
+   //     }
+   // }
 }
 
 // export const deletePosition = () => {

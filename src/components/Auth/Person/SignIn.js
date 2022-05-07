@@ -5,7 +5,6 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {authenticate, isAuth} from "../Register/helpers";
@@ -27,6 +26,9 @@ const SignIn = ({signActive,setSignActive}) => {
         dispatch(getPosition())
         dispatch(getUser())
     },[])
+    function refreshPage() {
+        window.location.reload(false);
+    }
     const dispatch = useDispatch()
     const formOptions = { resolver: yupResolver(validationSchema) };
     const { register, handleSubmit,
@@ -37,10 +39,10 @@ const SignIn = ({signActive,setSignActive}) => {
                 toast.success("Salam  " +data.email)
                 authenticate(response,dispatch(getUser()))
                 navigate("/person")
+                refreshPage()
                 setSignActive(false)
                 person()
             }).catch((error) => {
-
                 toast.error(error.response.data.detail)
         })
     };
@@ -49,13 +51,11 @@ const SignIn = ({signActive,setSignActive}) => {
     return (
        <>
            <ToastContainer/>
-           <div
-               className={ signActive ? "signin active  " : "signin"}
-           >
-
+           <div className={ signActive ? "signin active  " : "signin"}>
                <form
                    onSubmit={handleSubmit(onSubmit)}
-                   className={ signActive ? "signin--forms active  " : "signin--forms"}>
+                   className={ signActive ? "signin--forms active  " : "signin--forms"}
+               >
                    <FontAwesomeIcon
                        className='signin--forms--btn' icon={faXmark}
                        style={{fontSize:'25px'}}
