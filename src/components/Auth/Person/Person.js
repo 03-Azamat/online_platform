@@ -52,7 +52,7 @@ const Person = () => {
         dispatch(getUser())
         dispatch(getApplication())
         dispatch(getCourses())
-    }, [posOrgan])
+    }, [])
     console.log(cour, "COURSES")
 
     const blobToBase64 = (blob) => new Promise((resolve, reject) => {

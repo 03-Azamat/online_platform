@@ -1,5 +1,4 @@
 import axios from "axios";
-import {api} from "../../http/http";
 
 import {
     GET_ABOUT, GET_ACTIVE_CASE,
@@ -24,7 +23,6 @@ export const getCourses = () =>{
 
 export const getCoursesDetails = (id) =>{
     return(dispatch) =>{
-        console.log("course action is on")
         axios(`https://djangorestapp.herokuapp.com/course-detail/${id}/`)
             .then(({data})=>{
                 console.log(data, "data-details-action")
