@@ -8,7 +8,7 @@ const CoursesCard = ({el}) => {
     return (
             <div className="coursesCard" key={el.id}>
                 <NavLink to={`/coursesDetails/${el.id}`}>
-                    <img src={el.img} alt="" className="rounded-t-md"/>
+                    <img src={el.img} alt="" className="rounded-t-md w-full max-h-60"/>
                 </NavLink>
                 <div className="coursesCard--box">
                     <h1 className="coursesCard--box--title">{el.title}</h1>

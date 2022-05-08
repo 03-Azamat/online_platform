@@ -48,18 +48,6 @@ export const getTest = (id) =>{
     }
 }
 
-
-
-export const getTestDetails = (id) =>{
-    return(dispatch) =>{
-        axios(`https://djangorestapp.herokuapp.com/question-detailid/${id}/`)
-            .then(({data})=> {
-                dispatch({type: GET_COURSES_TEST, payload: data})
-                console.log(data, "accard")
-            })
-    }
-}
-
 export const getUser = () => {
     return(dispatch) => {
         if (access){
@@ -98,22 +86,3 @@ export const getApplication = () =>{
             })
     }
 }
-
-export const getMyCourse = () =>{
-    return(dispatch) => {
-        axios(`https://djangorestapp.herokuapp.com/scoreboard-Create-list/`)
-            .then(({data})=>{dispatch({type:GET_ACTIVE_CASE, payload:data})
-                console.log(data, "DDDDDD")
-            })
-    }
-}
-
-// export const deletePosition = () => {
-//     return(dispatch) => {
-//         axios.delete(`https://djangorestapp.herokuapp.com/data-delete/${dataID}/`)
-//             .then(({data}) => {
-//                 dispatch({type:DELETE_POSITION,payload:data})
-//             } )
-//     }
-// }
-

@@ -121,7 +121,7 @@ const Person = () => {
                 setPersonActive(false)
             }
         })
-    },[act])
+    },[act , course , user])
 
     console.log("position", posOrgan)
     console.log("persons", persons)
@@ -340,7 +340,7 @@ const Person = () => {
                             personActive ?
                                 <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
                                     <div className='my-courses--business'>
-                                        <p className='my-courses--business--p'>{course.id === act.applicationcourse ? "У вас нету курс" : course.title}</p>
+                                        <p className='my-courses--business--p'>{ act.activation ? "В ожидание активации курсов" : "активирован"}</p>
                                         <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}
                                                          onClick={() => {
                                                          }}
