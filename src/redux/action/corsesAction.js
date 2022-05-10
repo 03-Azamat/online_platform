@@ -139,13 +139,14 @@ export const getPosition = () => {
 const userId = JSON.parse(localStorage.getItem("userId"));
 export const getImg = () => {
     return (dispatch) => {
-           setTimeout(() => {
                axios.get(`https://djangorestapp.herokuapp.com/photo-list`)
                    .then(({data}) => {
-                       const  sss =  data.filter(el => el.user === userId)
-                       let result =  sss[0]
-                       return dispatch({type: GET_IMG, payload: result})
-                   })
+                       if (data){
+                           const  sss =  data.filter(el => el.user === userId)
+                           let result =  sss[0]
+                           return dispatch({type: GET_IMG, payload: result})
+                       }
+
            })
     }
 }

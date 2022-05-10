@@ -6,6 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     &--items a{
       font-style: normal;
       font-weight: normal;
@@ -15,6 +16,7 @@
       text-decoration: none;
       margin: 0 20px;
     }
+
     &--auth{
       & a button{
         margin: 0 10px;

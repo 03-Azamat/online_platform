@@ -77,7 +77,7 @@ const UpdatePhoto = () => {
                         <button
                             type='submit'
                             className="btn--btns--btnSubmit"
-                        >Update</button>
+                        >Изменить профиль</button>
                         : ""
                 }
             </form>

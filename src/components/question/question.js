@@ -10,6 +10,8 @@ const Question = () => {
     const {testId} = useParams()
     const elem = useSelector(state => state.question)
     const dispatch = useDispatch()
+    console.log(elem, "TEST")
+
 
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [showScore, setShowScore] = useState(false)
@@ -40,13 +42,14 @@ const Question = () => {
         }
     }
 
-    function result() {
-        return  Math.round(100 / elem?.choicetest.length) * score
-    }
 
+    function result() {
+        return Math.round(100 / elem?.choicetest.length) * score
+    }
     useEffect(() => {
         dispatch(getTest(testId))
     }, [])
+
     console.log(elem.choicetest, "111")
     return (
         <section className="bg-gray-300 flex align-middle justify-center w-full min-h-full">
@@ -60,7 +63,11 @@ const Question = () => {
                                     :
                                     `Тест не пройден ${result()} %`}
                             </div>
-
+                            
+                            <div>
+                                {score}:Провилные ответы / {elem?.choicetest.length}
+                            </div>
+    
                             <button onSubmit={onClickTest}>Назад</button>
                         </div>
                     ) : (

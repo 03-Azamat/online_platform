@@ -108,6 +108,16 @@ const Person = () => {
 
     };
 
+    useEffect(()=>{
+        act.forEach(data =>{
+            if (data.applicationcourse === course.id  && data.user === user.id && data.activation ){
+                console.log(data.applicationcourse)
+                setPersonActive(true)
+            }else {
+                setPersonActive(false)
+            }
+        })
+    },[act , course , user])
     return (
         <section id='person'>
             <div className='container'>
@@ -318,7 +328,7 @@ const Person = () => {
                             personActive ?
                                 <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
                                     <div className='my-courses--business'>
-                                        <p className='my-courses--business--p'>{course.id === act.applicationcourse ? "У вас нету курс" : course.title}</p>
+                                        <p className='my-courses--business--p'>{ act.activation ? "В ожидание активации курсов" : "активирован"}</p>
                                         <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}
                                                          onClick={() => {
                                                          }}
