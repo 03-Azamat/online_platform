@@ -5,18 +5,23 @@ import UpdatePosition from "../Updated/UpdatePosition";
 import UpdateOrganization from "../Updated/UpdateOrganization";
 import UpdatePassword from "../Updated/UpdatePassword";
 import {useNavigate} from "react-router-dom";
-import {dataAddID, deleteId, deletePosition, imgId, logout} from "../Register/helpers";
+import {dataAddID, deleteId, imgId, logout} from "../Register/helpers";
 import UpdatePhone from "../Updated/UpdatePhone";
 import UpdateName from "../Updated/UpdateName";
 import AddPosition from "../Register/AddPosition";
 import {useDispatch, useSelector} from "react-redux";
-import {getImg, getPosition, getUser} from "../../../redux/action/corsesAction";
+import {getApplication, getCourses, getImg, getPosition, getUser, UserId} from "../../../redux/action/corsesAction";
 import {toast} from "react-toastify";
 import {useForm} from "react-hook-form";
 import UpdatePhoto from "../Updated/UpdatePhoto";
 import {publicApi} from "../HTTP/publicApi";
 
 const Person = () => {
+    const {coursesDetails: course} = useSelector(s => s)
+    const {getApp: act} = useSelector(s => s)
+    const {getUser: user} = useSelector(s => s)
+    const {courses: cour} = useSelector(s => s)
+    const [personActive, setPersonActive] = useState(false)
     const [index, setIndex] = useState(0);
     const [poModal, setPoModal] = useState(false);
     const [orModal, setOrModal] = useState(false);
@@ -31,14 +36,40 @@ const Person = () => {
     const [createImg, setCreateImg] = useState({preview: "", raw: ""});
     const dispatch = useDispatch();
     function refreshPage() {
-        window.location.reload(false);
+            window.location.reload();
     }
     useEffect(() => {
-        dispatch(getImg())
-        dispatch(getPosition())
+        act.forEach(data => {
+            if (data.applicationcourse === course.id && data.user === user.id && data.activation) {
+                console.log(data.applicationcourse)
+                setPersonActive(true)
+            } else {
+                setPersonActive(false)
+            }
+        })
+    }, [act, course, user])
+    function refreshPageOne() {
+        if(!window.location.hash) {
+            window.location = window.location + '#loaded';
+            window.location.reload();
+        }
+    }
+    useEffect( async() => {
         dispatch(getUser())
+        dispatch(getApplication())
+        dispatch(getCourses())
+        dispatch(getPosition())
+        dispatch(getImg())
+       setTimeout(async () => {
+          await  dispatch(getPosition())
+          await dispatch(getImg())
+           await refreshPageOne()
+       },800)
     }, []);
+
+
     const {register, handleSubmit, watch, formState: {errors}} = useForm();
+    // console.log(cour, "COURSES"
     const blobToBase64 = (blob) => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(blob);
@@ -61,6 +92,22 @@ const Person = () => {
                 toast.error("error")
             })
     };
+
+    console.log("profile", profileImg)
+    function deletePosition(){
+        if (posOrgan.id) {
+            publicApi.delete(`data-delete/${posOrgan.id}/`)
+                .then(data => {
+                    refreshPage()
+                    toast.success('Успешно удалили')
+                }).catch(error => {
+                toast.error("error")
+                console.log(error)
+            })
+        }
+
+    };
+
     return (
         <section id='person'>
             <div className='container'>
@@ -69,10 +116,10 @@ const Person = () => {
                     <div className='btn'>
                         <div className="btn--user">
                             {
-                                profileImg ?
-                                    <img src={profileImg.img} className="btn--user--photo" alt=""/>
-                                    :
-                                    <FontAwesomeIcon icon={faUser} className='btn--user--icon'/>
+                                    profileImg?
+                                        <img src={profileImg.img} className="btn--user--photo" alt=""/>
+                                        :
+                                        <FontAwesomeIcon icon={faUser} className='btn--user--icon'/>
                             }
                         </div>
                         <h2>{persons.name}</h2>
@@ -105,17 +152,20 @@ const Person = () => {
                             <div className={`btn--btns--tabRoute ${index === 0 ? 'active' : null}`}
                                  onClick={() =>
                                      setIndex(0)
-                                 }>Персональные данные</div>
+                                 }>Персональные данные
+                            </div>
                             <div className={`btn--btns--tabRoute ${index === 1 ? 'active' : null}`}
                                  onClick={() =>
                                      setIndex(1)
-                                 }>Мои курсы</div>
+                                 }>Мои курсы
+                            </div>
                             <div className='btn--btns--tabRoute'
                                  onClick={() => {
                                      logout()
                                      navigate('/')
                                  }}
-                            >Выйти</div>
+                            >Выйти из аккаунт
+                            </div>
                         </div>
                     </div>
                     <div className="person" hidden={index !== 0}>
@@ -146,12 +196,17 @@ const Person = () => {
                                 <div className="flex flex-col">
                                     <label>Должность</label>
                                     <div className='person--content--center--position'>
-                                        <p>{posOrgan.position}</p>
                                         {
-                                            dataAddID() ?
-                                                < FontAwesomeIcon icon={faPen}
-                                                                  style={{color: "#01487E", cursor: "pointer"}}
-                                                                  onClick={() => setPoModal(true)}
+                                            posOrgan ?
+                                                <p>{posOrgan.position}</p>
+                                                : ""
+                                        }
+                                        {
+                                            posOrgan  ?
+                                                < FontAwesomeIcon
+                                                    icon={faPen}
+                                                    style={{color: "#01487E", cursor: "pointer"}}
+                                                    onClick={() => setPoModal(true)}
                                                 />
                                                 : ''
                                         }
@@ -160,9 +215,12 @@ const Person = () => {
                                 <div className="flex flex-col">
                                     <label>Организация</label>
                                     <div className='person--content--center--organization'>
-                                        <p>{posOrgan.organization}</p>
                                         {
-                                            dataAddID() ?
+                                            posOrgan ?   <p>{posOrgan.organization}</p>
+                                                : " "
+                                        }
+                                        {
+                                            posOrgan  ?
                                                 < FontAwesomeIcon
                                                     icon={faPen} style={{color: "#01487E", cursor: "pointer"}}
                                                     onClick={() => setOrModal(true)}/>
@@ -172,21 +230,23 @@ const Person = () => {
                                 </div>
                             </div>
                             {
-                                dataAddID() ?
+                                posOrgan ?
                                     <button
                                         className='btn--btns--tabRoute1'
                                         style={{margin: "30px 0 0 0 ", width: "100%"}}
                                         onClick={() => {
-                                            deleteId()
                                             deletePosition()
+                                            deleteId()
                                         }}
-                                    >Удалить должность и организация</button>
+                                    >Удалить должность и организацию</button>
                                     :
                                     <button
                                         className='btn--btns--tabRoute'
                                         style={{margin: "30px 0 0 0 ", width: "100%"}}
                                         onClick={() => setAdd(true)}
                                     >Добавить должность и организацию</button>
+
+
                             }
                             <div className='person--content--end'>
                                 <div className="flex flex-col">
@@ -200,23 +260,27 @@ const Person = () => {
                                     <div className="person--content--end--password">
                                         <button className='person--content--end--password--button'
                                                 onClick={() => setPasswordModal(true)}
-                                        >Изменить пароль</button>
+                                        >Изменить пароль
+                                        </button>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
-                        <UpdatePosition
-                            poModal={poModal}
-                            setPoModal={setPoModal}
-                            posOrgan={posOrgan}
-                            persons={persons}
-                        />
-                        <UpdateOrganization
-                            orModal={orModal}
-                            setOrModal={setOrModal}
-                            posOrgan={posOrgan}
-                            persons={persons}
-                        />
+                        {
+                            posOrgan ?
+                                <>
+                                    <UpdatePosition
+                                        poModal={poModal}
+                                        setPoModal={setPoModal}
+                                    />
+                                    <UpdateOrganization
+                                        orModal={orModal}
+                                        setOrModal={setOrModal}
+                                    />
+                                </>
+                                : ""
+                        }
                         <UpdateName
                             modal={nameModal}
                             setModal={setNameAModal}
@@ -243,22 +307,43 @@ const Person = () => {
                         <div>
                             <p className='my-courses--p1'>Пройден:</p>
                             <div className='my-courses--bank'><p className='my-courses--bank--p'>Банковский аналитик</p>
-                                <FontAwesomeIcon className='my-courses--bank--icon' icon={faArrowRightLong}/>
-                            </div>
+                                <FontAwesomeIcon className='my-courses--bank--icon' icon={faArrowRightLong}
+                                    // style={{width:'38px', color:'#01487E'}}
+                                                 onClick={() => {
+                                                     // navigate("/")
+                                                 }}
+                                /></div>
                         </div>
-                        <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
-                            <div className='my-courses--business'>
-                                <p className='my-courses--business--p'>Бизнес аналитик</p>
-                                <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}/>
+                        {
+                            personActive ?
+                                <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
+                                    <div className='my-courses--business'>
+                                        <p className='my-courses--business--p'>{course.id === act.applicationcourse ? "У вас нету курс" : course.title}</p>
+                                        <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}
+                                                         onClick={() => {
+                                                         }}
+                                        />
+                                    </div>
+                                </div> : ""
+                        }
+                        {
+                            personActive ? <div>
+                                <p className='my-courses--pp'>Активен:</p>
+                                <div className='my-courses--active'>
+                                    <p className='my-courses--active--pp'>{course.id === act.applicationcourse ? "У вас нету курс" : course.title}</p>
+                                    <FontAwesomeIcon className='my-courses--active--icon' icon={faArrowRightLong}/>
+                                </div>
+                            </div> : <div>
+                                <p className='my-courses--pp'>Не активен!</p>
+                                <div className='my-courses--business'>
+                                    <p className='my-courses--business--p'>Вы не записались ни на один курс!</p>
+                                    <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}
+                                                     onClick={() => {
+                                                     }}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <p className='my-courses--pp'>Активен:</p>
-                            <div className='my-courses--active'>
-                                <p className='my-courses--active--pp'>Бизнес аналитик</p>
-                                <FontAwesomeIcon className='my-courses--active--icon' icon={faArrowRightLong}/>
-                            </div>
-                        </div>
+                        }
                     </div>
                 </div>
             </div>

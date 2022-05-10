@@ -8,5 +8,7 @@ export const GET_POSITION = "GET_POSITION"
 export const GET_IMG = "GET_IMG"
 export const GET_APPLICATION = "GET_APPLICATION"
 export const GET_ACTIVE_CASE = "GET_ACTIVE_CASE"
+export const GET_POS = "GET_POS"
+export const USER_ID = "USER_ID"
 // export const DELETE_POSITION = "DELETE_POSITION"
 

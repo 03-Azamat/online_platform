@@ -10,31 +10,22 @@ import {isAuth} from "../Auth/Register/helpers";
 import {publicApi} from "../Auth/HTTP/publicApi";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
 import {useDispatch, useSelector} from "react-redux";
-import {getUser} from "../../redux/action/corsesAction";
+import {getImg, getUser} from "../../redux/action/corsesAction";
 import axios from "axios";
 
 
 const Header = () => {
-    const [activeForm,setActiveForm] = useState(false);
+    const [activeForm, setActiveForm] = useState(false);
     const [signActive, setSignActive] = useState(false);
     const navigate = useNavigate();
     const link = window.location.href.split("/").pop();
-   const persons = useSelector(state => state.getUser);
-    const [createImg, setCreateImg] = useState([])
+    const persons = useSelector(state => state.getUser);
+    const profileImg = useSelector(state => state.getImg);
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getUser())
-    },[])
-    const IdImg = JSON.parse(localStorage.getItem("imgId"));
-    useEffect(() => {
-        if (IdImg){
-            axios.get(`https://djangorestapp.herokuapp.com/photo-detail/${IdImg}`)
-                .then(({data}) => {
-                    setCreateImg(data)
-                })
-        }
-    },[])
-
+        dispatch(getImg())
+    }, [])
     return (
         <header>
             <div className="header">
@@ -57,7 +48,7 @@ const Header = () => {
                             {
                                 isAuth() ?
                                     <>{
-                                        link === "person" ?
+                                        link === "person" || link === "person#loaded"  ?
                                             <button
                                                 className="header--content--auth--btn2 mx-4"
                                                 onClick={() => {
@@ -69,39 +60,43 @@ const Header = () => {
                                                     <div
                                                         className='mx-2'
                                                         style={{
-                                                        width:"40px",
-                                                        height:"40px",
-                                                        // padding:"5px",
-                                                        borderRadius:"50%"}}>
+                                                            width: "40px",
+                                                            height: "40px",
+                                                            // padding:"5px",
+                                                            borderRadius: "50%"
+                                                        }}>
                                                         {
-                                                            IdImg ?
-                                                                <img src={createImg.img}
+                                                            profileImg ?
+                                                                <img src={profileImg.img}
                                                                      className=''
                                                                      style={{
-                                                                         width:"40px",
-                                                                         height:"40px",
-                                                                         borderRadius:"50%",
-                                                                         background:"fixed"
+                                                                         width: "40px",
+                                                                         height: "40px",
+                                                                         borderRadius: "50%",
+                                                                         background: "fixed"
                                                                      }}
                                                                      alt=""/>
                                                                 :
                                                                 <FontAwesomeIcon
                                                                     className="mx-2"
                                                                     icon={faUser}
-                                                                    style={{color:"#01487E",
-                                                                        fontStyle:"32px",
-                                                                        padding:"5px",
-                                                                        background:"white",
-                                                                        borderRadius:"50%"}}
+                                                                    style={{
+                                                                        color: "#01487E",
+                                                                        fontStyle: "32px",
+                                                                        padding: "5px",
+                                                                        background: "white",
+                                                                        borderRadius: "50%"
+                                                                    }}
                                                                 />
                                                         }
                                                     </div>
                                                 </NavLink>
                                                 <NavLink to="/person">
                                                     <h1
-                                                        style={{color: "#FFFFFF",
-                                                            fontSize:"20px",
-                                                            cursor:"pointer"
+                                                        style={{
+                                                            color: "#FFFFFF",
+                                                            fontSize: "20px",
+                                                            cursor: "pointer"
                                                         }}
                                                     >{persons.name}</h1>
                                                 </NavLink>
@@ -127,8 +122,8 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-            <HookForm active={activeForm}  setActive={setActiveForm}  />
-            <SignIn signActive={signActive}  setSignActive={setSignActive}  />
+            <HookForm active={activeForm} setActive={setActiveForm}/>
+            <SignIn signActive={signActive} setSignActive={setSignActive}/>
         </header>
 
     );

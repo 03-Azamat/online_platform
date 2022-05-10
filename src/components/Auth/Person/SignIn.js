@@ -41,7 +41,6 @@ const SignIn = ({signActive,setSignActive}) => {
                 navigate("/person")
                 refreshPage()
                 setSignActive(false)
-                person()
             }).catch((error) => {
                 toast.error(error.response.data.detail)
         })

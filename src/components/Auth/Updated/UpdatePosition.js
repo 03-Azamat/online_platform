@@ -1,38 +1,41 @@
 import React, {useEffect, useState} from 'react';
-import {publicApi} from "../HTTP/publicApi";
-import {authenticate, userId} from "../Register/helpers";
+
 import {toast} from "react-toastify";
 import {useDispatch, useSelector} from "react-redux";
-import {getPosition} from "../../../redux/action/corsesAction";
+import {getPosition, getUser} from "../../../redux/action/corsesAction";
 import axios from "axios";
+import {publicApi} from "../HTTP/publicApi";
 
 
-const UpdatePosition = ({poModal,setPoModal,persons}) => {
+const UpdatePosition = ({poModal,setPoModal}) => {
     const [comment, setComment] = useState('');
-    const dataID = JSON.parse(localStorage.getItem("dataID"));
+    const persons = useSelector(state => state.getUser);
     const posOrgan = useSelector(state => state.getPosition)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getPosition())
+        dispatch(getUser())
     },[])
     const update = (e) => {
         e.preventDefault()
-        axios.put(`https://djangorestapp.herokuapp.com/data-update/${dataID}/`, {
-            id: persons.id,
-            organization: posOrgan.organization,
-            position:comment,
-        }).then(data => {
-            if (data.data.position.length === 0){
-                toast.error("Это поле не может быть пустым.")}
-            else {
-                dispatch(getPosition())
-                setPoModal(false)
-                toast.success("Успешно ")
-            }
+        if (posOrgan){
+            publicApi.put(`/data-update/${posOrgan.id}/`, {
+                id: persons.id,
+                organization: posOrgan.organization,
+                position:comment,
+            }).then(data => {
+                if (data.data.position.length === 0){
+                    toast.error("Это поле не может быть пустым.")}
+                else {
+                    dispatch(getPosition())
+                    setPoModal(false)
+                    toast.success("Успешно ")
+                }
                 console.log(data)
             }).catch(error => {
                 toast.error("error")
-        })
+            })
+        }
     }
 
     return (

@@ -26,11 +26,12 @@ export  const isAuth = () => {
 }
 
 export const logout = () => {
+    window.scroll(0,0)
     cookies.remove("access")
     cookies.remove("refresh")
     localStorage.removeItem("access")
     localStorage.removeItem("refresh")
-    localStorage.removeItem("userID")
+    localStorage.removeItem("userId")
 }
 export const dataId = (response) => {
     localStorage.setItem("dataID", JSON.stringify(response.data.id))
@@ -41,6 +42,8 @@ export const imgId = (response) => {
     cookies.set("cookiesImgID", response.data.id)
 
 }
+
+
 export const deleteId =() => {
     localStorage.removeItem("dataID")
 }
@@ -58,16 +61,4 @@ function refreshPage() {
     window.location.reload(false);
 }
 
- export function deletePosition(){
-     if (dataID) {
-        publicApi.delete(`data-delete/${dataID}/`)
-            .then(data => {
-                refreshPage()
-                toast.success('Успешно удалили')
-            }).catch(error => {
-            toast.error("error")
-            console.log(error)
-        })
-    }
 
-};

@@ -7,10 +7,12 @@ import {
     GET_USER,
     GET_POSITION,
     GET_IMG,
+    USER_ID,
+    GET_POS,
     // DELETE_POSITION,
 } from "../types/actionTypes";
 import {publicApi} from "../../components/Auth/HTTP/publicApi";
-import {getImg} from "../action/corsesAction";
+import {getImg, UserId} from "../action/corsesAction";
 import {
     GET_APPLICATION, GET_ACTIVE_CASE
     // DELETE_POSITION,
@@ -24,7 +26,9 @@ const initialState = {
     questionDetails:{},
     admin: [],
     getUser:{},
+    UserId: null,
     getPosition:{},
+    getPos:{},
     getImg:{},
     getApp:[],
     getCase:[]
@@ -48,10 +52,14 @@ export const reducer = (state = initialState, action) => {
             return {...state, questionDetails: action.payload}
 
         case GET_USER:
-            return {...state,getUser: action.payload}
+            return {...state,getUser: action.payload, UserId:action.payload.id}
+        case USER_ID:
+            return {...state,UserId: action.payload}
 
         case GET_POSITION:
             return {...state,getPosition: action.payload}
+        case GET_POS:
+            return {...state,getPos: action.payload}
         case GET_IMG:
             return {...state,getImg: action.payload}
 

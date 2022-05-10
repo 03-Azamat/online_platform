@@ -5,32 +5,37 @@ import {getPosition, getUser} from "../../../redux/action/corsesAction";
 import {useDispatch, useSelector} from "react-redux";
 import axios from "axios";
 
-const UpdateOrganization = ({orModal,setOrModal,persons}) => {
+const UpdateOrganization = ({orModal,setOrModal}) => {
     const [comment, setComment] = useState('');
-    const dataID = JSON.parse(localStorage.getItem("dataID"));
+    // const dataID = JSON.parse(localStorage.getItem("dataID"));
     const posOrgan = useSelector(state => state.getPosition)
+    const persons = useSelector(state => state.getUser);
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getPosition())
+        dispatch(getUser())
     },[])
+    // const userId = JSON.parse(localStorage.getItem("userId"));
     const update = (e) => {
         e.preventDefault()
-           axios.put(`https://djangorestapp.herokuapp.com/data-update/${dataID}/`, {
-               id: persons.id,
-               position: posOrgan.position,
-               organization:comment,
-           }).then(data => {
-               if (data.data.organization.length === 0){
-                   toast.error("Это поле не может быть пустым.")}
-               else {
-                   dispatch(getPosition())
-                   setOrModal(false)
-                   toast.success("Успешно ")
-               }
-               console.log(data)
-           }).catch(error => {
-               toast.error("error")
-           })
+          if (posOrgan){
+              axios.put(`https://djangorestapp.herokuapp.com/data-update/${posOrgan.id}/`, {
+                  id: persons.id,
+                  position: posOrgan.position,
+                  organization:comment,
+              }).then(data => {
+                  if (data.data.organization.length === 0){
+                      toast.error("Это поле не может быть пустым.")}
+                  else {
+                      dispatch(getPosition())
+                      setOrModal(false)
+                      toast.success("Успешно ")
+                  }
+                  console.log(data)
+              }).catch(error => {
+                  toast.error("error")
+              })
+          }
     }
 
     return (
