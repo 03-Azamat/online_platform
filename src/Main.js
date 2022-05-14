@@ -30,7 +30,6 @@ function Main() {
                 <Route path={"/about"} element={<About/>}/>
                 <Route path={"/person"} element={<Person/>}/>
                 <Route path={"/home"} element={<Home/>}/>
-                {/*<Route path={"/quiz/:idTest"} element={<Quiz/>}/>*/}
                 <Route path={"/person"} element={<Person/>}/>
                 <Route path={"account/activate/*"} element={<EmailActive/>}/>
                 <Route path={"/login"} element={<Login/>}/>

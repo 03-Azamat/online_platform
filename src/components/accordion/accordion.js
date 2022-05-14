@@ -18,7 +18,8 @@ const Accordion = ({el}) => {
             </div>
             <ol>
                 {
-                    isAuth()?<li>
+                    isAuth()
+                        ?<li>
                         {
                             <NavLink to={`/coursesDetails/coursesLesson/${el.lessonId}`}>
                                 <p className="accordion__content"

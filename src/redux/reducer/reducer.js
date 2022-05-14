@@ -11,11 +11,9 @@ import {
     GET_POS,
     // DELETE_POSITION,
 } from "../types/actionTypes";
-import {publicApi} from "../../components/Auth/HTTP/publicApi";
-import {getImg, UserId} from "../action/corsesAction";
+
 import {
     GET_APPLICATION, GET_ACTIVE_CASE
-    // DELETE_POSITION,
 } from "../types/actionTypes";
 
 const initialState = {

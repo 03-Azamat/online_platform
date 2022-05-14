@@ -163,6 +163,7 @@ export const getApplication = () =>{
     return(dispatch) => {
         axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-List/`)
             .then(({data})=>{
+                console.log(data.user, "user_app")
                     dispatch({type:GET_APPLICATION, payload:data})
             })
     }

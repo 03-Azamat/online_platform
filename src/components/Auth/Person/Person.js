@@ -10,17 +10,29 @@ import UpdatePhone from "../Updated/UpdatePhone";
 import UpdateName from "../Updated/UpdateName";
 import AddPosition from "../Register/AddPosition";
 import {useDispatch, useSelector} from "react-redux";
-import {getApplication, getCourses, getImg, getPosition, getUser, UserId} from "../../../redux/action/corsesAction";
+import {
+    getApplication,
+    getCourses,
+    getCoursesDetails,
+    getImg,
+    getPosition,
+    getUser,
+    UserId
+} from "../../../redux/action/corsesAction";
 import {toast} from "react-toastify";
 import {useForm} from "react-hook-form";
 import UpdatePhoto from "../Updated/UpdatePhoto";
 import {publicApi} from "../HTTP/publicApi";
 
 const Person = () => {
-    const {coursesDetails: course} = useSelector(s => s)
+    const {coursesDetails: courses} = useSelector(s => s)
     const {getApp: act} = useSelector(s => s)
     const {getUser: user} = useSelector(s => s)
     const {courses: cour} = useSelector(s => s)
+    console.log(act , "ACTTT")
+    console.log(cour , "КУрСЫ")
+    console.log(courses , "KGHFGJFJTYFTYDHT")
+
     const [personActive, setPersonActive] = useState(false)
     const [index, setIndex] = useState(0);
     const [poModal, setPoModal] = useState(false);
@@ -40,14 +52,16 @@ const Person = () => {
     }
     useEffect(() => {
         act.forEach(data => {
-            if (data.applicationcourse === course.id && data.user === user.id && data.activation) {
-                console.log(data.applicationcourse)
+            if (data.applicationcourse === cour.id && data.user === user.id && data.activation) {
+                console.log(data.applicationcourse , "2222")
                 setPersonActive(true)
-            } else {
-                setPersonActive(false)
             }
         })
-    }, [act, course, user])
+    }, [act, cour])
+
+    console.log(personActive , "Актив")
+
+
     function refreshPageOne() {
         if(!window.location.hash) {
             window.location = window.location + '#loaded';
@@ -58,6 +72,7 @@ const Person = () => {
         dispatch(getUser())
         dispatch(getApplication())
         dispatch(getCourses())
+        dispatch(getCoursesDetails())
         dispatch(getPosition())
         dispatch(getImg())
        setTimeout(async () => {
@@ -108,16 +123,6 @@ const Person = () => {
 
     };
 
-    useEffect(()=>{
-        act.forEach(data =>{
-            if (data.applicationcourse === course.id  && data.user === user.id && data.activation ){
-                console.log(data.applicationcourse)
-                setPersonActive(true)
-            }else {
-                setPersonActive(false)
-            }
-        })
-    },[act , course , user])
     return (
         <section id='person'>
             <div className='container'>
@@ -328,7 +333,7 @@ const Person = () => {
                             personActive ?
                                 <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
                                     <div className='my-courses--business'>
-                                        <p className='my-courses--business--p'>{ act.activation ? "В ожидание активации курсов" : "активирован"}</p>
+                                        <p className='my-courses--business--p'>{ act.activation === true ? "В ожидание активации курсов" : "активирован"}</p>
                                         <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}
                                                          onClick={() => {
                                                          }}
@@ -337,20 +342,11 @@ const Person = () => {
                                 </div> : ""
                         }
                         {
-                            personActive ? <div>
-                                <p className='my-courses--pp'>Активен:</p>
+                            <div>
+                                <p className='my-courses--pp'>{personActive ? "Активен" : "Не активен"}</p>
                                 <div className='my-courses--active'>
-                                    <p className='my-courses--active--pp'>{course.id === act.applicationcourse ? "У вас нету курс" : course.title}</p>
+                                    <p className='my-courses--active--pp'>{cour.id === act.applicationcourse ? cour.title : "У вас нету курс"}</p>
                                     <FontAwesomeIcon className='my-courses--active--icon' icon={faArrowRightLong}/>
-                                </div>
-                            </div> : <div>
-                                <p className='my-courses--pp'>Не активен!</p>
-                                <div className='my-courses--business'>
-                                    <p className='my-courses--business--p'>Вы не записались ни на один курс!</p>
-                                    <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}
-                                                     onClick={() => {
-                                                     }}
-                                    />
                                 </div>
                             </div>
                         }
@@ -361,17 +357,3 @@ const Person = () => {
     );
 };
 export default Person;
-
-// const [profileUser, setProfileUser] = useState({preview: "",raw:"" })
-// if (IdImg){
-//     axios.get(`https://djangorestapp.herokuapp.com/photo-detail/${IdImg}/`)
-//         .then(({data}) => {
-//             setCreateImg(data)
-//             setCreateImg({
-//                 preview: data.img,
-//                 raw: data.img
-//             })
-//
-//             setDelImg(data.img)
-//         })
-// }
