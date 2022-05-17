@@ -11,36 +11,33 @@ import UpdateName from "../Updated/UpdateName";
 import AddPosition from "../Register/AddPosition";
 import {useDispatch, useSelector} from "react-redux";
 import {
-    getApplication,
-    getCourses,
-    getCoursesDetails,
-    getImg,
-    getPosition,
-    getUser,
-    UserId
+    getApplication, getCourses, getCoursesDetails, getImg, getMyCourse, getPosition, getTestResults, getUser,
 } from "../../../redux/action/corsesAction";
 import {toast} from "react-toastify";
 import {useForm} from "react-hook-form";
 import UpdatePhoto from "../Updated/UpdatePhoto";
 import {publicApi} from "../HTTP/publicApi";
+import TestResult from "../../question/testResult";
 
 const Person = () => {
     const {coursesDetails: courses} = useSelector(s => s)
     const {getApp: act} = useSelector(s => s)
+    const {getAppTwo: actTwo} = useSelector(s => s)
     const {getUser: user} = useSelector(s => s)
     const {courses: cour} = useSelector(s => s)
-    console.log(act , "ACTTT")
-    console.log(cour , "КУрСЫ")
-    console.log(courses , "KGHFGJFJTYFTYDHT")
+    const {getTestResult: testRes} = useSelector(s => s)
+    console.log(actTwo , "{{{{{{{{{")
 
     const [personActive, setPersonActive] = useState(false)
     const [index, setIndex] = useState(0);
     const [poModal, setPoModal] = useState(false);
     const [orModal, setOrModal] = useState(false);
     const [passwordModal, setPasswordModal] = useState(false);
+    const [testActive,setTestActive] = useState(false)
     const [add, setAdd] = useState(false);
     const [phoneModal, setPhoneModal] = useState(false);
     const [nameModal, setNameAModal] = useState(false);
+    // const [testResult, setTestResult] = useState(false)
     const navigate = useNavigate();
     const persons = useSelector(state => state.getUser);
     const posOrgan = useSelector(state => state.getPosition);
@@ -53,11 +50,11 @@ const Person = () => {
     useEffect(() => {
         act.forEach(data => {
             if (data.applicationcourse === cour.id && data.user === user.id && data.activation) {
-                console.log(data.applicationcourse , "2222")
                 setPersonActive(true)
             }
         })
     }, [act, cour])
+
 
     console.log(personActive , "Актив")
 
@@ -75,16 +72,17 @@ const Person = () => {
         dispatch(getCoursesDetails())
         dispatch(getPosition())
         dispatch(getImg())
+        dispatch(getTestResults())
        setTimeout(async () => {
           await  dispatch(getPosition())
           await dispatch(getImg())
+           await dispatch(getMyCourse())
            await refreshPageOne()
        },800)
     }, []);
 
 
     const {register, handleSubmit, watch, formState: {errors}} = useForm();
-    // console.log(cour, "COURSES"
     const blobToBase64 = (blob) => new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(blob);
@@ -319,8 +317,11 @@ const Person = () => {
                     </div>
                     <div className='my-courses' hidden={index !== 1}>
                         <h3>Мои курсы</h3>
-                        <div>
-                            <p className='my-courses--p1'>Пройден:</p>
+                        <div onClick={() => setTestActive(true)}>
+                            <p className='my-courses--p1'>{
+                                testRes.score >= 50 ? "Пройден" : "Не пройден"
+                            }
+                            </p>
                             <div className='my-courses--bank'><p className='my-courses--bank--p'>Банковский аналитик</p>
                                 <FontAwesomeIcon className='my-courses--bank--icon' icon={faArrowRightLong}
                                     // style={{width:'38px', color:'#01487E'}}
@@ -330,20 +331,20 @@ const Person = () => {
                                 /></div>
                         </div>
                         {
-                            personActive ?
-                                <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
+                            actTwo.activation ? "" : <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
                                     <div className='my-courses--business'>
                                         <p className='my-courses--business--p'>{ act.activation === true ? "В ожидание активации курсов" : "активирован"}</p>
                                         <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}
                                                          onClick={() => {
+                                                             setTestActive(true)
                                                          }}
                                         />
                                     </div>
-                                </div> : ""
+                                </div>
                         }
                         {
                             <div>
-                                <p className='my-courses--pp'>{personActive ? "Активен" : "Не активен"}</p>
+                                <p className='my-courses--pp'>{actTwo.activation ? "Активен" : "Не активен"}</p>
                                 <div className='my-courses--active'>
                                     <p className='my-courses--active--pp'>{cour.id === act.applicationcourse ? cour.title : "У вас нету курс"}</p>
                                     <FontAwesomeIcon className='my-courses--active--icon' icon={faArrowRightLong}/>
@@ -351,6 +352,7 @@ const Person = () => {
                             </div>
                         }
                     </div>
+                    <TestResult testActive={testActive} setTestActive = {setTestActive} />
                 </div>
             </div>
         </section>

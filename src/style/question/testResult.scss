@@ -1,0 +1,66 @@
+.test{
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  flex-wrap: wrap;
+  //background: rgba(0,0,0,0.5);
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  transition: 0.5s;
+  opacity:0 ;
+  pointer-events: none;
+
+  &.active{
+    flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.5s;
+    height: 100vh;
+
+  }
+
+  &--content{
+
+    width: 50%;
+    height: 100%;
+    display: flex;
+    background: white;
+    border-radius: 5px;
+    flex-wrap: wrap;
+    position: fixed;
+    transform: scale(0);
+    transition: 0.5s all;
+
+    &.active{
+      transition: 0.5s;
+      transform: scale(1);
+    }
+    &--btn{
+      padding: 10px 10px 0 0;
+      color: #01487E;
+    }
+
+    &--texts{
+      width: 100%;
+      height: 100%;
+      text-align: start;
+      &__text{
+        margin: 10px 0;
+        font-weight: 700;
+        font-size: 18px;
+        &--decor{
+          font-weight: 500;
+        }
+      }
+    }
+
+  }
+}

@@ -5,7 +5,6 @@ import ReactPlayer from "react-player";
 
 const CoursesVideoLesson = ({el}) => {
     const [video , setVideo] = useState({})
-
     console.log(el.choicetopic?.topics?.videos)
     return (
         <div className='player-wrapper' key={el.lessonId}>

@@ -1,57 +1,48 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import {
-    getCourses,
-    getCoursesDetails,
-    getTest,
-    getUser,
-} from "../../redux/action/corsesAction";
+import React, {useEffect, useState, useRef} from "react";
+import {NavLink, useParams} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {getCourses, getCoursesDetails, getTest, getTestResults, getUser,} from "../../redux/action/corsesAction";
 import axios from "axios";
-import { toast } from "react-toastify";
+import {toast} from "react-toastify";
+
+
+
 
 const Question = () => {
-    const { testId } = useParams();
-    const { id } = useParams();
+    const {testId} = useParams();
+    const {id} = useParams();
     const elem = useSelector((state) => state.question);
-    // const courses = useSelector(state => state.courses)
-    // const cour = useSelector(state => state.coursesDetails)
+    const userId = useSelector((state) => state.getUser);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [showScore, setShowScore] = useState(false);
     const [question, setQuestion] = useState();
     const [score, setScore] = useState(0);
-    const dispatch = useDispatch();
-    console.log(question);
-    const COURSE_ID = window.location.pathname.slice(-1);
     const intervalRef = useRef(null);
+    const dispatch = useDispatch();
+    const COURSE_ID = window.location.pathname.slice(-1);
+    const timerQuiz = elem.timer
 
     /* ********* TIMER ********** */
-    const [timer, setTimer] = useState("00:00:00");
+
+    const [time, setTime] = useState("00:00:00");
     function getTimeRemaining(endtime) {
         const total = Date.parse(endtime) - Date.parse(new Date());
         const seconds = Math.floor((total / 1000) % 60);
         const minutes = Math.floor((total / 1000 / 60) % 60);
         const hours = Math.floor(((total / 1000) * 60 * 60) % 24);
         const days = Math.floor((total / 1000) * 60 * 60 * 24);
-        return {
-            total,
-            days,
-            seconds,
-            minutes,
-            hours,
-        };
-    }
+        return {total, days, seconds, minutes, hours,};}
 
     function startTimer(deadline) {
         let { total, days, seconds, minutes, hours } =
             getTimeRemaining(deadline);
         if (total >= 0) {
-            setTimer(
-                (hours > 29 ? hours : "0" + hours) +
-                    ":" +
-                    (minutes > 29 ? minutes : "0" + minutes) +
-                    ":" +
-                    (seconds > 29 ? seconds : "0" + seconds)
+            setTime(
+                (hours > elem.timer ? hours : "0" + hours) +
+                ":" +
+                (minutes > elem.timer ? minutes : "0" + minutes) +
+                ":" +
+                (seconds > elem.timer ? seconds : "0" + seconds)
             );
         } else {
             clearInterval(intervalRef.current);
@@ -59,7 +50,7 @@ const Question = () => {
     }
 
     function clearTimer(endtime) {
-        setTimer("00:00:30");
+        setTime(elem.timer);
         if (intervalRef.current) clearInterval(intervalRef.current);
         const id = setInterval(() => {
             startTimer(endtime);
@@ -67,12 +58,12 @@ const Question = () => {
         intervalRef.current = id;
     }
 
-    function getDeadlineTime() {
+    function getDeadlineTime(timerQuiz) {
+        console.log(timerQuiz, "GGGGGG")
         let deadline = new Date();
-        deadline.setSeconds(deadline.getSeconds() + 10);
+        deadline.setSeconds(deadline.getSeconds() + 50);
         return deadline;
     }
-
     useEffect(() => {
         clearTimer(getDeadlineTime());
         return () => {
@@ -85,6 +76,7 @@ const Question = () => {
         clearTimer(getDeadlineTime());
     }
 
+
     useEffect(() => {
         if (elem?.choicetest) {
             setQuestion(elem.choicetest[currentQuestion]?.question || null);
@@ -93,14 +85,11 @@ const Question = () => {
 
     useEffect(() => {
         dispatch(getTest(testId));
-    }, []);
-    useEffect(() => {
         dispatch(getCourses());
         dispatch(getCoursesDetails(id));
-    }, []);
-    useEffect(() => {
         dispatch(getUser());
     }, []);
+
     const handleAnswerButtonClick = (boo) => {
         if (boo === true) {
             setScore(score + 1);
@@ -112,6 +101,7 @@ const Question = () => {
             setShowScore(true);
         }
     };
+
     function result() {
         return Math.round(100 / elem?.choicetest.length) * score;
     }
@@ -124,9 +114,10 @@ const Question = () => {
                     score: +result(),
                     point: +score,
                     fail: 1,
-                    created_date: new Date(),
+                    created_date:new Date(),
+                    user: userId.id,
                     course: +COURSE_ID,
-                    quiz_room: elem.id,
+                    quiz_room: +elem.id,
                 }
             )
             .then((data) => {
@@ -142,15 +133,15 @@ const Question = () => {
         <section className="bg-gray-300 flex align-middle justify-center w-full min-h-full">
             <div
                 className=" bg-white text-white w-6/12 h-full my-12 rounded-md text-black"
-                key={elem.id}
-            >
+                key={elem.id}>
                 {showScore ? (
                     <div>
                         <p>
                             You scored {score} out {elem?.choicetest.length}
                         </p>
                         <div>
-                            {result() > 50
+                            {
+                                result() > 50
                                 ? `Тест пройден : ${result()} %`
                                 : `Тест не пройден ${result()} %`}
                         </div>
@@ -158,7 +149,9 @@ const Question = () => {
                             {score}:Правильные ответы / из{" "}
                             {elem?.choicetest.length} вопрос
                         </div>
-                        <button onClick={() => onClickTest()}>Назад</button>
+                        <NavLink to={`/coursesDetails/${elem.id}`}>
+                            <div onClick={() => onClickTest()}>Назад</div>
+                        </NavLink>
                     </div>
                 ) : (
                     <div>
@@ -169,7 +162,7 @@ const Question = () => {
                                         {currentQuestion + 1} /{" "}
                                         {elem?.choicetest?.length}
                                     </span>
-                                    <p>{elem?.timer}:Время</p>
+                                    <p>{time}:Время</p>
                                 </div>
                                 <p className="text-center text-sm">
                                     Вопрос : № {currentQuestion + 1}
@@ -183,16 +176,12 @@ const Question = () => {
                                 <p className="text-center text-sm text-light ">
                                     Ответы ( один вариант )
                                 </p>
-                                {question?.flags.map((flag) => (
+                                {
+                                    question?.flags.map((flag) => (
                                     <div className="flex align-middle justify-center">
                                         <button
-                                            onClick={() =>
-                                                handleAnswerButtonClick(
-                                                    flag?.boo
-                                                )
-                                            }
-                                            className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded w-10/12 my-1"
-                                        >
+                                            onClick={() => handleAnswerButtonClick(flag?.boo)}
+                                            className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded w-10/12 my-1">
                                             {flag.text}
                                         </button>
                                     </div>
@@ -215,23 +204,16 @@ const Question = () => {
                                                             return 0;
                                                         }
                                                     );
-                                                }}
-                                            >
+                                                }}>
                                                 Назад
                                             </button>
-
                                             <button
                                                 onClick={() =>
-                                                    handleAnswerButtonClick(
-                                                        question.flags?.boo
-                                                    )
-                                                }
-                                                className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded"
-                                            >
+                                                    handleAnswerButtonClick(question.flags?.boo)}
+                                                className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
                                                 <button
                                                     className="bg-transparent"
-                                                    onClick={onClickResetBtn}
-                                                >
+                                                    onClick={onClickResetBtn}>
                                                     Следующий
                                                 </button>
                                             </button>

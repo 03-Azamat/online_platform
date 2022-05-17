@@ -10,7 +10,7 @@ import {
     GET_USER,
     GET_IMG,
     USER_ID,
-    GET_POS,
+    GET_TEST_RESULTS, GET_APPLICATION_TWO,
 } from "../types/actionTypes";
 
 import {publicApi} from "../../components/Auth/HTTP/publicApi";
@@ -32,13 +32,10 @@ export const getCourses = () =>{
 }
 
 export const getCoursesDetails = (id) =>{
-    console.log("ididid",id)
     return(dispatch) =>{
-        console.log("course action is on")
-        publicApi.get(`course-detail/${id}/`)
         axios(`https://djangorestapp.herokuapp.com/course-detail/${id}/`)
             .then(({data})=>{
-                console.log(data, "data-details-action")
+                localStorage.setItem("coursesId" , JSON.stringify(data.id))
                 dispatch({type:GET_SINGLE_COURSES, payload:data})
             })
     }
@@ -73,11 +70,6 @@ export const getTestDetails = (id) =>{
     }
 }
 
-
-// const persons = useSelector(state => state.getUser);
-// const UserId = persons.id
-// const [id ,setId] = useState({})
-
 export const getUser = () => {
     return(dispatch) => {
         if (access){
@@ -105,20 +97,6 @@ export const UserId = () => {
         }
     }
 }
-
-
-//
-// export const getPosition = () => {
-//   return(dispatch) => {
-//           if (dataID){
-//               publicApi.get(`data-detailID/${dataID}/`)
-//                   .then(({data}) => {
-//                       dispatch({type:GET_POSITION,payload:data})
-//                   })
-//           }
-//   }
-// }
-
 
 export const getPosition = () => {
     return(dispatch) => {
@@ -150,34 +128,55 @@ export const getImg = () => {
            })
     }
 }
-
-   // return(dispatch) => {
-   //     if (IdImg){
-   //         publicApi.get(`photo-list/`)
-   //             .then(({data}) => {
-   //                 dispatch({type:GET_IMG,payload:data})
-   //             })
-   //     }
-   // }
 export const getApplication = () =>{
     return(dispatch) => {
         axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-List/`)
             .then(({data})=>{
-                console.log(data.user, "user_app")
                     dispatch({type:GET_APPLICATION, payload:data})
             })
     }
 }
 
+const coursesId = JSON.parse(localStorage.getItem("coursesId"))
 export const getMyCourse = () =>{
     return(dispatch) => {
-        axios(`https://djangorestapp.herokuapp.com/scoreboard-Create-list/`)
+        axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-List/`)
             .then(({data})=>{
-                    dispatch({type:GET_ACTIVE_CASE, payload:data})
+                if (data){
+                   let result = data.filter(el => el.user === userId)
+                    let resultTwo = result[0]
+                    return dispatch({type:GET_APPLICATION_TWO, payload:resultTwo})
 
-                console.log(data, "DDDDDD")
+                }
             })
     }
 }
+
+export const getTestResults = () =>{
+    return(dispatch) => {
+        axios(`https://djangorestapp.herokuapp.com/scoreboard-Create-list/`)
+            .then(({data})=>{
+                dispatch({type:GET_TEST_RESULTS, payload:data})
+
+            })
+    }
+}
+
+// export const getTestResults = () =>{
+//     return(dispatch) => {
+//         axios(`https://djangorestapp.herokuapp.com/scoreboard-Create-list/`)
+//             .then(({data})=>{
+//                 if (data){
+//                     const rs = data.filter(el => el.user === userId)
+//                     const testResult = rs[0]
+//                     dispatch({type:GET_TEST_RESULTS, payload:testResult})
+//                 }
+//                 console.log("GET_TEST_RESULTS")
+//             })
+//     }
+// }
+
+
+
 
 

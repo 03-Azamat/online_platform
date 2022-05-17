@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {NavLink, useNavigate, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {getApplication, getCoursesDetails} from "../../redux/action/corsesAction";
+import {getApplication, getCoursesDetails, getTestResults} from "../../redux/action/corsesAction";
 import Cour from "../../image/cour_logo.svg"
 import {add, format} from "date-fns"
 import Accordion from "../accordion/accordion";
@@ -15,28 +15,26 @@ import SignIn from "../Auth/Person/SignIn";
 const CoursesDetails = () => {
     const {id} = useParams()
     const dispatch = useDispatch()
-    const {coursesDetails: course} = useSelector(s => s)
-    const {getUser: user} = useSelector(s => s)
-    const {getApp: app} = useSelector(s => s)
+    const course = useSelector(state => state.coursesDetails)
+    const user = useSelector(state => state.getUser)
+    const app = useSelector(state => state.getApp)
+    const {getTestResult: resultTest} = useSelector(s => s);
     const [paid, setPaid] = useState(false)
-    const navigate = useNavigate()
+    const [signTest, setSighTest] = useState(true)
     const [signActive, setSignActive] = useState(false);
-    console.log(app, "APPP")
-    console.log(user, "USer")
-    console.log(paid, "PAid")
+    const [activeCour,setActiveCour] = useState(false)
+    console.log(resultTest, "TTTTTTTTTTTTT")
 
-    function refreshPageOne() {
-        if(!window.location.hash) {
-            window.location = window.location + '#loaded';
-            window.location.reload();
-        }
-    }
     useEffect(() => {
         dispatch(getCoursesDetails(id))
         dispatch(getApplication())
-        refreshPageOne()
+        dispatch(getTestResults());
     }, [])
 
+
+    function refreshPage() {
+        window.location.reload();
+    }
 
     //////date-fns//////
     const date = new Date()
@@ -45,13 +43,14 @@ const CoursesDetails = () => {
     const in7DaysCalendarDate = format(add(date, {days: 7}), calendarDateFormat)
 
     const post = () => {
-        publicApi.post('ApplicationToAdmin-Create/',{
+        publicApi.post('ApplicationToAdmin-Create/', {
             activation: false,
             created_date: "2022-05-11T13:25:54.645Z",
             user: user.id,
             applicationcourse: course.id
         })
             .then(data => {
+                refreshPage()
                 toast.success('EEEEEEEE')
             }).catch(error => {
             console.log(error)
@@ -60,14 +59,29 @@ const CoursesDetails = () => {
     useEffect(() => {
         app.forEach(data => {
                 if (data.applicationcourse === course.id && data.user === user.id && data.activation) {
-                    console.log(1111111)
                     console.log(data.applicationcourse, "app_id")
                     setPaid(true)
                 }
 
             }
         )
+        app.forEach(data => {
+                if (data.applicationcourse === course.id && data.user === user.id) {
+                    console.log(data.applicationcourse, "app_id")
+                    setActiveCour(true)
+                }
+            }
+        )
+
+        resultTest.forEach(data =>{
+            if (data.course === course.id && data.user === user.id ){
+                setSighTest(false)
+            }
+        })
+
     }, [app, course])
+
+    console.log("activeCour",activeCour)
     return (
         <section id="cour" key={course?.id}>
             <div className="container">
@@ -88,18 +102,22 @@ const CoursesDetails = () => {
                                 {
                                     isAuth() ? <div>
                                             {
-                                                paid ? "" : <button className="cour--box--head--titles--btn"
+                                                activeCour? <div>
+                                                        {
+                                                          paid ? "" : <button className="cour--box--head--titles--btn"
+                                                          >Курс на расмотрение администратора</button>
+                                                        }
+                                                </div> : <button className="cour--box--head--titles--btn"
                                                                     onClick={() => post()}
-                                                >В ожиданме активации курсов</button>
+                                                >Купить курс</button>
                                             }
                                         </div>
                                         : <button className="cour--box--head--titles--btn"
-                                                  onClick={() => setSignActive(true) }
+                                                  onClick={() => setSignActive(true)}
                                         >Оставить заявку</button>
                                 }
                             </div>
                             <div className="cour--box--head--dates">
-
                                 <div className="cour--box--head--dates--start">
                                     <p className="cour--box--head--dates--start--title"> Дата начала курса</p>
                                     <p className="cour--box--head--dates--start--desc">{currentDate}</p>
@@ -148,7 +166,6 @@ const CoursesDetails = () => {
                                         </div>
                                 }
                             </div>
-
                         </div>
                         {
                             isAuth() ? <div>
@@ -159,12 +176,16 @@ const CoursesDetails = () => {
                                             После изучения материалов курса Вы должны будете пройти тестирование.
                                             На прохождение теста Вам будет предоставлена одна попытка!
                                         </p>
-
-                                        <NavLink to={`/question/${course.id}`}>
-                                            <div>
-                                                <button className="cour--box--test--btn">Тест</button>
-                                            </div>
-                                        </NavLink>
+                                        <div>
+                                            {
+                                            signTest ? <NavLink to={`/question/${course.id}`}>
+                                                    <button
+                                                        className="cour--box--test--btn">Тест
+                                                    </button>
+                                                </NavLink> :
+                                                <button className="cour--box--test--btn">Кире албайсын болду</button>
+                                            }
+                                        </div>
                                     </div> : ""
                                 }
                             </div> : ""

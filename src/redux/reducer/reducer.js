@@ -9,13 +9,10 @@ import {
     GET_IMG,
     USER_ID,
     GET_POS,
-    // DELETE_POSITION,
+    GET_TEST_RESULTS,
+    GET_APPLICATION,
+    GET_ACTIVE_CASE, GET_APPLICATION_TWO
 } from "../types/actionTypes";
-
-import {
-    GET_APPLICATION, GET_ACTIVE_CASE
-} from "../types/actionTypes";
-
 const initialState = {
     courses: [],
     coursesDetails: {},
@@ -29,7 +26,9 @@ const initialState = {
     getPos:{},
     getImg:{},
     getApp:[],
-    getCase:[]
+    getAppTwo:[],
+    getCase:[],
+    getTestResult:[],
 }
 
 export const reducer = (state = initialState, action) => {
@@ -48,20 +47,18 @@ export const reducer = (state = initialState, action) => {
             return {...state,getUser: action.payload, UserId:action.payload.id}
         case USER_ID:
             return {...state,UserId: action.payload}
-
         case GET_POSITION:
             return {...state,getPosition: action.payload}
         case GET_POS:
             return {...state,getPos: action.payload}
         case GET_IMG:
             return {...state,getImg: action.payload}
-
-        // case DELETE_POSITION:
-        //     return {...state,deletePosition: action.payload}
-        //     return {...state,getUser: action.payload}
-
+        case GET_TEST_RESULTS:
+            return {...state,getTestResult: action.payload}
         case GET_APPLICATION:
             return {...state, getApp: action.payload}
+        case GET_APPLICATION_TWO:
+            return {...state, getAppTwo: action.payload}
         case GET_ACTIVE_CASE:
             return {...state, getCase: action.payload}
         default :

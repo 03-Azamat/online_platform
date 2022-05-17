@@ -34,7 +34,6 @@ function Main() {
                 <Route path={"account/activate/*"} element={<EmailActive/>}/>
                 <Route path={"/login"} element={<Login/>}/>
             </Routes>
-
             <Footer/>
         </>
     );

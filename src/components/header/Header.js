@@ -42,7 +42,6 @@ const Header = () => {
                             <NavLink to={"/certificate"}>Проверка сертификатов</NavLink>
                             <NavLink to={"/about"}>О нас</NavLink>
                             <NavLink to={"/contact"}>Контакты</NavLink>
-
                         </div>
                         <div className="header--content--auth  ">
                             {
