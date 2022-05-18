@@ -75,12 +75,10 @@ const Person = () => {
         dispatch(getPosition())
         dispatch(getImg())
         dispatch(getTestResults())
-       setTimeout(async () => {
-          await  dispatch(getPosition())
-          await dispatch(getImg())
-           await dispatch(getMyCourse())
-           await refreshPageOne()
-       },800)
+        await  dispatch(getPosition())
+        await dispatch(getImg())
+        await dispatch(getMyCourse())
+
     }, []);
 
 
