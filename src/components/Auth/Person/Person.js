@@ -27,6 +27,8 @@ const Person = () => {
     const {courses: cour} = useSelector(s => s)
     const {getTestResult: testRes} = useSelector(s => s)
     console.log(actTwo , "{{{{{{{{{")
+    console.log(cour, "^^^^^^^^^^")
+    console.log(cour.title, "^^^^^^")
 
     const [personActive, setPersonActive] = useState(false)
     const [index, setIndex] = useState(0);
@@ -127,15 +129,17 @@ const Person = () => {
                 <h1>Личный кабинет</h1>
                 <div className="contentBtn">
                     <div className='btn'>
-                        <div className="btn--user">
-                            {
+                        <div className="w-full flex justify-center align-middle">
+                            <div className="btn--user">
+                                {
                                     profileImg?
                                         <img src={profileImg.img} className="btn--user--photo" alt=""/>
                                         :
                                         <FontAwesomeIcon icon={faUser} className='btn--user--icon'/>
-                            }
+                                }
+                            </div>
                         </div>
-                        <h2>{persons.name}</h2>
+                        <h2 className="w-full flex justify-center text-center">{persons.name}</h2>
                         <div className="btn--btns">
                             {
                                 profileImg ?
@@ -143,7 +147,7 @@ const Person = () => {
                                     :
                                     <form onSubmit={handleSubmit(onSubmit)}>
                                         <label className="btn--btns--innn2 ">
-                                            <span>Выбрать фото</span>
+                                            <span className="sm:w-full">Выбрать фото</span>
                                             <input
                                                 className={`btn--btns--innn2---in1 ${createImg.length === 0 ? "btn--btns--innn2---in2" : "btn--btns--innn2---in1"}`}
                                                 {...register("img")} id="file-upload" type="file" onChange={(e) => {
@@ -216,11 +220,15 @@ const Person = () => {
                                         }
                                         {
                                             posOrgan  ?
-                                                < FontAwesomeIcon
-                                                    icon={faPen}
-                                                    style={{color: "#01487E", cursor: "pointer"}}
-                                                    onClick={() => setPoModal(true)}
-                                                />
+                                                <div
+                                                className="flex align-top h-full"
+                                                >
+                                                    < FontAwesomeIcon
+                                                        icon={faPen}
+                                                        style={{color: "#01487E", cursor: "pointer"}}
+                                                        onClick={() => setPoModal(true)}
+                                                    />
+                                                </div>
                                                 : ''
                                         }
                                     </div>
@@ -234,9 +242,15 @@ const Person = () => {
                                         }
                                         {
                                             posOrgan  ?
-                                                < FontAwesomeIcon
-                                                    icon={faPen} style={{color: "#01487E", cursor: "pointer"}}
-                                                    onClick={() => setOrModal(true)}/>
+                                                <div
+                                                    className="flex align-top h-full"
+                                                >
+                                                    < FontAwesomeIcon
+                                                        icon={faPen}
+                                                        style={{color: "#01487E", cursor: "pointer"}}
+                                                        onClick={() => setPoModal(true)}
+                                                    />
+                                                </div>
                                                 : ''
                                         }
                                     </div>

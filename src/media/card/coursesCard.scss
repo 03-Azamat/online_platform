@@ -25,174 +25,26 @@
 }
 @media (max-width: 430px) {
   .coursesCard{
-    width: 325px;
-    height: 331px;
+    width: 80vw;
+    height: 100%;
     margin-bottom: 50px;
 
     &--box{
       margin-top: 192px;
-      padding: 10px;
-
-
-
-      &--title{
-
-      }
-
+      display: flex;
+      flex-direction: column;
+      padding: 0 0 0 5px ;
+      background: antiquewhite;
       &--price{
-        margin-left: 192px;
-      }
-    }
-
-
-  }
-}
-@media (max-width: 390px) {
-  .coursesCard{
-    width: 310px;
-    height: 316px;
-    margin-bottom: 50px;
-
-    &--box{
-      margin-top: 177px;
-      padding: 10px;
-
-
-
-      &--title{
-
-      }
-
-      &--price{
-        margin-left: 179px;
-      }
-    }
-
-
-  }
-}
-@media (max-width: 370px) {
-  .coursesCard{
-    width: 310px;
-    height: 316px;
-    margin-bottom: 50px;
-
-    &--box{
-      padding: 10px 0 0 5px;
-      margin-top: 190px;
-
-
-
-
-      &--title{
-
-      }
-
-      &--price{
-        margin-left: 161px;
-        margin-top: -10px;
-        width: 105px;
+        margin-left: auto;
+        width: 100px;
         height: 35px;
-      }
-    }
-
-
-  }
-}
-@media (max-width: 345px) {
-  .coursesCard{
-    width: 255px;
-    height: 280px;
-    margin-bottom: 64px;
-
-    &--box{
-      margin-top: 169px;
-      padding: 10px 5px 0 5px;
-
-
-
-      &--title{
-        font-style: normal;
-        font-weight: 600;
-        font-size: 18px;
-        line-height: 27px;
-
-        color: #01487E;
-      }
-
-      &--date{
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 21px;
-        /* identical to box height */
-
-
-        color: #494949;
-      }
-
-      &--price{
-        width: 105px;
-        height: 35px;
-        background: #01487E;
-        border-radius: 10px 0 10px;
-        border-color: transparent;
-        margin-left: 145px;
-        font-weight: 500;
         font-size: 16px;
-        line-height: 27px;
-        color: #FFFFFF;
       }
     }
 
 
   }
 }
-@media (max-width: 300px) {
-  .coursesCard{
-    width: 230px;
-    height: 250px;
-    margin-bottom: 64px;
 
-    &--box{
-      margin-top: 150px;
-      padding: 0 5px 0 5px;
-
-
-
-      &--title{
-        font-style: normal;
-        font-weight: 600;
-        font-size: 14px;
-        line-height: 27px;
-
-        color: #01487E;
-      }
-
-      &--date{
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 21px;
-        /* identical to box height */
-
-
-        color: #494949;
-      }
-
-      &--price{
-        width: 94px;
-        height: 30px;
-        background: #01487E;
-        border-radius: 10px 0 10px;
-        border-color: transparent;
-        margin-left: 130px;
-        font-weight: 500;
-        font-size: 14px;
-        line-height: 27px;
-        color: #FFFFFF;
-      }
-    }
-
-
-  }
-}
 

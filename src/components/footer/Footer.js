@@ -25,7 +25,8 @@ const Footer = () => {
                             <p className="footer--middle--desc">
                                 Если у вас возникли какие-либо
                                 вопросы, пожалуйста, напишите
-                                нам: mail@ashimovbayastan@gmail.com
+                                нам:
+                                ashimovbayastan@gmail.com
                             </p>
                             <span className="footer--middle--icons">
                                 {/*<SocialMediaIconsReact icon="instagram" borderColor="#white" iconColor="#01487E"*/}

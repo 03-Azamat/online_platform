@@ -3,18 +3,12 @@
   .about--box {
     background: url("./../../image/imgAbout.png") no-repeat center/cover;
     min-height: 60vh;
-
-    &--content {
-      display: flex;
-      align-items: center;
-      text-align: center;
-
+    display: flex;
+    justify-content: center;
+    text-align: center;
       &--title {
         color: white;
         font-size: 48px;
-        text-align: center;
-        margin-top: 200px;
-        margin-left: 42%;
       }
     }
   }
@@ -54,5 +48,5 @@
       }
     }
   }
-}
+
 

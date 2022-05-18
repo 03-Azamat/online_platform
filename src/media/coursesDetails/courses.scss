@@ -1,1 +1,44 @@
+@media (max-width: 1300px) {
+  #courses{
 
+    .courses--box{
+
+      &--block{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}
+
+@media (max-width: 1280px){
+  #courses{
+
+    .courses--box{
+
+      &--block{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+
+
+};
+
+@media (max-width: 1026px){
+  #courses{
+
+    .courses--box{
+
+      &--block{
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+
+
+};

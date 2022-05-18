@@ -18,9 +18,7 @@ const About = () => {
         <section id="about">
             <div className="about--box">
                 <div className="container">
-                    <div className="about--box--content">
-                        <h1 className="about--box--content--title">О нас</h1>
-                    </div>
+                        <h1 className="about--box--title">О нас</h1>
                 </div>
             </div>
             <div className="about2--block">

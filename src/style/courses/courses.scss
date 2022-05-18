@@ -3,12 +3,14 @@
   .courses--block{
     background: url("./../../image/coursesImage.png") no-repeat center/cover;
     min-height: 50vh;
+    display: flex;
+    justify-content: center;
+
 
     &--title{
       color: white;
       font-size: 48px;
       text-align: center;
-      padding-top: 135px;
     }
   }
 

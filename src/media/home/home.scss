@@ -16,7 +16,8 @@
 #home{
 
   .home--block{
-
+    display: flex;
+    flex-wrap: wrap;
     &--box{
 
       &--title{
@@ -46,6 +47,51 @@
 
 
 };
+
+@media (max-width: 1024px){
+  #home{
+
+    .home--block{
+      display: flex;
+      flex-wrap: wrap;
+      &--box{
+
+        &--title{
+          color: white;
+          padding-bottom: 20px;
+          font-size: 42px;
+          text-align: center;
+          padding-top: 200px;
+        }
+
+        &--desc{
+          width: 50%;
+          text-align: center;
+          font-family: 'Poppins', sans-serif;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 132%;
+          padding-bottom: 34px;
+          /* or 32px */
+
+          color: #FFFFFF;
+        }
+      }
+    }
+
+    .home--box{
+
+      &--block{
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+
+
+};
+
 
 @media (max-width: 640px){
   #home{
@@ -115,6 +161,7 @@
         }
       }
     }
+
   }
 }
 

@@ -49,7 +49,7 @@ export default function HookForm({active, setActive}) {
             })
     };
     return (
-        <>
+        <div className="z-20">
             <ToastContainer/>
             <section className={ active ? "forms active  " : "forms"}>
                 <div className={ active ? "forms--inputs active  " : "forms--inputs"}  >
@@ -80,6 +80,6 @@ export default function HookForm({active, setActive}) {
                 </div>
 
             </section>
-        </>
+        </div>
     );
 }

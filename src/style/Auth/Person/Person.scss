@@ -14,8 +14,6 @@
     text-align: center;
   }
 
-
-
   .contentBtn {
     display: flex;
     justify-content: space-between;
@@ -23,13 +21,14 @@
     .btn {
       box-shadow: 0 2px 4px rgba(100, 100, 100, 0.15);
       flex-wrap: wrap;
+      margin-bottom: 50px;
       background: #FFFFFF;
       border-radius: 5px;
       display: flex;
       flex-direction: column;
       justify-content: start;
       width: 300px;
-      height: 480px;
+      height: 100%;
 
 
       &--input {
@@ -59,7 +58,8 @@
         display: flex;
         justify-content: center;
         font-size: 18px;
-        width: 300px;
+        width: 100%;
+        text-align: center;
       }
 
       &--user {
@@ -95,7 +95,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        //margin: 30px 0 -30px 0;
+        height: 100%;
+
         & input[type="file"] {
           opacity: 0;
           margin: 0 0 0 0;
@@ -410,7 +411,7 @@
       }
 
       &--bank {
-        width: 565px;
+        width: 100%;
         height: 80px;
         background: #FFFFFF;
         border-radius: 5px;
@@ -433,7 +434,7 @@
       }
 
       &--business {
-        width: 565px;
+        width: 100%;
         height: 80px;
         background: #FFFFFF;
         border-radius: 5px;
@@ -452,7 +453,7 @@
       }
 
       &--active {
-        width: 565px;
+        width: 100%;
         height: 80px;
         background: #FFFFFF;
         border: 1px solid #00C32B;
@@ -477,7 +478,7 @@
       }
 
       &--notactive {
-        width: 565px;
+        width: 100%;
         height: 80px;
         background: #FFFFFF;
         border-radius: 5px;

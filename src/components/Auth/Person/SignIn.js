@@ -11,7 +11,6 @@ import {authenticate, isAuth} from "../Register/helpers";
 import {publicApi} from "../HTTP/publicApi";
 import {useDispatch} from "react-redux";
 import {getPosition, getUser} from "../../../redux/action/corsesAction";
-import person from "./Person";
 
 const SignIn = ({signActive,setSignActive}) => {
     const navigate =  useNavigate()
@@ -48,7 +47,7 @@ const SignIn = ({signActive,setSignActive}) => {
 
 
     return (
-       <>
+       <div className="z-20">
            <ToastContainer/>
            <div className={ signActive ? "signin active  " : "signin"}>
                <form
@@ -71,7 +70,7 @@ const SignIn = ({signActive,setSignActive}) => {
                    <button>Войти</button>
                </form>
            </div>
-       </>
+       </div>
     );
 };
 

@@ -1,14 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {toast} from "react-toastify";
-import {NavLink, useNavigate} from "react-router-dom";
+import {NavLink, } from "react-router-dom";
 import {publicApi} from "../HTTP/publicApi";
+import axios from "axios";
 
 const EmailActive = () => {
     const url = window.location.href;
     const link = url.split("/").filter(i => i !== "")
+    console.log(link,"link")
     const [err, setErr] = useState(true)
     useEffect(() => {
-        publicApi.post("users/activation/", {
+        axios.post("https://djangorestapp-one.herokuapp.com/users/activation/", {
             uid: link[4],
             token: link[5],
             headers: {
@@ -17,6 +19,7 @@ const EmailActive = () => {
         })
             .then(response => {
                     setErr(true)
+
                     console.log(response)
                     toast.success("Успещно зарагестрировано")
                 }
@@ -25,6 +28,7 @@ const EmailActive = () => {
             if (error.response.data.detail) {
                 toast.error(error.response.data.detail)
             } else if (error.response.data.token) {
+                console.log(link)
                 toast.error(error.response.data.token[0])
             }
 

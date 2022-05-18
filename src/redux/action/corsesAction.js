@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import {
-    GET_ABOUT, GET_ACTIVE_CASE,
+    GET_ABOUT,
     GET_APPLICATION,
     GET_COURSES,
     GET_COURSES_TEST,
@@ -14,15 +14,9 @@ import {
 } from "../types/actionTypes";
 
 import {publicApi} from "../../components/Auth/HTTP/publicApi";
-import {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import person from "../../components/Auth/Person/Person";
 
 const access = JSON.parse(localStorage.getItem("access"));
 const dataID = JSON.parse(localStorage.getItem("dataID"));
-
-// const result = useSelector(state => state.getUser)
-
 
 export const getCourses = () =>{
     return(dispatch) =>{
@@ -33,7 +27,7 @@ export const getCourses = () =>{
 
 export const getCoursesDetails = (id) =>{
     return(dispatch) =>{
-        axios(`https://djangorestapp.herokuapp.com/course-detail/${id}/`)
+        publicApi.get(`course-detail/${id}`)
             .then(({data})=>{
                 localStorage.setItem("coursesId" , JSON.stringify(data.id))
                 dispatch({type:GET_SINGLE_COURSES, payload:data})
@@ -76,14 +70,14 @@ export const getUser = () => {
             publicApi("users/me/", {
                 headers: {
                     "Authorization": `Bearer ${access}`
-                }
-            }).then(({data}) => {
+                }}).then(({data}) => {
                     localStorage.setItem("userId", JSON.stringify(data.id))
                     dispatch({type:GET_USER,payload:data})
             })
         }
     }
 }
+
 export const UserId = () => {
     return(dispatch) => {
         if (access){
@@ -100,7 +94,7 @@ export const UserId = () => {
 
 export const getPosition = () => {
     return(dispatch) => {
-           axios.get('https://djangorestapp.herokuapp.com/data-list/')
+           publicApi.get('data-list/')
             .then( async ({data}) => {
                     if (data){
                         let ppp = await data.filter(el => el.user === userId )
@@ -113,11 +107,10 @@ export const getPosition = () => {
     }
 }
 
-
 const userId = JSON.parse(localStorage.getItem("userId"));
 export const getImg = () => {
     return (dispatch) => {
-               axios.get(`https://djangorestapp.herokuapp.com/photo-list`)
+               publicApi.get(`photo-list`)
                    .then(({data}) => {
                        if (data){
                            const  sss =  data.filter(el => el.user === userId)
@@ -130,7 +123,7 @@ export const getImg = () => {
 }
 export const getApplication = () =>{
     return(dispatch) => {
-        axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-List/`)
+        publicApi.get(`ApplicationToAdmin-List/`)
             .then(({data})=>{
                     dispatch({type:GET_APPLICATION, payload:data})
             })
@@ -154,27 +147,13 @@ export const getMyCourse = () =>{
 
 export const getTestResults = () =>{
     return(dispatch) => {
-        axios(`https://djangorestapp.herokuapp.com/scoreboard-Create-list/`)
+        publicApi.get(`scoreboard-Create-list/`)
             .then(({data})=>{
                 dispatch({type:GET_TEST_RESULTS, payload:data})
 
             })
     }
 }
-
-// export const getTestResults = () =>{
-//     return(dispatch) => {
-//         axios(`https://djangorestapp.herokuapp.com/scoreboard-Create-list/`)
-//             .then(({data})=>{
-//                 if (data){
-//                     const rs = data.filter(el => el.user === userId)
-//                     const testResult = rs[0]
-//                     dispatch({type:GET_TEST_RESULTS, payload:testResult})
-//                 }
-//                 console.log("GET_TEST_RESULTS")
-//             })
-//     }
-// }
 
 
 

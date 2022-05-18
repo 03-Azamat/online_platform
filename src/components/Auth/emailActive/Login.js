@@ -42,7 +42,7 @@ const Login = () => {
     };
 
     return (
-        <>
+        <div  className="z-20">
             <ToastContainer/>
             <div className='signin1'>
                 <form
@@ -64,7 +64,7 @@ const Login = () => {
                     <button  type='submit' >Войти</button>
                 </form>
             </div>
-        </>
+        </div>
     );
 };
 
