@@ -167,29 +167,34 @@ const CoursesDetails = () => {
                                 }
                             </div>
                         </div>
-                        {
-                            isAuth() ? <div>
-                                {
-                                    paid ? <div className="cour--box--test">
-                                        <h1 className="cour--box--test--title">Внимание! </h1>
-                                        <p className="cour--box--test--desc">
-                                            После изучения материалов курса Вы должны будете пройти тестирование.
-                                            На прохождение теста Вам будет предоставлена одна попытка!
-                                        </p>
-                                        <div>
-                                            {
-                                            signTest ? <NavLink to={`/question/${course.id}`}>
-                                                    <button
-                                                        className="cour--box--test--btn">Тест
-                                                    </button>
-                                                </NavLink> :
-                                                <button className="cour--box--test--btn">Кире албайсын болду</button>
-                                            }
-                                        </div>
-                                    </div> : ""
-                                }
-                            </div> : ""
-                        }
+                        {/*{*/}
+                        {/*    isAuth() ? <div>*/}
+                        {/*        {*/}
+                        {/*            paid ? <div className="cour--box--test">*/}
+                        {/*                <h1 className="cour--box--test--title">Внимание! </h1>*/}
+                        {/*                <p className="cour--box--test--desc">*/}
+                        {/*                    После изучения материалов курса Вы должны будете пройти тестирование.*/}
+                        {/*                    На прохождение теста Вам будет предоставлена одна попытка!*/}
+                        {/*                </p>*/}
+                        {/*                <div>*/}
+                        {/*                    {*/}
+                        {/*                    signTest ? <NavLink to={`/question/${course.id}`}>*/}
+                        {/*                            <button*/}
+                        {/*                                className="cour--box--test--btn">Тест*/}
+                        {/*                            </button>*/}
+                        {/*                        </NavLink> :*/}
+                        {/*                        <button className="cour--box--test--btn">Кире албайсын болду</button>*/}
+                        {/*                    }*/}
+                        {/*                </div>*/}
+                        {/*            </div> : ""*/}
+                        {/*        }*/}
+                        {/*    </div> : ""*/}
+                        {/*}*/}
+                        <NavLink to={`/question/${course.id}`}>
+                            <button
+                                className="cour--box--test--btn">Тест
+                            </button>
+                        </NavLink>
                     </div>
                 ) : <Loader/>}
 

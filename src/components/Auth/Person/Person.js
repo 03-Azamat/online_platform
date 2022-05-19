@@ -10,9 +10,7 @@ import UpdatePhone from "../Updated/UpdatePhone";
 import UpdateName from "../Updated/UpdateName";
 import AddPosition from "../Register/AddPosition";
 import {useDispatch, useSelector} from "react-redux";
-import {
-    getApplication, getCourses, getCoursesDetails, getImg, getMyCourse, getPosition, getTestResults, getUser,
-} from "../../../redux/action/corsesAction";
+import {getApplication, getCourses, getCoursesDetails, getImg, getMyCourse, getPosition, getTestResults, getUser,} from "../../../redux/action/corsesAction";
 import {toast} from "react-toastify";
 import {useForm} from "react-hook-form";
 import UpdatePhoto from "../Updated/UpdatePhoto";
@@ -28,7 +26,7 @@ const Person = () => {
     const {getTestResult: testRes} = useSelector(s => s)
     console.log(actTwo , "{{{{{{{{{")
     console.log(cour, "^^^^^^^^^^")
-    console.log(cour.title, "^^^^^^")
+
 
     const [personActive, setPersonActive] = useState(false)
     const [index, setIndex] = useState(0);
@@ -57,9 +55,7 @@ const Person = () => {
         })
     }, [act, cour])
 
-
     console.log(personActive , "Актив")
-
 
     function refreshPageOne() {
         if(!window.location.hash) {
@@ -80,7 +76,6 @@ const Person = () => {
         await dispatch(getMyCourse())
 
     }, []);
-
 
     const {register, handleSubmit, watch, formState: {errors}} = useForm();
     const blobToBase64 = (blob) => new Promise((resolve, reject) => {
@@ -335,12 +330,8 @@ const Person = () => {
                             }
                             </p>
                             <div className='my-courses--bank'><p className='my-courses--bank--p'>Банковский аналитик</p>
-                                <FontAwesomeIcon className='my-courses--bank--icon' icon={faArrowRightLong}
-                                    // style={{width:'38px', color:'#01487E'}}
-                                                 onClick={() => {
-                                                     // navigate("/")
-                                                 }}
-                                /></div>
+                                <FontAwesomeIcon className='my-courses--bank--icon' icon={faArrowRightLong}/>
+                            </div>
                         </div>
                         {
                             actTwo.activation ? "" : <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
@@ -348,20 +339,20 @@ const Person = () => {
                                         <p className='my-courses--business--p'>{ act.activation === true ? "В ожидание активации курсов" : "активирован"}</p>
                                         <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}
                                                          onClick={() => {
-                                                             setTestActive(true)
-                                                         }}
-                                        />
+                                                             setTestActive(true)}}/>
                                     </div>
                                 </div>
                         }
                         {
-                            <div>
-                                <p className='my-courses--pp'>{actTwo.activation ? "Активен" : "Не активен"}</p>
-                                <div className='my-courses--active'>
-                                    <p className='my-courses--active--pp'>{cour.id === act.applicationcourse ? cour.title : "У вас нету курс"}</p>
-                                    <FontAwesomeIcon className='my-courses--active--icon' icon={faArrowRightLong}/>
+                            cour.map(el =>(
+                                <div>
+                                    <p className='my-courses--pp'>dd</p>
+                                    <div className='my-courses--active'>
+                                        <p className='my-courses--active--pp'>{}</p>
+                                        <FontAwesomeIcon className='my-courses--active--icon' icon={faArrowRightLong}/>
+                                    </div>
                                 </div>
-                            </div>
+                            ))
                         }
                     </div>
                     <TestResult testActive={testActive} setTestActive = {setTestActive} />
