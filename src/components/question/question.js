@@ -185,41 +185,8 @@ const Question = () => {
                                             {flag.text}
                                         </button>
                                     </div>
-                                ))}
-                                <div>
-                                    {question?.length === 2 ? (
-                                        <button className="bg-gray-400 text-white py-2 px-4 rounded">
-                                            Назад
-                                        </button>
-                                    ) : (
-                                        <div className="w-full flex justify-between">
-                                            <button
-                                                className="bg-gray-400 text-white py-2 px-4 rounded"
-                                                onClick={() => {
-                                                    setCurrentQuestion(
-                                                        (prev) => {
-                                                            if (prev > 0) {
-                                                                return prev - 1;
-                                                            }
-                                                            return 0;
-                                                        }
-                                                    );
-                                                }}>
-                                                Назад
-                                            </button>
-                                            <button
-                                                onClick={() =>
-                                                    handleAnswerButtonClick(question.flags?.boo)}
-                                                className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
-                                                <button
-                                                    className="bg-transparent"
-                                                    onClick={onClickResetBtn}>
-                                                    Следующий
-                                                </button>
-                                            </button>
-                                        </div>
-                                    )}
-                                </div>
+                                ))
+                                }
                             </div>
                         </div>
                     </div>

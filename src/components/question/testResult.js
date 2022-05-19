@@ -4,25 +4,22 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useDispatch, useSelector} from "react-redux";
 import {getTestResults} from "../../redux/action/corsesAction";
 
-const TestResult = ({testActive,setTestActive}) => {
+const TestResult = () => {
     const {getTestResult: testResText} = useSelector(s => s)
     const dispatch = useDispatch()
-    console.log(testResText , "RRRRRRRRRR")
 
     useEffect(()=>{
         dispatch(getTestResults())
     },[])
 
     return (
-        <div className={testActive ? "test active  " : "test"}>
-            <div className={ testActive ? "test--content active" : "test--content"}>
+        <div>
+            <div>
                 <div className="w-full flex justify-end">
                     <FontAwesomeIcon
                         className='test--content--btn' icon={faXmark}
                         style={{fontSize:'25px'}}
-                        onClick={() => {
-                            setTestActive(false)
-                        }}
+
                     />
                 </div>
                 <div className='test--content--texts' >

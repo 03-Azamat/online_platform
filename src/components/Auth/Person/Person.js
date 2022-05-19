@@ -20,12 +20,12 @@ import TestResult from "../../question/testResult";
 const Person = () => {
     const {coursesDetails: courses} = useSelector(s => s)
     const {getApp: act} = useSelector(s => s)
-    const {getAppTwo: actTwo} = useSelector(s => s)
     const {getUser: user} = useSelector(s => s)
     const {courses: cour} = useSelector(s => s)
     const {getTestResult: testRes} = useSelector(s => s)
-    console.log(actTwo , "{{{{{{{{{")
     console.log(cour, "^^^^^^^^^^")
+    console.log(testRes, "*********")
+    console.log(act, "{{{")
 
 
     const [personActive, setPersonActive] = useState(false)
@@ -37,16 +37,17 @@ const Person = () => {
     const [add, setAdd] = useState(false);
     const [phoneModal, setPhoneModal] = useState(false);
     const [nameModal, setNameAModal] = useState(false);
-    // const [testResult, setTestResult] = useState(false)
     const navigate = useNavigate();
     const persons = useSelector(state => state.getUser);
     const posOrgan = useSelector(state => state.getPosition);
     const profileImg = useSelector(state => state.getImg);
     const [createImg, setCreateImg] = useState({preview: "", raw: ""});
     const dispatch = useDispatch();
+
     function refreshPage() {
             window.location.reload();
     }
+
     useEffect(() => {
         act.forEach(data => {
             if (data.applicationcourse === cour.id && data.user === user.id && data.activation) {
@@ -55,14 +56,7 @@ const Person = () => {
         })
     }, [act, cour])
 
-    console.log(personActive , "Актив")
 
-    function refreshPageOne() {
-        if(!window.location.hash) {
-            window.location = window.location + '#loaded';
-            window.location.reload();
-        }
-    }
     useEffect( async() => {
         dispatch(getUser())
         dispatch(getApplication())
@@ -73,8 +67,6 @@ const Person = () => {
         dispatch(getTestResults())
         await  dispatch(getPosition())
         await dispatch(getImg())
-        await dispatch(getMyCourse())
-
     }, []);
 
     const {register, handleSubmit, watch, formState: {errors}} = useForm();
@@ -324,17 +316,23 @@ const Person = () => {
                     </div>
                     <div className='my-courses' hidden={index !== 1}>
                         <h3>Мои курсы</h3>
-                        <div onClick={() => setTestActive(true)}>
+                        <div >
                             <p className='my-courses--p1'>{
-                                testRes.score >= 50 ? "Пройден" : "Не пройден"
-                            }
-                            </p>
+                                testRes.map(data =>(
+                                    <div>
+                                        {/*{*/}
+                                        {/*    data.user === act.user ? data.score : data.score*/}
+                                        {/*}*/}
+                                    </div>
+                                    )
+                                )
+                            }</p>
                             <div className='my-courses--bank'><p className='my-courses--bank--p'>Банковский аналитик</p>
                                 <FontAwesomeIcon className='my-courses--bank--icon' icon={faArrowRightLong}/>
                             </div>
                         </div>
                         {
-                            actTwo.activation ? "" : <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
+                             <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
                                     <div className='my-courses--business'>
                                         <p className='my-courses--business--p'>{ act.activation === true ? "В ожидание активации курсов" : "активирован"}</p>
                                         <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}
@@ -343,8 +341,6 @@ const Person = () => {
                                     </div>
                                 </div>
                         }
-                        {
-                            cour.map(el =>(
                                 <div>
                                     <p className='my-courses--pp'>dd</p>
                                     <div className='my-courses--active'>
@@ -352,10 +348,7 @@ const Person = () => {
                                         <FontAwesomeIcon className='my-courses--active--icon' icon={faArrowRightLong}/>
                                     </div>
                                 </div>
-                            ))
-                        }
                     </div>
-                    <TestResult testActive={testActive} setTestActive = {setTestActive} />
                 </div>
             </div>
         </section>
