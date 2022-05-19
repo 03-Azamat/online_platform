@@ -24,7 +24,6 @@ const Person = () => {
     const {courses: cour} = useSelector(s => s)
     const {getTestResult: testRes} = useSelector(s => s)
     console.log(cour, "^^^^^^^^^^")
-    console.log(testRes, "*********")
     console.log(act, "{{{")
 
 
@@ -48,13 +47,13 @@ const Person = () => {
             window.location.reload();
     }
 
-    useEffect(() => {
-        act.forEach(data => {
-            if (data.applicationcourse === cour.id && data.user === user.id && data.activation) {
-                setPersonActive(true)
-            }
-        })
-    }, [act, cour])
+    // useEffect(() => {
+    //     act.forEach(data => {
+    //         if (data.applicationcourse === cour.id && data.user === user.id && data.activation) {
+    //             setPersonActive(true)
+    //         }
+    //     })
+    // }, [act, cour])
 
 
     useEffect( async() => {
@@ -316,16 +315,17 @@ const Person = () => {
                     </div>
                     <div className='my-courses' hidden={index !== 1}>
                         <h3>Мои курсы</h3>
-                        <div >
-                            <p className='my-courses--p1'>{
-                                testRes.map(data =>(
-                                    <div>
-                                        {/*{*/}
-                                        {/*    data.user === act.user ? data.score : data.score*/}
-                                        {/*}*/}
-                                    </div>
-                                    )
-                                )
+                        <div>
+                            <p className='my-courses--p1'>
+                                {
+                                // testRes.map(data =>(
+                                //     <div>
+                                //         {/*{*/}
+                                //         {/*    data.user === act.user ? data.score : data.score*/}
+                                //         {/*}*/}
+                                //     </div>
+                                //     )
+                                // )
                             }</p>
                             <div className='my-courses--bank'><p className='my-courses--bank--p'>Банковский аналитик</p>
                                 <FontAwesomeIcon className='my-courses--bank--icon' icon={faArrowRightLong}/>
@@ -342,7 +342,13 @@ const Person = () => {
                                 </div>
                         }
                                 <div>
-                                    <p className='my-courses--pp'>dd</p>
+                                    <div className='my-courses--pp'>
+                                        {/*{act.filter(data =>{*/}
+                                        {/*    return data.activation === true ? cour.map(el => (*/}
+                                        {/*        <div>{el.title}</div>*/}
+                                        {/*    )) : "У вас нету активных курсов"*/}
+                                        {/*})}*/}
+                                    </div>
                                     <div className='my-courses--active'>
                                         <p className='my-courses--active--pp'>{}</p>
                                         <FontAwesomeIcon className='my-courses--active--icon' icon={faArrowRightLong}/>

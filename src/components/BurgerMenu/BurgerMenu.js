@@ -23,11 +23,10 @@ const BurgerMenu = () => {
         dispatch(getImg())
     }, [])
 
-
     return (
         <div className="flex items-center justify-between border-b border-gray-400 py-8">
             <nav>
-                <section className="MOBILE-MENU flex lg:hidden">
+                <section className="MOBILE-MENU flex lgMedia:hidden">
                     <div
                         className="HAMBURGER-ICON space-y-2"
                         onClick={() => setNavOpen((prev) => !prev)}
@@ -166,7 +165,7 @@ const BurgerMenu = () => {
         display: block;
         position: absolute;
         width: 100%;
-        height: 100vh;
+        height: 100%;
         top: 0;
         left: 0;
         background: #01487E;

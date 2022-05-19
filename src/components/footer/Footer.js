@@ -7,7 +7,7 @@ const Footer = () => {
             <footer id="footer">
 
                 <div className="container">
-                    <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+                    <div className="grid lgMedia:grid-cols-3 mdMedia:grid-cols-2 smMedia:grid-cols-1">
                         <div className="footer--start">
                             <img src={logo} alt="" className="footer--start--img"/>
                             <span className="footer--start--block">

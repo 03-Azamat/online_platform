@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {NavLink, useNavigate, useParams} from "react-router-dom";
+import {NavLink, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getApplication, getCoursesDetails, getTestResults} from "../../redux/action/corsesAction";
 import Cour from "../../image/cour_logo.svg"
@@ -22,8 +22,8 @@ const CoursesDetails = () => {
     const [paid, setPaid] = useState(false)
     const [signTest, setSighTest] = useState(true)
     const [signActive, setSignActive] = useState(false);
-    const [activeCour,setActiveCour] = useState(false)
-    console.log(resultTest, "TTTTTTTTTTTTT")
+    const [activeCour, setActiveCour] = useState(false)
+
 
     useEffect(() => {
         dispatch(getCoursesDetails(id))
@@ -72,16 +72,14 @@ const CoursesDetails = () => {
                 }
             }
         )
-
-        resultTest.forEach(data =>{
-            if (data.course === course.id && data.user === user.id ){
-                setSighTest(false)
+        resultTest.forEach(data => {
+                if (data.course === course.id && data.user === user.id) {
+                    setSighTest(false)
+                }
             }
-        })
-
+        )
     }, [app, course])
-
-    console.log("activeCour",activeCour)
+    console.log(signTest , "HHHHHHHH")
     return (
         <section id="cour" key={course?.id}>
             <div className="container">
@@ -102,13 +100,13 @@ const CoursesDetails = () => {
                                 {
                                     isAuth() ? <div>
                                             {
-                                                activeCour? <div>
-                                                        {
-                                                          paid ? "" : <button className="cour--box--head--titles--btn"
-                                                          >Курс на расмотрение администратора</button>
-                                                        }
+                                                activeCour ? <div>
+                                                    {
+                                                        paid ? "" : <button className="cour--box--head--titles--btn"
+                                                        >Курс на расмотрение администратора</button>
+                                                    }
                                                 </div> : <button className="cour--box--head--titles--btn"
-                                                                    onClick={() => post()}
+                                                                 onClick={() => post()}
                                                 >Купить курс</button>
                                             }
                                         </div>
@@ -149,7 +147,6 @@ const CoursesDetails = () => {
                                 {
                                     paid ?
                                         <div>
-                                            keldi
                                             {
                                                 course?.coursechoice?.map(el => (
                                                     <Accordion el={el} key={el.id}/>
@@ -157,7 +154,6 @@ const CoursesDetails = () => {
                                             }
                                         </div> :
                                         <div>
-                                            kelgen jok
                                             {
                                                 course?.coursechoice?.map(el => (
                                                     <AccordionDemo el={el} key={el.id}/>
@@ -178,12 +174,12 @@ const CoursesDetails = () => {
                                         </p>
                                         <div>
                                             {
-                                            signTest ? <NavLink to={`/question/${course.id}`}>
-                                                    <button
-                                                        className="cour--box--test--btn">Тест
-                                                    </button>
-                                                </NavLink> :
-                                                <button className="cour--box--test--btn">Кире албайсын болду</button>
+                                                signTest ? <NavLink to={`/question/${course.id}`}>
+                                                        <button
+                                                            className="cour--box--test--btn">Тест
+                                                        </button>
+                                                    </NavLink> :
+                                                    <button className="cour--box--test--btn">!!!</button>
                                             }
                                         </div>
                                     </div> : ""

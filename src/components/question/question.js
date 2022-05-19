@@ -130,10 +130,10 @@ const Question = () => {
             });
     };
     return (
-        <section className="bg-gray-300 flex align-middle justify-center w-full min-h-full">
+        <section className="bg-gray-300 flex align-middle justify-center w-full min-h-full pb-20 ">
             <div
-                className=" bg-white text-white w-6/12 h-full my-12 rounded-md text-black"
-                key={elem.id}>
+                className="bg-white text-white w-full h-full my-12 rounded-md text-black pb-20 smExtraMedia: w-11/12  ssmMedia: w-11/12  smMedia:w-10/12  mdMedia:w-8/12  lgMedia:w-7/12  xlMedia:w-6/12  xxlMedia: w-5/12 " key={elem.id}>
+
                 {showScore ? (
                     <div>
                         <p>
@@ -157,25 +157,27 @@ const Question = () => {
                     <div>
                         <div>
                             <div className="container mx-auto">
-                                <div className="flex justify-between mt-10">
+                                <div className="flex flex-row justify-between mt-10 smMedia: flex flex-col justify-center  mdMedia: flex mdMedia:flex-row mdMedia:justify-between lgMedia: flex lgMedia: flex-row lgMedia: justify-between xlMedia:flex xlMedia:justify-between xlMedia:flex-row">
                                     <span>
                                         {currentQuestion + 1} /{" "}
                                         {elem?.choicetest?.length}
                                     </span>
-                                    <p>{time}:Время</p>
+                                    <p className="font-normal text-sm  smMedia:font-extralight text-sm  mdMedia: text-md font-normal lgMedia: text-lg font-normal xlMedia:font-normal text-sm">{time}:Время</p>
                                 </div>
-                                <p className="text-center text-sm">
-                                    Вопрос : № {currentQuestion + 1}
-                                </p>
-                                <p className="font-normal text-sm text-center font-bold">
-                                    Бизнес аналитик
-                                </p>
-                                <p className="text-center text-sm">
-                                    {question?.title}
-                                </p>
-                                <p className="text-center text-sm text-light ">
-                                    Ответы ( один вариант )
-                                </p>
+                                <div className="my-8">
+                                    <p className="text-center text-sm">
+                                        Вопрос : № {currentQuestion + 1}
+                                    </p>
+                                    <p className="font-normal text-sm text-center font-bold">
+                                        Бизнес аналитик
+                                    </p>
+                                    <p className="text-center text-sm">
+                                        {question?.title}
+                                    </p>
+                                    <p className="text-center text-sm text-light ">
+                                        Ответы ( один вариант )
+                                    </p>
+                                </div>
                                 {
                                     question?.flags.map((flag) => (
                                     <div className="flex align-middle justify-center">
