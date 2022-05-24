@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getCourses, getCoursesDetails, getTest, getTestResults, getUser,} from "../../redux/action/corsesAction";
 import axios from "axios";
 import {toast} from "react-toastify";
+import { useTimer } from "react-timer-hook";
 
 
 
@@ -23,59 +24,14 @@ const Question = () => {
     const COURSE_ID = window.location.pathname.slice(-1);
     const timerQuiz = elem.timer
     /* ********* TIMER ********** */
+    console.log("🚀 ~ file: question.js ~ line 25 ~ Question ~ timerQuiz", timerQuiz)
+    const expiryTimestamp = new Date();
+    expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + timerQuiz);
+    const {seconds,minutes,hours} = useTimer({expiryTimestamp,autoStart:true, onExpire: () => {
+        setShowScore(true);
+    }});
 
-    const [time, setTime] = useState("00:00:00");
-    function getTimeRemaining(endtime) {
-        const total = Date.parse(endtime) - Date.parse(new Date());
-        const seconds = Math.floor((total / 1000) % 60);
-        const minutes = Math.floor((total / 1000 / 60) % 60);
-        const hours = Math.floor(((total / 1000) * 60 * 60) % 24);
-        const days = Math.floor((total / 1000) * 60 * 60 * 24);
-        return {total, days, seconds, minutes, hours,};}
-
-    function startTimer(deadline) {
-        let { total, days, seconds, minutes, hours } =
-            getTimeRemaining(deadline);
-        if (total >= 0) {
-            setTime(
-                (hours > elem.timer ? hours : "0" + hours) +
-                ":" +
-                (minutes > elem.timer ? minutes : "0" + minutes) +
-                ":" +
-                (seconds > elem.timer ? seconds : "0" + seconds)
-            );
-        } else {
-            clearInterval(intervalRef.current);
-        }
-    }
-
-    function clearTimer(endtime) {
-        setTime(elem.timer);
-        if (intervalRef.current) clearInterval(intervalRef.current);
-        const id = setInterval(() => {
-            startTimer(endtime);
-        }, 1000);
-        intervalRef.current = id;
-    }
-
-    function getDeadlineTime(timerQuiz) {
-        console.log(timerQuiz, "GGGGGG")
-        let deadline = new Date();
-        deadline.setSeconds(deadline.getSeconds() + 50);
-        return deadline;
-    }
-    useEffect(() => {
-        clearTimer(getDeadlineTime());
-        return () => {
-            if (intervalRef.current) clearInterval(intervalRef.current);
-        };
-    }, []);
-
-    function onClickResetBtn() {
-        if (intervalRef.current) clearInterval(intervalRef.current);
-        clearTimer(getDeadlineTime());
-    }
-
+    
 
     useEffect(() => {
         if (elem?.choicetest) {
@@ -163,7 +119,7 @@ const Question = () => {
                                         {currentQuestion + 1} /{" "}
                                         {elem?.choicetest?.length}
                                     </span>
-                                    <p className="font-normal text-sm  smMedia:font-extralight text-sm  mdMedia: text-md font-normal lgMedia: text-lg font-normal xlMedia:font-normal text-sm">{time}:Время</p>
+                                    <p className="font-normal text-sm  smMedia:font-extralight text-sm  mdMedia: text-md font-normal lgMedia: text-lg font-normal xlMedia:font-normal text-sm">Время {hours+':' + minutes + ':' + seconds}</p>
                                 </div>
                                 <div className="my-8">
                                     <p className="text-center text-sm">
