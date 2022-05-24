@@ -11,6 +11,7 @@ import Footer from "./components/footer/Footer";
 import Question from "./components/question/question";
 import Login from "./components/Auth/emailActive/Login";
 import EmailActive from "./components/Auth/emailActive/EmailActive";
+import Contact from "./components/contact/contact";
 
 
 
@@ -18,11 +19,11 @@ function Main() {
     return (
         <>
             <Header/>
-
             <Routes>
                 <Route path={"/"} element={<Home/>}/>
                 <Route path={"/about"} element={<About/>}/>
                 <Route path={"/courses"} element={<Courses/>}/>
+                <Route path={"/contact"} element={<Contact/>}/>
                 <Route path={"/coursesDetails/:id"} element={<CoursesDetails/>}/>
                 <Route path={"/question/:testId"} element={<Question/>}/>
                 <Route path={"/question/questionDetail/:idTest"} element={<Question/>}/>

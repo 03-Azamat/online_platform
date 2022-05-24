@@ -11,7 +11,7 @@ const Accordion = ({el}) => {
     return (
         <div className={`accordion ${active ? 'active' : ''}`} key={el.id}>
             <div className="accordion__title" onClick={() => setActive(!active)}>
-                <p>{el.choicetopic?.topicmain?.name}</p>
+                <p>{el.choicetopic?.topicmain.name}</p>
                 <div className="accordion__icon">
                     <FontAwesomeIcon icon={faAngleDown}/>
                 </div>
@@ -19,23 +19,24 @@ const Accordion = ({el}) => {
             <ol>
                 {
                     isAuth()
-                        ?<li>
-                        {
-                            <NavLink to={`/coursesDetails/coursesLesson/${el.lessonId}`}>
-                                <p className="accordion__content"
-                                   dangerouslySetInnerHTML={{__html: el.choicetopic?.topicmain?.text}}/>
-                            </NavLink>
-                        }
-                    </li>:
+                        ? <li>
+                            {
+                                <div className="accordion__content">
+                                    {
+                                        <NavLink to={`/coursesDetails/coursesLesson/${el.lessonId}`}>
+                                            <p className="accordion__content">{el.choicetopic?.topics?.name_work}</p>
+                                        </NavLink>
+                                    }
+                                </div>
+                            }
+                        </li> :
                         <li>
-                        {
-                                <p className="accordion__content"
-                                   dangerouslySetInnerHTML={{__html: el.choicetopic?.topicmain?.text}}/>
-                        }
-                    </li>
+                            {
+                                <p className="accordion__content">{el.choicetopic?.topics?.name_work}</p>
+                            }
+                        </li>
                 }
             </ol>
-
         </div>
     );
 };

@@ -12,6 +12,7 @@ import {publicApi} from "../Auth/HTTP/publicApi";
 import {toast} from "react-toastify";
 import SignIn from "../Auth/Person/SignIn";
 
+
 const CoursesDetails = () => {
     const {id} = useParams()
     const dispatch = useDispatch()
@@ -24,12 +25,11 @@ const CoursesDetails = () => {
     const [signActive, setSignActive] = useState(false);
     const [activeCour, setActiveCour] = useState(false)
 
-
     useEffect(() => {
         dispatch(getCoursesDetails(id))
         dispatch(getApplication())
         dispatch(getTestResults());
-    }, [])
+    }, [id])
 
 
     function refreshPage() {
@@ -45,7 +45,7 @@ const CoursesDetails = () => {
     const post = () => {
         publicApi.post('ApplicationToAdmin-Create/', {
             activation: false,
-            created_date: "2022-05-11T13:25:54.645Z",
+            created_date: new Date(),
             user: user.id,
             applicationcourse: course.id
         })
@@ -57,17 +57,16 @@ const CoursesDetails = () => {
         })
     }
     useEffect(() => {
+        setPaid(false)
         app.forEach(data => {
                 if (data.applicationcourse === course.id && data.user === user.id && data.activation) {
-                    console.log(data.applicationcourse, "app_id")
                     setPaid(true)
                 }
-
             }
         )
+
         app.forEach(data => {
                 if (data.applicationcourse === course.id && data.user === user.id) {
-                    console.log(data.applicationcourse, "app_id")
                     setActiveCour(true)
                 }
             }
@@ -79,7 +78,6 @@ const CoursesDetails = () => {
             }
         )
     }, [app, course])
-    console.log(signTest , "HHHHHHHH")
     return (
         <section id="cour" key={course?.id}>
             <div className="container">
@@ -118,12 +116,14 @@ const CoursesDetails = () => {
                             <div className="cour--box--head--dates">
                                 <div className="cour--box--head--dates--start">
                                     <p className="cour--box--head--dates--start--title"> Дата начала курса</p>
-                                    <p className="cour--box--head--dates--start--desc">{currentDate}</p>
+                                    <p className="cour--box--head--dates--start--desc">{course.created_date}</p>
+                                    {/*<p className="cour--box--head--dates--start--desc">{currentDate}</p>*/}
                                 </div>
 
                                 <div className="cour--box--head--dates--end">
                                     <p className="cour--box--head--dates--end--title"> Дата завершения курса</p>
-                                    <p className="cour--box--head--dates--end--desc">{in7DaysCalendarDate}</p>
+                                    <p className="cour--box--head--dates--end--desc">{course.published_date}</p>
+                                    {/*<p className="cour--box--head--dates--end--desc">{in7DaysCalendarDate}</p>*/}
                                 </div>
 
                             </div>

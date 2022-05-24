@@ -10,22 +10,27 @@ import UpdatePhone from "../Updated/UpdatePhone";
 import UpdateName from "../Updated/UpdateName";
 import AddPosition from "../Register/AddPosition";
 import {useDispatch, useSelector} from "react-redux";
-import {getApplication, getCourses, getCoursesDetails, getImg, getMyCourse, getPosition, getTestResults, getUser,} from "../../../redux/action/corsesAction";
+import {
+    getActivatedCourseNames,
+    getApplication,
+    getCourses,
+    getCoursesDetails,
+    getImg,
+    getMyCourse,
+    getPosition,
+    getTestResults,
+    getUser,
+} from "../../../redux/action/corsesAction";
 import {toast} from "react-toastify";
 import {useForm} from "react-hook-form";
 import UpdatePhoto from "../Updated/UpdatePhoto";
 import {publicApi} from "../HTTP/publicApi";
-import TestResult from "../../question/testResult";
 
 const Person = () => {
-    const {coursesDetails: courses} = useSelector(s => s)
     const {getApp: act} = useSelector(s => s)
     const {getUser: user} = useSelector(s => s)
     const {courses: cour} = useSelector(s => s)
     const {getTestResult: testRes} = useSelector(s => s)
-    console.log(cour, "^^^^^^^^^^")
-    console.log(act, "{{{")
-
 
     const [personActive, setPersonActive] = useState(false)
     const [index, setIndex] = useState(0);
@@ -42,18 +47,18 @@ const Person = () => {
     const profileImg = useSelector(state => state.getImg);
     const [createImg, setCreateImg] = useState({preview: "", raw: ""});
     const dispatch = useDispatch();
-
+    const {activatedCourses : actApp} = useSelector(s => s)
     function refreshPage() {
             window.location.reload();
     }
 
-    // useEffect(() => {
-    //     act.forEach(data => {
-    //         if (data.applicationcourse === cour.id && data.user === user.id && data.activation) {
-    //             setPersonActive(true)
-    //         }
-    //     })
-    // }, [act, cour])
+    useEffect(() => {
+      act.map(el => {
+          console.log(0,el)
+           return dispatch(getActivatedCourseNames(el.applicationcourse))
+        })
+
+    }, [act, cour])
 
 
     useEffect( async() => {
@@ -92,7 +97,6 @@ const Person = () => {
             })
     };
 
-    console.log("profile", profileImg)
     function deletePosition(){
         if (posOrgan.id) {
             publicApi.delete(`data-delete/${posOrgan.id}/`)
@@ -227,12 +231,11 @@ const Person = () => {
                                         {
                                             posOrgan  ?
                                                 <div
-                                                    className="flex align-top h-full"
-                                                >
-                                                    < FontAwesomeIcon
+                                                    className="flex align-top h-full">
+                                                    <FontAwesomeIcon
                                                         icon={faPen}
                                                         style={{color: "#01487E", cursor: "pointer"}}
-                                                        onClick={() => setPoModal(true)}
+                                                        onClick={() => setOrModal(true)}
                                                     />
                                                 </div>
                                                 : ''

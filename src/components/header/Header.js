@@ -7,17 +7,13 @@ import {NavLink, useNavigate} from "react-router-dom";
 import HookForm from "../Auth/Register/HookForm";
 import SignIn from "../Auth/Person/SignIn";
 import {isAuth} from "../Auth/Register/helpers";
-import {publicApi} from "../Auth/HTTP/publicApi";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
 import {useDispatch, useSelector} from "react-redux";
 import {getImg, getUser} from "../../redux/action/corsesAction";
-import axios from "axios";
-
 
 const Header = () => {
     const [activeForm, setActiveForm] = useState(false);
     const [signActive, setSignActive] = useState(false);
-    const navigate = useNavigate();
     const link = window.location.href.split("/").pop();
     const persons = useSelector(state => state.getUser);
     const profileImg = useSelector(state => state.getImg);
@@ -47,13 +43,13 @@ const Header = () => {
                             {
                                 isAuth() ?
                                     <>{
-                                        link === "person" || link === "person#loaded"  ?
+                                        link === "person" || link === "person#loaded" ?
                                             <button
-                                                className="header--content--auth--btn2 mx-4"
-                                                onClick={() => {
-                                                    navigate("/")
-                                                }}
-                                            >Выйти </button> :
+                                                className="header--content--auth--btn2 mx-4">
+                                                <NavLink to={"/"}>
+                                                    Назад
+                                                </NavLink>
+                                            </button> :
                                             <div className='flex items-center'>
                                                 <NavLink to="/person">
                                                     <div
@@ -61,7 +57,6 @@ const Header = () => {
                                                         style={{
                                                             width: "40px",
                                                             height: "40px",
-                                                            // padding:"5px",
                                                             borderRadius: "50%"
                                                         }}>
                                                         {

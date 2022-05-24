@@ -10,7 +10,7 @@ import {
     GET_USER,
     GET_IMG,
     USER_ID,
-    GET_TEST_RESULTS, GET_APPLICATION_TWO,
+    GET_TEST_RESULTS, GET_APPLICATION_TWO, GET_PROPS, GET_ACTIVATED_COURSES,
 } from "../types/actionTypes";
 
 import {publicApi} from "../../components/Auth/HTTP/publicApi";
@@ -54,12 +54,11 @@ export const getTest = (id) =>{
 
 
 
-export const getTestDetails = (id) =>{
+export const getProps = (id) =>{
     return(dispatch) =>{
-        publicApi.get(`question-detailid/${id}/`)
+        publicApi.get(`props-list/`)
             .then(({data})=> {
-                dispatch({type: GET_COURSES_TEST, payload: data})
-                console.log(data, "accard")
+                dispatch({type: GET_PROPS, payload: data})
             })
     }
 }
@@ -155,7 +154,13 @@ export const getTestResults = () =>{
     }
 }
 
-
+export const getActivatedCourseNames = (id) => {
+    return dispatch => {
+        publicApi.get(`course-detail/${id}`).then(({data}) => {
+            dispatch({type: GET_ACTIVATED_COURSES, payload: data})
+        })
+    }
+}
 
 
 

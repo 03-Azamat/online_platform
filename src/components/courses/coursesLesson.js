@@ -8,11 +8,9 @@ import CoursesVideoLesson from "../coursesVideoLesson/coursesVideoLesson";
 
 
 const CoursesLesson = () => {
-    const lessonId = useParams()
+    const {lessonId} = useParams()
     const {coursesDetails: elem} = useSelector(s => s)
     const dispatch = useDispatch()
-    console.log(elem , "lessonVideos")
-
 
     useEffect(() => {
         dispatch(getCoursesDetails(lessonId))
@@ -38,7 +36,6 @@ const CoursesLesson = () => {
                                 </div>
                             </div>
 
-
                             <div className="lesson--box--middle">
                                 <h1 className="lesson--box--middle__title">Материалы</h1>
                                 <div>
@@ -52,9 +49,7 @@ const CoursesLesson = () => {
                                                     <p dangerouslySetInnerHTML={{__html:el.choicetopic?.topics?.name_work}}/>
                                                 </div>
                                             </div>
-
                                         ))
-
                                     }
                                 </div>
                             </div>

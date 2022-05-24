@@ -6,36 +6,35 @@ import Loader from "../../loader/loader";
 
 const Courses = () => {
     const elem = useSelector(state => state.courses)
-    console.log(elem, "coursesTwo")
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getCourses())
-    },[])
+    }, [])
 
     return (
         elem.length === 0 ? <Loader/> :
-        <section id="courses">
-            <div className='courses--block'>
-                <div className="container">
-                    <h1 className="courses--block--title">Курсы</h1>
-                </div>
-            </div>
-
-            <div className="courses--box">
-
-                <div className="container">
-
-                  <div className="courses--box--block">
-                      {
-                          elem.map(el => (
-                               <CoursesCard key={el.id} el={el} />
-                          ))
-                      }
-                  </div>
+            <section id="courses">
+                <div className='courses--block'>
+                    <div className="container">
+                        <h1 className="courses--block--title">Курсы</h1>
+                    </div>
                 </div>
 
-            </div>
-        </section>
+                <div className="courses--box">
+
+                    <div className="container">
+
+                        <div className="courses--box--block">
+                            {
+                                elem.map(el => (
+                                    <CoursesCard key={el.id} el={el}/>
+                                ))
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            </section>
     );
 };
 export default Courses;

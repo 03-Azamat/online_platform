@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import ReactPlayer from "react-player";
+import {useParams} from "react-router-dom";
 
 
 
 const CoursesVideoLesson = ({el}) => {
     const [video , setVideo] = useState({})
-    console.log(el.choicetopic?.topics?.videos)
+    const {lessonId}  = useParams()
     return (
         <div className='player-wrapper' key={el.lessonId}>
             <div className="react-player-video">
@@ -18,13 +19,26 @@ const CoursesVideoLesson = ({el}) => {
             <div className="react-player-block">
                 {
                     el.choicetopic?.topics?.videos?.map(item=>(
-                        <div className="react-player" onClick={() => setVideo(item)}>
-                                    <ReactPlayer
-                                        url={item.url}
-                                        width="20vw"
-                                        height="15vh"
-                                    />
-
+                        <div className="react-player" onClick={() => setVideo(item)} key={item.id}>
+                                    <button className="cursor-not-allowed">
+                                        <ReactPlayer
+                                            url={item.url}
+                                            width="20vw"
+                                            height="15vh"
+                                        />
+                                    </button>
+                            <p className="text-base ml-3 md: text-sm">{item.title}</p>
+                        </div>
+                    ))
+                }
+                {
+                    el.choicetopic?.topics?.files?.map(item => (
+                        <div className="react-player" onClick={() => setVideo(item)} key={item.id}>
+                            <ReactPlayer
+                                url={item.file}
+                                width="20vw"
+                                height="15vh"
+                            />
                             <p className="text-base ml-3 md: text-sm">{item.title}</p>
                         </div>
                     ))

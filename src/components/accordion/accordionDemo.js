@@ -8,7 +8,6 @@ import axios from "axios";
 const AccordionDemo = ({el}) => {
     const lessonId = useParams()
     const [active,setActive] = useState(false)
-    console.log(lessonId, "lessonId")
 
     return (
         <div className={`accordion ${active ? 'active' : ''}`}>

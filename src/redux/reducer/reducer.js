@@ -11,7 +11,8 @@ import {
     GET_POS,
     GET_TEST_RESULTS,
     GET_APPLICATION,
-    GET_ACTIVE_CASE, GET_APPLICATION_TWO
+    GET_ACTIVE_CASE,
+    GET_APPLICATION_TWO, GET_PROPS, GET_ACTIVATED_COURSES,
 } from "../types/actionTypes";
 const initialState = {
     courses: [],
@@ -29,6 +30,8 @@ const initialState = {
     getAppTwo:[],
     getCase:[],
     getTestResult:[],
+    props:[],
+    activatedCourses: []
 }
 
 export const reducer = (state = initialState, action) => {
@@ -61,6 +64,10 @@ export const reducer = (state = initialState, action) => {
             return {...state, getAppTwo: action.payload}
         case GET_ACTIVE_CASE:
             return {...state, getCase: action.payload}
+        case GET_PROPS:
+            return {...state, props: action.payload}
+        case GET_ACTIVATED_COURSES:
+            return {...state, activatedCourses: [...state.activatedCourses, action.payload]}
         default :
             return state
     }

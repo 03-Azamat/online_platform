@@ -12,6 +12,7 @@ const Question = () => {
     const {testId} = useParams();
     const {id} = useParams();
     const elem = useSelector((state) => state.question);
+    const cour = useSelector((state) => state.coursesDetails);
     const userId = useSelector((state) => state.getUser);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [showScore, setShowScore] = useState(false);
@@ -21,7 +22,6 @@ const Question = () => {
     const dispatch = useDispatch();
     const COURSE_ID = window.location.pathname.slice(-1);
     const timerQuiz = elem.timer
-
     /* ********* TIMER ********** */
 
     const [time, setTime] = useState("00:00:00");
@@ -135,23 +135,24 @@ const Question = () => {
                 className="bg-white text-white w-full h-full my-12 rounded-md text-black pb-20 smExtraMedia: w-11/12  ssmMedia: w-11/12  smMedia:w-10/12  mdMedia:w-8/12  lgMedia:w-7/12  xlMedia:w-6/12  xxlMedia: w-5/12 " key={elem.id}>
 
                 {showScore ? (
-                    <div>
-                        <p>
-                            You scored {score} out {elem?.choicetest.length}
-                        </p>
-                        <div>
-                            {
-                                result() > 50
-                                ? `Тест пройден : ${result()} %`
-                                : `Тест не пройден ${result()} %`}
+                    <div className="flex justify-center align-middle">
+                        <div className="pt-16">
+                            <p className="py-2">
+                                {score}:Правильные ответы / из{" "}
+                                {elem?.choicetest.length} вопрос
+                            </p>
+                            <div>
+                                {
+                                    <p className="test--content--texts__text">{result() >= 50 ? `Тест пройден ${result()} %` : `Тест не пройден${result()} %`} <span
+                                        style={{marginLeft:"20px", padding:"0 12px",background: result() >= 50 ? "green" : "red"}}></span></p>
+                                }
+                            </div>
+                            <NavLink to={`/coursesDetails/${elem.id}`}>
+                                <button onClick={() => onClickTest()}
+                                        className=" bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded w-6/12 my-1 "
+                                >Назад</button>
+                            </NavLink>
                         </div>
-                        <div>
-                            {score}:Правильные ответы / из{" "}
-                            {elem?.choicetest.length} вопрос
-                        </div>
-                        <NavLink to={`/coursesDetails/${elem.id}`}>
-                            <div onClick={() => onClickTest()}>Назад</div>
-                        </NavLink>
                     </div>
                 ) : (
                     <div>
@@ -169,7 +170,7 @@ const Question = () => {
                                         Вопрос : № {currentQuestion + 1}
                                     </p>
                                     <p className="font-normal text-sm text-center font-bold">
-                                        Бизнес аналитик
+                                        {elem.name}
                                     </p>
                                     <p className="text-center text-sm">
                                         {question?.title}

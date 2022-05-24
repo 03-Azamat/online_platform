@@ -26,8 +26,8 @@ const TestResult = () => {
                     {
                         testResText.map(el=>(
                             <div>
-                                <p className="test--content--texts__text">{el.score >= 50 ? "Тест пройден" : "Тест не пройден"} <span
-                                    style={{marginLeft:"20px", padding:"0 12px",background: el.score >= 50 ? "green" : "red"}}></span></p>
+                                <p className="test--content--texts__text">{el.score > 50 ? "Тест пройден" : "Тест не пройден"} <span
+                                    style={{marginLeft:"20px", padding:"0 12px",background: el.score > 50 ? "green" : "red"}}></span></p>
                                 <p className="test--content--texts__text">{el.score} : <span className="test--content--texts__text--decor">%</span></p>
                                 <p className="test--content--texts__text">{el.fail + el.point}: <span className="test--content--texts__text--decor">количество вопросов</span></p>
                                 <p className="test--content--texts__text">{el.point} : <span className="test--content--texts__text--decor">Правилные ответы</span> </p>
