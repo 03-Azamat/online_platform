@@ -11,6 +11,7 @@ import AccordionDemo from "../accordion/accordionDemo";
 import {publicApi} from "../Auth/HTTP/publicApi";
 import {toast} from "react-toastify";
 import SignIn from "../Auth/Person/SignIn";
+import testResult from "../question/testResult";
 
 
 const CoursesDetails = () => {
@@ -24,6 +25,7 @@ const CoursesDetails = () => {
     const [signTest, setSighTest] = useState(true)
     const [signActive, setSignActive] = useState(false);
     const [activeCour, setActiveCour] = useState(false)
+    console.log(resultTest, "TESTRESULT")
 
     useEffect(() => {
         dispatch(getCoursesDetails(id))

@@ -32,7 +32,7 @@ function Main() {
                 <Route path={"/person"} element={<Person/>}/>
                 <Route path={"/home"} element={<Home/>}/>
                 <Route path={"/person"} element={<Person/>}/>
-                <Route path={"account/activate/*"} element={<EmailActive/>}/>
+                <Route path={"/account/activate/*"} element={<EmailActive/>}/>
                 <Route path={"/login"} element={<Login/>}/>
             </Routes>
             <Footer/>
