@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useDispatch, useSelector} from "react-redux";
 import {getTestResults} from "../../redux/action/corsesAction";
 
-const TestResult = () => {
+const TestResult = ({testActive,setTestActive}) => {
     const {getTestResult: testResText} = useSelector(s => s)
     const dispatch = useDispatch()
 
@@ -13,19 +13,20 @@ const TestResult = () => {
     },[])
 
     return (
-        <div>
-            <div>
+        <div className={testActive ? " test active" : "test"}>
+            <div className={testActive ? "test--content active" : "test--content" }>
                 <div className="w-full flex justify-end">
                     <FontAwesomeIcon
+                        onClick={() => setTestActive(false)}
                         className='test--content--btn' icon={faXmark}
                         style={{fontSize:'25px'}}
 
                     />
                 </div>
-                <div className='test--content--texts' >
+                <div className="test--content--texts" >
                     {
                         testResText.map(el=>(
-                            <div>
+                            <div key={el.id}>
                                 <p className="test--content--texts__text">{el.score > 50 ? "Тест пройден" : "Тест не пройден"} <span
                                     style={{marginLeft:"20px", padding:"0 12px",background: el.score > 50 ? "green" : "red"}}></span></p>
                                 <p className="test--content--texts__text">{el.score} : <span className="test--content--texts__text--decor">%</span></p>

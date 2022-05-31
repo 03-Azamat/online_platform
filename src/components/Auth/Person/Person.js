@@ -4,7 +4,7 @@ import {faPen, faUser, faArrowRightLong, faTrash} from "@fortawesome/free-solid-
 import UpdatePosition from "../Updated/UpdatePosition";
 import UpdateOrganization from "../Updated/UpdateOrganization";
 import UpdatePassword from "../Updated/UpdatePassword";
-import {useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {dataAddID, deleteId, imgId, logout} from "../Register/helpers";
 import UpdatePhone from "../Updated/UpdatePhone";
 import UpdateName from "../Updated/UpdateName";
@@ -25,6 +25,7 @@ import {toast} from "react-toastify";
 import {useForm} from "react-hook-form";
 import UpdatePhoto from "../Updated/UpdatePhoto";
 import {publicApi} from "../HTTP/publicApi";
+import TestResult from "../../question/testResult";
 
 const Person = () => {
     const {getApp: act} = useSelector(s => s)
@@ -37,7 +38,7 @@ const Person = () => {
     const [poModal, setPoModal] = useState(false);
     const [orModal, setOrModal] = useState(false);
     const [passwordModal, setPasswordModal] = useState(false);
-    const [testActive,setTestActive] = useState(false)
+    const [testActive, setTestActive] = useState(false)
     const [add, setAdd] = useState(false);
     const [phoneModal, setPhoneModal] = useState(false);
     const [nameModal, setNameAModal] = useState(false);
@@ -47,21 +48,22 @@ const Person = () => {
     const profileImg = useSelector(state => state.getImg);
     const [createImg, setCreateImg] = useState({preview: "", raw: ""});
     const dispatch = useDispatch();
-    const {activatedCourses : actApp} = useSelector(s => s)
+    const {activatedCourses: actApp} = useSelector(s => s)
+
     function refreshPage() {
-            window.location.reload();
+        window.location.reload();
     }
 
     useEffect(() => {
-      act.map(el => {
-          console.log(0,el)
-           return dispatch(getActivatedCourseNames(el.applicationcourse))
+        act.map(el => {
+            console.log(0, el)
+            return dispatch(getActivatedCourseNames(el.applicationcourse))
         })
 
     }, [act, cour])
 
 
-    useEffect( async() => {
+    useEffect(async () => {
         dispatch(getUser())
         dispatch(getApplication())
         dispatch(getCourses())
@@ -69,7 +71,7 @@ const Person = () => {
         dispatch(getPosition())
         dispatch(getImg())
         dispatch(getTestResults())
-        await  dispatch(getPosition())
+        await dispatch(getPosition())
         await dispatch(getImg())
     }, []);
 
@@ -97,7 +99,7 @@ const Person = () => {
             })
     };
 
-    function deletePosition(){
+    function deletePosition() {
         if (posOrgan.id) {
             publicApi.delete(`data-delete/${posOrgan.id}/`)
                 .then(data => {
@@ -111,6 +113,7 @@ const Person = () => {
 
     };
 
+
     return (
         <section id='person'>
             <div className='container'>
@@ -120,7 +123,7 @@ const Person = () => {
                         <div className="w-full flex justify-center align-middle">
                             <div className="btn--user">
                                 {
-                                    profileImg?
+                                    profileImg ?
                                         <img src={profileImg.img} className="btn--user--photo" alt=""/>
                                         :
                                         <FontAwesomeIcon icon={faUser} className='btn--user--icon'/>
@@ -207,9 +210,9 @@ const Person = () => {
                                                 : ""
                                         }
                                         {
-                                            posOrgan  ?
+                                            posOrgan ?
                                                 <div
-                                                className="flex align-top h-full"
+                                                    className="flex align-top h-full"
                                                 >
                                                     < FontAwesomeIcon
                                                         icon={faPen}
@@ -225,11 +228,11 @@ const Person = () => {
                                     <label>Организация</label>
                                     <div className='person--content--center--organization'>
                                         {
-                                            posOrgan ?   <p>{posOrgan.organization}</p>
+                                            posOrgan ? <p>{posOrgan.organization}</p>
                                                 : " "
                                         }
                                         {
-                                            posOrgan  ?
+                                            posOrgan ?
                                                 <div
                                                     className="flex align-top h-full">
                                                     <FontAwesomeIcon
@@ -321,42 +324,49 @@ const Person = () => {
                         <div>
                             <p className='my-courses--p1'>
                                 {
-                                // testRes.map(data =>(
-                                //     <div>
-                                //         {/*{*/}
-                                //         {/*    data.user === act.user ? data.score : data.score*/}
-                                //         {/*}*/}
-                                //     </div>
-                                //     )
-                                // )
-                            }</p>
-                            <div className='my-courses--bank'><p className='my-courses--bank--p'>Банковский аналитик</p>
+                                    // testRes.map(data =>(
+                                    //     <div>
+                                    //         {/*{*/}
+                                    //         {/*    data.user === act.user ? data.score : data.score*/}
+                                    //         {/*}*/}
+                                    //     </div>
+                                    //     )
+                                    // )
+                                }</p>
+                            <div className='my-courses--bank'
+                                 onClick={() => {
+                                     setTestActive(true)
+                                 }}
+                            >
+                                <p className='my-courses--bank--p'>Результат теста</p>
                                 <FontAwesomeIcon className='my-courses--bank--icon' icon={faArrowRightLong}/>
                             </div>
                         </div>
+
+
                         {
-                             <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
-                                    <div className='my-courses--business'>
-                                        <p className='my-courses--business--p'>{ act.activation === true ? "В ожидание активации курсов" : "активирован"}</p>
-                                        <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}
-                                                         onClick={() => {
-                                                             setTestActive(true)}}/>
-                                    </div>
+                            <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
+                                <div className='my-courses--business'>
+                                    <NavLink to={"/person/notActivated"}>
+                                        <p className='my-courses--business--p'>Курсы на рассмотренииу администратора</p>
+                                    </NavLink>
+                                    <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}/>
                                 </div>
+                            </div>
                         }
-                                <div>
-                                    <div className='my-courses--pp'>
-                                        {/*{act.filter(data =>{*/}
-                                        {/*    return data.activation === true ? cour.map(el => (*/}
-                                        {/*        <div>{el.title}</div>*/}
-                                        {/*    )) : "У вас нету активных курсов"*/}
-                                        {/*})}*/}
-                                    </div>
-                                    <div className='my-courses--active'>
-                                        <p className='my-courses--active--pp'>{}</p>
-                                        <FontAwesomeIcon className='my-courses--active--icon' icon={faArrowRightLong}/>
-                                    </div>
+                        {
+                            <div>
+                                <div className='my-courses--pp'>
                                 </div>
+                                <div className='my-courses--active'>
+                                    <NavLink to={"/person/activeCourses"}>
+                                        <p className='my-courses--active--pp'>Активированные курсы</p>
+                                    </NavLink>
+                                    <FontAwesomeIcon className='my-courses--active--icon' icon={faArrowRightLong}/>
+                                </div>
+                            </div>
+                        }
+                        <TestResult setTestActive={setTestActive} testActive={testActive}/>
                     </div>
                 </div>
             </div>

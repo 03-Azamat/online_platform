@@ -23,7 +23,7 @@ const UpdatePhoto = () => {
         window.location.reload(false);
     }
     const deletePhoto =() => {
-        axios.delete(`https://djangorestapp.herokuapp.com/photo-delete/${profileImg.id}`)
+        publicApi.delete(`photo-delete/${profileImg.id}`)
             .then(data => {
                 refreshPage()
                 localStorage.removeItem("imgId")

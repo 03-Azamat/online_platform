@@ -132,7 +132,7 @@ export const getApplication = () =>{
 const coursesId = JSON.parse(localStorage.getItem("coursesId"))
 export const getMyCourse = () =>{
     return(dispatch) => {
-        axios(`https://djangorestapp.herokuapp.com/ApplicationToAdmin-List/`)
+       publicApi(`ApplicationToAdmin-List/`)
             .then(({data})=>{
                 if (data){
                    let result = data.filter(el => el.user === userId)

@@ -10,7 +10,7 @@ const EmailActive = () => {
     console.log(link,"link")
     const [err, setErr] = useState(true)
     useEffect(() => {
-        axios.post("https://djangorestapp.herokuapp.com/users/activation/", {
+        publicApi.post("users/activation/", {
             uid: link[4],
             token: link[5],
             headers: {

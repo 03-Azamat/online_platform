@@ -4,6 +4,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import {toast} from "react-toastify";
+import {publicApi} from "../HTTP/publicApi";
 
 const UpdatePassword = ({passwordModal,setPasswordModal}) => {
     const access = JSON.parse(localStorage.getItem("access"));
@@ -24,7 +25,7 @@ const UpdatePassword = ({passwordModal,setPasswordModal}) => {
     const onSubmit = data => {
 
         console.log(data)
-        axios.post('https://djangorestapp.herokuapp.com/users/set_password/',data,{
+        publicApi.post('users/set_password/',data,{
             headers: {
                 "Authorization": `Bearer ${access}`
             }

@@ -19,7 +19,7 @@ const UpdateOrganization = ({orModal,setOrModal}) => {
     const update = (e) => {
         e.preventDefault()
           if (posOrgan){
-              axios.put(`https://djangorestapp.herokuapp.com/data-update/${posOrgan.id}/`, {
+              publicApi.put(`data-update/${posOrgan.id}/`, {
                   id: persons.id,
                   position: posOrgan.position,
                   organization:comment,

@@ -1,6 +1,35 @@
 @media (max-width: 1463px) {
  #home{
 
+   .home--block{
+     display: flex;
+     flex-wrap: wrap;
+     &--box{
+
+       &--title{
+         color: white;
+         padding-bottom: 20px;
+         font-size: 42px;
+         text-align: center;
+         padding-top: 1px;
+       }
+
+       &--desc{
+         width: 50%;
+         text-align: center;
+         font-family: 'Poppins', sans-serif;
+         font-style: normal;
+         font-weight: 500;
+         font-size: 18px;
+         line-height: 132%;
+         padding-bottom: 34px;
+         /* or 32px */
+
+         color: #FFFFFF;
+       }
+     }
+   }
+
    .home--box{
 
      &--block{
@@ -25,7 +54,7 @@
         padding-bottom: 20px;
         font-size: 42px;
         text-align: center;
-        padding-top: 200px;
+        padding-top: 1px;
       }
 
       &--desc{
@@ -61,7 +90,7 @@
           padding-bottom: 20px;
           font-size: 42px;
           text-align: center;
-          padding-top: 200px;
+          padding-top: 1px;
         }
 
         &--desc{
@@ -105,7 +134,7 @@
           padding-bottom: 20px;
           font-size: 38px;
           text-align: center;
-          padding-top: 200px;
+          padding-top: 1px;
         }
 
         &--desc{
@@ -138,7 +167,7 @@
           padding-bottom: 20px;
           font-size: 36px;
           text-align: center;
-          padding-top: 200px;
+          padding-top: 1px;
         }
 
         &--desc{
@@ -157,7 +186,7 @@
 
         &--btn{
           font-size: 20px;
-          padding: 10px 60px;
+          padding: 7px 50px;
         }
       }
     }
@@ -177,7 +206,7 @@
           padding-bottom: 20px;
           font-size: 34px;
           text-align: center;
-          padding-top: 200px;
+          padding-top: 1px;
         }
 
         &--desc{
@@ -196,7 +225,7 @@
 
         &--btn{
           font-size: 20px;
-          padding: 10px 60px;
+          padding: 5px 45px;
         }
       }
     }
@@ -215,7 +244,7 @@
           padding-bottom: 20px;
           font-size: 30px;
           text-align: center;
-          padding-top: 200px;
+          padding-top: 1px;
         }
 
         &--desc{
@@ -234,7 +263,7 @@
 
         &--btn{
           font-size: 20px;
-          padding: 10px 60px;
+          padding: 5px 40px;
         }
       }
     }
@@ -253,7 +282,7 @@
           font-weight: 600;
           font-size: 24px;
           line-height: 132%;
-          padding-top: 200px;
+          padding-top: 1px;
 
           text-align: center;
 
@@ -278,7 +307,7 @@
 
         &--btn{
           font-size: 20px;
-          padding: 10px 60px;
+          padding: 5px 40px;
         }
       }
     }

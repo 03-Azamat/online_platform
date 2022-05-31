@@ -12,6 +12,8 @@ import Question from "./components/question/question";
 import Login from "./components/Auth/emailActive/Login";
 import EmailActive from "./components/Auth/emailActive/EmailActive";
 import Contact from "./components/contact/contact";
+import ActiveCourse from "./components/courses/coursesAdmin/activeCourse";
+import NotActivated from "./components/courses/coursesAdmin/NotActivated";
 
 
 
@@ -32,6 +34,8 @@ function Main() {
                 <Route path={"/person"} element={<Person/>}/>
                 <Route path={"/home"} element={<Home/>}/>
                 <Route path={"/person"} element={<Person/>}/>
+                <Route path={"/person/activeCourses"} element={<ActiveCourse/>}/>
+                <Route path={"/person/notActivated"} element={<NotActivated/>}/>
                 <Route path={"/account/activate/*"} element={<EmailActive/>}/>
                 <Route path={"/login"} element={<Login/>}/>
             </Routes>

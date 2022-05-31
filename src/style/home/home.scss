@@ -16,6 +16,7 @@
         font-size: 48px;
         text-align: center;
         padding-top: 200px;
+
       }
 
       &--desc {
@@ -57,16 +58,16 @@
 
 
   .home--box {
+
     padding-top: 55px;
     padding-bottom: 100px;
 
     &--block {
+
       display: flex;
       flex-wrap: wrap;
 
     }
 
   }
-
-
 }

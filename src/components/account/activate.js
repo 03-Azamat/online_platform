@@ -8,7 +8,7 @@ const Activate = () => {
     const {token} = useParams()
     const navigate = useNavigate()
     const getToken = async () => {
-        const getItem = axios.get("https://djangorestapp.herokuapp.com/jwt/create")
+        const getItem = axios.get("https://course-prod.herokuapp.com/jwt/create")
     }
 
     return (

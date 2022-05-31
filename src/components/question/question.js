@@ -186,8 +186,7 @@ const Question = () => {
                                                                 flag?.boo
                                                             )
                                                         }
-                                                        className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded w-10/12 my-1"
-                                                    >
+                                                        className="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded w-10/12 my-1">
                                                         {flag.text}
                                                     </button>
                                                 </div>
@@ -197,8 +196,6 @@ const Question = () => {
                                 </div>
                             )}
                         </div>
-
-
                 }
             </div>
         </section>
