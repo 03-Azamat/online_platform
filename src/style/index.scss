@@ -7,17 +7,20 @@
 @import "Auth/Register/registerCode";
 @import "Auth/Register/Activate";
 @import "Auth/Register/SignIn";
-@import "Auth/Person/Person";
-@import "Auth/Person/hookform";
 @import "Auth/Updated/UpdatePositon";
 @import "Auth/Updated/UpdateOrganization";
 @import "Auth/Updated/UpdatePassword";
 @import "Auth/Updated/UpdatePhone";
 @import "Auth/Updated/UpdateEmail";
-@import "Auth/Person/Login";
 @import "Auth/Updated/UpdateName";
 @import "Auth/Register/AddPosition";
 
+//////////////////////PERSON//////////////////////////
+@import "./../style/courses/coursesAdmin/NotActived";
+@import "./../style/courses/coursesAdmin/acivedCourse";
+@import "Auth/Person/Login";
+@import "Auth/Person/Person";
+@import "Auth/Person/hookform";
 
 //////////////////////MAIN COURSES//////////////////////
 @import "./../style/courses/courses";

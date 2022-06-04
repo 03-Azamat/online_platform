@@ -7,20 +7,20 @@ import axios from "axios";
 
 const AccordionDemo = ({el}) => {
     const lessonId = useParams()
-    const [active,setActive] = useState(false)
+    const [active, setActive] = useState(false)
 
     return (
         <div className={`accordion ${active ? 'active' : ''}`}>
-            <div className="accordion__title" onClick={()=> setActive(!active)} >
+            <div className="accordion__title" onClick={() => setActive(!active)}>
                 <p>{el.choicetopic?.topicmain?.name}</p>
                 <div className="accordion__icon">
-                    <FontAwesomeIcon icon={faAngleDown} />
+                    <FontAwesomeIcon icon={faAngleDown}/>
                 </div>
             </div>
 
             <ol>
                 <li>
-                    <p className="accordion__content" dangerouslySetInnerHTML={{__html:el.choicetopic?.topicmain?.text}} />
+                    <p className="accordion__content">{el.choicetopic?.topics?.name_work}</p>
                 </li>
             </ol>
 

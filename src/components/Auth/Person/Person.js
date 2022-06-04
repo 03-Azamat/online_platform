@@ -124,7 +124,7 @@ const Person = () => {
                             <div className="btn--user">
                                 {
                                     profileImg ?
-                                        <img src={profileImg.img} className="btn--user--photo" alt=""/>
+                                        <img src={`https://res.cloudinary.com/dbqgk5dfn/${profileImg.img}`} className="btn--user--photo" alt=""/>
                                         :
                                         <FontAwesomeIcon icon={faUser} className='btn--user--icon'/>
                                 }
@@ -333,12 +333,10 @@ const Person = () => {
                                     //     )
                                     // )
                                 }</p>
-                            <div className='my-courses--bank'
-                                 onClick={() => {
-                                     setTestActive(true)
-                                 }}
-                            >
-                                <p className='my-courses--bank--p'>Результат теста</p>
+                            <div className='my-courses--bank'>
+                                <NavLink to={"/person/question-result"}>
+                                    <p className='my-courses--bank--p'>Результат теста</p>
+                                </NavLink>
                                 <FontAwesomeIcon className='my-courses--bank--icon' icon={faArrowRightLong}/>
                             </div>
                         </div>
@@ -366,7 +364,6 @@ const Person = () => {
                                 </div>
                             </div>
                         }
-                        <TestResult setTestActive={setTestActive} testActive={testActive}/>
                     </div>
                 </div>
             </div>

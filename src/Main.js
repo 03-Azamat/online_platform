@@ -14,6 +14,7 @@ import EmailActive from "./components/Auth/emailActive/EmailActive";
 import Contact from "./components/contact/contact";
 import ActiveCourse from "./components/courses/coursesAdmin/activeCourse";
 import NotActivated from "./components/courses/coursesAdmin/NotActivated";
+import TestResult from "./components/question/testResult";
 
 
 
@@ -29,6 +30,7 @@ function Main() {
                 <Route path={"/coursesDetails/:id"} element={<CoursesDetails/>}/>
                 <Route path={"/question/:testId"} element={<Question/>}/>
                 <Route path={"/question/questionDetail/:idTest"} element={<Question/>}/>
+                <Route path={"/person/question-result"} element={<TestResult/>}/>
                 <Route path={"/coursesDetails/coursesLesson/:lessonId"} element={<CoursesLesson/>}/>
                 <Route path={"/about"} element={<About/>}/>
                 <Route path={"/person"} element={<Person/>}/>

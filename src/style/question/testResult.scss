@@ -1,31 +1,9 @@
 .test{
-  background: rgba(0,0,0,0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 90vh;
   flex-wrap: wrap;
-  //background: rgba(0,0,0,0.5);
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  transition: 0.5s;
-  opacity:0 ;
-  pointer-events: none;
-
-  &.active{
-    flex-wrap: wrap;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    opacity: 1;
-    pointer-events: all;
-    transition: 0.5s;
-    height: 100vh;
-
-  }
 
   &--content{
 

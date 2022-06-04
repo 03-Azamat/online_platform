@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {toast} from "react-toastify";
 import {NavLink, } from "react-router-dom";
 import {publicApi} from "../HTTP/publicApi";
-import axios from "axios";
 
 const EmailActive = () => {
     const url = window.location.href;

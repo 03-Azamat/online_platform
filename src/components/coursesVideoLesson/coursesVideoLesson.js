@@ -1,25 +1,35 @@
 import React, {useState} from 'react';
 import ReactPlayer from "react-player";
-import {useParams} from "react-router-dom";
-
-
 
 const CoursesVideoLesson = ({el}) => {
     const [video , setVideo] = useState({})
-    const {lessonId}  = useParams()
+    const [file , setFile] = useState({})
+    const [clickFile , setClickFile] = useState(null)
     return (
         <div className='player-wrapper' key={el.lessonId}>
             <div className="react-player-video">
-                <h1 className="pb-5 font-medium text-xl sm:text-sm font-light md: text-md font-base lg: text-base font-medium">{video.title}</h1>
-                <ReactPlayer
-                    width="100%"
-                    url={video.url}
-                />
+                <h1 className="pb-5 font-medium text-xl sm:text-sm font-light md: text-md font-base lg: text-base font-medium"> { clickFile ? file.title : video.title }</h1>
+                {
+                    clickFile ? <div className="bg-blue-700 h-96 w-full">
+                            <iframe
+                                width="100%"
+                                height="100%"
+                                src={file.file}
+                            />
+                        </div> :
+                        clickFile === false ? <ReactPlayer
+                            width="100%"
+                            url={video.url}
+                        /> : "Нажмите на материалы"
+                }
             </div>
             <div className="react-player-block">
                 {
                     el.choicetopic?.topics?.videos?.map(item=>(
-                        <div className="react-player" onClick={() => setVideo(item)} key={item.id}>
+                        <div className="react-player" onClick={() => {
+                            setClickFile(false)
+                            setVideo(item)
+                        }} key={item.id}>
                                     <button className="cursor-not-allowed">
                                         <ReactPlayer
                                             url={item.url}
@@ -33,9 +43,12 @@ const CoursesVideoLesson = ({el}) => {
                 }
                 {
                     el.choicetopic?.topics?.files?.map(item => (
-                        <div className="react-player" onClick={() => setVideo(item)} key={item.id}>
-                            <ReactPlayer
-                                url={item.file}
+                        <div className="react-player" onClick={() => {
+                            setFile(item)
+                            setClickFile(true)
+                        }} key={item.id}>
+                            <iframe
+                                src={item.file}
                                 width="20vw"
                                 height="15vh"
                             />

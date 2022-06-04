@@ -11,6 +11,7 @@ import {faUser} from "@fortawesome/free-solid-svg-icons";
 import {useDispatch, useSelector} from "react-redux";
 import {getImg, getUser} from "../../redux/action/corsesAction";
 
+
 const Header = () => {
     const [activeForm, setActiveForm] = useState(false);
     const [signActive, setSignActive] = useState(false);
@@ -18,6 +19,8 @@ const Header = () => {
     const persons = useSelector(state => state.getUser);
     const profileImg = useSelector(state => state.getImg);
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+
     useEffect(() => {
         dispatch(getUser())
         dispatch(getImg())
@@ -45,10 +48,9 @@ const Header = () => {
                                     <>{
                                         link === "person" || link === "person#loaded" ?
                                             <button
+                                                onClick={() => navigate("/")}
                                                 className="header--content--auth--btn2 mx-4">
-                                                <NavLink to={"/"}>
-                                                    Назад
-                                                </NavLink>
+                                                Назад
                                             </button> :
                                             <div className='flex items-center'>
                                                 <NavLink to="/person">
@@ -61,7 +63,7 @@ const Header = () => {
                                                         }}>
                                                         {
                                                             profileImg ?
-                                                                <img src={profileImg.img}
+                                                                <img src={`https://res.cloudinary.com/dbqgk5dfn/${profileImg.img}`}
                                                                      className=''
                                                                      style={{
                                                                          width: "40px",
@@ -119,8 +121,6 @@ const Header = () => {
             <HookForm active={activeForm} setActive={setActiveForm}/>
             <SignIn signActive={signActive} setSignActive={setSignActive}/>
         </header>
-
     );
 };
-
 export default Header;

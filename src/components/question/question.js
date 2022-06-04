@@ -4,13 +4,12 @@ import {NavLink, useParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {getCourses, getCoursesDetails, getTest, getTestResults, getUser,} from "../../redux/action/corsesAction";
 import {toast} from "react-toastify";
-import {useTimer} from "react-timer-hook";
 import TimerQuiz from "./timerQuiz";
 
 
 const Question = () => {
     const {testId} = useParams();
-    const elem = useSelector((state) => state.question);
+    const {question : elem} = useSelector(s => s)
     const userId = useSelector((state) => state.getUser);
     const course = useSelector(state => state.coursesDetails)
     const {getTestResult: resultTest} = useSelector(s => s);
@@ -21,7 +20,13 @@ const Question = () => {
     const [score, setScore] = useState(0);
     const dispatch = useDispatch();
     const timerQuiz = elem.timer;
-    console.log(elem, "test")
+    console.log(question , "question")
+    console.log(testId , "testId")
+
+
+
+
+
 
     /* ********* TIMER ********** */
     const time = new Date();
@@ -81,7 +86,6 @@ const Question = () => {
                 toast.error("ERROR");
             });
     };
-
 
     useEffect(() => {
         dispatch(getTestResults())
@@ -155,14 +159,14 @@ const Question = () => {
                                         {currentQuestion + 1} /{" "}
                                         {elem?.choicetest?.length}
                                     </span>
-                                                <p className="font-normal text-sm  smMedia:font-extralight text-sm  mdMedia: text-md font-normal lgMedia: text-lg font-normal xlMedia:font-normal text-sm">
+                                                <div className="font-normal text-sm  smMedia:font-extralight text-sm  mdMedia: text-md font-normal lgMedia: text-lg font-normal xlMedia:font-normal text-sm">
                                                     {
                                                         <div>
                                                             <TimerQuiz expiryTimestamp={time}
                                                                        setShowScore={setShowScore}/>
                                                         </div>
                                                     }
-                                                </p>
+                                                </div>
                                             </div>
                                             <div className="my-8">
                                                 <p className="text-center text-sm">

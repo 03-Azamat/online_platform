@@ -11,7 +11,6 @@ import AccordionDemo from "../accordion/accordionDemo";
 import {publicApi} from "../Auth/HTTP/publicApi";
 import {toast} from "react-toastify";
 import SignIn from "../Auth/Person/SignIn";
-import testResult from "../question/testResult";
 
 
 const CoursesDetails = () => {
@@ -25,7 +24,8 @@ const CoursesDetails = () => {
     const [signTest, setSighTest] = useState(true)
     const [signActive, setSignActive] = useState(false);
     const [activeCour, setActiveCour] = useState(false)
-    console.log(resultTest, "TESTRESULT")
+    const [dataCourse, setDataCourse] = useState(false)
+
 
     useEffect(() => {
         dispatch(getCoursesDetails(id))
@@ -38,11 +38,6 @@ const CoursesDetails = () => {
         window.location.reload();
     }
 
-    //////date-fns//////
-    const date = new Date()
-    const calendarDateFormat = 'dd/MM/yy'
-    const currentDate = format(date, calendarDateFormat)
-    const in7DaysCalendarDate = format(add(date, {days: 7}), calendarDateFormat)
 
     const post = () => {
         publicApi.post('ApplicationToAdmin-Create/', {
@@ -80,7 +75,9 @@ const CoursesDetails = () => {
             }
         )
     }, [app, course])
+
     return (
+
         <section id="cour" key={course?.id}>
             <div className="container">
                 {course ? (
@@ -119,13 +116,11 @@ const CoursesDetails = () => {
                                 <div className="cour--box--head--dates--start">
                                     <p className="cour--box--head--dates--start--title"> Дата начала курса</p>
                                     <p className="cour--box--head--dates--start--desc">{course.created_date}</p>
-                                    {/*<p className="cour--box--head--dates--start--desc">{currentDate}</p>*/}
                                 </div>
 
                                 <div className="cour--box--head--dates--end">
                                     <p className="cour--box--head--dates--end--title"> Дата завершения курса</p>
                                     <p className="cour--box--head--dates--end--desc">{course.published_date}</p>
-                                    {/*<p className="cour--box--head--dates--end--desc">{in7DaysCalendarDate}</p>*/}
                                 </div>
 
                             </div>

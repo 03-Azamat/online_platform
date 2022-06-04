@@ -1,11 +1,10 @@
 import React from 'react';
-import {useNavigate} from "react-router-dom"
 import * as Yup from "yup";
+import {useNavigate} from "react-router-dom"
 import {yupResolver} from "@hookform/resolvers/yup";
 import {useForm} from "react-hook-form";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {authenticate, isAuth} from "../Register/helpers";
