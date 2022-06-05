@@ -1,4 +1,4 @@
-.add{
+.pas{
   flex-wrap: wrap;
   background: rgba(0,0,0,0.5);
   position: fixed;
@@ -39,7 +39,7 @@
       transform: scale(1);
     }
       &--title{
-        color: #01487E;
+        color: red;
         font-size: 18px;
         display: flex;
       }

@@ -6,13 +6,11 @@
   margin-bottom: 15px;
   box-shadow: 5px 5px 25px rgba(100, 100, 100, 0.15);
 
-
   &__title{
     padding: 1rem 0.5rem;
     font-weight: normal;
     font-size: 16px;
     line-height: 24px;
-    /* identical to box height */
     cursor: pointer;
 
     color: #000000;
@@ -37,6 +35,4 @@
   &.active &__content{
     max-height: 20em;
   }
-
-
 }

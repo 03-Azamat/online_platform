@@ -13,6 +13,7 @@ import {
     GET_APPLICATION,
     GET_ACTIVE_CASE,
     GET_APPLICATION_TWO, GET_PROPS,
+    GET_IMG_PAS,
 } from "../types/actionTypes";
 const initialState = {
     courses: [],
@@ -31,7 +32,8 @@ const initialState = {
     getCase:[],
     getTestResult:[],
     props:[],
-    testResult: []
+    testResult: [],
+    getImgPas:{},
 }
 
 export const reducer = (state = initialState, action) => {
@@ -56,6 +58,8 @@ export const reducer = (state = initialState, action) => {
             return {...state,getPos: action.payload}
         case GET_IMG:
             return {...state,getImg: action.payload}
+        case GET_IMG_PAS:
+            return {...state,getImgPas: action.payload}
         case GET_TEST_RESULTS:
             return {...state,getTestResult: action.payload}
         case GET_APPLICATION:
