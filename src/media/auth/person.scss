@@ -1070,6 +1070,17 @@
     padding: 100px 0 0 0;
     width: 100%;
 
+    .person__teg{
+      font-family: Poppins,sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 30px;
+      color: #01487E;
+      line-height: 45px;
+      text-align: center;
+      margin-right: 26%;
+    }
+
     .contentBtn{
       padding-top: 100px;
       display: flex;
@@ -1077,7 +1088,7 @@
       align-items: center;
 
       .btn{
-        margin-top: -150px;
+        margin-top: -100px;
         flex-wrap: wrap;
         background: #FFFFFF;
         border-radius: 5px;
@@ -1377,6 +1388,14 @@
     padding: 100px 0 0 0;
     width: 100%;
 
+    .person__teg{
+      font-weight: 500;
+      font-size: 25px;
+      text-align: center;
+      width: 100%;
+      margin-left: 1%;
+    }
+
     .contentBtn{
 
       display: flex;
@@ -1627,6 +1646,16 @@
     padding: 100px 0 0 0;
     width: 100%;
 
+
+    .person__teg{
+      margin-top: -64px;
+      font-weight: 500;
+      font-size: 25px;
+      text-align: center;
+      width: 100%;
+      margin-left: 1%;
+    }
+
     .contentBtn{
 
       display: flex;
@@ -1634,6 +1663,65 @@
       align-items: center;
 
 
+      .btn{
+        margin-top: -84px;
+        flex-wrap: wrap;
+        background: #FFFFFF;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        width: 300px;
+        height: 100%;
+        //display: none;
+
+        &.active{
+          background: grey;
+          color: #FFFFFF;
+          display: block;
+        }
+        & h2 {
+          display: flex;
+          justify-content: center;
+          font-size: 18px;
+        }
+        &--user {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 300px;
+          border-radius: 50%;
+          margin: 8px 0 9px 0;
+          color: #FFFFFF;
+        }
+
+
+        &--btns{
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          &--tabRoute{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 220px;
+            height: 42px;
+            color:white;
+            font-size: 16px;
+            background: #01487E;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &.active{
+              background: #6A6A6A;
+              color: #FFFFFF;
+            }
+          }
+
+
+        }
+
+      }
 
       .person{
         margin-bottom: 50px;
@@ -1877,6 +1965,15 @@
     padding: 100px 0 0 0;
     width: 100%;
 
+    .person__teg{
+      margin-top: -64px;
+      font-weight: 500;
+      font-size: 25px;
+      text-align: center;
+      width: 100%;
+      margin-left: 1%;
+    }
+
 
     .contentBtn{
 
@@ -1885,7 +1982,7 @@
       align-items: center;
 
       .btn{
-        margin-top: -150px;
+        margin-top: -84px;
         flex-wrap: wrap;
         background: #FFFFFF;
         border-radius: 5px;
@@ -2187,6 +2284,14 @@
     padding: 100px 0 0 0;
     width: 100%;
 
+    .person__teg{
+      margin-top: -64px;
+      font-weight: 500;
+      font-size: 25px;
+      text-align: center;
+      width: 100%;
+      margin-left: 1%;
+    }
 
     .contentBtn{
 
@@ -2195,14 +2300,14 @@
       align-items: center;
 
       .btn{
-        margin-top: -150px;
+        margin-top: -84px;
         flex-wrap: wrap;
         background: #FFFFFF;
         border-radius: 5px;
         display: flex;
         flex-direction: column;
         justify-content: start;
-        width: 95%;
+        width: 300px;
         height: 100%;
         //display: none;
 
@@ -2220,7 +2325,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 100%;
+          width: 300px;
           border-radius: 50%;
           margin: 8px 0 9px 0;
           color: #FFFFFF;
@@ -2230,159 +2335,12 @@
         &--btns{
           display: flex;
           flex-direction: column;
-          align-items: center;
-          width: 100%;
           height: 100%;
-          & input[type="file"] {
-            opacity: 0;
-            margin: 0 0 0 0;
-          }
-
-          &--div {
-            width: 220px;
-            height: 42px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 20px 0 0 0;
-
-            & p {
-              position: absolute;
-              width: 123px;
-              height: 24px;
-              font-weight: 500;
-              font-size: 16px;
-            }
-
-            &--iconTrash {
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              width: 42px;
-              height: 42px;
-              padding: 8px;
-              color: #01487E;
-              cursor: pointer;
-              border: 2px solid #01487E;
-              box-sizing: border-box;
-              border-radius: 10px;
-
-              &:hover {
-                transition: 0.2s;
-                background: darkred;
-                border: 2px solid darkred;
-                border-radius: 10px;
-                color: white;
-              }
-            }
-
-            &--innn {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              width: 170px;
-              height: 42px;
-              color: white;
-              font-size: 16px;
-              background: #01487E;
-              border-radius: 5px;
-              cursor: pointer;
-            }
-
-            &--label {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              width: 170px;
-              height: 42px;
-              color: white;
-              font-size: 16px;
-              background: #01487E;
-              border-radius: 5px;
-              cursor: pointer;
-            }
-          }
-
-          &--btnSubmit {
-            margin: 20px 0 0 0;
-            width: 220px;
-            height: 42px;
-            color: #FFFFFF;
-            font-size: 16px;
-            border-radius: 5px;
-            background: #01487E;
-          }
-
-          &--innn2 {
-            & span {
-              position: absolute;
-              width: 220px;
-              height: 42px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              color: #FFFFFF;
-            }
-
-
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 90%;
-            height: 42px;
-            margin: 20px 0 0 0;
-            color: white;
-            font-size: 16px;
-            background: #01487E;
-            border-radius: 5px;
-
-          }
-
-          &--innn3 {
-
-            & span {
-              position: absolute;
-              width: 220px;
-              height: 42px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              color: #FFFFFF;
-            }
-
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 220px;
-            height: 42px;
-            margin: 20px 0 0 0;
-            color: white;
-            font-size: 16px;
-            background: #01487E;
-            border-radius: 5px;
-          }
-
-          &--tabRoute1 {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 220px;
-            height: 42px;
-            margin: 20px 0 0 0;
-            color: red;
-            font-size: 16px;
-            background: #01487E;
-            border-radius: 5px;
-            cursor: pointer;
-          }
-
           &--tabRoute{
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 80%;
+            width: 220px;
             height: 42px;
             color:white;
             font-size: 16px;
@@ -2652,7 +2610,7 @@
       align-items: center;
 
       .btn{
-        margin-top: -150px;
+        margin-top: -84px;
         flex-wrap: wrap;
         background: #FFFFFF;
         border-radius: 5px;

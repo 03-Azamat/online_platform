@@ -1,5 +1,3 @@
-import axios from "axios";
-
 import {
     GET_ABOUT,
     GET_APPLICATION,
@@ -10,7 +8,7 @@ import {
     GET_USER,
     GET_IMG,
     USER_ID,
-    GET_TEST_RESULTS, GET_APPLICATION_TWO, GET_PROPS, GET_ACTIVATED_COURSES,
+    GET_TEST_RESULTS, GET_APPLICATION_TWO, GET_PROPS,
 } from "../types/actionTypes";
 
 import {publicApi} from "../../components/Auth/HTTP/publicApi";
@@ -129,8 +127,10 @@ export const getApplication = () => {
     return (dispatch) => {
         publicApi.get(`ApplicationToAdmin-List/`)
             .then(({data}) => {
-                console.log(data, "APPLICT")
-                dispatch({type: GET_APPLICATION, payload: data})
+                if (data){
+                    let app = data.filter(el => el.user === userId)
+                    return dispatch({type: GET_APPLICATION, payload: app})
+                }
             })
     }
 }
@@ -154,19 +154,14 @@ export const getTestResults = () => {
     return (dispatch) => {
         publicApi.get(`scoreboard-Create-list/`)
             .then(({data}) => {
-                dispatch({type: GET_TEST_RESULTS, payload: data})
-
+                if (data){
+                    const testRest = data.filter(el => el.user === userId)
+                    dispatch({type: GET_TEST_RESULTS, payload: testRest})
+                }
             })
     }
 }
 
-export const getActivatedCourseNames = (id) => {
-    return dispatch => {
-        publicApi.get(`course-detail/${id}`).then(({data}) => {
-            dispatch({type: GET_ACTIVATED_COURSES, payload: data})
-        })
-    }
-}
 
 
 

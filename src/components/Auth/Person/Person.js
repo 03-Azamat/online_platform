@@ -5,18 +5,16 @@ import UpdatePosition from "../Updated/UpdatePosition";
 import UpdateOrganization from "../Updated/UpdateOrganization";
 import UpdatePassword from "../Updated/UpdatePassword";
 import {NavLink, useNavigate} from "react-router-dom";
-import {dataAddID, deleteId, imgId, logout} from "../Register/helpers";
+import {deleteId, imgId, logout} from "../Register/helpers";
 import UpdatePhone from "../Updated/UpdatePhone";
 import UpdateName from "../Updated/UpdateName";
 import AddPosition from "../Register/AddPosition";
 import {useDispatch, useSelector} from "react-redux";
 import {
-    getActivatedCourseNames,
     getApplication,
     getCourses,
     getCoursesDetails,
     getImg,
-    getMyCourse,
     getPosition,
     getTestResults,
     getUser,
@@ -25,13 +23,8 @@ import {toast} from "react-toastify";
 import {useForm} from "react-hook-form";
 import UpdatePhoto from "../Updated/UpdatePhoto";
 import {publicApi} from "../HTTP/publicApi";
-import TestResult from "../../question/testResult";
 
 const Person = () => {
-    const {getApp: act} = useSelector(s => s)
-    const {getUser: user} = useSelector(s => s)
-    const {courses: cour} = useSelector(s => s)
-    const {getTestResult: testRes} = useSelector(s => s)
 
     const [personActive, setPersonActive] = useState(false)
     const [index, setIndex] = useState(0);
@@ -49,18 +42,11 @@ const Person = () => {
     const [createImg, setCreateImg] = useState({preview: "", raw: ""});
     const dispatch = useDispatch();
     const {activatedCourses: actApp} = useSelector(s => s)
+    console.log(actApp , "llll")
 
     function refreshPage() {
         window.location.reload();
     }
-
-    useEffect(() => {
-        act.map(el => {
-            console.log(0, el)
-            return dispatch(getActivatedCourseNames(el.applicationcourse))
-        })
-
-    }, [act, cour])
 
 
     useEffect(async () => {
@@ -117,7 +103,7 @@ const Person = () => {
     return (
         <section id='person'>
             <div className='container'>
-                <h1>Личный кабинет</h1>
+                        <h1 className="person__teg">Личный кабинет</h1>
                 <div className="contentBtn">
                     <div className='btn'>
                         <div className="w-full flex justify-center align-middle">
@@ -177,7 +163,7 @@ const Person = () => {
                         </div>
                     </div>
                     <div className="person" hidden={index !== 0}>
-                        <h3 className="text-center">Персональные данные</h3>
+                        <h3 className="text-center mr-9">Персональные данные</h3>
                         <div className='person--content'>
                             <div className='person--content--start'>
                                 <div className="flex flex-col">
@@ -322,21 +308,12 @@ const Person = () => {
                     <div className='my-courses' hidden={index !== 1}>
                         <h3>Мои курсы</h3>
                         <div>
-                            <p className='my-courses--p1'>
-                                {
-                                    // testRes.map(data =>(
-                                    //     <div>
-                                    //         {/*{*/}
-                                    //         {/*    data.user === act.user ? data.score : data.score*/}
-                                    //         {/*}*/}
-                                    //     </div>
-                                    //     )
-                                    // )
-                                }</p>
-                            <div className='my-courses--bank'>
-                                <NavLink to={"/person/question-result"}>
+                            <div className='my-courses--bank'
+                            onClick={()=> {
+                                navigate(`/person/question-result`)
+                                refreshPage()
+                            }}>
                                     <p className='my-courses--bank--p'>Результат теста</p>
-                                </NavLink>
                                 <FontAwesomeIcon className='my-courses--bank--icon' icon={faArrowRightLong}/>
                             </div>
                         </div>
@@ -344,10 +321,13 @@ const Person = () => {
 
                         {
                             <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
-                                <div className='my-courses--business'>
-                                    <NavLink to={"/person/notActivated"}>
+                                <div className='my-courses--business'
+                                onClick={()=> {
+                                navigate(`/person/notActivated`)
+                                    refreshPage()
+                                }}
+                                >
                                         <p className='my-courses--business--p'>Курсы на рассмотренииу администратора</p>
-                                    </NavLink>
                                     <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}/>
                                 </div>
                             </div>
@@ -356,10 +336,12 @@ const Person = () => {
                             <div>
                                 <div className='my-courses--pp'>
                                 </div>
-                                <div className='my-courses--active'>
-                                    <NavLink to={"/person/activeCourses"}>
+                                <div className='my-courses--active'
+                                     onClick={()=> {
+                                         navigate(`/person/activeCourses`)
+                                         refreshPage()
+                                     }}>
                                         <p className='my-courses--active--pp'>Активированные курсы</p>
-                                    </NavLink>
                                     <FontAwesomeIcon className='my-courses--active--icon' icon={faArrowRightLong}/>
                                 </div>
                             </div>
