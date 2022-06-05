@@ -10,7 +10,7 @@ import {
     GET_USER,
     GET_IMG,
     USER_ID,
-    GET_TEST_RESULTS, GET_APPLICATION_TWO, GET_PROPS, GET_ACTIVATED_COURSES,
+    GET_TEST_RESULTS, GET_APPLICATION_TWO, GET_PROPS, GET_ACTIVATED_COURSES, GET_IMG_PAS,
 } from "../types/actionTypes";
 
 import {publicApi} from "../../components/Auth/HTTP/publicApi";
@@ -125,6 +125,22 @@ export const getImg = () => {
             })
     }
 }
+
+
+export const getImgPas = () => {
+    return (dispatch) => {
+        publicApi.get(`/pasport-createlist/${userId}/`)
+            .then(({data}) => {
+                if (data) {
+                    const sss = data.filter(el => el.user === userId)
+                    let result = sss[0]
+                    return dispatch({type: GET_IMG_PAS, payload: result})
+                }
+
+            })
+    }
+}
+
 export const getApplication = () => {
     return (dispatch) => {
         publicApi.get(`ApplicationToAdmin-List/`)

@@ -70,7 +70,7 @@ const Question = () => {
                 {
                     score: +result(),
                     point: +score,
-                    fail: 1,
+                    fail: Number(elem.length - score),
                     created_date: new Date(),
                     user: userId.id,
                     course: +testId,

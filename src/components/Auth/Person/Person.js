@@ -5,40 +5,27 @@ import UpdatePosition from "../Updated/UpdatePosition";
 import UpdateOrganization from "../Updated/UpdateOrganization";
 import UpdatePassword from "../Updated/UpdatePassword";
 import {NavLink, useNavigate} from "react-router-dom";
-import {dataAddID, deleteId, imgId, logout} from "../Register/helpers";
+import {deleteId, imgId, logout} from "../Register/helpers";
 import UpdatePhone from "../Updated/UpdatePhone";
 import UpdateName from "../Updated/UpdateName";
 import AddPosition from "../Register/AddPosition";
 import {useDispatch, useSelector} from "react-redux";
-import {
-    getActivatedCourseNames,
-    getApplication,
-    getCourses,
-    getCoursesDetails,
-    getImg,
-    getMyCourse,
-    getPosition,
-    getTestResults,
-    getUser,
-} from "../../../redux/action/corsesAction";
+import {getApplication, getCourses, getImg, getImgPas, getPosition, getTestResults, getUser,} from "../../../redux/action/corsesAction";
 import {toast} from "react-toastify";
 import {useForm} from "react-hook-form";
 import UpdatePhoto from "../Updated/UpdatePhoto";
 import {publicApi} from "../HTTP/publicApi";
-import TestResult from "../../question/testResult";
+import AddPhotoPassword from "./AddPhotoPassword";
+import UpdateImgPassword from "../Updated/UpdateImgPassword";
+import Passport from "../../../image/pas.png"
 
 const Person = () => {
-    const {getApp: act} = useSelector(s => s)
-    const {getUser: user} = useSelector(s => s)
-    const {courses: cour} = useSelector(s => s)
-    const {getTestResult: testRes} = useSelector(s => s)
-
-    const [personActive, setPersonActive] = useState(false)
     const [index, setIndex] = useState(0);
     const [poModal, setPoModal] = useState(false);
     const [orModal, setOrModal] = useState(false);
     const [passwordModal, setPasswordModal] = useState(false);
-    const [testActive, setTestActive] = useState(false)
+    const [imgPass, setImgPass] = useState(false)
+    const [imgPassModal, setImgPassModal] = useState(false)
     const [add, setAdd] = useState(false);
     const [phoneModal, setPhoneModal] = useState(false);
     const [nameModal, setNameAModal] = useState(false);
@@ -46,33 +33,28 @@ const Person = () => {
     const persons = useSelector(state => state.getUser);
     const posOrgan = useSelector(state => state.getPosition);
     const profileImg = useSelector(state => state.getImg);
+    const ImgPassword = useSelector(state => state.getImgPas);
     const [createImg, setCreateImg] = useState({preview: "", raw: ""});
     const dispatch = useDispatch();
-    const {activatedCourses: actApp} = useSelector(s => s)
+    console.log("ImgPassword",ImgPassword)
 
     function refreshPage() {
         window.location.reload();
     }
 
-    useEffect(() => {
-        act.map(el => {
-            console.log(0, el)
-            return dispatch(getActivatedCourseNames(el.applicationcourse))
-        })
 
-    }, [act, cour])
 
 
     useEffect(async () => {
         dispatch(getUser())
         dispatch(getApplication())
         dispatch(getCourses())
-        dispatch(getCoursesDetails())
         dispatch(getPosition())
         dispatch(getImg())
         dispatch(getTestResults())
         await dispatch(getPosition())
         await dispatch(getImg())
+        await dispatch(getImgPas())
     }, []);
 
     const {register, handleSubmit, watch, formState: {errors}} = useForm();
@@ -89,8 +71,8 @@ const Person = () => {
         formData.append("img", data.img[0])
         publicApi.post(`photo-create/`, formData)
             .then(data => {
-                refreshPage()
                 setCreateImg(data)
+                console.log(data)
                 imgId(data)
                 toast.success("успешно")
             })
@@ -111,7 +93,16 @@ const Person = () => {
             })
         }
 
-    };
+    }
+
+    const deleteImgPassword =() => {
+        publicApi.delete(`/pasport-updatedelete/${ImgPassword.id}`)
+            .then(data => {
+                refreshPage()
+                toast("deleted photo")
+                console.log(data)
+            })
+    }
 
 
     return (
@@ -124,7 +115,8 @@ const Person = () => {
                             <div className="btn--user">
                                 {
                                     profileImg ?
-                                        <img src={`https://res.cloudinary.com/dbqgk5dfn/${profileImg.img}`} className="btn--user--photo" alt=""/>
+                                        <img src={`https://res.cloudinary.com/dbqgk5dfn/${profileImg.img}`}
+                                             className="btn--user--photo" alt=""/>
                                         :
                                         <FontAwesomeIcon icon={faUser} className='btn--user--icon'/>
                                 }
@@ -136,7 +128,9 @@ const Person = () => {
                                 profileImg ?
                                     <UpdatePhoto/>
                                     :
-                                    <form onSubmit={handleSubmit(onSubmit)}>
+                                    <form onSubmit={handleSubmit(onSubmit)}
+                                    className="w-full flex justify-center"
+                                    >
                                         <label className="btn--btns--innn2 ">
                                             <span className="sm:w-full">Выбрать фото</span>
                                             <input
@@ -282,8 +276,9 @@ const Person = () => {
                                     </div>
                                 </div>
                             </div>
-
                         </div>
+
+
                         {
                             posOrgan ?
                                 <>
@@ -298,6 +293,66 @@ const Person = () => {
                                 </>
                                 : ""
                         }
+
+                        <div className='person__passport'>
+                            <div>
+
+                                {
+                                    ImgPassword ? <div className="flex justify-between">
+                                            <img src={`https://res.cloudinary.com/dbqgk5dfn/${ImgPassword.pasport_1}`} alt="img"
+                                                 className="w-52"
+                                            />
+                                            <img src={`https://res.cloudinary.com/dbqgk5dfn/${ImgPassword.pasport_2}`} alt="img2"
+                                                 className="w-52"
+                                            />
+                                        </div> :
+                                        <div className="person__passport--block">
+                                            <div className="my-10 mr-4">
+                                                <p className="person__passport--block__title">Фотография паспорта</p>
+                                                <div className="w-52 h-40 bg-gray-300 rounded flex justify-center align-middle">
+                                                    <span className="pt-16">
+                                                       <img src={Passport} alt="img" />
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <div>
+                                                    <p className="person__passport--title">Фотография с паспортом в руках</p>
+                                                    <div className="w-52 h-40 bg-gray-300 rounded flex justify-center align-middle">
+                                                    <span className="pt-16">
+                                                       <img src={Passport} alt="img" />
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                }
+                                {
+                                    ImgPassword ?
+                                        <div className='w-full flex justify-between '>
+                                            <button
+                                                onClick={() => setImgPassModal(true)}
+                                                className='w-full  p-2.5 rounded-md bg-[#01487E] text-white font-medium w-full'>
+                                                Update
+                                            </button>
+
+                                            <FontAwesomeIcon
+                                                className= "ml-8 btn--btns--div--iconTrash"
+                                                onClick={deleteImgPassword}
+                                                icon={faTrash}
+                                            />
+                                        </div>
+                                        :
+                                        <button
+                                            onClick={() => setImgPass(true)}
+                                            className=' p-2.5 rounded-md bg-[#01487E] text-white font-medium w-full'>
+                                            фото пасспорт
+                                        </button>
+                                }
+                            </div>
+
+                        </div>
                         <UpdateName
                             modal={nameModal}
                             setModal={setNameAModal}
@@ -318,21 +373,18 @@ const Person = () => {
                             setAdd={setAdd}
                             persons={persons}
                         />
+                        <AddPhotoPassword
+                            imgPass={imgPass}
+                            setImgPass={setImgPass}
+                        />
+                        <UpdateImgPassword
+                            imgPassModal={imgPassModal}
+                            setImgPassModal={setImgPassModal}
+                        />
                     </div>
                     <div className='my-courses' hidden={index !== 1}>
                         <h3>Мои курсы</h3>
                         <div>
-                            <p className='my-courses--p1'>
-                                {
-                                    // testRes.map(data =>(
-                                    //     <div>
-                                    //         {/*{*/}
-                                    //         {/*    data.user === act.user ? data.score : data.score*/}
-                                    //         {/*}*/}
-                                    //     </div>
-                                    //     )
-                                    // )
-                                }</p>
                             <div className='my-courses--bank'>
                                 <NavLink to={"/person/question-result"}>
                                     <p className='my-courses--bank--p'>Результат теста</p>
@@ -340,8 +392,6 @@ const Person = () => {
                                 <FontAwesomeIcon className='my-courses--bank--icon' icon={faArrowRightLong}/>
                             </div>
                         </div>
-
-
                         {
                             <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
                                 <div className='my-courses--business'>

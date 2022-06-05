@@ -382,6 +382,18 @@
         }
       }
 
+      &__passport{
+        padding-top: 50px;
+        width: 100%;
+
+        &--block{
+          display: flex;
+          justify-content: space-around;
+          flex-wrap: wrap;
+          align-items: center;
+        }
+      }
+
     }
 
     .my-courses {
