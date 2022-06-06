@@ -115,12 +115,12 @@ const CoursesDetails = () => {
                             <div className="cour--box--head--dates">
                                 <div className="cour--box--head--dates--start">
                                     <p className="cour--box--head--dates--start--title"> Дата начала курса</p>
-                                    <p className="cour--box--head--dates--start--desc">{course.created_date}</p>
+                                    <p className="cour--box--head--dates--start--desc">{(course?.created_date).slice(0,10)} &nbsp; {(course?.created_date).slice(11,16)}</p>
                                 </div>
 
                                 <div className="cour--box--head--dates--end">
                                     <p className="cour--box--head--dates--end--title"> Дата завершения курса</p>
-                                    <p className="cour--box--head--dates--end--desc">{course.published_date}</p>
+                                    <p className="cour--box--head--dates--end--desc">{(course?.published_date).slice(0,10)} &nbsp; {(course?.published_date).slice(11,16)}</p>
                                 </div>
 
                             </div>
