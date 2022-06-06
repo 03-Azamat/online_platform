@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from "../../image/image 4 (Traced) (1).svg"
 import {SocialMediaIconsReact} from 'social-media-icons-react';
+import {NavLink} from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -13,10 +14,10 @@ const Footer = () => {
                             <span className="footer--start--block">
                                 <h1 className="footer--start--block--title">Образовательная платорма</h1>
                                 <ul className="footer--start--block--items">
-                                    <li>Главная</li>
-                                    <li>Курсы</li>
-                                    <li>Проверка сертификатов</li>
-                                    <li>О нас</li>
+                                    <NavLink to={"/"}><li>Главная</li></NavLink>
+                                    <NavLink to={"/courses"}><li>Курсы</li></NavLink>
+                                    <NavLink to={"/certificate"}><li>Проверка сертификатов</li></NavLink>
+                                    <NavLink to={"/about"}><li>О нас</li></NavLink>
                                 </ul>
                             </span>
                         </div>
@@ -43,9 +44,10 @@ const Footer = () => {
                         </span>
                         </div>
                         <div className="footer--end">
-                            <h1 className="footer--end--title">Контакты</h1>
+                            <h1 className="footer--end--title"><NavLink to={"/contact"}>Контакты</NavLink></h1>
 
                             <span className="footer--end--address">
+
                                 <h5 className="footer--end--address--desc">+996 222 533 735</h5>
                                 <h5 className="footer--end--address--desc">Ashimov18@gmail.com</h5>
                                 <h5 className="footer--end--address--desc">Бишкек,Микрорайон Туңгуч,

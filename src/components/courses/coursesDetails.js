@@ -77,7 +77,6 @@ const CoursesDetails = () => {
     }, [app, course])
 
     return (
-
         <section id="cour" key={course?.id}>
             <div className="container">
                 {course ? (

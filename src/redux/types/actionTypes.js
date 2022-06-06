@@ -14,7 +14,6 @@ export const GET_POS = "GET_POS"
 export const USER_ID = "USER_ID"
 export const GET_TEST_RESULTS = "GET_TEST_RESULTS"
 export const GET_PROPS = "GET_PROPS"
-export const GET_ACTIVATED_COURSES = "GET_ACTIVATED_COURSES"
 
 
 

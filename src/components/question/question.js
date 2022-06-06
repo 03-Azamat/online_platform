@@ -18,19 +18,16 @@ const Question = () => {
     const [showScore, setShowScore] = useState(false);
     const [question, setQuestion] = useState();
     const [score, setScore] = useState(0);
+    const [scoreFail, setScoreFail] = useState(0);
     const dispatch = useDispatch();
     const timerQuiz = elem.timer;
-    console.log(question , "question")
-    console.log(testId , "testId")
-
-
-
+    console.log(question , "question.img")
 
 
 
     /* ********* TIMER ********** */
     const time = new Date();
-    time.setSeconds(time.getSeconds() + timerQuiz);
+    time.setMinutes(time.getMinutes() + timerQuiz);
 
 
     useEffect(() => {
@@ -50,6 +47,8 @@ const Question = () => {
     const handleAnswerButtonClick = (boo) => {
         if (boo === true) {
             setScore(score + 1);
+        } else {
+            setScoreFail(scoreFail + 1)
         }
         const nextQuestion = currentQuestion + 1;
         if (nextQuestion < elem.choicetest.length) {
@@ -70,7 +69,7 @@ const Question = () => {
                 {
                     score: +result(),
                     point: +score,
-                    fail: Number(elem.length - score),
+                    fail: +scoreFail,
                     created_date: new Date(),
                     user: userId.id,
                     course: +testId,
@@ -170,20 +169,25 @@ const Question = () => {
                                             </div>
                                             <div className="my-8">
                                                 <p className="text-center text-sm">
-                                                    Вопрос : № {currentQuestion + 1}
+                                                    {question?.title} question
                                                 </p>
                                                 <p className="font-normal text-sm text-center font-bold">
-                                                    {elem.name}
+                                                    {elem.name}elem.name
                                                 </p>
-                                                <p className="text-center text-sm">
-                                                    {question?.title}
-                                                </p>
+                                                <div className="flex justify-center w-full h-60 py-6">
+                                                    {
+                                                        question?.img ? <img src={`https://res.cloudinary.com/dbqgk5dfn/${question?.img}`} alt="img"
+                                                        className="object-cover"
+                                                        /> : ""
+                                                    }
+                                                </div>
                                                 <p className="text-center text-sm text-light ">
                                                     Ответы ( один вариант )
                                                 </p>
                                             </div>
                                             {question?.flags.map((flag) => (
-                                                <div className="flex align-middle justify-center">
+                                                <div className="flex align-middle justify-center" key={flag.id}>
+
                                                     <button
                                                         onClick={() =>
                                                             handleAnswerButtonClick(

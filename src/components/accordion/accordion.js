@@ -11,7 +11,7 @@ const Accordion = ({el}) => {
     return (
         <div className={`accordion ${active ? 'active' : ''}`} key={el.id}>
             <div className="accordion__title" onClick={() => setActive(!active)}>
-                <p>{el.choicetopic?.topicmain.name}</p>
+                <p>{el.choicetopic?.topics.name_work}</p>
                 <div className="accordion__icon">
                     <FontAwesomeIcon icon={faAngleDown}/>
                 </div>
@@ -24,7 +24,8 @@ const Accordion = ({el}) => {
                                 <div className="accordion__content">
                                     {
                                         <NavLink to={`/coursesDetails/coursesLesson/${el.lessonId}`}>
-                                            <p className="accordion__content">{el.choicetopic?.topics?.name_work}</p>
+                                            <p className="accordion__content">{el.choicetopic?.topics?.videos.map(el => el.title)}</p>
+                                            <p className="accordion__content">{el.choicetopic?.topics?.files.map(el => el.title)}</p>
                                         </NavLink>
                                     }
                                 </div>

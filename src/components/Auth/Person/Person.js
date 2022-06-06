@@ -10,7 +10,14 @@ import UpdatePhone from "../Updated/UpdatePhone";
 import UpdateName from "../Updated/UpdateName";
 import AddPosition from "../Register/AddPosition";
 import {useDispatch, useSelector} from "react-redux";
-import {getApplication, getCourses, getImg, getImgPas, getPosition, getTestResults, getUser,} from "../../../redux/action/corsesAction";
+import {
+    getApplication,
+    getCourses,
+    getImg, getImgPas,
+    getPosition,
+    getTestResults,
+    getUser,
+} from "../../../redux/action/corsesAction";
 import {toast} from "react-toastify";
 import {useForm} from "react-hook-form";
 import UpdatePhoto from "../Updated/UpdatePhoto";
@@ -18,6 +25,7 @@ import {publicApi} from "../HTTP/publicApi";
 import AddPhotoPassword from "./AddPhotoPassword";
 import UpdateImgPassword from "../Updated/UpdateImgPassword";
 import Passport from "../../../image/pas.png"
+
 
 const Person = () => {
     const [index, setIndex] = useState(0);
@@ -36,13 +44,11 @@ const Person = () => {
     const ImgPassword = useSelector(state => state.getImgPas);
     const [createImg, setCreateImg] = useState({preview: "", raw: ""});
     const dispatch = useDispatch();
-    console.log("ImgPassword",ImgPassword)
+    console.log("ImgPassword", ImgPassword)
 
     function refreshPage() {
         window.location.reload();
     }
-
-
 
 
     useEffect(async () => {
@@ -95,7 +101,7 @@ const Person = () => {
 
     }
 
-    const deleteImgPassword =() => {
+    const deleteImgPassword = () => {
         publicApi.delete(`/pasport-updatedelete/${ImgPassword.id}`)
             .then(data => {
                 refreshPage()
@@ -108,7 +114,7 @@ const Person = () => {
     return (
         <section id='person'>
             <div className='container'>
-                <h1>Личный кабинет</h1>
+                <h1 className="person__teg">Личный кабинет</h1>
                 <div className="contentBtn">
                     <div className='btn'>
                         <div className="w-full flex justify-center align-middle">
@@ -129,7 +135,7 @@ const Person = () => {
                                     <UpdatePhoto/>
                                     :
                                     <form onSubmit={handleSubmit(onSubmit)}
-                                    className="w-full flex justify-center"
+                                          className="w-full flex justify-center"
                                     >
                                         <label className="btn--btns--innn2 ">
                                             <span className="sm:w-full">Выбрать фото</span>
@@ -171,7 +177,7 @@ const Person = () => {
                         </div>
                     </div>
                     <div className="person" hidden={index !== 0}>
-                        <h3 className="text-center">Персональные данные</h3>
+                        <h3 className="text-center mr-9">Персональные данные</h3>
                         <div className='person--content'>
                             <div className='person--content--start'>
                                 <div className="flex flex-col">
@@ -297,31 +303,57 @@ const Person = () => {
                         <div className='person__passport'>
                             <div>
 
+
+
+
                                 {
-                                    ImgPassword ? <div className="flex justify-between">
-                                            <img src={`https://res.cloudinary.com/dbqgk5dfn/${ImgPassword.pasport_1}`} alt="img"
-                                                 className="w-52"
-                                            />
-                                            <img src={`https://res.cloudinary.com/dbqgk5dfn/${ImgPassword.pasport_2}`} alt="img2"
-                                                 className="w-52"
-                                            />
-                                        </div> :
-                                        <div className="person__passport--block">
+                                    ImgPassword ? <div className="person__passport--block">
                                             <div className="my-10 mr-4">
                                                 <p className="person__passport--block__title">Фотография паспорта</p>
-                                                <div className="w-52 h-40 bg-gray-300 rounded flex justify-center align-middle">
-                                                    <span className="pt-16">
-                                                       <img src={Passport} alt="img" />
+                                                <div
+                                                    className="w-72 h-40 rounded flex justify-center align-middle">
+                                                    <span className="w-full h-40 py-3">
+                                                       <img src={`https://res.cloudinary.com/dbqgk5dfn/${ImgPassword.pasport_1}`}
+                                                            alt="img"
+                                                            className="w-full h-40  rounded-lg"
+                                                       />
                                                     </span>
                                                 </div>
                                             </div>
-
                                             <div>
                                                 <div>
-                                                    <p className="person__passport--title">Фотография с паспортом в руках</p>
-                                                    <div className="w-52 h-40 bg-gray-300 rounded flex justify-center align-middle">
+                                                    <p className="person__passport--title">Фотография с паспортом в
+                                                        руках</p>
+                                                    <div
+                                                        className="w-72 h-40 rounded flex justify-center align-middle">
+                                                    <span className="w-full h-40 py-3">
+                                                       <img src={`https://res.cloudinary.com/dbqgk5dfn/${ImgPassword.pasport_2}`}
+                                                            alt="img2"
+                                                            className="w-full h-40 rounded-lg"
+                                                       />
+                                                    </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> :
+                                        <div className="person__passport--block">
+                                            <div className="my-10 mr-4" onClick={() => setImgPass(true)}>
+                                                <p className="person__passport--block__title">Фотография паспорта</p>
+                                                <div
+                                                    className="w-52 h-40 bg-gray-300 rounded flex justify-center align-middle">
                                                     <span className="pt-16">
-                                                       <img src={Passport} alt="img" />
+                                                       <img src={Passport} alt="img"/>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div onClick={() => setImgPass(true)}>
+                                                <div>
+                                                    <p className="person__passport--title">Фотография с паспортом в
+                                                        руках</p>
+                                                    <div
+                                                        className="w-52 h-40 bg-gray-300 rounded flex justify-center align-middle">
+                                                    <span className="pt-16">
+                                                       <img src={Passport} alt="img"/>
                                                     </span>
                                                     </div>
                                                 </div>
@@ -330,25 +362,21 @@ const Person = () => {
                                 }
                                 {
                                     ImgPassword ?
-                                        <div className='w-full flex justify-between '>
+                                        <div className='w-full flex justify-around my-6 '>
                                             <button
                                                 onClick={() => setImgPassModal(true)}
-                                                className='w-full  p-2.5 rounded-md bg-[#01487E] text-white font-medium w-full'>
+                                                className='w-[80%]  p-2.5 rounded-md bg-[#01487E] text-white font-medium w-full'>
                                                 Update
                                             </button>
 
                                             <FontAwesomeIcon
-                                                className= "ml-8 btn--btns--div--iconTrash"
+                                                className="ml-8 btn--btns--div--iconTrash"
                                                 onClick={deleteImgPassword}
                                                 icon={faTrash}
                                             />
                                         </div>
                                         :
-                                        <button
-                                            onClick={() => setImgPass(true)}
-                                            className=' p-2.5 rounded-md bg-[#01487E] text-white font-medium w-full'>
-                                            фото пасспорт
-                                        </button>
+                                       ""
                                 }
                             </div>
 
@@ -385,35 +413,47 @@ const Person = () => {
                     <div className='my-courses' hidden={index !== 1}>
                         <h3>Мои курсы</h3>
                         <div>
-                            <div className='my-courses--bank'>
-                                <NavLink to={"/person/question-result"}>
-                                    <p className='my-courses--bank--p'>Результат теста</p>
-                                </NavLink>
-                                <FontAwesomeIcon className='my-courses--bank--icon' icon={faArrowRightLong}/>
+                            <div className='my-courses--bank'
+                                 onClick={() => {
+                                     navigate(`/person/question-result`)
+                                     refreshPage()
+                                 }}>
+                                <div className='my-courses--bank'>
+                                    <NavLink to={"/person/question-result"}>
+                                        <p className='my-courses--bank--p'>Результат теста</p>
+                                        <FontAwesomeIcon className='my-courses--bank--icon' icon={faArrowRightLong}/>
+                                    </NavLink>
+                                </div>
                             </div>
-                        </div>
-                        {
-                            <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
-                                <div className='my-courses--business'>
-                                    <NavLink to={"/person/notActivated"}>
+                            {
+                                <div><p className='my-courses--p2'>На рассмотренииу администратора:</p>
+                                    <div className='my-courses--business'
+                                         onClick={() => {
+                                             navigate(`/person/notActivated`)
+                                             refreshPage()
+                                         }}
+                                    >
                                         <p className='my-courses--business--p'>Курсы на рассмотренииу администратора</p>
-                                    </NavLink>
-                                    <FontAwesomeIcon className='my-courses--business--icon' icon={faArrowRightLong}/>
+                                        <FontAwesomeIcon className='my-courses--business--icon'
+                                                         icon={faArrowRightLong}/>
+                                    </div>
                                 </div>
-                            </div>
-                        }
-                        {
-                            <div>
-                                <div className='my-courses--pp'>
-                                </div>
-                                <div className='my-courses--active'>
-                                    <NavLink to={"/person/activeCourses"}>
+                            }
+                            {
+                                <div>
+                                    <div className='my-courses--pp'>
+                                    </div>
+                                    <div className='my-courses--active'
+                                         onClick={() => {
+                                             navigate(`/person/activeCourses`)
+                                             refreshPage()
+                                         }}>
                                         <p className='my-courses--active--pp'>Активированные курсы</p>
-                                    </NavLink>
-                                    <FontAwesomeIcon className='my-courses--active--icon' icon={faArrowRightLong}/>
+                                        <FontAwesomeIcon className='my-courses--active--icon' icon={faArrowRightLong}/>
+                                    </div>
                                 </div>
-                            </div>
-                        }
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
