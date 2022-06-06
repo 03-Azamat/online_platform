@@ -135,7 +135,7 @@ const Question = () => {
                                                                     ? "green"
                                                                     : "red",
                                                         }}
-                                                    ></span>
+                                                    > </span>
                                                 </p>
                                             }
                                         </div>
@@ -169,10 +169,10 @@ const Question = () => {
                                             </div>
                                             <div className="my-8">
                                                 <p className="text-center text-sm">
-                                                    {question?.title} question
+                                                    Вопрос  № {currentQuestion + 1}
                                                 </p>
                                                 <p className="font-normal text-sm text-center font-bold">
-                                                    {elem.name}elem.name
+                                                    {elem.name}
                                                 </p>
                                                 <div className="flex justify-center w-full h-60 py-6">
                                                     {

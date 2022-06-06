@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrash} from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
 import {toast} from "react-toastify";
 import {useForm} from "react-hook-form";
 import {imgId} from "../Register/helpers";

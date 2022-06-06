@@ -87,31 +87,69 @@ const UpdateImgPassword = ({imgPassModal,setImgPassModal}) => {
                     onSubmit={handleSubmit(onSubmit)}
                     className='pas--position--form'
                 >
-                    <input
-                        className={`btn--btns--innn2---in1 ${createImg.length === 0 ? "btn--btns--innn2---in2" : "btn--btns--innn2---in1"}`}
-                        {...register("pasport_1")} id="file-upload" type="file" onChange={(e) => {
-                        blobToBase64(e.target.files[0]).then((data) => {
-                            setCreateImg(data)
-                        })
-                    }}/>
-                    <input
-                        className={`btn--btns--innn2---in1 ${createImg2.length === 0 ? "btn--btns--innn2---in2" : "btn--btns--innn2---in1"}`}
-                        {...register("pasport_2")} id="file-upload" type="file" onChange={(e) => {
-                        blobToBase63(e.target.files[0]).then((data) => {
-                            setCreateImg2(data)
-                        })
-                    }}/>
+                    <label className="btn--btns--innn2 ">
+                        {
+                            createImg.length > 0 ?
+                                <>
+                                    <span className="sm:w-full">Выбрали фото</span>
+                                    <input
+                                        className={`opacity-0 flex items-center absolute pas--btns--innn2---in1`}
+                                        {...register("pasport_1")} id="file-upload" type="file" onChange={(e) => {
+                                        blobToBase64(e.target.files[0]).then((data) => {
+                                            setCreateImg(data)
+                                        })
+                                    }}/></>
+                                :
+                                <>
+                                    <span className="sm:w-full">Фото паспорта</span>
+                                    <input
+                                        className={`opacity-0 flex items-center absolute pas--btns--innn2---in1`}
+                                        {...register("pasport_1")} id="file-upload" type="file" onChange={(e) => {
+                                        blobToBase64(e.target.files[0]).then((data) => {
+                                            setCreateImg(data)
+                                        })
+                                    }}/></>
+                        }
+                    </label>
+                    <label className="btn--btns--innn2 ">
+                        {
+                            createImg2.length > 0 ?
+                                <>
+                                    <span className="sm:w-full">Выбрали фото</span>
+                                    <input
+                                        className={`opacity-0 flex items-center absolute pas--btns--innn2---in1`}
+                                        {...register("pasport_2")} id="file-upload" type="file" onChange={(e) => {
+                                        blobToBase63(e.target.files[0]).then((data) => {
+                                            setCreateImg2(data)
+                                        })
+                                    }}/></>
+                                :
+                                <>
+                                    <span className="sm:w-full p-2">Фото с паспортом в руках</span>
+                                    <input
+                                        className={`opacity-0 flex items-center absolute pas--btns--innn2---in1`}
+                                        {...register("pasport_2")} id="file-upload" type="file" onChange={(e) => {
+                                        blobToBase63(e.target.files[0]).then((data) => {
+                                            setCreateImg2(data)
+                                        })
+                                    }}/></>
+                        }
+                    </label>
                     <div className='pas--position--form--btns'>
                         <button
                             type='button'
                             className='pas--position--form--btns--btn1 mx-2.5'
                             onClick={() => setImgPassModal(false)}
                         >отменить</button>
-                        <button
-                            onClick={() => navigate("/person")}
-                            className='pas--position--form--btns--btn2 mx-2.5'
-                            type="submit"
-                        >Сохранить</button>
+                        {
+                            createImg.length > 0 && createImg2.length > 0 ?
+                                <button
+                                    onClick={() => navigate("/person")}
+                                    className='add--position--form--btns--btn2 mx-2.5'
+                                    type="submit"
+                                >Сохранить</button>
+                                : ""
+                        }
                     </div>
                 </form>
             </div>

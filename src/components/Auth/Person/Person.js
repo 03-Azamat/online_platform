@@ -44,7 +44,6 @@ const Person = () => {
     const ImgPassword = useSelector(state => state.getImgPas);
     const [createImg, setCreateImg] = useState({preview: "", raw: ""});
     const dispatch = useDispatch();
-    console.log("ImgPassword", ImgPassword)
 
     function refreshPage() {
         window.location.reload();
@@ -337,7 +336,7 @@ const Person = () => {
                                             </div>
                                         </div> :
                                         <div className="person__passport--block">
-                                            <div className="my-10 mr-4" onClick={() => setImgPass(true)}>
+                                            <div className="my-10 mr-4 cursor-pointer" onClick={() => setImgPass(true)}>
                                                 <p className="person__passport--block__title">Фотография паспорта</p>
                                                 <div
                                                     className="w-52 h-40 bg-gray-300 rounded flex justify-center align-middle">
@@ -346,7 +345,7 @@ const Person = () => {
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div onClick={() => setImgPass(true)}>
+                                            <div className={'cursor-pointer'} onClick={() => setImgPass(true)}>
                                                 <div>
                                                     <p className="person__passport--title">Фотография с паспортом в
                                                         руках</p>

@@ -47,17 +47,20 @@ const CoursesVideoLesson = ({el}) => {
                 }
                 {
                     el.choicetopic?.topics?.files?.map(item => (
-                        <div className="react-player" onClick={() => {
+                        <div className=" w-full justify-end react-player" onClick={() => {
                             setFile(item)
                             setModal(true)
                             setClickFile(true)
                         }} key={item.id}>
-                            <iframe
-                                src={item.file}
-                                width="20vw"
-                                height="15vh"
-                            />
-                            <p className="text-base ml-3 md: text-sm">{item.title}</p>
+                            <button className="cursor-not-allowed">
+                                <iframe
+                                    src={item.file}
+                                    width="20vw"
+                                    height="15vh"
+                                />
+                            </button>
+
+                            <p className= "text-base ml-3 md: text-sm">{item.title}</p>
                         </div>
                     ))
                 }
